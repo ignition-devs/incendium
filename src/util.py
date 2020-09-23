@@ -2,7 +2,7 @@
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
 
-"""Incendium Utility module."""
+"""Utility module."""
 
 __all__ = [
     'get_function_name',

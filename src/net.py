@@ -2,7 +2,7 @@
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
 
-"""Incendium Net module."""
+"""Net module."""
 
 __all__ = [
     'send_high_priority_email',

@@ -135,8 +135,8 @@ def input(message, title=None):
     Args:
         message (str): The message to display. This will be translated
             to the selected Locale. Will accept html formatting.
-        title (str): A title for the message box. This will be
-            translated to the selected Locale.
+        title (str): A title for the input box. This will be translated
+            to the selected Locale.
 
     Returns:
         str: The string value that was entered in the input box.

@@ -2,7 +2,7 @@
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
 
-"""Incendium Tag module."""
+"""Tag module."""
 
 __all__ = [
     'read',

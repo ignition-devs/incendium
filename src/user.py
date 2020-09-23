@@ -2,7 +2,7 @@
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
 
-"""Incendium User module."""
+"""User module."""
 
 __all__ = [
     'get_emails',
