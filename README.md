@@ -11,7 +11,7 @@
 
 This is a package that extends and wraps some functions from Ignition's Scripting API.
 
-For more information, please refer to the [Wiki](https://github.com/thecesrom/incendium/wiki/incendium).
+For more information, please refer to the [Wiki](https://github.com/thecesrom/incendium/wiki).
 
 ## Prerequisites
 
