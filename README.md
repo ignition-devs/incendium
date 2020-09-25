@@ -4,10 +4,7 @@
 ![GitHub license](https://img.shields.io/github/license/thecesrom/incendium)
 ![GitHub contributors](https://img.shields.io/github/contributors/thecesrom/incendium)
 ![GitHub last commit (master)](https://img.shields.io/github/last-commit/thecesrom/incendium/master)
-![GitHub repo size](https://img.shields.io/github/repo-size/thecesrom/incendium)
-![GitHub stars](https://img.shields.io/github/stars/thecesrom/incendium?style=social)
-![GitHub forks](https://img.shields.io/github/forks/thecesrom/incendium?style=social)
-![Twitter Follow](https://img.shields.io/twitter/follow/thecesrom?style=social)
+![GitHub release (latest)](https://img.shields.io/github/v/release/thecesrom/incendium)
 
 This is a package that extends and wraps some functions from Ignition's Scripting API.
 
@@ -21,7 +18,10 @@ Before you begin, ensure you have met the following requirements:
 
 ## Using incendium
 
-To use incendium, add it as a package under Scripting > Project Library.
+To use incendium, do the following:
+
+1. Download the latest release
+1. add it as a package under Scripting > Project Library.
 
 ## Contributing to incendium
 
