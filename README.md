@@ -21,7 +21,7 @@ Before you begin, ensure you have met the following requirements:
 To use incendium, do the following:
 
 1. Download the latest release
-1. add it as a package under Scripting > Project Library.
+1. Add it as a package under Scripting > Project Library
 
 ## Contributing to incendium
 
