@@ -33,7 +33,7 @@ CURSOR_W_RESIZE = 12
 CURSOR_E_RESIZE = 13
 
 
-def confirm(message, title, show_cancel=False):
+def confirm(message, title='Confirm', show_cancel=False):
     """Displays a confirmation dialog box to the user with "Yes", "No"
     and "Cancel" options, and a custom message.
 
@@ -41,7 +41,7 @@ def confirm(message, title, show_cancel=False):
         message (str): The message to display. This will be translated
             to the selected Locale.
         title (str): A title for the message box. This will be
-            translated to the selected Locale.
+            translated to the selected Locale. Optional.
         show_cancel (bool): Show a cancel button in the dialog.
             Optional.
 
@@ -76,14 +76,14 @@ def confirm(message, title, show_cancel=False):
     )
 
 
-def error(message, title, detail=None):
+def error(message, title='Error', detail=None):
     """Displays an error-style message box to the user.
 
     Args:
         message (str): The message to display in an error box. This
             will be translated to the selected Locale.
         title (str): A title for the error box. This will be
-            translated to the selected Locale.
+            translated to the selected Locale. Optional.
         detail (str): Additional text to display. This will be
             translated to the selected Locale. Optional.
     """
@@ -100,14 +100,14 @@ def error(message, title, detail=None):
     )
 
 
-def info(message, title, detail=None):
+def info(message, title='Information', detail=None):
     """Displays an informational-style message popup box to the user.
 
     Args:
         message (str): The message to display. This will be translated
             to the selected Locale. Will accept html formatting.
         title (str): A title for the message box. This will be
-            translated to the selected Locale.
+            translated to the selected Locale. Optional.
         detail (str): Additional text to display. This will be
             translated to the selected Locale. Optional.
     """
@@ -124,7 +124,7 @@ def info(message, title, detail=None):
     )
 
 
-def input(message, title=None):
+def input(message, title='Input'):
     """Opens up a popup input dialog box. This dialog box will show a
     prompt message, and allow the user to type in a string. When the
     user is done, they can press "OK" or "Cancel". If OK is pressed,
@@ -135,7 +135,7 @@ def input(message, title=None):
         message (str): The message to display. This will be translated
             to the selected Locale. Will accept html formatting.
         title (str): A title for the input box. This will be translated
-            to the selected Locale.
+            to the selected Locale. Optional.
 
     Returns:
         str: The string value that was entered in the input box.
@@ -167,14 +167,14 @@ def input(message, title=None):
             else None)
 
 
-def warning(message, title, detail=None):
+def warning(message, title='Warning', detail=None):
     """Displays a message to the user in a warning style popup dialog.
 
     Args:
         message (str): The message to display in an warning box. This
             will be translated to the selected Locale.
         title (str): A title for the warning box. This will be
-            translated to the selected Locale.
+            translated to the selected Locale. Optional.
         detail (str): Additional text to display. This will be
             translated to the selected Locale. Optional.
     """
