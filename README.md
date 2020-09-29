@@ -22,8 +22,10 @@ For more information, please refer to the [Wiki](https://github.com/thecesrom/in
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
-* You have installed Ignition by Inductive Automation
+* Java 11
+* Jython 2.7.1 ([download here](https://search.maven.org/artifact/org.python/jython-installer/2.7.1/jar))
 * You are familiar with [Ignition 8 Scripting Functions](https://docs.inductiveautomation.com/display/DOC80/Scripting+Functions)
+* You have installed Ignition by Inductive Automation (optional)
 
 ## Using incendium
 
