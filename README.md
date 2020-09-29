@@ -1,10 +1,19 @@
-# incendium
-
 <!--- Badges --->
 ![GitHub license](https://img.shields.io/github/license/thecesrom/incendium)
 ![GitHub contributors](https://img.shields.io/github/contributors/thecesrom/incendium)
 ![GitHub last commit (master)](https://img.shields.io/github/last-commit/thecesrom/incendium/master)
 ![GitHub release (latest)](https://img.shields.io/github/v/release/thecesrom/incendium)
+
+# incendium
+
+(/inˈken.di.um/)
+
+_noun_
+1. A fire, inferno, conflagration; heat; torch.
+1. (heat of) passion, vehemence
+
+
+## Description
 
 This is a package that extends and wraps some functions from Ignition's Scripting API.
 
@@ -22,6 +31,10 @@ To use incendium, do the following:
 
 1. Download the latest release
 1. Add it as a package under Scripting > Project Library
+
+## Dependencies
+
+If you would like to include incendium to your scripting project, note that this project depends on Ignition's `jython` branch found [here](https://github.com/thecesrom/Ignition/tree/jython).
 
 ## Contributing to incendium
 
