@@ -12,7 +12,6 @@ __all__ = [
     'warning'
 ]
 
-import system.gui
 import system.util
 from incendium import constants
 from javax.swing import JLabel, JOptionPane, JPanel, JTextField
