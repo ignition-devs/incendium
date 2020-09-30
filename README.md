@@ -36,7 +36,7 @@ To use incendium, do the following:
 
 ## Dependencies
 
-If you would like to include incendium to your scripting project, note that this project depends on Ignition's `jython` branch found [here](https://github.com/thecesrom/Ignition/tree/jython).
+If you would like to include incendium in your scripting project or extend it, please note that this project depends on Ignition's `jython` branch found [here](https://github.com/thecesrom/Ignition/tree/jython).
 
 ## Contributing to incendium
 
