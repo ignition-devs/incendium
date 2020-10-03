@@ -1,14 +1,10 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-
 """User module."""
 
 __all__ = [
-    'get_emails',
-    'get_user',
-    'get_user_first_name',
-    'get_user_full_name'
+    'get_emails', 'get_user', 'get_user_first_name', 'get_user_full_name'
 ]
 
 import system.security
@@ -75,8 +71,11 @@ def get_emails(user_source='', filter_role=''):
     users = system.user.getUsers(user_source)
 
     for user in users:
-        _emails = [ci.value for ci in user.getContactInfo()
-                   if ci.contactType == 'email']
+        _emails = [
+            ci.value
+            for ci in user.getContactInfo()
+            if ci.contactType == 'email'
+        ]
         for email in _emails:
             if filter_role:
                 if filter_role in user.getRoles():

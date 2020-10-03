@@ -1,13 +1,10 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-
 """Net module."""
 
 __all__ = [
-    'send_high_priority_email',
-    'send_html_email',
-    'send_plain_text_email'
+    'send_high_priority_email', 'send_html_email', 'send_plain_text_email'
 ]
 
 import system.net
@@ -49,15 +46,13 @@ def _send_email(subject, body, html, to, priority):
         priority (str): Priority for the message.
     """
     try:
-        system.net.sendEmail(
-            smtp=constants.SMTP,
-            fromAddr=constants.SENDER,
-            subject=subject,
-            body=body,
-            html=html,
-            to=to,
-            priority=priority
-        )
+        system.net.sendEmail(smtp=constants.SMTP,
+                             fromAddr=constants.SENDER,
+                             subject=subject,
+                             body=body,
+                             html=html,
+                             to=to,
+                             priority=priority)
     finally:
         pass
 

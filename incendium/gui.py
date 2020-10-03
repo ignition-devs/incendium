@@ -1,16 +1,9 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-
 """GUI module."""
 
-__all__ = [
-    'confirm',
-    'error',
-    'info',
-    'input',
-    'warning'
-]
+__all__ = ['confirm', 'error', 'info', 'input', 'warning']
 
 import system.util
 from incendium import constants
@@ -58,22 +51,14 @@ def confirm(message, title='Confirm', show_cancel=False):
     if show_cancel:
         options.append(system.util.translate(constants.CANCEL_TEXT))
 
-    choice = JOptionPane.showOptionDialog(
-        None,
-        system.util.translate(message),
-        system.util.translate(title),
-        JOptionPane.YES_NO_CANCEL_OPTION,
-        JOptionPane.QUESTION_MESSAGE,
-        None,
-        options,
-        options[0]
-    )
+    choice = JOptionPane.showOptionDialog(None, system.util.translate(message),
+                                          system.util.translate(title),
+                                          JOptionPane.YES_NO_CANCEL_OPTION,
+                                          JOptionPane.QUESTION_MESSAGE, None,
+                                          options, options[0])
 
-    return (
-        not bool(choice)
-        if choice in [JOptionPane.YES_OPTION, JOptionPane.NO_OPTION]
-        else None
-    )
+    return (not bool(choice) if choice
+            in [JOptionPane.YES_OPTION, JOptionPane.NO_OPTION] else None)
 
 
 def error(message, title='Error', detail=None):
@@ -90,14 +75,11 @@ def error(message, title='Error', detail=None):
     if detail is None:
         msg = system.util.translate(message)
     else:
-        msg = '\n'.join([system.util.translate(message),
-                         system.util.translate(detail)])
-    JOptionPane.showMessageDialog(
-        None,
-        msg,
-        system.util.translate(title),
-        JOptionPane.ERROR_MESSAGE
-    )
+        msg = '\n'.join(
+            [system.util.translate(message),
+             system.util.translate(detail)])
+    JOptionPane.showMessageDialog(None, msg, system.util.translate(title),
+                                  JOptionPane.ERROR_MESSAGE)
 
 
 def info(message, title='Information', detail=None):
@@ -114,14 +96,11 @@ def info(message, title='Information', detail=None):
     if detail is None:
         msg = system.util.translate(message)
     else:
-        msg = '\n'.join([system.util.translate(message),
-                         system.util.translate(detail)])
-    JOptionPane.showMessageDialog(
-        None,
-        msg,
-        system.util.translate(title),
-        JOptionPane.INFORMATION_MESSAGE
-    )
+        msg = '\n'.join(
+            [system.util.translate(message),
+             system.util.translate(detail)])
+    JOptionPane.showMessageDialog(None, msg, system.util.translate(title),
+                                  JOptionPane.INFORMATION_MESSAGE)
 
 
 def input(message, title='Input'):
@@ -151,20 +130,13 @@ def input(message, title='Input'):
     text_field = JTextField(25)
     panel.add(text_field)
 
-    choice = JOptionPane.showOptionDialog(
-        None,
-        panel,
-        system.util.translate(title),
-        JOptionPane.OK_CANCEL_OPTION,
-        JOptionPane.PLAIN_MESSAGE,
-        None,
-        options,
-        options[0]
-    )
+    choice = JOptionPane.showOptionDialog(None, panel,
+                                          system.util.translate(title),
+                                          JOptionPane.OK_CANCEL_OPTION,
+                                          JOptionPane.PLAIN_MESSAGE, None,
+                                          options, options[0])
 
-    return (text_field.getText()
-            if choice == JOptionPane.OK_OPTION
-            else None)
+    return (text_field.getText() if choice == JOptionPane.OK_OPTION else None)
 
 
 def warning(message, title='Warning', detail=None):
@@ -181,11 +153,8 @@ def warning(message, title='Warning', detail=None):
     if detail is None:
         msg = system.util.translate(message)
     else:
-        msg = '\n'.join([system.util.translate(message),
-                         system.util.translate(detail)])
-    JOptionPane.showMessageDialog(
-        None,
-        msg,
-        system.util.translate(title),
-        JOptionPane.WARNING_MESSAGE
-    )
+        msg = '\n'.join(
+            [system.util.translate(message),
+             system.util.translate(detail)])
+    JOptionPane.showMessageDialog(None, msg, system.util.translate(title),
+                                  JOptionPane.WARNING_MESSAGE)

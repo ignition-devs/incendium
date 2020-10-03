@@ -1,13 +1,9 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-
 """Tag module."""
 
-__all__ = [
-    'read',
-    'write'
-]
+__all__ = ['read', 'write']
 
 import system.tag
 

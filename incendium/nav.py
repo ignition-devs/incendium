@@ -1,13 +1,9 @@
 # Copyright (C) 2020
 # Authors: Cesar Roman, Kyle Chase.
 # Contact: thecesrom@gmail.com
-
 """Navigation module."""
 
-__all__ = [
-    'swap_to',
-    'swap_windows'
-]
+__all__ = ['swap_to', 'swap_windows']
 
 import system.nav
 

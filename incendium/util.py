@@ -1,15 +1,9 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-
 """Utility module."""
 
-__all__ = [
-    'get_function_name',
-    'get_timer',
-    'set_locale',
-    'validate_form'
-]
+__all__ = ['get_function_name', 'get_timer', 'set_locale', 'validate_form']
 
 import traceback
 
@@ -93,25 +87,22 @@ def validate_form(strings=None, numbers=None, collections=None):
         for key, value in strings.iteritems():
             if not value:
                 counter += 1
-                error_message += (constants.TABBED_LINE + key
-                                  if counter == 1 else
-                                  constants.NEW_TABBED_LINE + key)
+                error_message += (constants.TABBED_LINE + key if counter == 1
+                                  else constants.NEW_TABBED_LINE + key)
                 is_valid = False
     if numbers:
         for key, value in numbers.iteritems():
             if value is None or value <= 0:
                 counter += 1
-                error_message += (constants.TABBED_LINE + key
-                                  if counter == 1 else
-                                  constants.NEW_TABBED_LINE + key)
+                error_message += (constants.TABBED_LINE + key if counter == 1
+                                  else constants.NEW_TABBED_LINE + key)
                 is_valid = False
     if collections:
         for key, value in collections.iteritems():
             if value is None or value <= 0:
                 counter += 1
-                error_message += (constants.TABBED_LINE + key
-                                  if counter == 1 else
-                                  constants.NEW_TABBED_LINE + key)
+                error_message += (constants.TABBED_LINE + key if counter == 1
+                                  else constants.NEW_TABBED_LINE + key)
                 is_valid = False
 
     return is_valid, error_message

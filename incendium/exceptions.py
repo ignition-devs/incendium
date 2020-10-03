@@ -1,22 +1,15 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-
 """Exceptions module."""
 
-__all__ = [
-    'ApplicationError',
-    'TagError'
-]
+__all__ = ['ApplicationError', 'TagError']
 
 
 class ApplicationError(Exception):
     """Application Error class."""
 
-    def __init__(self,
-                 message,
-                 inner_exception=None,
-                 cause=None):
+    def __init__(self, message, inner_exception=None, cause=None):
         """Application Error initializer.
 
         Args:
@@ -29,22 +22,19 @@ class ApplicationError(Exception):
         self.cause = cause
 
     def __repr__(self):
-        return "{}({!r}, {!r}, {!r})".format(
-            self.__class__.__name__,
-            repr(self.message),
-            self.inner_exception.__repr__(),
-            repr(self.cause)
-        )
+        return "{}({!r}, {!r}, {!r})".format(self.__class__.__name__,
+                                             repr(self.message),
+                                             self.inner_exception.__repr__(),
+                                             repr(self.cause))
 
     def __str__(self):
         return repr(self.message)
 
 
 class TagError(Exception):
-    """Tag Erro class."""
+    """Tag Error class."""
 
-    def __init__(self,
-                 message):
+    def __init__(self, message):
         """Tag Error initializer.
 
         Args:
@@ -53,10 +43,7 @@ class TagError(Exception):
         super(TagError, self).__init__(message)
 
     def __repr__(self):
-        return "{}({!r})".format(
-            self.__class__.__name__,
-            repr(self.message)
-        )
+        return "{}({!r})".format(self.__class__.__name__, repr(self.message))
 
     def __str__(self):
         return repr(self.message)

@@ -1,12 +1,9 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-
 """Dataset module."""
 
-__all__ = [
-    'to_xml'
-]
+__all__ = ['to_xml']
 
 import system.dataset
 
@@ -33,9 +30,8 @@ def to_xml(dataset, root='root', element='row'):
     for row in data:
         ret_str += '{}<{}>{}'.format(tab, element, new_line)
         for header in headers:
-            ret_str += '{}<{}>{}</{}>{}'.format(
-                tab * 2, header, row[header], header, new_line
-            )
+            ret_str += '{}<{}>{}</{}>{}'.format(tab * 2, header, row[header],
+                                                header, new_line)
         ret_str += '{}</{}>{}'.format(tab, element, new_line)
     ret_str += '</{}>'.format(root)
 

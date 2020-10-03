@@ -1,14 +1,10 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-
 """Database module."""
 
 __all__ = [
-    'check',
-    'execute_non_query',
-    'get_data',
-    'get_output_params',
+    'check', 'execute_non_query', 'get_data', 'get_output_params',
     'get_return_value'
 ]
 
@@ -40,10 +36,17 @@ class _Result(object):
         self.update_count = update_count
 
 
-def _execute_sp(stored_procedure, database='', transaction=None,
-                skip_audit=False, in_params=None, out_params=None,
-                get_out_params=False, get_result_set=False, get_ret_val=False,
-                return_type_code=None, get_update_count=False):
+def _execute_sp(stored_procedure,
+                database='',
+                transaction=None,
+                skip_audit=False,
+                in_params=None,
+                out_params=None,
+                get_out_params=False,
+                get_result_set=False,
+                get_ret_val=False,
+                return_type_code=None,
+                get_update_count=False):
     """Executes a database stored procedure.
 
     Args:
@@ -146,7 +149,9 @@ def check(stored_procedure, database='', params=None):
     return output_params['flag']
 
 
-def execute_non_query(stored_procedure, database='', transaction=None,
+def execute_non_query(stored_procedure,
+                      database='',
+                      transaction=None,
                       params=None):
     """Executes a stored procedure against the connection and returns
     the number of rows affected.
@@ -199,7 +204,10 @@ def get_data(stored_procedure, database='', params=None):
     return result.result_set
 
 
-def get_output_params(stored_procedure, output, database='', transaction=None,
+def get_output_params(stored_procedure,
+                      output,
+                      database='',
+                      transaction=None,
                       params=None):
     """Gets the Output parameters from the Stored Procedure.
 
@@ -227,8 +235,11 @@ def get_output_params(stored_procedure, output, database='', transaction=None,
     return result.output_params
 
 
-def get_return_value(stored_procedure, return_type_code, database='',
-                     transaction=None, params=None):
+def get_return_value(stored_procedure,
+                     return_type_code,
+                     database='',
+                     transaction=None,
+                     params=None):
     """Gets the Return Value from the Stored Procedure.
 
     Args:

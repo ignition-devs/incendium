@@ -1,12 +1,9 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-
 """Date module."""
 
-__all__ = [
-    'compare'
-]
+__all__ = ['compare']
 
 
 def compare(date_1, date_2):
