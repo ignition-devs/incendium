@@ -8,7 +8,6 @@ __all__ = ['ApplicationError', 'TagError']
 
 class ApplicationError(Exception):
     """Application Error class."""
-
     def __init__(self, message, inner_exception=None, cause=None):
         """Application Error initializer.
 
@@ -33,7 +32,6 @@ class ApplicationError(Exception):
 
 class TagError(Exception):
     """Tag Error class."""
-
     def __init__(self, message):
         """Tag Error initializer.
 

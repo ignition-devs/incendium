@@ -13,7 +13,6 @@ import system.db
 
 class _Result(object):
     """Result class."""
-
     def __init__(self,
                  output_params=None,
                  result_set=None,

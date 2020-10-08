@@ -13,7 +13,6 @@ import system.user
 
 class _User(object):
     """Wrapper class for Ignition's User object."""
-
     def __init__(self, user):
         """User initializer.
 
@@ -72,8 +71,7 @@ def get_emails(user_source='', filter_role=''):
 
     for user in users:
         _emails = [
-            ci.value
-            for ci in user.getContactInfo()
+            ci.value for ci in user.getContactInfo()
             if ci.contactType == 'email'
         ]
         for email in _emails:
