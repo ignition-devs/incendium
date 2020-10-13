@@ -4,8 +4,8 @@
 """Database module."""
 
 __all__ = [
-    'check', 'execute_non_query', 'get_data', 'get_output_params',
-    'get_return_value'
+    'DisposableConnection', 'check', 'execute_non_query', 'get_data',
+    'get_output_params', 'get_return_value'
 ]
 
 import system.db
@@ -122,6 +122,45 @@ def _execute_sp(stored_procedure,
         _result.update_count = call.getUpdateCount()
 
     return _result
+
+
+class DisposableConnection(object):
+    """A disposable connection enables a database connection in Ignition
+    and disables it once the operation is completed to release
+    resources.
+    """
+    def __init__(self, db, retries=3):
+        """Disposable Connection initializer.
+
+        Args:
+            db (str): The name of the database connection in Ignition.
+            retries (int): The number of additional times to retry
+                enabling the connection. Optional.
+        """
+        self.db = db
+        self.retries = retries
+
+    def __enter__(self):
+        from java.lang import Thread
+
+        system.db.setDatasourceEnabled(self.db, True)
+
+        for _ in range(self.retries):
+            Thread.sleep(1000)
+            if self.status == 'Faulted':
+                raise IOError('The database connection {!r} is {}.'.format(
+                    self.db, self.status))
+            elif self.status == 'Valid':
+                break
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        system.db.setDatasourceEnabled(self.db, False)
+
+    @property
+    def status(self):
+        ci = system.db.getConnectionInfo(self.db)
+        return ci.getValueAt(0, 'Status')
 
 
 def check(stored_procedure, database='', params=None):
