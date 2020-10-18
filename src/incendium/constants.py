@@ -13,9 +13,9 @@ ERROR_REPORT = """<html>
         <font face='verdana'>
             <b>Error Report.</b><br /><br />
             <b>Error Message</b><br />
-            <p>%s</p><br /><br />
+            <p>{}</p><br /><br />
             <b>Error Details</b>
-            <p>%s</p><br /><br />
+            <p>{}</p><br /><br />
             <b>System Details</b><br /><br />
             *** Please do not reply to this email address.
         </font>
@@ -52,7 +52,7 @@ PROCEED_WITHOUT_SAVING_CHANGES = ('Would you like to proceed without saving '
                                   'your changes?')
 SUCCESS_WINDOW_TITLE = 'Success'
 TABBED_LINE = '    - '
-UNEXPECTED_ERROR = 'An unexpected error occurred in %s. \n%s'
-UNEXPECTED_ERROR_CAUSED_BY = ('An unexpected error occurred in %s. '
-                              '\n%s\nCaused by: %s')
+UNEXPECTED_ERROR = 'An unexpected error occurred in {}. \n{}'
+UNEXPECTED_ERROR_CAUSED_BY = ('An unexpected error occurred in {}. '
+                              '\n{}\nCaused by: {}')
 WARNING_WINDOW_TITLE = 'Warning'

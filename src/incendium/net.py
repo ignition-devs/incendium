@@ -66,7 +66,7 @@ def report_error(subject, message, details, to):
         details (str): The error details.
         to (list[str]): A list of emails addresses to send to.
     """
-    body = constants.ERROR_REPORT % (message, _html_escape(details))
+    body = constants.ERROR_REPORT.format(message, _html_escape(details))
     send_high_priority_email(subject, body, to)
 
 

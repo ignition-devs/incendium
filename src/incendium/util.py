@@ -42,7 +42,7 @@ def get_timer(date):
         m, s = divmod(seconds, 60)
         h, m = divmod(m, 60)
     finally:
-        return '%02d:%02d:%02d' % (h, m, s)
+        return '{:02d}:{:02d}:{:02d}'.format(h, m, s)
 
 
 def set_locale(user):
