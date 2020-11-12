@@ -1,6 +1,6 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
-# Contact: thecesrom@gmail.com
+# Contact: cesar@thecesrom.dev
 """User module."""
 
 __all__ = [
@@ -75,12 +75,12 @@ def get_emails(user_source='', filter_role=''):
             if ci.contactType == 'email'
         ]
         for email in _emails:
-            if filter_role:
-                if filter_role in user.getRoles():
-                    emails.add(email)
-            else:
+            if (
+                filter_role
+                and filter_role in user.getRoles()
+                or not filter_role
+            ):
                 emails.add(email)
-
     return sorted(list(emails))
 
 

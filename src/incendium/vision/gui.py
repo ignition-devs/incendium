@@ -1,6 +1,6 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
-# Contact: thecesrom@gmail.com
+# Contact: cesar@thecesrom.dev
 """GUI module."""
 
 __all__ = ['confirm', 'error', 'info', 'input', 'warning']
@@ -136,7 +136,7 @@ def input(message, title='Input'):
                                           JOptionPane.PLAIN_MESSAGE, None,
                                           options, options[0])
 
-    return (text_field.getText() if choice == JOptionPane.OK_OPTION else None)
+    return text_field.getText() if choice == JOptionPane.OK_OPTION else None
 
 
 def warning(message, title='Warning', detail=None):

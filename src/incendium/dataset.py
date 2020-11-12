@@ -1,6 +1,6 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
-# Contact: thecesrom@gmail.com
+# Contact: cesar@thecesrom.dev
 """Dataset module."""
 
 __all__ = ['to_xml']
