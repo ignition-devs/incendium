@@ -16,11 +16,25 @@ _noun_
 
 ## Description
 
-This is a package that extends and wraps some functions from Ignition's Scripting API.
+:package: Package that extends and wraps some functions from Ignition's Scripting API.
 
 For more information, please refer to the [Wiki](https://github.com/thecesrom/incendium/wiki).
 
-## Prerequisites
+## Installing incendium as a Project on your Gateway
+
+To install incendium on your Gateway follow these steps:
+
+1. Download the latest release (incendium.X.X.X.zip)
+1. Browse to your Ignition Gateway
+1. Go to **Config > Projects** and click on **Import project...**
+1. Click on **Choose File** and select the downloaded ZIP file
+1. Enter **incendium** as the **Project Name**
+    * If you're replacing a previous version, make sure to check Allow Overwrite
+1. Click on **Import**
+
+## Using incendium within your scripting projects
+
+### Prerequisites
 
 Before you begin, ensure you have met the following requirements:
 * Java 11
@@ -28,16 +42,14 @@ Before you begin, ensure you have met the following requirements:
 * You are familiar with [Ignition 8 Scripting Functions](https://docs.inductiveautomation.com/display/DOC80/Scripting+Functions)
 * You have installed Ignition by Inductive Automation (optional)
 
-## Using incendium
+### Including incendium as a dependency
 
-To use incendium, do the following:
+To use incendium as a dependency for your scripting projects, do the following:
 
-1. Download the latest release
-1. Add it as a package under Scripting > Project Library
+1. Download **Source code (zip)** from the latest release
+1. Add it as a dependency on your scripting project
 
-## Dependencies
-
-If you would like to include incendium in your scripting project or extend it, please note that this project depends on Ignition's `jython` branch found [here](https://github.com/thecesrom/Ignition/tree/jython).
+NOTE: This project depends on Ignition's `jython` branch found [here](https://github.com/thecesrom/Ignition/tree/jython).
 
 ## Contributing to incendium
 
