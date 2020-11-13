@@ -24,8 +24,8 @@ For more information, please refer to the [Wiki](https://github.com/thecesrom/in
 
 To install incendium on your Gateway follow these steps:
 
-1. Download the latest release (incendium.X.X.X.zip)
-1. Browse to your Ignition Gateway
+1. Download the latest release from [here](https://github.com/thecesrom/incendium/releases/latest)
+1. Browse to your Ignition Gateway (version 8.0+)
 1. Go to **Config > Projects** and click on **Import project...**
 1. Click on **Choose File** and select the downloaded ZIP file
 1. Enter **incendium** as the **Project Name**
@@ -37,7 +37,7 @@ To install incendium on your Gateway follow these steps:
 ### Prerequisites
 
 Before you begin, ensure you have met the following requirements:
-* Java 11
+* Java 11.0.7 ([here](https://www.azul.com/downloads/zulu-community/?version=java-11-lts&architecture=x86-64-bit&package=jdk&show-old-builds=true)) 
 * Jython 2.7.1 ([download here](https://search.maven.org/artifact/org.python/jython-installer/2.7.1/jar))
 * You are familiar with [Ignition 8 Scripting Functions](https://docs.inductiveautomation.com/display/DOC80/Scripting+Functions)
 * You have installed Ignition by Inductive Automation (optional)
@@ -46,7 +46,7 @@ Before you begin, ensure you have met the following requirements:
 
 To use incendium as a dependency for your scripting projects, do the following:
 
-1. Download **Source code (zip)** from the latest release
+1. Download **Source code (zip)** from the [latest release](https://github.com/thecesrom/incendium/releases/latest)
 1. Add it as a dependency on your scripting project
 
 NOTE: This project depends on Ignition's `jython` branch found [here](https://github.com/thecesrom/Ignition/tree/jython).
