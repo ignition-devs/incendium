@@ -24,7 +24,7 @@ For more information, please refer to the [Wiki](https://github.com/thecesrom/in
 
 To install incendium on your Gateway follow these steps:
 
-1. Download the latest release from [here](https://github.com/thecesrom/incendium/releases/latest)
+1. Download **incendium.x.x.x.zip** from the [latest release](https://github.com/thecesrom/incendium/releases/latest)
 1. Browse to your Ignition Gateway (version 8.0+)
 1. Go to **Config > Projects** and click on **Import project...**
 1. Click on **Choose File** and select the downloaded ZIP file
