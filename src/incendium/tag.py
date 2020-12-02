@@ -3,7 +3,7 @@
 # Contact: cesar@thecesrom.dev
 """Tag module."""
 
-__all__ = ['read', 'write']
+__all__ = ["read", "write"]
 
 import system.tag
 

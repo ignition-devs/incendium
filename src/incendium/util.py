@@ -3,7 +3,7 @@
 # Contact: cesar@thecesrom.dev
 """Utility module."""
 
-__all__ = ['get_function_name', 'get_timer', 'set_locale', 'validate_form']
+__all__ = ["get_function_name", "get_timer", "set_locale", "validate_form"]
 
 import traceback
 
@@ -33,6 +33,7 @@ def get_timer(date):
     """
     # Initialize Variables
     from java.util import Date
+
     h = m = s = 0
 
     try:
@@ -42,7 +43,7 @@ def get_timer(date):
         m, s = divmod(seconds, 60)
         h, m = divmod(m, 60)
     finally:
-        return '{:02d}:{:02d}:{:02d}'.format(h, m, s)
+        return "{:02d}:{:02d}:{:02d}".format(h, m, s)
 
 
 def set_locale(user):
@@ -87,22 +88,31 @@ def validate_form(strings=None, numbers=None, collections=None):
         for key, value in strings.iteritems():
             if not value:
                 counter += 1
-                error_message += (constants.TABBED_LINE + key if counter == 1
-                                  else constants.NEW_TABBED_LINE + key)
+                error_message += (
+                    constants.TABBED_LINE + key
+                    if counter == 1
+                    else constants.NEW_TABBED_LINE + key
+                )
                 is_valid = False
     if numbers:
         for key, value in numbers.iteritems():
             if value is None or value <= 0:
                 counter += 1
-                error_message += (constants.TABBED_LINE + key if counter == 1
-                                  else constants.NEW_TABBED_LINE + key)
+                error_message += (
+                    constants.TABBED_LINE + key
+                    if counter == 1
+                    else constants.NEW_TABBED_LINE + key
+                )
                 is_valid = False
     if collections:
         for key, value in collections.iteritems():
             if value is None or value <= 0:
                 counter += 1
-                error_message += (constants.TABBED_LINE + key if counter == 1
-                                  else constants.NEW_TABBED_LINE + key)
+                error_message += (
+                    constants.TABBED_LINE + key
+                    if counter == 1
+                    else constants.NEW_TABBED_LINE + key
+                )
                 is_valid = False
 
     return is_valid, error_message

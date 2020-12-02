@@ -3,14 +3,14 @@
 # Contact: cesar@thecesrom.dev
 """Navigation module."""
 
-__all__ = ['swap_to', 'swap_windows']
+__all__ = ["swap_to", "swap_windows"]
 
 import system.nav
 
 # Constants.
-CURRENT_DIRECTORY = '.'
-PARENT_DIRECTORY = '..'
-PATH_SEPARATOR = '/'
+CURRENT_DIRECTORY = "."
+PARENT_DIRECTORY = ".."
+PATH_SEPARATOR = "/"
 
 
 def _get_full_path(from_path, to_path):

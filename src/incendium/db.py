@@ -4,8 +4,12 @@
 """Database module."""
 
 __all__ = [
-    'DisposableConnection', 'check', 'execute_non_query', 'get_data',
-    'get_output_params', 'get_return_value'
+    "DisposableConnection",
+    "check",
+    "execute_non_query",
+    "get_data",
+    "get_output_params",
+    "get_return_value",
 ]
 
 import system.db
@@ -13,11 +17,14 @@ import system.db
 
 class _Result(object):
     """Result class."""
-    def __init__(self,
-                 output_params=None,
-                 result_set=None,
-                 return_value=None,
-                 update_count=None):
+
+    def __init__(
+        self,
+        output_params=None,
+        result_set=None,
+        return_value=None,
+        update_count=None,
+    ):
         """Result object initializer.
 
         Args:
@@ -35,17 +42,19 @@ class _Result(object):
         self.update_count = update_count
 
 
-def _execute_sp(stored_procedure,
-                database='',
-                transaction=None,
-                skip_audit=False,
-                in_params=None,
-                out_params=None,
-                get_out_params=False,
-                get_result_set=False,
-                get_ret_val=False,
-                return_type_code=None,
-                get_update_count=False):
+def _execute_sp(
+    stored_procedure,
+    database="",
+    transaction=None,
+    skip_audit=False,
+    in_params=None,
+    out_params=None,
+    get_out_params=False,
+    get_result_set=False,
+    get_ret_val=False,
+    return_type_code=None,
+    get_update_count=False,
+):
     """Executes a database stored procedure.
 
     Args:
@@ -83,10 +92,12 @@ def _execute_sp(stored_procedure,
     _out_params = {}
     _result = _Result()
 
-    call = system.db.createSProcCall(procedureName=stored_procedure,
-                                     database=database,
-                                     tx=transaction,
-                                     skipAudit=skip_audit)
+    call = system.db.createSProcCall(
+        procedureName=stored_procedure,
+        database=database,
+        tx=transaction,
+        skipAudit=skip_audit,
+    )
 
     # Register INPUT Parameters.
     if in_params is not None:
@@ -129,6 +140,7 @@ class DisposableConnection(object):
     and disables it once the operation is completed to release
     resources.
     """
+
     def __init__(self, db, retries=3):
         """Disposable Connection initializer.
 
@@ -147,10 +159,13 @@ class DisposableConnection(object):
 
         for _ in range(self.retries):
             Thread.sleep(1000)
-            if self.status == 'Faulted':
-                raise IOError('The database connection {!r} is {}.'.format(
-                    self.db, self.status))
-            elif self.status == 'Valid':
+            if self.status == "Faulted":
+                raise IOError(
+                    "The database connection {!r} is {}.".format(
+                        self.db, self.status
+                    )
+                )
+            elif self.status == "Valid":
                 break
         return self
 
@@ -160,10 +175,10 @@ class DisposableConnection(object):
     @property
     def status(self):
         ci = system.db.getConnectionInfo(self.db)
-        return ci.getValueAt(0, 'Status')
+        return ci.getValueAt(0, "Status")
 
 
-def check(stored_procedure, database='', params=None):
+def check(stored_procedure, database="", params=None):
     """Executes a stored procedure that returns a flag set to TRUE or
     FALSE.
 
@@ -178,19 +193,17 @@ def check(stored_procedure, database='', params=None):
     Returns:
         bool: The flag.
     """
-    output = {'flag': system.db.BIT}
-    output_params = get_output_params(stored_procedure,
-                                      output=output,
-                                      database=database,
-                                      params=params)
+    output = {"flag": system.db.BIT}
+    output_params = get_output_params(
+        stored_procedure, output=output, database=database, params=params
+    )
 
-    return output_params['flag']
+    return output_params["flag"]
 
 
-def execute_non_query(stored_procedure,
-                      database='',
-                      transaction=None,
-                      params=None):
+def execute_non_query(
+    stored_procedure, database="", transaction=None, params=None
+):
     """Executes a stored procedure against the connection and returns
     the number of rows affected.
 
@@ -210,16 +223,18 @@ def execute_non_query(stored_procedure,
         int: The number of rows modified by the stored procedure, or
             -1 if not applicable.
     """
-    result = _execute_sp(stored_procedure,
-                         database=database,
-                         transaction=transaction,
-                         in_params=params,
-                         get_update_count=True)
+    result = _execute_sp(
+        stored_procedure,
+        database=database,
+        transaction=transaction,
+        in_params=params,
+        get_update_count=True,
+    )
 
     return result.update_count
 
 
-def get_data(stored_procedure, database='', params=None):
+def get_data(stored_procedure, database="", params=None):
     """Returns data by executing a stored procedure.
 
     Args:
@@ -234,19 +249,19 @@ def get_data(stored_procedure, database='', params=None):
         Dataset: A Dataset that is the resulting data of the stored
             procedure call, if any.
     """
-    result = _execute_sp(stored_procedure,
-                         database=database,
-                         in_params=params,
-                         get_result_set=True)
+    result = _execute_sp(
+        stored_procedure,
+        database=database,
+        in_params=params,
+        get_result_set=True,
+    )
 
     return result.result_set
 
 
-def get_output_params(stored_procedure,
-                      output,
-                      database='',
-                      transaction=None,
-                      params=None):
+def get_output_params(
+    stored_procedure, output, database="", transaction=None, params=None
+):
     """Gets the Output parameters from the Stored Procedure.
 
     Args:
@@ -263,21 +278,25 @@ def get_output_params(stored_procedure,
     Returns:
         dict: Result's output_params.
     """
-    result = _execute_sp(stored_procedure,
-                         database=database,
-                         transaction=transaction,
-                         in_params=params,
-                         out_params=output,
-                         get_out_params=True)
+    result = _execute_sp(
+        stored_procedure,
+        database=database,
+        transaction=transaction,
+        in_params=params,
+        out_params=output,
+        get_out_params=True,
+    )
 
     return result.output_params
 
 
-def get_return_value(stored_procedure,
-                     return_type_code,
-                     database='',
-                     transaction=None,
-                     params=None):
+def get_return_value(
+    stored_procedure,
+    return_type_code,
+    database="",
+    transaction=None,
+    params=None,
+):
     """Gets the Return Value from the Stored Procedure.
 
     Args:
@@ -294,11 +313,13 @@ def get_return_value(stored_procedure,
     Returns:
         int: The return value.
     """
-    result = _execute_sp(stored_procedure,
-                         database=database,
-                         transaction=transaction,
-                         in_params=params,
-                         return_type_code=return_type_code,
-                         get_ret_val=True)
+    result = _execute_sp(
+        stored_procedure,
+        database=database,
+        transaction=transaction,
+        in_params=params,
+        return_type_code=return_type_code,
+        get_ret_val=True,
+    )
 
     return result.return_value

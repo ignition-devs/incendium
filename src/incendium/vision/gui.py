@@ -3,7 +3,7 @@
 # Contact: cesar@thecesrom.dev
 """GUI module."""
 
-__all__ = ['confirm', 'error', 'info', 'input', 'warning']
+__all__ = ["confirm", "error", "info", "input", "warning"]
 
 import system.util
 from incendium import constants
@@ -26,7 +26,7 @@ CURSOR_W_RESIZE = 12
 CURSOR_E_RESIZE = 13
 
 
-def confirm(message, title='Confirm', show_cancel=False):
+def confirm(message, title="Confirm", show_cancel=False):
     """Displays a confirmation dialog box to the user with "Yes", "No"
     and "Cancel" options, and a custom message.
 
@@ -45,23 +45,31 @@ def confirm(message, title='Confirm', show_cancel=False):
     """
     options = [
         system.util.translate(constants.YES_TEXT),
-        system.util.translate(constants.NO_TEXT)
+        system.util.translate(constants.NO_TEXT),
     ]
 
     if show_cancel:
         options.append(system.util.translate(constants.CANCEL_TEXT))
 
-    choice = JOptionPane.showOptionDialog(None, system.util.translate(message),
-                                          system.util.translate(title),
-                                          JOptionPane.YES_NO_CANCEL_OPTION,
-                                          JOptionPane.QUESTION_MESSAGE, None,
-                                          options, options[0])
+    choice = JOptionPane.showOptionDialog(
+        None,
+        system.util.translate(message),
+        system.util.translate(title),
+        JOptionPane.YES_NO_CANCEL_OPTION,
+        JOptionPane.QUESTION_MESSAGE,
+        None,
+        options,
+        options[0],
+    )
 
-    return (not bool(choice) if choice
-            in [JOptionPane.YES_OPTION, JOptionPane.NO_OPTION] else None)
+    return (
+        not bool(choice)
+        if choice in [JOptionPane.YES_OPTION, JOptionPane.NO_OPTION]
+        else None
+    )
 
 
-def error(message, title='Error', detail=None):
+def error(message, title="Error", detail=None):
     """Displays an error-style message box to the user.
 
     Args:
@@ -75,14 +83,15 @@ def error(message, title='Error', detail=None):
     if detail is None:
         msg = system.util.translate(message)
     else:
-        msg = '\n'.join(
-            [system.util.translate(message),
-             system.util.translate(detail)])
-    JOptionPane.showMessageDialog(None, msg, system.util.translate(title),
-                                  JOptionPane.ERROR_MESSAGE)
+        msg = "\n".join(
+            [system.util.translate(message), system.util.translate(detail)]
+        )
+    JOptionPane.showMessageDialog(
+        None, msg, system.util.translate(title), JOptionPane.ERROR_MESSAGE
+    )
 
 
-def info(message, title='Information', detail=None):
+def info(message, title="Information", detail=None):
     """Displays an informational-style message popup box to the user.
 
     Args:
@@ -96,14 +105,18 @@ def info(message, title='Information', detail=None):
     if detail is None:
         msg = system.util.translate(message)
     else:
-        msg = '\n'.join(
-            [system.util.translate(message),
-             system.util.translate(detail)])
-    JOptionPane.showMessageDialog(None, msg, system.util.translate(title),
-                                  JOptionPane.INFORMATION_MESSAGE)
+        msg = "\n".join(
+            [system.util.translate(message), system.util.translate(detail)]
+        )
+    JOptionPane.showMessageDialog(
+        None,
+        msg,
+        system.util.translate(title),
+        JOptionPane.INFORMATION_MESSAGE,
+    )
 
 
-def input(message, title='Input'):
+def input(message, title="Input"):
     """Opens up a popup input dialog box. This dialog box will show a
     prompt message, and allow the user to type in a string. When the
     user is done, they can press "OK" or "Cancel". If OK is pressed,
@@ -121,25 +134,30 @@ def input(message, title='Input'):
     """
     options = [
         system.util.translate(constants.OK_TEXT),
-        system.util.translate(constants.CANCEL_TEXT)
+        system.util.translate(constants.CANCEL_TEXT),
     ]
 
     panel = JPanel()
-    label = JLabel('{}: '.format(system.util.translate(message)))
+    label = JLabel("{}: ".format(system.util.translate(message)))
     panel.add(label)
     text_field = JTextField(25)
     panel.add(text_field)
 
-    choice = JOptionPane.showOptionDialog(None, panel,
-                                          system.util.translate(title),
-                                          JOptionPane.OK_CANCEL_OPTION,
-                                          JOptionPane.PLAIN_MESSAGE, None,
-                                          options, options[0])
+    choice = JOptionPane.showOptionDialog(
+        None,
+        panel,
+        system.util.translate(title),
+        JOptionPane.OK_CANCEL_OPTION,
+        JOptionPane.PLAIN_MESSAGE,
+        None,
+        options,
+        options[0],
+    )
 
     return text_field.getText() if choice == JOptionPane.OK_OPTION else None
 
 
-def warning(message, title='Warning', detail=None):
+def warning(message, title="Warning", detail=None):
     """Displays a message to the user in a warning style popup dialog.
 
     Args:
@@ -153,8 +171,9 @@ def warning(message, title='Warning', detail=None):
     if detail is None:
         msg = system.util.translate(message)
     else:
-        msg = '\n'.join(
-            [system.util.translate(message),
-             system.util.translate(detail)])
-    JOptionPane.showMessageDialog(None, msg, system.util.translate(title),
-                                  JOptionPane.WARNING_MESSAGE)
+        msg = "\n".join(
+            [system.util.translate(message), system.util.translate(detail)]
+        )
+    JOptionPane.showMessageDialog(
+        None, msg, system.util.translate(title), JOptionPane.WARNING_MESSAGE
+    )
