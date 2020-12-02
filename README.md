@@ -1,7 +1,7 @@
 <!--- Badges --->
 ![GitHub license](https://img.shields.io/github/license/thecesrom/incendium)
 ![GitHub contributors](https://img.shields.io/github/contributors/thecesrom/incendium)
-![GitHub last commit (master)](https://img.shields.io/github/last-commit/thecesrom/incendium)
+![GitHub last commit (main)](https://img.shields.io/github/last-commit/thecesrom/incendium)
 ![GitHub release (latest)](https://img.shields.io/github/v/release/thecesrom/incendium)
 ![GitHub total downloads](https://img.shields.io/github/downloads/thecesrom/incendium/total)
 [![time tracker](https://wakatime.com/badge/github/thecesrom/incendium.svg)](https://wakatime.com/badge/github/thecesrom/incendium)
