@@ -41,8 +41,10 @@ To install incendium on your Gateway follow these steps:
 
 Before you begin, ensure you have met the following requirements:
 * Java 11.0.7 ([here](https://www.azul.com/downloads/zulu-community/?version=java-11-lts&architecture=x86-64-bit&package=jdk&show-old-builds=true)) 
-* Jython 2.7.1 ([download here](https://search.maven.org/artifact/org.python/jython-installer/2.7.1/jar))
-* You are familiar with [Ignition 8 Scripting Functions](https://docs.inductiveautomation.com/display/DOC80/Scripting+Functions)
+* Jython 2.7.1
+    * Download [here](https://search.maven.org/remotecontent?filepath=org/python/jython-installer/2.7.1/jython-installer-2.7.1.jar)
+    * Or via Homebrew `brew install coatl-dev/coatl-dev/jython@2.7.1`
+* You are familiar with [Ignition Scripting Functions](https://docs.inductiveautomation.com/display/DOC81/Scripting+Functions)
 * You have installed Ignition by Inductive Automation (optional)
 
 ### Including incendium as a dependency
