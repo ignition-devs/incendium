@@ -1,3 +1,4 @@
+# incendium
 <!--- Badges --->
 ![GitHub contributors](https://img.shields.io/github/contributors/thecesrom/incendium)
 ![GitHub total downloads](https://img.shields.io/github/downloads/thecesrom/incendium/total)
@@ -7,8 +8,7 @@
 [![time tracker](https://wakatime.com/badge/github/thecesrom/incendium.svg)](https://wakatime.com/badge/github/thecesrom/incendium)
 [![Sourcery](https://img.shields.io/badge/Sourcery-enabled-brightgreen)](https://sourcery.ai)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-
-# incendium
+[![Join us on GitHub discussions](https://img.shields.io/badge/github-discussions-informational)](https://github.com/thecesrom/incendium/discussions)
 
 (/inˈken.di.um/)
 
