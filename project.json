@@ -1,0 +1,7 @@
+{
+  "title": "incendium",
+  "description": "📦 Package that extends and wraps Ignition scripting API",
+  "parent": "",
+  "enabled": true,
+  "inheritable": true
+}
