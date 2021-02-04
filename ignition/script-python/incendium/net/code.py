@@ -4,20 +4,22 @@
 """Net module."""
 
 __all__ = [
-    'send_high_priority_email', 'send_html_email', 'send_plain_text_email'
+    "send_high_priority_email",
+    "send_html_email",
+    "send_plain_text_email",
 ]
 
 import system.net
 from incendium import constants
 
 HTML_ESCAPE_TABLE = {
-    '&': '&amp;',
-    '"': '&quot;',
-    "'": '&apos;',
-    '>': '&gt;',
-    '<': '&lt;',
-    '\n': '<br />',
-    '\t': '&nbsp;' * 4
+    "&": "&amp;",
+    '"': "&quot;",
+    "'": "&apos;",
+    ">": "&gt;",
+    "<": "&lt;",
+    "\n": "<br />",
+    "\t": "&nbsp;" * 4,
 }
 
 
@@ -46,13 +48,15 @@ def _send_email(subject, body, html, to, priority):
         priority (str): Priority for the message.
     """
     try:
-        system.net.sendEmail(smtp=constants.SMTP,
-                             fromAddr=constants.SENDER,
-                             subject=subject,
-                             body=body,
-                             html=html,
-                             to=to,
-                             priority=priority)
+        system.net.sendEmail(
+            smtp=constants.SMTP,
+            fromAddr=constants.SENDER,
+            subject=subject,
+            body=body,
+            html=html,
+            to=to,
+            priority=priority,
+        )
     finally:
         pass
 
@@ -78,10 +82,10 @@ def send_high_priority_email(subject, body, to):
         body (str): The body text of the email.
         to (list[str]): A list of email addresses to send to.
     """
-    send_html_email(subject, body, to, '1')
+    send_html_email(subject, body, to, "1")
 
 
-def send_html_email(subject, body, to, priority='3'):
+def send_html_email(subject, body, to, priority="3"):
     """Sends an email in HTML format.
 
     Args:
@@ -95,7 +99,7 @@ def send_html_email(subject, body, to, priority='3'):
     _send_email(subject, body, True, to, priority)
 
 
-def send_plain_text_email(subject, body, to, priority='3'):
+def send_plain_text_email(subject, body, to, priority="3"):
     """Sends an email in plain text format.
 
     Args:

@@ -15,4 +15,4 @@ For more information, please refer to the Wiki.
 https://github.com/thecesrom/incendium/wiki
 """
 
-__version__ = '1.0.3'
+__version__ = "1.0.3"

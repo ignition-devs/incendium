@@ -4,7 +4,10 @@
 """User module."""
 
 __all__ = [
-    'get_emails', 'get_user', 'get_user_first_name', 'get_user_full_name'
+    "get_emails",
+    "get_user",
+    "get_user_first_name",
+    "get_user_full_name",
 ]
 
 import system.security
@@ -13,6 +16,7 @@ import system.user
 
 class _User(object):
     """Wrapper class for Ignition's User object."""
+
     def __init__(self, user):
         """User initializer.
 
@@ -38,7 +42,7 @@ class _User(object):
         Returns:
             str: User's full name.
         """
-        return ' '.join([self._first_name, self._last_name])
+        return " ".join([self._first_name, self._last_name])
 
     def get_locale(self):
         """Returns User's preferred language.
@@ -49,7 +53,7 @@ class _User(object):
         return self._locale
 
 
-def get_emails(user_source='', filter_role=''):
+def get_emails(user_source="", filter_role=""):
     """Gets a list of email addresses.
 
     Args:
@@ -71,8 +75,9 @@ def get_emails(user_source='', filter_role=''):
 
     for user in users:
         _emails = [
-            ci.value for ci in user.getContactInfo()
-            if ci.contactType == 'email'
+            ci.value
+            for ci in user.getContactInfo()
+            if ci.contactType == "email"
         ]
         for email in _emails:
             if (

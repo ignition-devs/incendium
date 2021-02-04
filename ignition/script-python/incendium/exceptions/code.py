@@ -3,11 +3,12 @@
 # Contact: cesar@thecesrom.dev
 """Exceptions module."""
 
-__all__ = ['ApplicationError', 'TagError']
+__all__ = ["ApplicationError", "TagError"]
 
 
 class ApplicationError(Exception):
     """Application Error class."""
+
     def __init__(self, message, inner_exception=None, cause=None):
         """Application Error initializer.
 
@@ -21,10 +22,12 @@ class ApplicationError(Exception):
         self.cause = cause
 
     def __repr__(self):
-        return "{}({!r}, {!r}, {!r})".format(self.__class__.__name__,
-                                             repr(self.message),
-                                             self.inner_exception.__repr__(),
-                                             repr(self.cause))
+        return "{}({!r}, {!r}, {!r})".format(
+            self.__class__.__name__,
+            repr(self.message),
+            self.inner_exception.__repr__(),
+            repr(self.cause),
+        )
 
     def __str__(self):
         return repr(self.message)
@@ -32,6 +35,7 @@ class ApplicationError(Exception):
 
 class TagError(Exception):
     """Tag Error class."""
+
     def __init__(self, message):
         """Tag Error initializer.
 

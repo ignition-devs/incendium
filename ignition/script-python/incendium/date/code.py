@@ -3,7 +3,7 @@
 # Contact: cesar@thecesrom.dev
 """Date module."""
 
-__all__ = ['compare']
+__all__ = ["compare"]
 
 
 def compare(date_1, date_2):
