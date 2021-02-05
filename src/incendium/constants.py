@@ -8,7 +8,7 @@ SMTP = "mail.mycompany.com:25"
 SENDER = "no-reply@mycompany.com"
 
 # Email templates.
-ERROR_REPORT = """<html>
+ERROR_REPORT = u"""<html>
     <body>
         <font face='verdana'>
             <b>Error Report.</b><br /><br />
@@ -54,8 +54,8 @@ PROCEED_WITHOUT_SAVING_CHANGES = (
 )
 SUCCESS_WINDOW_TITLE = "Success"
 TABBED_LINE = "    - "
-UNEXPECTED_ERROR = "An unexpected error occurred in {}. \n{}"
+UNEXPECTED_ERROR = u"An unexpected error occurred in {}.\n{}"
 UNEXPECTED_ERROR_CAUSED_BY = (
-    "An unexpected error occurred in {}. \n{}\nCaused by: {}"
+    u"An unexpected error occurred in {}.\n{}\nCaused by: {}"
 )
 WARNING_WINDOW_TITLE = "Warning"

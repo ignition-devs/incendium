@@ -4,7 +4,7 @@
 #
 # Licensed under the MIT License.
 #
-# https://github.com/thecesrom/incendium/blob/main/LICENSE
+# https://github.com/thecesrom/incendium/blob/HEAD/LICENSE
 #
 """incendium.
 
