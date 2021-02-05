@@ -6,8 +6,9 @@
 __all__ = ["confirm", "error", "info", "input", "warning"]
 
 import system.util
-from incendium import constants
 from javax.swing import JLabel, JOptionPane, JPanel, JTextField
+
+from incendium import constants
 
 # Cursor codes.
 CURSOR_DEFAULT = 0
