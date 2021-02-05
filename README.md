@@ -2,12 +2,13 @@
 <!--- Badges --->
 ![GitHub contributors](https://img.shields.io/github/contributors/thecesrom/incendium)
 ![GitHub total downloads](https://img.shields.io/github/downloads/thecesrom/incendium/total)
-![GitHub last commit (main)](https://img.shields.io/github/last-commit/thecesrom/incendium)
+![GitHub last commit (code)](https://img.shields.io/github/last-commit/thecesrom/incendium)
 [![GitHub license](https://img.shields.io/github/license/thecesrom/incendium)](https://github.com/thecesrom/incendium/blob/main/LICENSE)
 [![GitHub release (latest)](https://img.shields.io/github/v/release/thecesrom/incendium)](https://github.com/thecesrom/incendium/releases/latest)
 [![time tracker](https://wakatime.com/badge/github/thecesrom/incendium.svg)](https://wakatime.com/badge/github/thecesrom/incendium)
 [![Sourcery](https://img.shields.io/badge/Sourcery-enabled-brightgreen)](https://sourcery.ai)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
 [![Join us on GitHub discussions](https://img.shields.io/badge/github-discussions-informational)](https://github.com/thecesrom/incendium/discussions)
 
 (/inˈken.di.um/)
