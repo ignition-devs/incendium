@@ -1,4 +1,4 @@
-# Copyright (C) 2020
+# Copyright (C) 2020-2021
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
 """Constants module."""
@@ -8,7 +8,7 @@ SMTP = "mail.mycompany.com:25"
 SENDER = "no-reply@mycompany.com"
 
 # Email templates.
-ERROR_REPORT = """<html>
+ERROR_REPORT = u"""<html>
     <body>
         <font face='verdana'>
             <b>Error Report.</b><br /><br />
@@ -45,17 +45,17 @@ INFO_WINDOW_TITLE = "Information"
 NEW_LINE = "\n"
 NEW_TABBED_LINE = "\n    - "
 PROCEED_WITH_ROW_DELETION = (
-    "Are you sure you would like to delete the " "selected row?"
+    "Are you sure you would like to delete the selected row?"
 )
 PROCEED_WITH_ROWS_DELETION = "Are you sure you would like to delete all rows?"
 PROCEED_WITH_SAVING_CHANGES = "Are you sure you would like to proceed?"
 PROCEED_WITHOUT_SAVING_CHANGES = (
-    "Would you like to proceed without saving " "your changes?"
+    "Would you like to proceed without saving your changes?"
 )
 SUCCESS_WINDOW_TITLE = "Success"
 TABBED_LINE = "    - "
-UNEXPECTED_ERROR = "An unexpected error occurred in {}. \n{}"
+UNEXPECTED_ERROR = u"An unexpected error occurred in {}.\n{}"
 UNEXPECTED_ERROR_CAUSED_BY = (
-    "An unexpected error occurred in {}. " "\n{}\nCaused by: {}"
+    u"An unexpected error occurred in {}.\n{}\nCaused by: {}"
 )
 WARNING_WINDOW_TITLE = "Warning"

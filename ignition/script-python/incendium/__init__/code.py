@@ -1,10 +1,10 @@
-# Copyright (C) 2020
+# Copyright (C) 2020-2021
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
 #
 # Licensed under the MIT License.
 #
-# https://github.com/thecesrom/incendium/blob/main/LICENSE
+# https://github.com/thecesrom/incendium/blob/HEAD/LICENSE
 #
 """incendium.
 
