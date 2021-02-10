@@ -1,6 +1,6 @@
 # incendium
 <!--- Badges --->
-![GitHub contributors](https://img.shields.io/github/contributors/thecesrom/incendium)
+[![GitHub contributors](https://img.shields.io/github/contributors/thecesrom/incendium)](https://github.com/thecesrom/incendium/graphs/contributors)
 ![GitHub total downloads](https://img.shields.io/github/downloads/thecesrom/incendium/total)
 ![GitHub last commit (code)](https://img.shields.io/github/last-commit/thecesrom/incendium)
 [![GitHub license](https://img.shields.io/github/license/thecesrom/incendium)](https://github.com/thecesrom/incendium/blob/main/LICENSE)
@@ -29,7 +29,7 @@ For more information, please refer to the [Wiki](https://github.com/thecesrom/in
 
 To install incendium on your Gateway follow these steps:
 
-1. Download **incendium.x.x.x.zip** from the [latest release](https://github.com/thecesrom/incendium/releases/latest)
+1. Download **incendium.x.x.x.zip** from the [latest release](https://github.com/thecesrom/incendium/releases/latest) or from [Ignition Exchange](https://inductiveautomation.com/exchange/2104)
 1. Browse to your Ignition Gateway (version 8.0+)
 1. Go to **Config > Projects** and click on **Import project...**
 1. Click on **Choose File** and select the downloaded ZIP file
