@@ -1,5 +1,5 @@
 # Copyright (C) 2020-2021
-# Authors: Cesar Roman, Kyle Chase.
+# Authors: César Román, Kyle Chase.
 # Contact: cesar@thecesrom.dev
 """Navigation module."""
 
