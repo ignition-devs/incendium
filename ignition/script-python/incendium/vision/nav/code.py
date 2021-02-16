@@ -1,5 +1,5 @@
 # Copyright (C) 2020-2021
-# Authors: César Román, Kyle Chase.
+# Authors: Cesar Roman, Kyle Chase.
 # Contact: cesar@thecesrom.dev
 """Navigation module."""
 
@@ -37,7 +37,7 @@ def _get_full_path(from_path, to_path):
 
     full_path = []
     for path_part in path_parts:
-        if path_part == PARENT_DIRECTORY and len(full_path):
+        if path_part == PARENT_DIRECTORY and full_path:
             full_path = full_path[:-1]
         elif path_part != CURRENT_DIRECTORY:
             full_path.append(path_part)

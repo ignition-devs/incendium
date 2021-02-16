@@ -1,5 +1,5 @@
 # Copyright (C) 2020-2021
-# Author: César Román
+# Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
 """Database module."""
 
@@ -13,6 +13,7 @@ __all__ = [
 ]
 
 import system.db
+from java.lang import Thread
 
 
 class _Result(object):
@@ -153,8 +154,6 @@ class DisposableConnection(object):
         self.retries = retries
 
     def __enter__(self):
-        from java.lang import Thread
-
         system.db.setDatasourceEnabled(self.db, True)
 
         for _ in range(self.retries):
