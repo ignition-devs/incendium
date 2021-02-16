@@ -1,5 +1,5 @@
 # Copyright (C) 2020-2021
-# Author: César Román
+# Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
 """The Vision Module brings robust SCADA visualization to Ignition,
 giving you access to real-time and historical data on your HMIs and

@@ -1,5 +1,5 @@
 # Copyright (C) 2020-2021
-# Author: César Román
+# Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
 """GUI module."""
 
