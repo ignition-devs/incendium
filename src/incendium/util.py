@@ -9,6 +9,7 @@ import traceback
 
 import system.date
 import system.util
+from java.util import Date
 
 from incendium import constants
 
@@ -33,18 +34,14 @@ def get_timer(date):
          str: Time elapsed.
     """
     # Initialize Variables
-    from java.util import Date
-
     h = m = s = 0
 
-    try:
-        a = date if isinstance(date, Date) else system.date.fromMillis(date)
-        b = system.date.now()
-        seconds = system.date.secondsBetween(a, b)
-        m, s = divmod(seconds, 60)
-        h, m = divmod(m, 60)
-    finally:
-        return "{:02d}:{:02d}:{:02d}".format(h, m, s)
+    a = date if isinstance(date, Date) else system.date.fromMillis(date)
+    b = system.date.now()
+    seconds = system.date.secondsBetween(a, b)
+    m, s = divmod(seconds, 60)
+    h, m = divmod(m, 60)
+    return "{:02d}:{:02d}:{:02d}".format(h, m, s)
 
 
 def set_locale(user):
