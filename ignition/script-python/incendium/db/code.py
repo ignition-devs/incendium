@@ -164,8 +164,6 @@ class DisposableConnection(object):
                         self.db, self.status
                     )
                 )
-            elif self.status == "Valid":
-                break
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
@@ -173,6 +171,7 @@ class DisposableConnection(object):
 
     @property
     def status(self):
+        """Get Status."""
         ci = system.db.getConnectionInfo(self.db)
         return ci.getValueAt(0, "Status")
 

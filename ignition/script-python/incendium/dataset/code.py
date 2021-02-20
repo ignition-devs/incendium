@@ -30,8 +30,8 @@ def to_xml(dataset, root="root", element="row"):
     for row in data:
         ret_str += "{}<{}>{}".format(tab, element, new_line)
         for header in headers:
-            ret_str += "{}<{}>{}</{}>{}".format(
-                tab * 2, header, row[header], header, new_line
+            ret_str += "{0}<{header}>{1}</{header}>{2}".format(
+                tab * 2, row[header], new_line, header=header
             )
         ret_str += "{}</{}>{}".format(tab, element, new_line)
     ret_str += "</{}>".format(root)
