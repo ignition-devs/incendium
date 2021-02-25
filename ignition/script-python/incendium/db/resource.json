@@ -2,15 +2,15 @@
   "scope": "A",
   "version": 1,
   "restricted": false,
-  "overridable": true,
+  "overridable": false,
   "files": [
     "code.py"
   ],
   "attributes": {
     "lastModification": {
       "actor": "thecesrom",
-      "timestamp": "2021-02-20T00:44:13Z"
+      "timestamp": "2021-02-25T02:02:12Z"
     },
-    "lastModificationSignature": "18baedba10ccd5a91cbf915ce28a3001b2e7e612c75f4f9ad67335ec5660b9f7"
+    "lastModificationSignature": "5c6eb478f9f6028df5ddac547a056757a7da17f299e49a1444fc22e68bba6b48"
   }
 }

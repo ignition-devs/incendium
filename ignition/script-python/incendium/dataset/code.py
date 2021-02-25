@@ -3,9 +3,90 @@
 # Contact: cesar@thecesrom.dev
 """Dataset module."""
 
-__all__ = ["to_xml"]
+__all__ = ["to_json", "to_xml"]
 
+import java.util.Date
 import system.dataset
+import system.date
+from com.inductiveautomation.ignition.common import BasicDataset
+
+
+def _format_value(obj, header=None):
+    """Formats the value to be properly represented in JSON.
+
+    Args:
+        obj (object): The value to format.
+        header (str): Column name used for nested Datasets.
+
+    Returns:
+        str: The string representation of the value.
+    """
+    if obj is None:
+        obj = "null"
+    elif isinstance(obj, basestring):
+        obj = u'"{}"'.format(obj)
+    elif isinstance(obj, java.util.Date):
+        obj = '"{}"'.format(
+            system.date.format(obj, "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
+        )
+    elif isinstance(obj, BasicDataset):
+        obj = _to_json(obj, header, False)
+    else:
+        obj = "{!r}".format(obj)
+    return obj
+
+
+def _to_json(dataset, root, is_root=True):
+    """Returns a string JSON representation of the Dataset. Private
+    method.
+
+    Args:
+        dataset (Dataset): The input dataset.
+        root (str): The value of the header.
+        is_root (bool): True if we are at the root, False otherwise.
+            Optional.
+
+    Returns:
+        str: The string JSON representation of the dataset.
+    """
+    headers = system.dataset.getColumnHeaders(dataset)
+    columns = dataset.getColumnCount()
+    rows = dataset.getRowCount()
+    data = system.dataset.toPyDataSet(dataset)
+    ret_str = "{" if is_root else ""
+    ret_str += u'"{}":['.format(root)
+    col_count = 0
+
+    for row_count, row in enumerate(data, start=1):
+        ret_str += "{"
+        for header in headers:
+            col_count += 1
+            val = _format_value(row[header], header)
+            comma = "," if col_count < columns else ""
+            if isinstance(row[header], BasicDataset):
+                ret_str += u"{}{}".format(val, comma)
+            else:
+                ret_str += u'"{}":{}{}'.format(header, val, comma)
+        ret_str += "{}{}".format("}", "," if row_count < rows else "")
+        col_count = 0
+    ret_str += "]"
+    ret_str += "}" if is_root else ""
+
+    return ret_str
+
+
+def to_json(dataset, root="json"):
+    """Returns a string JSON representation of the Dataset.
+
+    Args:
+        dataset (Dataset): The input dataset.
+        root (str): The value of the root. If not provided, it defaults
+            to "json". Optional.
+
+    Returns:
+        str: The string JSON representation of the dataset.
+    """
+    return _to_json(dataset, root)
 
 
 def to_xml(dataset, root="root", element="row"):
