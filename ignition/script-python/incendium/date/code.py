@@ -1,13 +1,17 @@
 # Copyright (C) 2020-2021
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
-"""Date module."""
+
+"""
+Date module.
+"""
 
 __all__ = ["compare"]
 
 
 def compare(date_1, date_2):
-    """Compares two dates.
+    """
+    Compares two dates.
 
     Args:
         date_1 (Date): The first date.

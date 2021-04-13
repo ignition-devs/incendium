@@ -1,7 +1,10 @@
 # Copyright (C) 2020-2021
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
-"""Dataset module."""
+
+"""
+Dataset module.
+"""
 
 __all__ = ["to_json", "to_xml"]
 
@@ -12,7 +15,8 @@ from com.inductiveautomation.ignition.common import BasicDataset
 
 
 def _format_value(obj, header=None):
-    """Formats the value to be properly represented in JSON.
+    """
+    Formats the value to be properly represented in JSON.
 
     Args:
         obj (object): The value to format.
@@ -37,8 +41,8 @@ def _format_value(obj, header=None):
 
 
 def _to_json(dataset, root, is_root=True):
-    """Returns a string JSON representation of the Dataset. Private
-    method.
+    """
+    Returns a string JSON representation of the Dataset. Private method.
 
     Args:
         dataset (Dataset): The input dataset.
@@ -76,7 +80,8 @@ def _to_json(dataset, root, is_root=True):
 
 
 def to_json(dataset, root="json"):
-    """Returns a string JSON representation of the Dataset.
+    """
+    Returns a string JSON representation of the Dataset.
 
     Args:
         dataset (Dataset): The input dataset.
@@ -90,7 +95,8 @@ def to_json(dataset, root="json"):
 
 
 def to_xml(dataset, root="root", element="row"):
-    """Returns a string XML representation of the Dataset.
+    """
+    Returns a string XML representation of the Dataset.
 
     Args:
         dataset (Dataset): The input dataset.

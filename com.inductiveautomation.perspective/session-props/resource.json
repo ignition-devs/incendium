@@ -1,0 +1,16 @@
+{
+  "scope": "G",
+  "version": 1,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "props.json"
+  ],
+  "attributes": {
+    "lastModification": {
+      "actor": "thecesrom",
+      "timestamp": "2021-04-07T22:58:47Z"
+    },
+    "lastModificationSignature": "b7801f0b3b99941becc42e821588eb6ad6e05dec81c90f691cc95868aff5d6a0"
+  }
+}

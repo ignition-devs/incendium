@@ -1,7 +1,10 @@
 # Copyright (C) 2020-2021
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
-"""Net module."""
+
+"""
+Net module.
+"""
 
 __all__ = [
     "send_high_priority_email",
@@ -25,7 +28,8 @@ HTML_ESCAPE_TABLE = {
 
 
 def _html_escape(text):
-    """Escapes an HTML file removing traces of offending characters that
+    """
+    Escapes an HTML file removing traces of offending characters that
     could be wrongfully interpreted as markup.
 
     Args:
@@ -38,7 +42,8 @@ def _html_escape(text):
 
 
 def _send_email(subject, body, html, to, priority):
-    """Sends an email through the given SMTP server.
+    """
+    Sends an email through the given SMTP server.
 
     Args:
         subject (str): The subject line for the email.
@@ -63,7 +68,8 @@ def _send_email(subject, body, html, to, priority):
 
 
 def report_error(subject, message, details, to):
-    """Sends an Error Report email message.
+    """
+    Sends an Error Report email message.
 
     Args:
         subject (str): The subject line for the email.
@@ -76,7 +82,8 @@ def report_error(subject, message, details, to):
 
 
 def send_high_priority_email(subject, body, to):
-    """Sends a High Priority email.
+    """
+    Sends a High Priority email.
 
     Args:
         subject (str): The subject line for the email.
@@ -87,7 +94,8 @@ def send_high_priority_email(subject, body, to):
 
 
 def send_html_email(subject, body, to, priority="3"):
-    """Sends an email in HTML format.
+    """
+    Sends an email in HTML format.
 
     Args:
         subject (str): The subject line for the email.
@@ -101,7 +109,8 @@ def send_html_email(subject, body, to, priority="3"):
 
 
 def send_plain_text_email(subject, body, to, priority="3"):
-    """Sends an email in plain text format.
+    """
+    Sends an email in plain text format.
 
     Args:
         subject (str): The subject line for the email.

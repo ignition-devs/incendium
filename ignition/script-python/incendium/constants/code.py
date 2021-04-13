@@ -1,7 +1,10 @@
 # Copyright (C) 2020-2021
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
-"""Constants module."""
+
+"""
+Constants module.
+"""
 
 # Email settings.
 SMTP = "mail.mycompany.com:25"
