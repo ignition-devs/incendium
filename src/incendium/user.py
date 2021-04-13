@@ -1,7 +1,10 @@
 # Copyright (C) 2020-2021
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
-"""User module."""
+
+"""
+User module.
+"""
 
 __all__ = [
     "get_emails",
@@ -15,10 +18,13 @@ import system.user
 
 
 class _User(object):
-    """Wrapper class for Ignition's User object."""
+    """
+    Wrapper class for Ignition's User object.
+    """
 
     def __init__(self, user):
-        """User initializer.
+        """
+        User initializer.
 
         Args:
             user (User): Ignition's user object.
@@ -29,7 +35,8 @@ class _User(object):
         self._locale = user.getOrDefault(user.Language)
 
     def get_first_name(self):
-        """Returns User's first name.
+        """
+        Returns User's first name.
 
         Returns:
             str: User's first name.
@@ -37,7 +44,8 @@ class _User(object):
         return self._first_name
 
     def get_full_name(self):
-        """Returns User's full name.
+        """
+        Returns User's full name.
 
         Returns:
             str: User's full name.
@@ -45,7 +53,8 @@ class _User(object):
         return " ".join([self._first_name, self._last_name])
 
     def get_locale(self):
-        """Returns User's preferred language.
+        """
+        Returns User's preferred language.
 
         Returns:
             str: User's preferred language.
@@ -54,7 +63,8 @@ class _User(object):
 
 
 def get_emails(user_source="", filter_role=""):
-    """Gets a list of email addresses.
+    """
+    Gets a list of email addresses.
 
     Args:
         user_source (str): The name of the User Source. If not provided,
@@ -90,7 +100,8 @@ def get_emails(user_source="", filter_role=""):
 
 
 def get_user(user_source, failover=None):
-    """Looks up the logged-in User in a User Source.
+    """
+    Looks up the logged-in User in a User Source.
 
     Args:
         user_source (str): The name of the User Source.
@@ -118,7 +129,8 @@ def get_user(user_source, failover=None):
 
 
 def get_user_first_name(user_source, failover=None):
-    """Returns the User's First Name.
+    """
+    Returns the User's First Name.
 
     Args:
         user_source (str): The name of the Single-Sign-On profile.
@@ -134,7 +146,8 @@ def get_user_first_name(user_source, failover=None):
 
 
 def get_user_full_name(user_source, failover=None):
-    """Returns the User's Full Name.
+    """
+    Returns the User's Full Name.
 
     Args:
         user_source (str): The name of the Single-Sign-On profile.

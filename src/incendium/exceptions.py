@@ -1,16 +1,22 @@
 # Copyright (C) 2020-2021
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
-"""Exceptions module."""
+
+"""
+Exceptions module.
+"""
 
 __all__ = ["ApplicationError", "TagError"]
 
 
 class ApplicationError(Exception):
-    """Application Error class."""
+    """
+    Application Error class.
+    """
 
     def __init__(self, message, inner_exception=None, cause=None):
-        """Application Error initializer.
+        """
+        Application Error initializer.
 
         Args:
             message (str): The error message.
@@ -34,10 +40,13 @@ class ApplicationError(Exception):
 
 
 class TagError(Exception):
-    """Tag Error class."""
+    """
+    Tag Error class.
+    """
 
     def __init__(self, message):
-        """Tag Error initializer.
+        """
+        Tag Error initializer.
 
         Args:
             message (str): The error message.

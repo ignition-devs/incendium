@@ -1,7 +1,10 @@
 # Copyright (C) 2020-2021
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
-"""Database module."""
+
+"""
+Database module.
+"""
 
 __all__ = [
     "DisposableConnection",
@@ -17,7 +20,9 @@ from java.lang import Thread
 
 
 class _Result(object):
-    """Result class."""
+    """
+    Result class.
+    """
 
     def __init__(
         self,
@@ -26,7 +31,8 @@ class _Result(object):
         return_value=None,
         update_count=None,
     ):
-        """Result object initializer.
+        """
+        Result object initializer.
 
         Args:
             output_params (dict): All registered output parameters.
@@ -56,7 +62,8 @@ def _execute_sp(
     return_type_code=None,
     get_update_count=False,
 ):
-    """Executes a database stored procedure.
+    """
+    Executes a database stored procedure.
 
     Args:
         stored_procedure (str): The name of the stored procedure to
@@ -137,13 +144,15 @@ def _execute_sp(
 
 
 class DisposableConnection(object):
-    """A disposable connection enables a database connection in Ignition
+    """
+    A disposable connection enables a database connection in Ignition
     and disables it once the operation is completed to release
     resources.
     """
 
     def __init__(self, db, retries=3):
-        """Disposable Connection initializer.
+        """
+        Disposable Connection initializer.
 
         Args:
             db (str): The name of the database connection in Ignition.
@@ -171,13 +180,16 @@ class DisposableConnection(object):
 
     @property
     def status(self):
-        """Get Status."""
+        """
+        Get Status.
+        """
         ci = system.db.getConnectionInfo(self.db)
         return ci.getValueAt(0, "Status")
 
 
 def check(stored_procedure, database="", params=None):
-    """Executes a stored procedure that returns a flag set to TRUE or
+    """
+    Executes a stored procedure that returns a flag set to TRUE or
     FALSE.
 
     Args:
@@ -202,8 +214,9 @@ def check(stored_procedure, database="", params=None):
 def execute_non_query(
     stored_procedure, database="", transaction=None, params=None
 ):
-    """Executes a stored procedure against the connection and returns
-    the number of rows affected.
+    """
+    Executes a stored procedure against the connection and returns the
+    number of rows affected.
 
     Used for UPDATE, INSERT, and DELETE statements.
 
@@ -233,7 +246,8 @@ def execute_non_query(
 
 
 def get_data(stored_procedure, database="", params=None):
-    """Returns data by executing a stored procedure.
+    """
+    Returns data by executing a stored procedure.
 
     Args:
         stored_procedure (str): The name of the stored procedure to
@@ -260,7 +274,8 @@ def get_data(stored_procedure, database="", params=None):
 def get_output_params(
     stored_procedure, output, database="", transaction=None, params=None
 ):
-    """Gets the Output parameters from the Stored Procedure.
+    """
+    Gets the Output parameters from the Stored Procedure.
 
     Args:
         stored_procedure (str): The name of the stored procedure to
@@ -295,7 +310,8 @@ def get_return_value(
     transaction=None,
     params=None,
 ):
-    """Gets the Return Value from the Stored Procedure.
+    """
+    Gets the Return Value from the Stored Procedure.
 
     Args:
         stored_procedure (str): The name of the stored procedure to
