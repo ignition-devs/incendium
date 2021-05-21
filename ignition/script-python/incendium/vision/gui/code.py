@@ -2,9 +2,7 @@
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
 
-"""
-GUI module.
-"""
+"""GUI module."""
 
 __all__ = ["confirm", "error", "info", "input", "warning"]
 
@@ -31,9 +29,10 @@ CURSOR_E_RESIZE = 13
 
 
 def confirm(message, title="Confirm", show_cancel=False):
-    """
-    Displays a confirmation dialog box to the user with "Yes", "No" and
-    "Cancel" options, and a custom message.
+    """Display a confirmation dialog box to the user.
+
+    This will present the user with "Yes", "No" and "Cancel" options,
+    and a custom message.
 
     Args:
         message (str): The message to display. This will be translated
@@ -75,8 +74,7 @@ def confirm(message, title="Confirm", show_cancel=False):
 
 
 def error(message, title="Error", detail=None):
-    """
-    Displays an error-style message box to the user.
+    """Display an error-style message box to the user.
 
     Args:
         message (str): The message to display in an error box. This
@@ -98,8 +96,7 @@ def error(message, title="Error", detail=None):
 
 
 def info(message, title="Information", detail=None):
-    """
-    Displays an informational-style message popup box to the user.
+    """Display an informational-style message popup box to the user.
 
     Args:
         message (str): The message to display. This will be translated
@@ -124,12 +121,13 @@ def info(message, title="Information", detail=None):
 
 
 def input(message, title="Input"):
-    """
-    Opens up a popup input dialog box. This dialog box will show a
-    prompt message, and allow the user to type in a string. When the
-    user is done, they can press "OK" or "Cancel". If OK is pressed,
-    this function will return with the value that they typed in. If
-    Cancel is pressed, this function will return the value None.
+    """Open up a popup input dialog box.
+
+    This dialog box will show a prompt message, and allow the user to
+    type in a string. When the user is done, they can press "OK" or
+    "Cancel". If OK is pressed, this function will return with the value
+    that they typed in. If Cancel is pressed, this function will return
+    the value None.
 
     Args:
         message (str): The message to display. This will be translated
@@ -166,8 +164,7 @@ def input(message, title="Input"):
 
 
 def warning(message, title="Warning", detail=None):
-    """
-    Displays a message to the user in a warning style popup dialog.
+    """Display a message to the user in a warning style popup dialog.
 
     Args:
         message (str): The message to display in an warning box. This

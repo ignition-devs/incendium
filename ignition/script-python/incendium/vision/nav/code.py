@@ -2,9 +2,7 @@
 # Authors: Cesar Roman, Kyle Chase.
 # Contact: cesar@thecesrom.dev
 
-"""
-Navigation module.
-"""
+"""Navigation module."""
 
 __all__ = ["swap_to", "swap_windows"]
 
@@ -17,9 +15,9 @@ PATH_SEPARATOR = "/"
 
 
 def _get_full_path(from_path, to_path):
-    """
-    Returns the full path of the window to swap to relative to the path
-    of the window to swap from.
+    """Return the full path of the window to swap to.
+
+    The path will be relative to the path of the window to swap from.
 
     Args:
         from_path: The full path of the window to swap from.
@@ -50,9 +48,10 @@ def _get_full_path(from_path, to_path):
 
 
 def swap_to(path, params=None):
-    """
-    Performs a window swap from the current main screen window to the
-    window specified.
+    """Perform a window swap.
+
+    This will swap from the current main screen window to the window
+    specified.
 
     Args:
         path (str): The full path or relative path of the window to
@@ -67,8 +66,7 @@ def swap_to(path, params=None):
 
 
 def swap_windows(from_path, to_path, params=None):
-    """
-    Performs a window swap.
+    """Perform a window swap.
 
     Args:
         from_path (str): The full path of the window to swap from.

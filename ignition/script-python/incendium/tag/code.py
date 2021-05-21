@@ -2,9 +2,7 @@
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
 
-"""
-Tag module.
-"""
+"""Tag module."""
 
 __all__ = ["read", "write"]
 
@@ -12,9 +10,10 @@ import system.tag
 
 
 def read(tag_path):
-    """
-    Reads the value of the Tags at the given paths. Will block until the
-    read operation is complete or times out.
+    """Read the value of the Tags at the given paths.
+
+    Note that this function will block until the read operation is
+    complete or times out.
 
     Args:
         tag_path (str): Reads from the given tag path. If no property is
@@ -29,9 +28,10 @@ def read(tag_path):
 
 
 def write(tag_path, value):
-    """
-    Writes a value to a tag. Note that this function will block until
-    the write operation is complete or times out.
+    """Write a value to a tag.
+
+    Note that this function will block until the write operation is
+    complete or times out.
 
     Args:
         tag_path (str): The path of the tag to write to.

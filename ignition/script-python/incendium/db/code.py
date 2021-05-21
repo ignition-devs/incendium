@@ -2,9 +2,7 @@
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
 
-"""
-Database module.
-"""
+"""Database module."""
 
 __all__ = [
     "DisposableConnection",
@@ -20,9 +18,7 @@ from java.lang import Thread
 
 
 class _Result(object):
-    """
-    Result class.
-    """
+    """Result class."""
 
     def __init__(
         self,
@@ -31,8 +27,7 @@ class _Result(object):
         return_value=None,
         update_count=None,
     ):
-        """
-        Result object initializer.
+        """Result object initializer.
 
         Args:
             output_params (dict): All registered output parameters.
@@ -62,8 +57,7 @@ def _execute_sp(
     return_type_code=None,
     get_update_count=False,
 ):
-    """
-    Executes a database stored procedure.
+    """Execute a stored procedure against the connection.
 
     Args:
         stored_procedure (str): The name of the stored procedure to
@@ -144,15 +138,15 @@ def _execute_sp(
 
 
 class DisposableConnection(object):
-    """
+    """Disposable Connection.
+
     A disposable connection enables a database connection in Ignition
     and disables it once the operation is completed to release
     resources.
     """
 
     def __init__(self, db, retries=3):
-        """
-        Disposable Connection initializer.
+        """Disposable Connection initializer.
 
         Args:
             db (str): The name of the database connection in Ignition.
@@ -163,6 +157,7 @@ class DisposableConnection(object):
         self.retries = retries
 
     def __enter__(self):
+        """Enter the runtime context related to this object."""
         system.db.setDatasourceEnabled(self.db, True)
 
         for _ in range(self.retries):
@@ -176,21 +171,20 @@ class DisposableConnection(object):
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
+        """Exit the runtime context related to this object."""
         system.db.setDatasourceEnabled(self.db, False)
 
     @property
     def status(self):
-        """
-        Get Status.
-        """
+        """Get connection status."""
         ci = system.db.getConnectionInfo(self.db)
         return ci.getValueAt(0, "Status")
 
 
 def check(stored_procedure, database="", params=None):
-    """
-    Executes a stored procedure that returns a flag set to TRUE or
-    FALSE.
+    """Execute a stored procedure against the connection.
+
+    This will return a flag set to TRUE or FALSE.
 
     Args:
         stored_procedure (str): The name of the stored procedure to
@@ -214,9 +208,7 @@ def check(stored_procedure, database="", params=None):
 def execute_non_query(
     stored_procedure, database="", transaction=None, params=None
 ):
-    """
-    Executes a stored procedure against the connection and returns the
-    number of rows affected.
+    """Execute a stored procedure against the connection.
 
     Used for UPDATE, INSERT, and DELETE statements.
 
@@ -246,8 +238,7 @@ def execute_non_query(
 
 
 def get_data(stored_procedure, database="", params=None):
-    """
-    Returns data by executing a stored procedure.
+    """Get data by executing a stored procedure.
 
     Args:
         stored_procedure (str): The name of the stored procedure to
@@ -274,8 +265,7 @@ def get_data(stored_procedure, database="", params=None):
 def get_output_params(
     stored_procedure, output, database="", transaction=None, params=None
 ):
-    """
-    Gets the Output parameters from the Stored Procedure.
+    """Get the Output parameters from the Stored Procedure.
 
     Args:
         stored_procedure (str): The name of the stored procedure to
@@ -310,8 +300,7 @@ def get_return_value(
     transaction=None,
     params=None,
 ):
-    """
-    Gets the Return Value from the Stored Procedure.
+    """Get the Return Value from the Stored Procedure.
 
     Args:
         stored_procedure (str): The name of the stored procedure to
