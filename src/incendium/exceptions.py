@@ -2,21 +2,16 @@
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
 
-"""
-Exceptions module.
-"""
+"""Exceptions module."""
 
 __all__ = ["ApplicationError", "TagError"]
 
 
 class ApplicationError(Exception):
-    """
-    Application Error class.
-    """
+    """Application Error class."""
 
     def __init__(self, message, inner_exception=None, cause=None):
-        """
-        Application Error initializer.
+        """Application Error initializer.
 
         Args:
             message (str): The error message.
@@ -28,6 +23,7 @@ class ApplicationError(Exception):
         self.cause = cause
 
     def __repr__(self):
+        """Compute the "official" string representation."""
         return "{}({!r}, {!r}, {!r})".format(
             self.__class__.__name__,
             repr(self.message),
@@ -36,17 +32,15 @@ class ApplicationError(Exception):
         )
 
     def __str__(self):
+        """Compute the "informal" string representation."""
         return repr(self.message)
 
 
 class TagError(Exception):
-    """
-    Tag Error class.
-    """
+    """Tag Error class."""
 
     def __init__(self, message):
-        """
-        Tag Error initializer.
+        """Tag Error initializer.
 
         Args:
             message (str): The error message.
@@ -54,7 +48,9 @@ class TagError(Exception):
         super(TagError, self).__init__(message)
 
     def __repr__(self):
+        """Compute the "official" string representation."""
         return "{}({!r})".format(self.__class__.__name__, repr(self.message))
 
     def __str__(self):
+        """Compute the "informal" string representation."""
         return repr(self.message)

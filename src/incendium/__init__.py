@@ -7,8 +7,7 @@
 # https://github.com/thecesrom/incendium/blob/HEAD/LICENSE
 #
 
-"""
-incendium.
+"""incendium.
 
 incendium is a package that extends and wraps some functions from
 Ignition Scripting API.

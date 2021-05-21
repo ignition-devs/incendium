@@ -2,9 +2,7 @@
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
 
-"""
-Utility module.
-"""
+"""Utility module."""
 
 __all__ = ["get_function_name", "get_timer", "set_locale", "validate_form"]
 
@@ -18,8 +16,7 @@ from incendium import constants
 
 
 def get_function_name():
-    """
-    Returns the name of the function last called.
+    """Get the name of the function last called.
 
     Returns:
         str: Function's name.
@@ -28,9 +25,9 @@ def get_function_name():
 
 
 def get_timer(date):
-    """
-    Returns a timer with the time elapsed from value until now in the
-    form of hh:mm:ss.
+    """Get a timer with the time elapsed from value until now.
+
+    This will be in the following format: hh:mm:ss.
 
     Args:
         date: A date or a date represented in milliseconds.
@@ -50,9 +47,9 @@ def get_timer(date):
 
 
 def set_locale(user):
-    """
-    Sets the Locale to the user's default Language. If none is
-    configured, the default will be English (US).
+    """Set the Locale to the user's default Language.
+
+    If none is configured, the default will be English (US).
 
     Args:
         user (User): The User.
@@ -66,8 +63,7 @@ def set_locale(user):
 
 
 def validate_form(strings=None, numbers=None, collections=None):
-    """
-    Performs a form validation.
+    """Perform a form validation.
 
     Args:
         strings (dict): A dictionary containing all strings which must
