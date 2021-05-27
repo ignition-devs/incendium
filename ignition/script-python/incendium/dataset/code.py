@@ -6,10 +6,10 @@
 
 __all__ = ["to_json", "to_xml"]
 
-import java.util.Date
 import system.dataset
 import system.date
 from com.inductiveautomation.ignition.common import BasicDataset
+from java.util import Date
 
 
 def _format_value(obj, header=None):
@@ -26,7 +26,7 @@ def _format_value(obj, header=None):
         obj = "null"
     elif isinstance(obj, basestring):
         obj = u'"{}"'.format(obj)
-    elif isinstance(obj, java.util.Date):
+    elif isinstance(obj, Date):
         obj = '"{}"'.format(
             system.date.format(obj, "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
         )
