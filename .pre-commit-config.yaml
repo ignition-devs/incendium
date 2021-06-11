@@ -17,3 +17,6 @@ repos:
       - id: pydocstyle
         additional_dependencies:
           - toml
+
+ci:
+  autoupdate_commit_msg: 'build(pre-commit.ci): pre-commit autoupdate'
