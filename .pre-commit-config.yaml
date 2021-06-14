@@ -1,3 +1,6 @@
+ci:
+  autoupdate_commit_msg: 'build(pre-commit.ci): pre-commit autoupdate'
+
 repos:
   - repo: https://github.com/psf/black
     rev: 21.6b0
@@ -17,6 +20,3 @@ repos:
       - id: pydocstyle
         additional_dependencies:
           - toml
-
-ci:
-  autoupdate_commit_msg: 'build(pre-commit.ci): pre-commit autoupdate'
