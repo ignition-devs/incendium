@@ -3,14 +3,14 @@
 [![GitHub contributors](https://img.shields.io/github/contributors/thecesrom/incendium)](https://github.com/thecesrom/incendium/graphs/contributors)
 ![GitHub total downloads](https://img.shields.io/github/downloads/thecesrom/incendium/total)
 ![GitHub last commit (code)](https://img.shields.io/github/last-commit/thecesrom/incendium)
-[![GitHub license](https://img.shields.io/github/license/thecesrom/incendium)](https://github.com/thecesrom/incendium/blob/main/LICENSE)
 [![GitHub release (latest)](https://img.shields.io/github/v/release/thecesrom/incendium)](https://github.com/thecesrom/incendium/releases/latest)
 [![time tracker](https://wakatime.com/badge/github/thecesrom/incendium.svg)](https://wakatime.com/badge/github/thecesrom/incendium)
 [![Sourcery](https://img.shields.io/badge/Sourcery-enabled-brightgreen)](https://sourcery.ai)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
 [![Imports: flake8](https://img.shields.io/badge/%20imports-flake8-%231674b1?style=flat&labelColor=ef8336)](https://flake8.pycqa.org/en/latest/)
-[![Join us on GitHub discussions](https://img.shields.io/badge/github-discussions-informational)](https://github.com/thecesrom/incendium/discussions)
+[![Imports: pydocstyle](https://img.shields.io/badge/%20imports-pydocstyle-%231674b1?style=flat&labelColor=ef8336)](https://www.pydocstyle.org/en/stable/)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/thecesrom/incendium/code.svg)](https://results.pre-commit.ci/latest/github/thecesrom/incendium/code)
 
 (/inˈken.di.um/)
 
@@ -53,10 +53,10 @@ Before you begin, ensure you have met the following requirements:
 
 To use incendium as a dependency for your scripting projects, do the following:
 
-1. Download **Source code (zip)** from the [latest release](https://github.com/thecesrom/incendium/releases/latest)
+1. Clone this repo or download **Source code (zip)** from the [latest release](https://github.com/thecesrom/incendium/releases/latest)
 1. Add it as a dependency on your scripting project
 
-NOTE: This project depends on Ignition's `jython` branch found [here](https://github.com/thecesrom/Ignition/tree/jython).
+**NOTE**: Please note that this project includes Ignition's [`jython`](https://github.com/thecesrom/Ignition/tree/jython) branch as a submodule. Please refer to [Git Tools - Submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules) for more details on how to clone, and update Git submodules.
 
 ## Contributing to incendium
 
@@ -66,20 +66,24 @@ To contribute to incendium, follow these steps:
 1. Create a local copy on your machine
 1. Create a branch
 1. Make your changes and commit them
-1. Push to the original branch
+1. Push to the `code` branch
 1. Create the pull request
 
 Alternatively see the GitHub documentation on [creating a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 
+## Discussions
+
+Feel free to post your questions and/or ideas at [Discussions](https://github.com/thecesrom/incendium/discussions).
+
 ## Contributors
 
-Thanks to the everyone who has contributed to this project.
+Thanks to everyone who has contributed to this project.
 
 Up-to-date list of contributors can be found [here](https://github.com/thecesrom/incendium/graphs/contributors).
 
 ## License
 
-See the [LICENSE](https://github.com/thecesrom/incendium/blob/master/LICENSE).
+See the [LICENSE](https://github.com/thecesrom/incendium/blob/HEAD/LICENSE).
 
 
 ## Code of conduct
