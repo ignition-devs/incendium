@@ -122,17 +122,10 @@ def _execute_sp(
         for k in out_params.iterkeys():
             _out_params[k] = call.getOutParamValue(k)
 
-    if get_out_params:
-        _result.output_params = _out_params
-
-    if get_result_set:
-        _result.result_set = call.getResultSet()
-
-    if get_ret_val:
-        _result.return_value = call.getReturnValue()
-
-    if get_update_count:
-        _result.update_count = call.getUpdateCount()
+    _result.output_params = _out_params if get_out_params else None
+    _result.result_set = call.getResultSet() if get_result_set else None
+    _result.return_value = call.getReturnValue() if get_ret_val else None
+    _result.update_count = call.getUpdateCount() if get_update_count else None
 
     return _result
 
