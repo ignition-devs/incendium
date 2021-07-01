@@ -18,12 +18,21 @@ _noun_
 1. A fire, inferno, conflagration; heat; torch.
 1. (heat of) passion, vehemence
 
-
 ## Description
 
 :package: Package that extends and wraps some functions from Ignition's Scripting API.
 
 For more information, please refer to the [Wiki](https://github.com/thecesrom/incendium/wiki).
+
+## Branches
+
+This repository consists of the following branches:
+
+#### [code](https://github.com/thecesrom/incendium/tree/code)
+This branch will contain the source code for incendium's scripting functions.
+
+#### [project](https://github.com/thecesrom/incendium/tree/project)
+This branch will contain the project folder structure as stored under `$IGNITION_DIR/data/projects`, and gives you the ability to get the latest code by cloning at the `projects` folder.
 
 ## Installing incendium as a Project on your Gateway
 
@@ -36,6 +45,8 @@ To install incendium on your Gateway follow these steps:
 1. Enter **incendium** as the **Project Name**
     * If you're replacing a previous version, make sure to check Allow Overwrite
 1. Click on **Import**
+
+Alternatively you could follow the instructions for cloning the `project` branch directly into `$IGNITION_DIR/data/projects` found [here](https://github.com/thecesrom/incendium/tree/project#cloning-this-branch).
 
 ## Using incendium within your scripting projects
 
@@ -53,10 +64,27 @@ Before you begin, ensure you have met the following requirements:
 
 To use incendium as a dependency for your scripting projects, do the following:
 
-1. Clone this repo or download **Source code (zip)** from the [latest release](https://github.com/thecesrom/incendium/releases/latest)
+1. [Clone this branch](#cloning-this-branch) or download **Source code (zip)** from the [latest release](https://github.com/thecesrom/incendium/releases/latest)
 1. Add it as a dependency on your scripting project
 
 **NOTE**: Please note that this project includes Ignition's [`jython`](https://github.com/thecesrom/Ignition/tree/jython) branch as a submodule. Please refer to [Git Tools - Submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules) for more details on how to clone, and update Git submodules.
+
+#### Cloning this branch
+
+If you wish to clone just this branch, use any of the following commands:
+
+- HTTPS
+    ```bash
+    git clone --single-branch --branch code --recurse-submodules https://github.com/thecesrom/incendium.git incendium
+    ```
+- SSH
+    ```bash
+    git clone --single-branch --branch code --recurse-submodules git@github.com:thecesrom/incendium.git incendium
+    ```
+- GitHub CLI
+    ```bash
+    gh repo clone thecesrom/incendium incendium -- --single-branch --branch code --recurse-submodules
+    ```
 
 ## Contributing to incendium
 
@@ -84,7 +112,6 @@ Up-to-date list of contributors can be found [here](https://github.com/thecesrom
 ## License
 
 See the [LICENSE](https://github.com/thecesrom/incendium/blob/HEAD/LICENSE).
-
 
 ## Code of conduct
 
