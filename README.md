@@ -69,7 +69,7 @@ To use incendium as a dependency for your scripting projects, do the following:
 
 **NOTE**: Please note that this project includes Ignition's [`jython`](https://github.com/thecesrom/Ignition/tree/jython) branch as a submodule. Please refer to [Git Tools - Submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules) for more details on how to clone, and update Git submodules.
 
-#### Cloning this branch
+### Cloning this branch
 
 If you wish to clone just this branch, use any of the following commands:
 
