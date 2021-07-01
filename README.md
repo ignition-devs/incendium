@@ -25,6 +25,16 @@ _noun_
 
 For more information, please refer to the [Wiki](https://github.com/thecesrom/incendium/wiki).
 
+## Branches
+
+This repository consists of the following branches:
+
+#### [code](https://github.com/thecesrom/incendium/tree/code)
+This branch will contain the source code for incendium's scripting functions.
+
+#### [project](https://github.com/thecesrom/incendium/tree/project)
+This branch will contain the project folder structure as stored under `$IGNITION_DIR/data/projects`, and gives you the ability to get the latest code by cloning at the `projects` folder.
+
 ## Installing incendium as a Project on your Gateway
 
 To install incendium on your Gateway follow these steps:
@@ -37,26 +47,28 @@ To install incendium on your Gateway follow these steps:
     * If you're replacing a previous version, make sure to check Allow Overwrite
 1. Click on **Import**
 
-## Using incendium within your scripting projects
+Alternatively you could follow the instructions for cloning the `project` branch directly into `$IGNITION_DIR/data/projects` found [here](#cloning-this-branch).
 
-### Prerequisites
+## Cloning this branch
 
-Before you begin, ensure you have met the following requirements:
-* Java 11.0.11 ([here](https://www.azul.com/downloads/?version=java-11-lts&package=jdk)) 
-* Jython 2.7.1
-    * Download [here](https://search.maven.org/remotecontent?filepath=org/python/jython-installer/2.7.1/jython-installer-2.7.1.jar)
-    * Or via Homebrew `brew install coatl-dev/coatl-dev/jython@2.7.1`
-* You are familiar with [Ignition Scripting Functions](https://docs.inductiveautomation.com/display/DOC81/Scripting+Functions)
-* You have installed Ignition by Inductive Automation (optional)
+If you would like to clone this branch to get the latest version directly under `$IGNITION_DIR/data/projects`, follow these steps:
 
-### Including incendium as a dependency
-
-To use incendium as a dependency for your scripting projects, do the following:
-
-1. Download **Source code (zip)** from the [latest release](https://github.com/thecesrom/incendium/releases/latest)
-1. Add it as a dependency on your scripting project
-
-NOTE: This project depends on Ignition's `jython` branch found [here](https://github.com/thecesrom/Ignition/tree/jython).
+1. Open your Terminal
+1. Switch to `$IGNITION_DIR/data/projects`
+1. Run any of the following commands
+    - HTTPS
+        ```bash
+        git clone --single-branch --branch project https://github.com/thecesrom/incendium.git incendium
+        ```
+    - SSH
+        ```bash
+        git clone --single-branch --branch project git@github.com:thecesrom/incendium.git incendium
+        ```
+    - GitHub CLI
+        ```bash
+        gh repo clone thecesrom/incendium incendium -- --single-branch --branch project
+        ```
+1. And `git pull` to get the latest changes
 
 ## Contributing to incendium
 
@@ -66,7 +78,7 @@ To contribute to incendium, follow these steps:
 1. Create a local copy on your machine
 1. Create a branch
 1. Make your changes and commit them
-1. Push to the original branch
+1. Push to the `code` branch
 1. Create the pull request
 
 Alternatively see the GitHub documentation on [creating a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
@@ -79,7 +91,7 @@ Up-to-date list of contributors can be found [here](https://github.com/thecesrom
 
 ## License
 
-See the [LICENSE](https://github.com/thecesrom/incendium/blob/master/LICENSE).
+See the [LICENSE](https://github.com/thecesrom/incendium/blob/HEAD/LICENSE).
 
 
 ## Code of conduct
