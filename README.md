@@ -88,7 +88,7 @@ Alternatively see the GitHub documentation on [creating a pull request](https://
 
 ## Contributors
 
-Thanks to the everyone who has contributed to this project.
+Thanks to everyone who has contributed to this project.
 
 Up-to-date list of contributors can be found [here](https://github.com/thecesrom/incendium/graphs/contributors).
 
