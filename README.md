@@ -1,4 +1,5 @@
 # incendium
+
 <!--- Badges --->
 [![GitHub contributors](https://img.shields.io/github/contributors/thecesrom/incendium)](https://github.com/thecesrom/incendium/graphs/contributors)
 ![GitHub total downloads](https://img.shields.io/github/downloads/thecesrom/incendium/total)
@@ -15,6 +16,7 @@
 (/inˈken.di.um/)
 
 _noun_
+
 1. A fire, inferno, conflagration; heat; torch.
 1. (heat of) passion, vehemence
 
@@ -29,9 +31,11 @@ For more information, please refer to the [Wiki](https://github.com/thecesrom/in
 This repository consists of the following branches:
 
 #### [code](https://github.com/thecesrom/incendium/tree/code)
+
 This branch will contain the source code for incendium's scripting functions.
 
 #### [project](https://github.com/thecesrom/incendium/tree/project)
+
 This branch will contain the project folder structure as stored under `$IGNITION_DIR/data/projects`, and gives you the ability to get the latest code by cloning at the `projects` folder.
 
 ## Installing incendium as a Project on your Gateway
@@ -43,7 +47,7 @@ To install incendium on your Gateway follow these steps:
 1. Go to **Config > Projects** and click on **Import project...**
 1. Click on **Choose File** and select the downloaded ZIP file
 1. Enter **incendium** as the **Project Name**
-    * If you're replacing a previous version, make sure to check Allow Overwrite
+  * If you're replacing a previous version, make sure to check Allow Overwrite
 1. Click on **Import**
 
 Alternatively you could follow the instructions for cloning the `project` branch directly into `$IGNITION_DIR/data/projects` found [here](https://github.com/thecesrom/incendium/tree/project#cloning-this-branch).
@@ -53,10 +57,11 @@ Alternatively you could follow the instructions for cloning the `project` branch
 ### Prerequisites
 
 Before you begin, ensure you have met the following requirements:
-* Java 11.0.11 ([here](https://www.azul.com/downloads/?version=java-11-lts&package=jdk)) 
+
+* Java 11.0.11 ([here](https://www.azul.com/downloads/?version=java-11-lts&package=jdk))
 * Jython 2.7.1
-    * Download [here](https://search.maven.org/remotecontent?filepath=org/python/jython-installer/2.7.1/jython-installer-2.7.1.jar)
-    * Or via Homebrew `brew install coatl-dev/coatl-dev/jython@2.7.1`
+  * Download [here](https://search.maven.org/remotecontent?filepath=org/python/jython-installer/2.7.1/jython-installer-2.7.1.jar)
+  * Or via Homebrew `brew install coatl-dev/coatl-dev/jython@2.7.1`
 * You are familiar with [Ignition Scripting Functions](https://docs.inductiveautomation.com/display/DOC81/Scripting+Functions)
 * You have installed Ignition by Inductive Automation (optional)
 
