@@ -103,13 +103,13 @@ def _execute_sp(
 
     # Register INPUT Parameters.
     if in_params is not None:
-        for k, v in in_params.iteritems():
-            call.registerInParam(k, v[0], v[1])
+        for key, value in in_params.iteritems():
+            call.registerInParam(key, value[0], value[1])
 
     # Register OUTPUT Parameters.
     if out_params is not None:
-        for k, v in out_params.iteritems():
-            call.registerOutParam(k, v)
+        for key, value in out_params.iteritems():
+            call.registerOutParam(key, value)
 
     # Register RETURN Parameter.
     if get_ret_val:
@@ -119,8 +119,8 @@ def _execute_sp(
     system.db.execSProcCall(call)
 
     if out_params is not None:
-        for k in out_params.iterkeys():
-            _out_params[k] = call.getOutParamValue(k)
+        for key in out_params.iterkeys():
+            _out_params[key] = call.getOutParamValue(key)
 
     _result.output_params = _out_params if get_out_params else None
     _result.result_set = call.getResultSet() if get_result_set else None
@@ -138,40 +138,41 @@ class DisposableConnection(object):
     resources.
     """
 
-    def __init__(self, db, retries=3):
+    def __init__(self, database, retries=3):
         """Disposable Connection initializer.
 
         Args:
-            db (str): The name of the database connection in Ignition.
+            database (str): The name of the database connection in
+                Ignition.
             retries (int): The number of additional times to retry
                 enabling the connection. Optional.
         """
-        self.db = db
+        self.database = database
         self.retries = retries
 
     def __enter__(self):
         """Enter the runtime context related to this object."""
-        system.db.setDatasourceEnabled(self.db, True)
+        system.db.setDatasourceEnabled(self.database, True)
 
         for _ in range(self.retries):
             Thread.sleep(1000)
             if self.status == "Faulted":
                 raise IOError(
                     "The database connection {!r} is {}.".format(
-                        self.db, self.status
+                        self.database, self.status
                     )
                 )
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         """Exit the runtime context related to this object."""
-        system.db.setDatasourceEnabled(self.db, False)
+        system.db.setDatasourceEnabled(self.database, False)
 
     @property
     def status(self):
         """Get connection status."""
-        ci = system.db.getConnectionInfo(self.db)
-        return ci.getValueAt(0, "Status")
+        connection_info = system.db.getConnectionInfo(self.database)
+        return connection_info.getValueAt(0, "Status")
 
 
 def check(stored_procedure, database="", params=None):
