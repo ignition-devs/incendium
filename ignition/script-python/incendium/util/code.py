@@ -36,14 +36,11 @@ def get_timer(date):
          str: Time elapsed.
     """
     # Initialize Variables
-    h = m = s = 0
-
-    a = date if isinstance(date, Date) else system.date.fromMillis(date)
-    b = system.date.now()
-    seconds = system.date.secondsBetween(a, b)
-    m, s = divmod(seconds, 60)
-    h, m = divmod(m, 60)
-    return "{:02d}:{:02d}:{:02d}".format(h, m, s)
+    date_1 = date if isinstance(date, Date) else system.date.fromMillis(date)
+    date_2 = system.date.now()
+    minutes, seconds = divmod(system.date.secondsBetween(date_1, date_2), 60)
+    hours, minutes = divmod(minutes, 60)
+    return "{:02d}:{:02d}:{:02d}".format(hours, minutes, seconds)
 
 
 def set_locale(user):
