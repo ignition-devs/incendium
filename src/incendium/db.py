@@ -156,12 +156,20 @@ class DisposableConnection(object):
 
         for _ in range(self.retries):
             Thread.sleep(1000)
+            if self.status == "Valid":
+                break
             if self.status == "Faulted":
                 raise IOError(
                     "The database connection {!r} is {}.".format(
                         self.database, self.status
                     )
                 )
+        else:
+            raise IOError(
+                "The database connection {!r} could not be enabled.".format(
+                    self.database
+                )
+            )
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
