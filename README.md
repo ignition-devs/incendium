@@ -59,10 +59,14 @@ Alternatively you could follow the instructions for cloning the `project` branch
 Before you begin, ensure you have met the following requirements:
 
 * Java 11.0.11 ([here](https://www.azul.com/downloads/?version=java-11-lts&package=jdk))
-* Jython 2.7.1
-  * Download [here](https://search.maven.org/remotecontent?filepath=org/python/jython-installer/2.7.1/jython-installer-2.7.1.jar)
-  * Or via Homebrew `brew install coatl-dev/coatl-dev/jython@2.7.1`
-* You are familiar with [Ignition Scripting Functions](https://docs.inductiveautomation.com/display/DOC81/Scripting+Functions)
+* Jython
+  * 2.7.1 for Ignition 8.0 through 8.1.7
+    * Download [here](https://search.maven.org/remotecontent?filepath=org/python/jython-installer/2.7.1/jython-installer-2.7.1.jar)
+    * Or via Homebrew `brew install coatl-dev/coatl-dev/jython@2.7.1`
+  * 2.7.2 for [Ignition 8.1.8 onwards](https://docs.inductiveautomation.com/display/DOC81/New+in+this+Version#NewinthisVersion-Newin8.1.8)
+    * Download [here](https://search.maven.org/remotecontent?filepath=org/python/jython-installer/2.7.1/jython-installer-2.7.2.jar)
+    * Or via Homebrew `brew install coatl-dev/coatl-dev/jython@2.7.2`
+* You are familiar with [Ignition System Functions](https://docs.inductiveautomation.com/display/DOC81/System+Functions)
 * You have installed Ignition by Inductive Automation (optional)
 
 ### Including incendium as a dependency
