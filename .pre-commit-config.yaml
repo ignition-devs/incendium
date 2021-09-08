@@ -17,3 +17,10 @@ repos:
       - id: pydocstyle
         additional_dependencies:
           - toml
+  - repo: local
+    hooks:
+      - id: pylint
+        name: pylint
+        entry: pylint
+        language: system
+        types: [python]

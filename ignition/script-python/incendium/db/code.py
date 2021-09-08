@@ -17,33 +17,6 @@ import system.db
 from java.lang import Thread
 
 
-class _Result(object):
-    """Result class."""
-
-    def __init__(
-        self,
-        output_params=None,
-        result_set=None,
-        return_value=None,
-        update_count=None,
-    ):
-        """Result object initializer.
-
-        Args:
-            output_params (dict): All registered output parameters.
-            result_set (Dataset): The dataset that is the resulting data
-                of the stored procedure, if any.
-            return_value (int): The return value, if registerReturnParam
-                had been called.
-            update_count (int): The number of rows modified by the
-                stored procedure, or -1 if not applicable.
-        """
-        self.output_params = output_params
-        self.result_set = result_set
-        self.return_value = return_value
-        self.update_count = update_count
-
-
 def _execute_sp(
     stored_procedure,
     database="",
@@ -88,11 +61,16 @@ def _execute_sp(
             procedure, or -1 if not applicable. Optional.
 
     Returns:
-        _Result: Result object.
+        dict: Result dictionary.
     """
     # Initialize variables.
     _out_params = {}
-    _result = _Result()
+    result = {
+        "output_params": None,
+        "result_set": None,
+        "return_value": None,
+        "update_count": None,
+    }
 
     call = system.db.createSProcCall(
         procedureName=stored_procedure,
@@ -122,12 +100,14 @@ def _execute_sp(
         for key in out_params.iterkeys():
             _out_params[key] = call.getOutParamValue(key)
 
-    _result.output_params = _out_params if get_out_params else None
-    _result.result_set = call.getResultSet() if get_result_set else None
-    _result.return_value = call.getReturnValue() if get_ret_val else None
-    _result.update_count = call.getUpdateCount() if get_update_count else None
+    result["output_params"] = _out_params if get_out_params else None
+    result["result_set"] = call.getResultSet() if get_result_set else None
+    result["return_value"] = call.getReturnValue() if get_ret_val else None
+    result["update_count"] = (
+        call.getUpdateCount() if get_update_count else None
+    )
 
-    return _result
+    return result
 
 
 class DisposableConnection(object):
@@ -236,7 +216,7 @@ def execute_non_query(
         get_update_count=True,
     )
 
-    return result.update_count
+    return result["update_count"]
 
 
 def get_data(stored_procedure, database="", params=None):
@@ -261,7 +241,7 @@ def get_data(stored_procedure, database="", params=None):
         get_result_set=True,
     )
 
-    return result.result_set
+    return result["result_set"]
 
 
 def get_output_params(
@@ -292,7 +272,7 @@ def get_output_params(
         get_out_params=True,
     )
 
-    return result.output_params
+    return result["output_params"]
 
 
 def get_return_value(
@@ -327,4 +307,4 @@ def get_return_value(
         get_ret_val=True,
     )
 
-    return result.return_value
+    return result["return_value"]
