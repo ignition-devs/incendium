@@ -17,6 +17,11 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         python -m pip install pylint
-    - name: Analysing the code with pylint
+    - name: Analysing code with pylint
+      run: |
+        pylint src
+      if: ${{ github.ref == 'refs/heads/code' }}
+    - name: Analysing project with pylint
       run: |
         pylint $(git ls-files '*.py')
+      if: ${{ github.ref == 'refs/heads/project' }}
