@@ -69,42 +69,43 @@ Before you begin, ensure you have met the following requirements:
 * You are familiar with [Ignition System Functions](https://docs.inductiveautomation.com/display/DOC81/System+Functions)
 * You have installed Ignition by Inductive Automation (optional)
 
-### Including incendium as a dependency
+### Installing via `pip`
 
-To use incendium as a dependency for your scripting projects, do the following:
+To use incendium as a dependency for your scripting projects using Jython 2.7.1 or 2.7.2 as your interpreter, do the following:
 
-1. [Clone this branch](#cloning-this-branch) or download **Source code (zip)** from the [latest release](https://github.com/thecesrom/incendium/releases/latest)
-1. Add it as a dependency on your scripting project
-
-**NOTE**: Please note that this project includes Ignition's [`jython`](https://github.com/thecesrom/Ignition/tree/jython) branch as a submodule. Please refer to [Git Tools - Submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules) for more details on how to clone, and update Git submodules.
-
-### Cloning this branch
-
-If you wish to clone just this branch, use any of the following commands:
-
-- HTTPS
+1. Make sure you have installed `ignition-api-jython`. See [here](https://github.com/thecesrom/Ignition/tree/jython#installation-and-usage).
+1. Then, run the following command:
     ```bash
-    git clone --single-branch --branch code --recurse-submodules https://github.com/thecesrom/incendium.git incendium
+    $ jython -m pip install https://github.com/thecesrom/incendium/archive/refs/tags/v1.0.7.zip
+    DEPRECATION: A future version of pip will drop support for Python 2.7.
+    Collecting https://github.com/thecesrom/incendium/archive/refs/tags/v1.0.7.zip
+      Downloading https://github.com/thecesrom/incendium/archive/refs/tags/v1.0.7.zip
+         - 51kB 624kB/s
+    Installing collected packages: incendium
+      Running setup.py install for incendium ... done
+    Successfully installed incendium-1.0.7
+    $ jython -m pip list
+    DEPRECATION: A future version of pip will drop support for Python 2.7.
+    Package             Version
+    ------------------- -------
+    ignition-api-jython 8.1.10 
+    incendium           1.0.7  
+    pip                 19.1   
+    setuptools          41.0.1 
     ```
-- SSH
-    ```bash
-    git clone --single-branch --branch code --recurse-submodules git@github.com:thecesrom/incendium.git incendium
-    ```
-- GitHub CLI
-    ```bash
-    gh repo clone thecesrom/incendium incendium -- --single-branch --branch code --recurse-submodules
-    ```
+1. Now you will have both `ignition-api-jython` and `incendium` installed on on your Jython site-packaages
 
 ## Contributing to incendium
 
 To contribute to incendium, follow these steps:
 
 1. Fork this repository
-1. Create a local copy on your machine
-1. Create a branch
-1. Make your changes and commit them
-1. Push to the `code` branch
-1. Create the pull request
+2. Create a local copy on your machine
+3. Create a branch
+4. Make sure to run `pre-commit install` to install required pre-commit hooks
+5. Make your changes and commit them
+6. Push to the `code` branch
+7. Create the pull request
 
 Alternatively see the GitHub documentation on [creating a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 
