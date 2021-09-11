@@ -20,7 +20,7 @@ jobs:
         python -m pip install black
     - name: Formatting the code with black
       run: |
-        black --line-length 79 --target-version py27 src
+        black --check --line-length 79 --target-version py27 src
     - name: Analysing the code with pylint
       run: |
         pylint src
