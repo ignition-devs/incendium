@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-"""incendium API."""
+"""incendium."""
 
 import os
 from codecs import open
@@ -11,7 +11,7 @@ from setuptools import find_packages, setup
 here = os.path.abspath(os.path.dirname(__file__))
 
 about = {}
-with open(os.path.join(here, "src", "system", "__version__.py"), "r") as f:
+with open(os.path.join(here, "src", "incendium", "__version__.py"), "r") as f:
     exec (f.read(), about)
 
 with open("README.md", "r", "utf-8") as f:
