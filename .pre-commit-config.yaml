@@ -1,12 +1,15 @@
 ci:
   autoupdate_commit_msg: 'build(pre-commit.ci): pre-commit autoupdate'
-  skip: [pylint]
+  skip: [black, pylint]
 
 repos:
-  - repo: https://github.com/psf/black
-    rev: 21.8b0
+  - repo: local
     hooks:
       - id: black
+        name: black
+        entry: black --line-length 79 --target-version py27 src
+        language: system
+        types: [python]
   - repo: https://github.com/PyCQA/isort
     rev: 5.9.3
     hooks:
