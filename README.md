@@ -76,24 +76,24 @@ To use incendium as a dependency for your scripting projects using Jython 2.7.1 
 1. Make sure you have installed `ignition-api-jython`. See [here](https://github.com/thecesrom/Ignition/tree/jython#installation-and-usage).
 1. Then, run the following command:
     ```bash
-    $ jython -m pip install https://github.com/thecesrom/incendium/archive/refs/tags/v1.0.7.zip
+    $ jython -m pip install https://github.com/thecesrom/incendium/archive/refs/tags/v1.0.7.post2.zip
     DEPRECATION: A future version of pip will drop support for Python 2.7.
-    Collecting https://github.com/thecesrom/incendium/archive/refs/tags/v1.0.7.zip
-      Downloading https://github.com/thecesrom/incendium/archive/refs/tags/v1.0.7.zip
+    Collecting https://github.com/thecesrom/incendium/archive/refs/tags/v1.0.7.post2.zip
+      Downloading https://github.com/thecesrom/incendium/archive/refs/tags/v1.0.7.post2.zip
          - 51kB 624kB/s
     Installing collected packages: incendium
       Running setup.py install for incendium ... done
-    Successfully installed incendium-1.0.7
+    Successfully installed incendium-1.0.7.post2
     $ jython -m pip list
     DEPRECATION: A future version of pip will drop support for Python 2.7.
     Package             Version
     ------------------- -------
     ignition-api-jython 8.1.10 
-    incendium           1.0.7  
+    incendium           1.0.7.post2  
     pip                 19.1   
     setuptools          41.0.1 
     ```
-1. Now you will have both `ignition-api-jython` and `incendium` installed on on your Jython site-packaages
+1. Now you will have both `ignition-api-jython` and `incendium` installed on your Jython site-packages
 
 ## Contributing to incendium
 
