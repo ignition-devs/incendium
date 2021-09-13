@@ -1,7 +1,3 @@
-# Copyright (C) 2020-2021
-# Authors: Cesar Roman, Kyle Chase.
-# Contact: cesar@thecesrom.dev
-
 """Navigation module."""
 
 __all__ = ["swap_to", "swap_windows"]

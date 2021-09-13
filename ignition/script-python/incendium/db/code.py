@@ -1,7 +1,3 @@
-# Copyright (C) 2020-2021
-# Author: Cesar Roman
-# Contact: cesar@thecesrom.dev
-
 """Database module."""
 
 __all__ = [
@@ -15,6 +11,59 @@ __all__ = [
 
 import system.db
 from java.lang import Thread
+
+
+class DisposableConnection(object):
+    """Disposable Connection.
+
+    A disposable connection enables a database connection in Ignition
+    and disables it once the operation is completed to release
+    resources.
+    """
+
+    def __init__(self, database, retries=3):
+        """Disposable Connection initializer.
+
+        Args:
+            database (str): The name of the database connection in
+                Ignition.
+            retries (int): The number of additional times to retry
+                enabling the connection. Optional.
+        """
+        self.database = database
+        self.retries = retries
+
+    def __enter__(self):
+        """Enter the runtime context related to this object."""
+        system.db.setDatasourceEnabled(self.database, True)
+
+        for _ in range(self.retries):
+            Thread.sleep(1000)
+            if self.status == "Valid":
+                break
+            if self.status == "Faulted":
+                raise IOError(
+                    "The database connection {!r} is {}.".format(
+                        self.database, self.status
+                    )
+                )
+        else:
+            raise IOError(
+                "The database connection {!r} could not be enabled.".format(
+                    self.database
+                )
+            )
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        """Exit the runtime context related to this object."""
+        system.db.setDatasourceEnabled(self.database, False)
+
+    @property
+    def status(self):
+        """Get connection status."""
+        connection_info = system.db.getConnectionInfo(self.database)
+        return connection_info.getValueAt(0, "Status")
 
 
 def _execute_sp(
@@ -108,59 +157,6 @@ def _execute_sp(
     )
 
     return result
-
-
-class DisposableConnection(object):
-    """Disposable Connection.
-
-    A disposable connection enables a database connection in Ignition
-    and disables it once the operation is completed to release
-    resources.
-    """
-
-    def __init__(self, database, retries=3):
-        """Disposable Connection initializer.
-
-        Args:
-            database (str): The name of the database connection in
-                Ignition.
-            retries (int): The number of additional times to retry
-                enabling the connection. Optional.
-        """
-        self.database = database
-        self.retries = retries
-
-    def __enter__(self):
-        """Enter the runtime context related to this object."""
-        system.db.setDatasourceEnabled(self.database, True)
-
-        for _ in range(self.retries):
-            Thread.sleep(1000)
-            if self.status == "Valid":
-                break
-            if self.status == "Faulted":
-                raise IOError(
-                    "The database connection {!r} is {}.".format(
-                        self.database, self.status
-                    )
-                )
-        else:
-            raise IOError(
-                "The database connection {!r} could not be enabled.".format(
-                    self.database
-                )
-            )
-        return self
-
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        """Exit the runtime context related to this object."""
-        system.db.setDatasourceEnabled(self.database, False)
-
-    @property
-    def status(self):
-        """Get connection status."""
-        connection_info = system.db.getConnectionInfo(self.database)
-        return connection_info.getValueAt(0, "Status")
 
 
 def check(stored_procedure, database="", params=None):

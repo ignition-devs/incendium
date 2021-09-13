@@ -1,7 +1,3 @@
-# Copyright (C) 2020-2021
-# Author: Cesar Roman
-# Contact: cesar@thecesrom.dev
-
 """GUI module."""
 
 __all__ = ["confirm", "error", "info", "input", "warning"]
