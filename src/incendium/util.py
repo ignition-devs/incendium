@@ -1,7 +1,3 @@
-# Copyright (C) 2020-2021
-# Author: Cesar Roman
-# Contact: cesar@thecesrom.dev
-
 """Utility module."""
 
 __all__ = ["get_function_name", "get_timer", "set_locale", "validate_form"]

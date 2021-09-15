@@ -1,7 +1,3 @@
-# Copyright (C) 2020-2021
-# Author: Cesar Roman
-# Contact: cesar@thecesrom.dev
-
 """Dataset module."""
 
 __all__ = ["to_json", "to_xml"]
