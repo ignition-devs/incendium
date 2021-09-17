@@ -74,7 +74,8 @@ confidence=
 # --enable=similarities". If you want to run only the classes checker, but have
 # no Warning level messages displayed, use "--disable=all --enable=classes
 # --disable=W".
-disable=redefined-builtin,
+disable=consider-using-f-string,
+        redefined-builtin,
         redundant-u-string-prefix,
         super-with-arguments,
         unsubscriptable-object,
