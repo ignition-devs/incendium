@@ -12,7 +12,7 @@ here = os.path.abspath(os.path.dirname(__file__))
 
 about = {}
 with open(os.path.join(here, "src", "incendium", "__version__.py"), "r") as f:
-    exec (f.read(), about)
+    exec(f.read(), about)
 
 with open("README.md", "r", "utf-8") as f:
     readme = f.read()

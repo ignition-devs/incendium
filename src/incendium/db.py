@@ -152,9 +152,7 @@ def _execute_sp(
     result["output_params"] = _out_params if get_out_params else None
     result["result_set"] = call.getResultSet() if get_result_set else None
     result["return_value"] = call.getReturnValue() if get_ret_val else None
-    result["update_count"] = (
-        call.getUpdateCount() if get_update_count else None
-    )
+    result["update_count"] = call.getUpdateCount() if get_update_count else None
 
     return result
 
@@ -183,9 +181,7 @@ def check(stored_procedure, database="", params=None):
     return output_params["flag"]
 
 
-def execute_non_query(
-    stored_procedure, database="", transaction=None, params=None
-):
+def execute_non_query(stored_procedure, database="", transaction=None, params=None):
     """Execute a stored procedure against the connection.
 
     Used for UPDATE, INSERT, and DELETE statements.

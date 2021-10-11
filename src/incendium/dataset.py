@@ -23,9 +23,7 @@ def _format_value(obj, header=None):
     elif isinstance(obj, basestring):
         obj = u'"{}"'.format(obj)
     elif isinstance(obj, Date):
-        obj = '"{}"'.format(
-            system.date.format(obj, "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
-        )
+        obj = '"{}"'.format(system.date.format(obj, "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"))
     elif isinstance(obj, BasicDataset):
         obj = _to_json(obj, header, False)
     else:

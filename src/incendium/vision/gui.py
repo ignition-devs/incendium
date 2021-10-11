@@ -83,9 +83,7 @@ def error(message, title="Error", detail=None):
     if detail is None:
         msg = system.util.translate(message)
     else:
-        msg = "\n".join(
-            [system.util.translate(message), system.util.translate(detail)]
-        )
+        msg = "\n".join([system.util.translate(message), system.util.translate(detail)])
     JOptionPane.showMessageDialog(
         None, msg, system.util.translate(title), JOptionPane.ERROR_MESSAGE
     )
@@ -105,9 +103,7 @@ def info(message, title="Information", detail=None):
     if detail is None:
         msg = system.util.translate(message)
     else:
-        msg = "\n".join(
-            [system.util.translate(message), system.util.translate(detail)]
-        )
+        msg = "\n".join([system.util.translate(message), system.util.translate(detail)])
     JOptionPane.showMessageDialog(
         None,
         msg,
@@ -173,9 +169,7 @@ def warning(message, title="Warning", detail=None):
     if detail is None:
         msg = system.util.translate(message)
     else:
-        msg = "\n".join(
-            [system.util.translate(message), system.util.translate(detail)]
-        )
+        msg = "\n".join([system.util.translate(message), system.util.translate(detail)])
     JOptionPane.showMessageDialog(
         None, msg, system.util.translate(title), JOptionPane.WARNING_MESSAGE
     )

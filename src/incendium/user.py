@@ -72,16 +72,10 @@ def get_emails(user_source="", filter_role=""):
 
     for user in users:
         _emails = [
-            ci.value
-            for ci in user.getContactInfo()
-            if ci.contactType == "email"
+            ci.value for ci in user.getContactInfo() if ci.contactType == "email"
         ]
         for email in _emails:
-            if (
-                filter_role
-                and filter_role in user.getRoles()
-                or not filter_role
-            ):
+            if filter_role and filter_role in user.getRoles() or not filter_role:
                 emails.add(email)
     return sorted(list(emails))
 
