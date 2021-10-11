@@ -1,4 +1,4 @@
-#!/usr/bin/env jython
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 """incendium."""
@@ -19,7 +19,7 @@ with open("README.md", "r", "utf-8") as f:
 
 setup(
     name=about["__title__"],
-    version="{}{}".format(about["__version__"], about["__cycle__"]),
+    version=about["__version__"],
     description=about["__description__"],
     long_description=readme,
     long_description_content_type="text/markdown",
@@ -37,15 +37,15 @@ setup(
         "Operating System :: Microsoft :: Windows",
         "Operating System :: POSIX :: Linux",
         "Programming Language :: Python",
-        "Programming Language :: Python :: 2 :: Only",
+        "Programming Language :: Python :: 2",
+        "Programming Language :: Python :: 2 Only",
         "Programming Language :: Python :: 2.7",
-        "Programming Language :: Python :: Implementation :: Jython",
         "Topic :: Software Development :: Libraries :: Python Modules",
         "Topic :: Software Development :: Testing :: Mocking",
     ],
     keywords="hmi, ignition, inductive automation, scada",
     package_dir={"": "src"},
     packages=find_packages(where="src"),
-    python_requires=">=2.7, <3",
-    install_requires=["ignition-api-jython>=8"],
+    install_requires=["ignition-api"],
+    python_requires="==2.7.18",
 )

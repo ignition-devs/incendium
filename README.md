@@ -30,11 +30,11 @@ For more information, please refer to the [Wiki](https://github.com/thecesrom/in
 
 This repository consists of the following branches:
 
-#### [code](https://github.com/thecesrom/incendium/tree/code)
+### [code](https://github.com/thecesrom/incendium/tree/code)
 
 This branch will contain the source code for incendium's scripting functions.
 
-#### [project](https://github.com/thecesrom/incendium/tree/project)
+### [project](https://github.com/thecesrom/incendium/tree/project)
 
 This branch will contain the project folder structure as stored under `$IGNITION_DIR/data/projects`, and gives you the ability to get the latest code by cloning at the `projects` folder.
 
@@ -47,7 +47,9 @@ To install incendium on your Gateway follow these steps:
 1. Go to **Config > Projects** and click on **Import project...**
 1. Click on **Choose File** and select the downloaded ZIP file
 1. Enter **incendium** as the **Project Name**
-  * If you're replacing a previous version, make sure to check Allow Overwrite
+
+* If you're replacing a previous version, make sure to check Allow Overwrite
+
 1. Click on **Import**
 
 Alternatively you could follow the instructions for cloning the `project` branch directly into `$IGNITION_DIR/data/projects` found [here](https://github.com/thecesrom/incendium/tree/project#cloning-this-branch).
@@ -58,42 +60,49 @@ Alternatively you could follow the instructions for cloning the `project` branch
 
 Before you begin, ensure you have met the following requirements:
 
-* Java 11.0.11 ([here](https://www.azul.com/downloads/?version=java-11-lts&package=jdk))
-* Jython
-  * 2.7.1 for Ignition 8.0 through 8.1.7
-    * Download [here](https://search.maven.org/remotecontent?filepath=org/python/jython-installer/2.7.1/jython-installer-2.7.1.jar)
-    * Or via Homebrew `brew install coatl-dev/coatl-dev/jython@2.7.1`
-  * 2.7.2 for [Ignition 8.1.8 onwards](https://docs.inductiveautomation.com/display/DOC81/New+in+this+Version#NewinthisVersion-Newin8.1.8)
-    * Download [here](https://search.maven.org/remotecontent?filepath=org/python/jython-installer/2.7.1/jython-installer-2.7.2.jar)
-    * Or via Homebrew `brew install coatl-dev/coatl-dev/jython@2.7.2`
-* You are familiar with [Ignition System Functions](https://docs.inductiveautomation.com/display/DOC81/System+Functions)
-* You have installed Ignition by Inductive Automation (optional)
+* You have installed Python 2.7.18 ([download here](https://www.python.org/downloads/release/python-2718/))
+* You are familiar with [Ignition 8.1 System Functions](https://docs.inductiveautomation.com/display/DOC81/System+Functions)
 
-### Installing via `pip`
+#### Installation and usage
 
-To use incendium as a dependency for your scripting projects using Jython 2.7.1 or 2.7.2 as your interpreter, do the following:
+To use Ignition, you may install it by doing any of the following.
 
-1. Make sure you have installed `ignition-api-jython`. See [here](https://github.com/thecesrom/Ignition/tree/jython#installation-and-usage).
-1. Then, run the following command:
-    ```bash
-    $ jython -m pip install https://github.com/thecesrom/incendium/archive/refs/tags/v1.0.7.post2.zip
-    DEPRECATION: A future version of pip will drop support for Python 2.7.
-    Collecting https://github.com/thecesrom/incendium/archive/refs/tags/v1.0.7.post2.zip
-      Downloading https://github.com/thecesrom/incendium/archive/refs/tags/v1.0.7.post2.zip
-         - 51kB 624kB/s
-    Installing collected packages: incendium
-      Running setup.py install for incendium ... done
-    Successfully installed incendium-1.0.7.post2
-    $ jython -m pip list
-    DEPRECATION: A future version of pip will drop support for Python 2.7.
-    Package             Version
-    ------------------- -------
-    ignition-api-jython 8.1.10 
-    incendium           1.0.7.post2  
-    pip                 19.1   
-    setuptools          41.0.1 
-    ```
-1. Now you will have both `ignition-api-jython` and `incendium` installed on your Jython site-packages
+##### Installing with `pip`
+
+The preferred method is to install it by running `pip`. It requires Python 2.7.18.
+
+```bash
+python2 -m pip install incendium
+```
+
+This will install it as package to your Python installation, which will allow you to call `incendium`'s Scripting functions from Python's REPL, and get code completion using an IDE (Pycharm or Visual Studio Code).
+
+```bash
+$ python2
+Python 2.7.18 (default, Nov  9 2020, 16:23:15) 
+[GCC Apple LLVM 12.0.0 (clang-1200.0.32.21)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from __future__ import print_function
+>>> import incendium.gui.vision
+>>> print(incendium.gui.vision.__doc__)
+Utility Functions.
+
+The following functions give you access to view various Gateway and
+Client data, as well as interact with other various systems.
+
+>>> system.util.beep()
+>>> quit()
+```
+
+And to uninstall:
+
+```bash
+python2 -m pip uninstall incendium
+```
+
+##### Downloading from releases
+
+You may also download the code targeted to your desired version from the [releases page](https://github.com/thecesrom/Ignition/releases) and add it as a dependency to your scripting project.
 
 ## Contributing to incendium
 

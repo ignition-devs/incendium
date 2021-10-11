@@ -1,0 +1,5 @@
+[flake8]
+ignore = F401, F821, W503
+exclude = setup.py
+max-complexity = 10
+max-doc-length = 72
