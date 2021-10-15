@@ -1,5 +1,6 @@
+# coding=utf-8
 # Copyright (C) 2020-2021
-# Author: Cesar Roman
+# Author: César Román
 # Contact: cesar@thecesrom.dev
 #
 # Licensed under the MIT License.

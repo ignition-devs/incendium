@@ -20,7 +20,7 @@ fail-on=
 fail-under=10.0
 
 # Files or directories to be skipped. They should be base names, not paths.
-ignore=CVS, setup.py
+ignore=CVS
 
 # Add files or directories matching the regex patterns to the ignore-list. The
 # regex matches against paths.
@@ -210,7 +210,7 @@ ignored-classes=optparse.Values,thread._local,_thread._local
 # (useful for modules/projects where namespaces are manipulated during runtime
 # and thus existing member attributes cannot be deduced by static analysis). It
 # supports qualified module names, as well as Unix pattern matching.
-ignored-modules=com.inductiveautomation,java,javax,system
+ignored-modules=com,java,javax,system
 
 # Show a hint with possible names when a member name was not found. The aspect
 # of finding the hint is based on edit distance.
