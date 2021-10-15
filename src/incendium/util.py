@@ -9,6 +9,7 @@ import system.util
 from java.util import Date
 
 from incendium import constants
+from incendium.user import IncendiumUser
 
 
 def get_function_name():
@@ -23,15 +24,13 @@ def get_function_name():
 def get_timer(date):
     """Get a timer with the time elapsed from value until now.
 
-    This will be in the following format: hh:mm:ss.
-
     Args:
         date: A date or a date represented in milliseconds.
 
     Returns:
-         str: Time elapsed.
+         str: Time elapsed represented by a string in the following
+            format: "hh:mm:ss".
     """
-    # Initialize Variables
     date_1 = date if isinstance(date, Date) else system.date.fromMillis(date)
     date_2 = system.date.now()
     minutes, seconds = divmod(system.date.secondsBetween(date_1, date_2), 60)
@@ -45,12 +44,13 @@ def set_locale(user):
     If none is configured, the default will be English (US).
 
     Args:
-        user (User): The User.
+        user (IncendiumUser): The User.
     """
-    locale = constants.DEFAULT_LANGUAGE
-
-    if user is not None and user.get_locale() is not None:
-        locale = user.get_locale()
+    locale = (
+        user.locale
+        if user is not None and user.locale
+        else constants.DEFAULT_LANGUAGE
+    )
 
     system.util.setLocale(locale)
 
@@ -67,13 +67,12 @@ def validate_form(strings=None, numbers=None, collections=None):
             which must at least contain an element. Optional.
 
     Returns:
-        tuple: A tuple containing:
+        tuple[bool, str]: A tuple containing:
             is_valid (bool): True if all validation tests have passed,
             False otherwise.
             error_message (str): Error message in case any validation
             test has failed.
     """
-    # Initialize variables.
     is_valid = True
     error_message = constants.EMPTY_STRING
     counter = 0
