@@ -79,6 +79,7 @@ disable=consider-using-f-string,
         redundant-u-string-prefix,
         super-with-arguments,
         unsubscriptable-object,
+        unused-import,
         useless-object-inheritance,
         useless-super-delegation
 

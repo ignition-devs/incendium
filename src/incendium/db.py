@@ -10,6 +10,7 @@ __all__ = [
 ]
 
 import system.db
+from com.inductiveautomation.ignition.common import BasicDataset
 from java.lang import Thread
 
 
@@ -112,7 +113,6 @@ def _execute_sp(
     Returns:
         dict: Result dictionary.
     """
-    # Initialize variables.
     _out_params = {}
     result = {
         "output_params": None,
@@ -128,21 +128,17 @@ def _execute_sp(
         skipAudit=skip_audit,
     )
 
-    # Register INPUT Parameters.
     if in_params is not None:
         for key, value in in_params.iteritems():
             call.registerInParam(key, value[0], value[1])
 
-    # Register OUTPUT Parameters.
     if out_params is not None:
         for key, value in out_params.iteritems():
             call.registerOutParam(key, value)
 
-    # Register RETURN Parameter.
     if get_ret_val:
         call.registerReturnParam(return_type_code)
 
-    # Execute the call.
     system.db.execSProcCall(call)
 
     if out_params is not None:
@@ -227,7 +223,7 @@ def get_data(stored_procedure, database="", params=None):
         params (dict): A Dictionary containing all parameters. Optional.
 
     Returns:
-        Dataset: A Dataset that is the resulting data of the stored
+        BasicDataset: A Dataset that is the resulting data of the stored
             procedure call, if any.
     """
     result = _execute_sp(

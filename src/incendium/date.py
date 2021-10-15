@@ -2,6 +2,8 @@
 
 __all__ = ["compare"]
 
+from java.util import Date
+
 
 def compare(date_1, date_2):
     """Compare two dates.

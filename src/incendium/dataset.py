@@ -41,7 +41,7 @@ def _to_json(dataset, root, is_root=True):
     Private function.
 
     Args:
-        dataset (Dataset): The input dataset.
+        dataset (BasicDataset): The input dataset.
         root (str): The value of the header.
         is_root (bool): True if we are at the root, False otherwise.
             Optional.
@@ -79,7 +79,7 @@ def to_json(dataset, root="json"):
     """Return a string JSON representation of the Dataset.
 
     Args:
-        dataset (Dataset): The input dataset.
+        dataset (BasicDataset): The input dataset.
         root (str): The value of the root. If not provided, it defaults
             to "json". Optional.
 
@@ -93,7 +93,7 @@ def to_xml(dataset, root="root", element="row"):
     """Return a string XML representation of the Dataset.
 
     Args:
-        dataset (Dataset): The input dataset.
+        dataset (BasicDataset): The input dataset.
         root (str): The value of the root. If not provided, it defaults
             to "root". Optional.
         element (str): The value of the row. If not provided, it
