@@ -1,11 +1,13 @@
 """Constants module."""
 
+from __future__ import unicode_literals
+
 # Email settings.
 SMTP = "mail.mycompany.com:25"
 SENDER = "no-reply@mycompany.com"
 
 # Email templates.
-ERROR_REPORT = u"""<html>
+ERROR_REPORT = """<html>
     <body>
         <font face='verdana'>
             <b>Error Report.</b><br /><br />
@@ -51,8 +53,8 @@ PROCEED_WITHOUT_SAVING_CHANGES = (
 )
 SUCCESS_WINDOW_TITLE = "Success"
 TABBED_LINE = "    - "
-UNEXPECTED_ERROR = u"An unexpected error occurred in {}.\n{}"
+UNEXPECTED_ERROR = "An unexpected error occurred in {}.\n{}"
 UNEXPECTED_ERROR_CAUSED_BY = (
-    u"An unexpected error occurred in {}.\n{}\nCaused by: {}"
+    "An unexpected error occurred in {}.\n{}\nCaused by: {}"
 )
 WARNING_WINDOW_TITLE = "Warning"
