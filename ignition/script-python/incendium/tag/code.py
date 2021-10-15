@@ -3,6 +3,9 @@
 __all__ = ["read", "write"]
 
 import system.tag
+from com.inductiveautomation.ignition.common.model.values import (
+    BasicQualifiedValue,
+)
 
 
 def read(tag_path):
@@ -16,7 +19,7 @@ def read(tag_path):
             specified in the path, the Value property is assumed.
 
     Returns:
-        QualifiedValue: A qualified value. This object has three
+        BasicQualifiedValue: A qualified value. This object has three
             sub-members: value, quality, and timestamp.
     """
     values = system.tag.readBlocking([tag_path])

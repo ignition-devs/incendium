@@ -1,5 +1,7 @@
 """Dataset module."""
 
+from __future__ import unicode_literals
+
 __all__ = ["to_json", "to_xml"]
 
 import system.dataset
@@ -21,7 +23,7 @@ def _format_value(obj, header=None):
     if obj is None:
         obj = "null"
     elif isinstance(obj, basestring):
-        obj = u'"{}"'.format(obj)
+        obj = '"{}"'.format(obj)
     elif isinstance(obj, Date):
         obj = '"{}"'.format(
             system.date.format(obj, "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
@@ -39,7 +41,7 @@ def _to_json(dataset, root, is_root=True):
     Private function.
 
     Args:
-        dataset (Dataset): The input dataset.
+        dataset (BasicDataset): The input dataset.
         root (str): The value of the header.
         is_root (bool): True if we are at the root, False otherwise.
             Optional.
@@ -52,7 +54,7 @@ def _to_json(dataset, root, is_root=True):
     rows = dataset.getRowCount()
     data = system.dataset.toPyDataSet(dataset)
     ret_str = "{" if is_root else ""
-    ret_str += u'"{}":['.format(root)
+    ret_str += '"{}":['.format(root)
     col_count = 0
 
     for row_count, row in enumerate(data, start=1):
@@ -62,9 +64,9 @@ def _to_json(dataset, root, is_root=True):
             val = _format_value(row[header], header)
             comma = "," if col_count < columns else ""
             if isinstance(row[header], BasicDataset):
-                ret_str += u"{}{}".format(val, comma)
+                ret_str += "{}{}".format(val, comma)
             else:
-                ret_str += u'"{}":{}{}'.format(header, val, comma)
+                ret_str += '"{}":{}{}'.format(header, val, comma)
         ret_str += "{}{}".format("}", "," if row_count < rows else "")
         col_count = 0
     ret_str += "]"
@@ -77,7 +79,7 @@ def to_json(dataset, root="json"):
     """Return a string JSON representation of the Dataset.
 
     Args:
-        dataset (Dataset): The input dataset.
+        dataset (BasicDataset): The input dataset.
         root (str): The value of the root. If not provided, it defaults
             to "json". Optional.
 
@@ -91,7 +93,7 @@ def to_xml(dataset, root="root", element="row"):
     """Return a string XML representation of the Dataset.
 
     Args:
-        dataset (Dataset): The input dataset.
+        dataset (BasicDataset): The input dataset.
         root (str): The value of the root. If not provided, it defaults
             to "root". Optional.
         element (str): The value of the row. If not provided, it

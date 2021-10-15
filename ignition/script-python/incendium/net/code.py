@@ -1,5 +1,7 @@
 """Net module."""
 
+from __future__ import unicode_literals
+
 __all__ = [
     "send_high_priority_email",
     "send_html_email",
@@ -44,18 +46,15 @@ def _send_email(subject, body, html, to, priority):
         to (list[str]): A list of email addresses to send to.
         priority (str): Priority for the message.
     """
-    try:
-        system.net.sendEmail(
-            smtp=constants.SMTP,
-            fromAddr=constants.SENDER,
-            subject=subject,
-            body=body,
-            html=html,
-            to=to,
-            priority=priority,
-        )
-    finally:
-        pass
+    system.net.sendEmail(
+        smtp=constants.SMTP,
+        fromAddr=constants.SENDER,
+        subject=subject,
+        body=body,
+        html=html,
+        to=to,
+        priority=priority,
+    )
 
 
 def report_error(subject, message, details, to):

@@ -1,6 +1,9 @@
 """User module."""
 
+from __future__ import unicode_literals
+
 __all__ = [
+    "IncendiumUser",
     "get_emails",
     "get_user",
     "get_user_first_name",
@@ -9,23 +12,49 @@ __all__ = [
 
 import system.security
 import system.user
+from com.inductiveautomation.ignition.common.user import ContactInfo, PyUser
+
+from incendium.exceptions import ApplicationError
 
 
-class _User(object):
+class IncendiumUser(object):
     """Wrapper class for Ignition's User object."""
 
     def __init__(self, user):
         """User initializer.
 
         Args:
-            user (User): Ignition's user object.
+            user (PyUser): Ignition's user object.
         """
-        self._username = user.get(user.Username)
+        self._contact_info = user.getContactInfo()
+        self._email = None
         self._first_name = user.get(user.FirstName)
         self._last_name = user.get(user.LastName)
         self._locale = user.getOrDefault(user.Language)
+        self._roles = user.getRoles()
 
-    def get_first_name(self):
+    @property
+    def contact_info(self):
+        """Get User's ContactInfo.
+
+        Returns:
+            list[ContactInfo]: A sequence of ContactInfo objects.
+        """
+        return self._contact_info
+
+    @property
+    def email(self):
+        """Get User's email address(es).
+
+        Returns:
+            list[str]: User's email address(es).
+        """
+        return [
+            ci.value for ci in self._contact_info if ci.contactType == "email"
+        ]
+
+    @property
+    def first_name(self):
         """Get User's first name.
 
         Returns:
@@ -33,7 +62,8 @@ class _User(object):
         """
         return self._first_name
 
-    def get_full_name(self):
+    @property
+    def full_name(self):
         """Get User's full name.
 
         Returns:
@@ -41,7 +71,17 @@ class _User(object):
         """
         return " ".join([self._first_name, self._last_name])
 
-    def get_locale(self):
+    @property
+    def last_name(self):
+        """Get User's last name.
+
+        Returns:
+            str: User's last name.
+        """
+        return self._last_name
+
+    @property
+    def locale(self):
         """Get User's preferred language.
 
         Returns:
@@ -49,9 +89,18 @@ class _User(object):
         """
         return self._locale
 
+    @property
+    def roles(self):
+        """Get User's Roles.
+
+        Returns:
+            list[str]: A list of Roles for this User.
+        """
+        return self._roles
+
 
 def get_emails(user_source="", filter_role=""):
-    """Get a list of email addresses.
+    """Get a list of email addresses from a User Source.
 
     Args:
         user_source (str): The name of the User Source. If not provided,
@@ -64,83 +113,80 @@ def get_emails(user_source="", filter_role=""):
     Returns:
         list[str]: A list of email addresses.
     """
-    # Initialize variables.
     emails = set()
 
-    # Retrieve users from the User Source.
-    users = system.user.getUsers(user_source)
-
-    for user in users:
-        _emails = [
-            ci.value
-            for ci in user.getContactInfo()
-            if ci.contactType == "email"
-        ]
-        for email in _emails:
-            if (
-                filter_role
-                and filter_role in user.getRoles()
-                or not filter_role
-            ):
+    for user in system.user.getUsers(user_source):
+        _user = IncendiumUser(user)
+        for email in _user.email:
+            if filter_role and filter_role in _user.roles or not filter_role:
                 emails.add(email)
     return sorted(list(emails))
 
 
-def get_user(user_source, failover=None):
+def get_user(user_source="", failover=None):
     """Look up the logged-in User in a User Source.
 
     Args:
-        user_source (str): The name of the User Source.
+        user_source (str): The name of the User Source. If not provided,
+            the default User Source will be consulted. Optional.
         failover (str): The name of the Failover Source. Optional.
 
     Returns:
-        _User: A User object.
+        IncendiumUser: An IncendiumUser object.
+
+    Raises:
+        ApplicationError: If User is not found.
     """
-    # Initialize variables
-    user = None
-    user_object = None
-    _username = system.security.getUsername()
+    username = system.security.getUsername()
 
-    # 1 Try SSO
-    if user_source:
-        user = system.user.getUser(user_source, _username)
-    # 2 Try Fallback
-    if not user and failover:
-        user = system.user.getUser(failover, _username)
+    user = system.user.getUser(user_source, username)
 
-    if user:
-        user_object = _User(user)
+    if user is None and failover:
+        user = system.user.getUser(failover, username)
 
-    return user_object
+    if user is None:
+        raise ApplicationError("User was not found.")
+
+    return IncendiumUser(user)
 
 
-def get_user_first_name(user_source, failover=None):
+def get_user_email_address(user_source="", failover=None):
+    """Get the User's Email address(es).
+
+    Args:
+        user_source (str): The name of the User Source. If not provided,
+            the default User Source will be consulted. Optional.
+        failover (str): The name of the Fallback profile. Optional.
+
+    Returns:
+        list[str]: The User's Email address(es).
+    """
+    return get_user(user_source, failover).email
+
+
+def get_user_first_name(user_source="", failover=None):
     """Get the User's First Name.
 
     Args:
-        user_source (str): The name of the Single-Sign-On profile.
+        user_source (str): The name of the User Source. If not provided,
+            the default User Source will be consulted. Optional.
         failover (str): The name of the Fallback profile. Optional.
 
     Returns:
         str: The User's First Name.
     """
-    user = get_user(user_source, failover)
-
-    # return value
-    return user.get_first_name()
+    return get_user(user_source, failover).first_name
 
 
-def get_user_full_name(user_source, failover=None):
+def get_user_full_name(user_source="", failover=None):
     """Get the User's Full Name.
 
     Args:
-        user_source (str): The name of the Single-Sign-On profile.
+        user_source (str): The name of the User Source. If not provided,
+            the default User Source will be consulted. Optional.
         failover (str): The name of the Fallback profile. Optional.
 
     Returns:
         str: The User's Full Name.
     """
-    user = get_user(user_source, failover)
-
-    # return value
-    return user.get_full_name()
+    return get_user(user_source, failover).full_name
