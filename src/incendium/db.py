@@ -71,7 +71,7 @@ class DisposableConnection(object):
 
 
 class Param(object):
-    """Base class used for defining [InParam/OutParam]put parameters."""
+    """Base class used for defining [In|Out]put parameters."""
 
     def __init__(self, name_or_index=None, type_code=None, value=None):
         """Param object initializer.
