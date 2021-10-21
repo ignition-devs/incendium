@@ -2,6 +2,9 @@
 
 __all__ = [
     "DisposableConnection",
+    "InParam",
+    "OutParam",
+    "Param",
     "check",
     "execute_non_query",
     "get_data",
@@ -67,6 +70,70 @@ class DisposableConnection(object):
         return connection_info.getValueAt(0, "Status")
 
 
+class Param(object):
+    """Base class used for defining [InParam/OutParam]put parameters."""
+
+    def __init__(self, name_or_index=None, type_code=None, value=None):
+        """Param object initializer.
+
+        Args:
+            name_or_index (object): Parameter name or index.
+            type_code (int): Type code constant.
+            value (object): Value of type type_code.
+        """
+        self._name_or_index = name_or_index
+        self._type_code = type_code
+        self._value = value
+
+    @property
+    def name_or_index(self):
+        """Get value of name_or_index."""
+        return self._name_or_index
+
+    @property
+    def type_code(self):
+        """Get value of type_code."""
+        return self._type_code
+
+    @property
+    def value(self):
+        """Get value of value."""
+        return self._value
+
+
+class InParam(Param):
+    """Class used for declaring INPUT parameters."""
+
+    def __init__(self, name_or_index, type_code, value):
+        """Create an instance of InParam.
+
+        Args:
+            name_or_index (object): Index (int starting at 1, not 0), or
+                name (str).
+            type_code (int): Type code constant from `system.db`.
+            value (object): Value of type type_code.
+        """
+        super(InParam, self).__init__(
+            name_or_index=name_or_index, type_code=type_code, value=value
+        )
+
+
+class OutParam(Param):
+    """Class used for declaring OUTPUT parameters."""
+
+    def __init__(self, name_or_index, type_code):
+        """Create an instance of OutParam.
+
+        Args:
+            name_or_index (object): Index (int starting at 1, not 0), or
+                name (str).
+            type_code (int): Type code constant from `system.db`.
+        """
+        super(OutParam, self).__init__(
+            name_or_index=name_or_index, type_code=type_code
+        )
+
+
 def _execute_sp(
     stored_procedure,
     database="",
@@ -94,10 +161,10 @@ def _execute_sp(
             procedure call to skip the audit system. Useful for some
             queries that have fields which won't fit into the audit log.
             Optional.
-        in_params (dict): A Dictionary containing INPUT parameters.
-            Optional.
-        out_params (dict): A Dictionary containing OUTPUT parameters.
-            Optional.
+        in_params (list[InParam]): A Dictionary containing INPUT
+            parameters. Optional.
+        out_params (list[OutParam]): A Dictionary containing OUTPUT
+            parameters. Optional.
         get_out_params (bool): A flag indicating whether or not to
             return OUTPUT parameters after execution. Optional.
         get_result_set (bool): A flag indicating whether or not to
@@ -129,12 +196,18 @@ def _execute_sp(
     )
 
     if in_params is not None:
-        for key, value in in_params.iteritems():
-            call.registerInParam(key, value[0], value[1])
+        if not isinstance(in_params, list):
+            raise TypeError("in_params must be of type 'list'.")
+        for param in in_params:
+            call.registerInParam(
+                param.name_or_index, param.type_code, param.value
+            )
 
     if out_params is not None:
-        for key, value in out_params.iteritems():
-            call.registerOutParam(key, value)
+        if not isinstance(in_params, list):
+            raise TypeError("out_params must be of type 'list'.")
+        for param in out_params:
+            call.registerOutParam(param.name_or_index, param.type_code)
 
     if get_ret_val:
         call.registerReturnParam(return_type_code)
@@ -142,8 +215,10 @@ def _execute_sp(
     system.db.execSProcCall(call)
 
     if out_params is not None:
-        for key in out_params.iterkeys():
-            _out_params[key] = call.getOutParamValue(key)
+        for param in out_params:
+            _out_params[param.name_or_index] = call.getOutParamValue(
+                param.name_or_index
+            )
 
     result["output_params"] = _out_params if get_out_params else None
     result["result_set"] = call.getResultSet() if get_result_set else None
@@ -166,14 +241,15 @@ def check(stored_procedure, database="", params=None):
         database (str): The name of the database connection to execute
             against. If omitted or "", the project's default database
             connection will be used. Optional.
-        params (dict): A Dictionary containing all parameters. Optional.
+        params (list[InParam]): A Dictionary containing all parameters.
+            Optional.
 
     Returns:
         bool: The flag.
     """
-    output = {"flag": system.db.BIT}
+    output = OutParam("flag", system.db.BIT)
     output_params = get_output_params(
-        stored_procedure, output=output, database=database, params=params
+        stored_procedure, output=[output], database=database, params=params
     )
 
     return output_params["flag"]
@@ -194,7 +270,8 @@ def execute_non_query(
             connection will be used. Optional.
         transaction (str): A transaction identifier. If omitted, the
             call will be executed in its own transaction. Optional.
-        params (dict): A Dictionary containing all parameters. Optional.
+        params (list[InParam]): A Dictionary containing all parameters.
+            Optional.
 
     Returns:
         int: The number of rows modified by the stored procedure, or
@@ -220,7 +297,8 @@ def get_data(stored_procedure, database="", params=None):
         database (str): The name of the database connection to execute
             against. If omitted or "", the project's default database
             connection will be used. Optional.
-        params (dict): A Dictionary containing all parameters. Optional.
+        params (list[InParam]): A Dictionary containing all parameters.
+            Optional.
 
     Returns:
         BasicDataset: A Dataset that is the resulting data of the stored
@@ -244,13 +322,15 @@ def get_output_params(
     Args:
         stored_procedure (str): The name of the stored procedure to
             execute.
-        output (dict): A Dictionary containing all output parameters.
+        output (list[OutParam]): A Dictionary containing all output
+            parameters.
         database (str): The name of the database connection to execute
             against. If omitted or "", the project's default database
             connection will be used. Optional.
         transaction (str): A transaction identifier. If omitted, the
             call will be executed in its own transaction. Optional.
-        params (dict): A Dictionary containing all parameters. Optional.
+        params (list[InParam]): A Dictionary containing all parameters.
+            Optional.
 
     Returns:
         dict: Result's output_params.
@@ -285,7 +365,8 @@ def get_return_value(
             connection will be used. Optional.
         transaction (str): A transaction identifier. If omitted, the
             call will be executed in its own transaction. Optional.
-        params (dict): A Dictionary containing all parameters. Optional.
+        params (list[InParam]): A Dictionary containing all parameters.
+            Optional.
 
     Returns:
         int: The return value.
