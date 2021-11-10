@@ -50,6 +50,10 @@ load-plugins=
 # Pickle collected data for later comparisons.
 persistent=yes
 
+# Min Python version to use for version dependent checks. Will default to the
+# version used to run pylint.
+py-version=3.10
+
 # When enabled, pylint would attempt to guess common misconfiguration and emit
 # user-friendly hints instead of false-positive error messages.
 suggestion-mode=yes
@@ -516,7 +520,7 @@ valid-metaclass-classmethod-first-arg=cls
 
 [DESIGN]
 
-# List of qualified class names to ignore when countint class parents (see
+# List of qualified class names to ignore when counting class parents (see
 # R0901)
 ignored-parents=
 
