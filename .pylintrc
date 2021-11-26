@@ -23,7 +23,7 @@ fail-under=10.0
 ignore=CVS
 
 # Add files or directories matching the regex patterns to the ignore-list. The
-# regex matches against paths.
+# regex matches against paths and can be in Posix or Windows format.
 ignore-paths=
 
 # Files or directories matching the regex patterns are skipped. The regex
@@ -49,6 +49,10 @@ load-plugins=
 
 # Pickle collected data for later comparisons.
 persistent=yes
+
+# Minimum Python version to use for version dependent checks. Will default to
+# the version used to run pylint.
+py-version=3.10
 
 # When enabled, pylint would attempt to guess common misconfiguration and emit
 # user-friendly hints instead of false-positive error messages.
@@ -186,7 +190,7 @@ contextmanager-decorators=contextlib.contextmanager
 generated-members=
 
 # Tells whether missing members accessed in mixin class should be ignored. A
-# mixin class is detected if its name ends with "mixin" (case insensitive).
+# class is considered mixin if its name matches the mixin-class-rgx option.
 ignore-mixin-members=yes
 
 # Tells whether to warn about missing members when the owner of the attribute
@@ -210,7 +214,7 @@ ignored-classes=optparse.Values,thread._local,_thread._local
 # (useful for modules/projects where namespaces are manipulated during runtime
 # and thus existing member attributes cannot be deduced by static analysis). It
 # supports qualified module names, as well as Unix pattern matching.
-ignored-modules=com.inductiveautomation,
+ignored-modules=com,
                 incendium,
                 java,
                 javax,
@@ -227,6 +231,10 @@ missing-member-hint-distance=1
 # The total number of similar names that should be taken in consideration when
 # showing a hint for a missing member.
 missing-member-max-choices=1
+
+# Regex pattern to define which classes are considered mixins ignore-mixin-
+# members is set to 'yes'
+mixin-class-rgx=.*[Mm]ixin
 
 # List of decorators that change the signature of a decorated function.
 signature-mutators=
@@ -520,7 +528,11 @@ valid-metaclass-classmethod-first-arg=cls
 
 [DESIGN]
 
-# List of qualified class names to ignore when countint class parents (see
+# List of regular expressions of class ancestor names to ignore when counting
+# public methods (see R0903)
+exclude-too-few-public-methods=
+
+# List of qualified class names to ignore when counting class parents (see
 # R0901)
 ignored-parents=
 
