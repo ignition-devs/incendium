@@ -38,6 +38,8 @@ All notable changes to this project will be documented in this file.
 ### Features
 
 - add InParam, OutParam and Param to db ([d6530a3](https://github.com/thecesrom/incendium/commit/d6530a3b843789373afdb48697ad44205abe958b))
+  - **BREAKING**: calls to `db` functions should switch from  passing
+`dict` to `list[InParam]` and `list[OutParam]` where applicable
 
 ### Miscellaneous Tasks
 
@@ -151,6 +153,8 @@ All notable changes to this project will be documented in this file.
 - bump Ignition from `d13416f` to `0e80df2` (#25) ([8e14026](https://github.com/thecesrom/incendium/commit/8e14026aea53b73f812bda44184b54d18de12d17))
 - bump Ignition from `0e80df2` to `3d50ca4` (#26) ([2410b3d](https://github.com/thecesrom/incendium/commit/2410b3daba41c142ed56c169ac241ee6c0fb8d43))
 - remove Ignition submodule ([083ce15](https://github.com/thecesrom/incendium/commit/083ce152cc7bd838ad1e76809895d538b3b75248))
+  - **BREAKING**: switching from using Ignition [jython](https://github.com/thecesrom/Ignition/tree/jython)
+to installing it via `jython -m pip install`
 - update CI tools ([a4e671c](https://github.com/thecesrom/incendium/commit/a4e671cd3a6bdfa7bf19314ca14ecc7e94b35e43))
 - update CI workflow ([0620230](https://github.com/thecesrom/incendium/commit/06202301127570440dfb69653f995af7721875cf))
 
@@ -169,6 +173,9 @@ All notable changes to this project will be documented in this file.
 ### Refactor
 
 - conform to snake_case naming style ([b1a41de](https://github.com/thecesrom/incendium/commit/b1a41de1e1855303f88f3ac646a88af92fcb6335))
+  - **BREAKING**: `DisposableConnection`'s `db` field has been renamed to
+`database` to conform with snake_case naming style and to match the name
+used in some `system.db` functions.
 
 ### Build
 
