@@ -6,8 +6,9 @@ build-backend = "setuptools.build_meta"
 line-length = 79
 
 [tool.isort]
-profile = "black"
 line_length= 79
+profile = "black"
+py_version = 27
 
 [tool.pydocstyle]
 convention = "google"
