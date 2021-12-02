@@ -20,7 +20,7 @@ body = """
     {% for commit in commits %}
         - {{ commit.message }} ([{{ commit.id | truncate(length=7, end="") }}](https://github.com/thecesrom/incendium/commit/{{ commit.id }}))
         {%- if commit.breaking %}
-        {% raw %}  {% endraw %}- **BREAKING**: {{commit.breaking_description}}
+        {% raw %}  {% endraw %}- **BREAKING**: {{ commit.breaking_description }}
         {%- endif -%}
     {% endfor %}
 {% endfor %}\n
