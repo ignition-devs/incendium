@@ -12,6 +12,7 @@ All notable changes to this project will be documented in this file.
 
 - :see_no_evil: update .gitignore file ([69bcfe4](https://github.com/thecesrom/incendium/commit/69bcfe480e6d499bb1a17be98a5872f9d57b5da6))
 - add `cliff.toml` for changelog generation ([b415972](https://github.com/thecesrom/incendium/commit/b4159725f365b0286d907f4bbc7118d0af02ac48))
+- format setup.cfg file ([29b91e8](https://github.com/thecesrom/incendium/commit/29b91e88c938b466fc270c6edd9cc101d438aa99))
 
 ### Styling
 
@@ -28,6 +29,7 @@ All notable changes to this project will be documented in this file.
 - pre-commit autoupdate ([e1bf0a5](https://github.com/thecesrom/incendium/commit/e1bf0a5c018911bd268a277a846a1c4d8263b9b2))
 - update `.pylintrc` ([0365963](https://github.com/thecesrom/incendium/commit/0365963dc5480aae6cddb08c7f92843a7756376f))
 - add `setup.py` ([a28cbc4](https://github.com/thecesrom/incendium/commit/a28cbc49164fb2f88c1744ee03a9818fe993fb91))
+- pre-commit autoupdate (#29) ([4396f86](https://github.com/thecesrom/incendium/commit/4396f86f7c12daa5c40da0044543c13fb02d70b5))
 
 ## [2.0.0] - 2021-10-21
 
