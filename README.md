@@ -81,15 +81,13 @@ Python 2.7.18 (default, Nov  9 2020, 16:23:15)
 [GCC Apple LLVM 12.0.0 (clang-1200.0.32.21)] on darwin
 Type "help", "copyright", "credits" or "license" for more information.
 >>> from __future__ import print_function
->>> import incendium.gui.vision
->>> print(incendium.gui.vision.__doc__)
-Utility Functions.
-
-The following functions give you access to view various Gateway and
-Client data, as well as interact with other various systems.
-
->>> system.util.beep()
->>> quit()
+>>> import incendium.vision.gui
+>>> print(incendium.vision.gui.__doc__)
+GUI module.
+>>> incendium.vision.gui.warning("This one is a warning")
+This one is a warning es_MX False
+Warning es_MX False
+None This one is a warning Warning 2 None
 ```
 
 And to uninstall:
