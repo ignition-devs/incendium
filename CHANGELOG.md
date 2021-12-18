@@ -1,12 +1,16 @@
 # Changelog
-
 All notable changes to this project will be documented in this file.
 
-## [unreleased]
+## [2.0.1] - 2021-12-18
+
+### Bug Fixes
+
+- check instance of `out_params` ([9317a9e](https://github.com/thecesrom/incendium/commit/9317a9ec051fb6ae28a4e767332c830555215bfd))
 
 ### Documentation
 
 - fix indentation ([fee1f1e](https://github.com/thecesrom/incendium/commit/fee1f1ec12af19bc1c639a348c99cfa4b3028dd3))
+- fix REPL example ([fc43f0b](https://github.com/thecesrom/incendium/commit/fc43f0b501d6699a29c003ff50ba993fe759f3a3))
 
 ### Miscellaneous Tasks
 
@@ -30,6 +34,7 @@ All notable changes to this project will be documented in this file.
 - update `.pylintrc` ([0365963](https://github.com/thecesrom/incendium/commit/0365963dc5480aae6cddb08c7f92843a7756376f))
 - add `setup.py` ([a28cbc4](https://github.com/thecesrom/incendium/commit/a28cbc49164fb2f88c1744ee03a9818fe993fb91))
 - pre-commit autoupdate (#29) ([4396f86](https://github.com/thecesrom/incendium/commit/4396f86f7c12daa5c40da0044543c13fb02d70b5))
+- add `CHANGELOG.md` to `long_description` ([59742e5](https://github.com/thecesrom/incendium/commit/59742e56be3baf42fd2aa07a02929a8b6b5dd56b))
 
 ## [2.0.0] - 2021-10-21
 
