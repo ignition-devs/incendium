@@ -204,7 +204,7 @@ def _execute_sp(
             )
 
     if out_params is not None:
-        if not isinstance(in_params, list):
+        if not isinstance(out_params, list):
             raise TypeError("out_params must be of type 'list'.")
         for param in out_params:
             call.registerOutParam(param.name_or_index, param.type_code)
