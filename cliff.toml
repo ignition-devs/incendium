@@ -4,6 +4,7 @@
 # changelog header
 header = """
 # Changelog
+
 All notable changes to this project will be documented in this file.\n
 """
 # template for the changelog body
