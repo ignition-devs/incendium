@@ -180,14 +180,6 @@ def _execute_sp(
     Returns:
         dict: Result dictionary.
     """
-    _out_params = {}
-    result = {
-        "output_params": None,
-        "result_set": None,
-        "return_value": None,
-        "update_count": None,
-    }
-
     call = system.db.createSProcCall(
         procedureName=stored_procedure,
         database=database,
@@ -196,16 +188,12 @@ def _execute_sp(
     )
 
     if in_params is not None:
-        if not isinstance(in_params, list):
-            raise TypeError("in_params must be of type 'list'.")
         for param in in_params:
             call.registerInParam(
                 param.name_or_index, param.type_code, param.value
             )
 
     if out_params is not None:
-        if not isinstance(out_params, list):
-            raise TypeError("out_params must be of type 'list'.")
         for param in out_params:
             call.registerOutParam(param.name_or_index, param.type_code)
 
@@ -214,20 +202,19 @@ def _execute_sp(
 
     system.db.execSProcCall(call)
 
+    _out_params = {}
     if out_params is not None:
         for param in out_params:
             _out_params[param.name_or_index] = call.getOutParamValue(
                 param.name_or_index
             )
 
-    result["output_params"] = _out_params if get_out_params else None
-    result["result_set"] = call.getResultSet() if get_result_set else None
-    result["return_value"] = call.getReturnValue() if get_ret_val else None
-    result["update_count"] = (
-        call.getUpdateCount() if get_update_count else None
-    )
-
-    return result
+    return {
+        "output_params": _out_params if get_out_params else None,
+        "result_set": call.getResultSet() if get_result_set else None,
+        "return_value": call.getReturnValue() if get_ret_val else None,
+        "update_count": call.getUpdateCount() if get_update_count else None,
+    }
 
 
 def check(stored_procedure, database="", params=None):
