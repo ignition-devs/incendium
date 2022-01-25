@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.2] - 2022-01-25
+
+### Refactor
+
+- fix SonarLint and Sourcery issues ([b308e5b](https://github.com/thecesrom/incendium/commit/b308e5b2785c6dc0c907781590d1840853b3c79f))
+  - **BREAKING**: stop checking instance of `in_params` and `out_params`
+
 ## [2.0.1] - 2021-12-18
 
 ### Bug Fixes
