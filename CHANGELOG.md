@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2022.2.1] - 2022-02-10
+
+### Bug Fixes
+
+- add `get_timestamp` to `__all__` ([3cced12](https://github.com/thecesrom/incendium/commit/3cced1268bac7e4462258b1a56c53b98407bb2d4))
+
 ## [2022.2.0] - 2022-02-10
 
 ### Features
