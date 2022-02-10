@@ -33,7 +33,20 @@ def get_timer(date):
     """
     date_1 = date if isinstance(date, Date) else system.date.fromMillis(date)
     date_2 = system.date.now()
-    minutes, seconds = divmod(system.date.secondsBetween(date_1, date_2), 60)
+    return get_timestamp(system.date.secondsBetween(date_1, date_2))
+
+
+def get_timestamp(value):
+    """Get timestamp in "hh:mm:ss" format.
+
+    Args:
+        value (int): Time represented in seconds.
+
+    Returns:
+        str: Time elapsed represented by a string in the following
+            format: "hh:mm:ss".
+    """
+    minutes, seconds = divmod(value, 60)
     hours, minutes = divmod(minutes, 60)
     return "{:02d}:{:02d}:{:02d}".format(hours, minutes, seconds)
 
