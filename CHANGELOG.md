@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2022.2.0] - 2022-02-10
+
+### Features
+
+- add `get_timestamp` function ([3172d0e](https://github.com/thecesrom/incendium/commit/3172d0e72eb5eab08dd39c90a34caf0a89612b3e))
+
+### Build
+
+- pre-commit autoupdate (#30) ([2c877e4](https://github.com/thecesrom/incendium/commit/2c877e45c23659911dd36525c066ed22adc9f96e))
+
 ## [2.0.2] - 2022-01-25
 
 ### Refactor
