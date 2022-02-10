@@ -1,6 +1,12 @@
 """Utility module."""
 
-__all__ = ["get_function_name", "get_timer", "set_locale", "validate_form"]
+__all__ = [
+    "get_function_name",
+    "get_timer",
+    "get_timestamp",
+    "set_locale",
+    "validate_form",
+]
 
 import traceback
 
