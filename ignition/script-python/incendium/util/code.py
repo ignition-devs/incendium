@@ -18,6 +18,25 @@ from incendium import constants
 from incendium.user import IncendiumUser
 
 
+def _format_error_message(counter, error_message, key):
+    """Format error message.
+
+    Args:
+        counter (int): Number of detected errors.
+        error_message (str): Error message.
+        key (str): Dictionary key.
+
+    Returns:
+        str: Formatted error message.
+    """
+    error_message += (
+        constants.TABBED_LINE + key
+        if counter == 1
+        else constants.NEW_TABBED_LINE + key
+    )
+    return error_message
+
+
 def get_function_name():
     """Get the name of the function last called.
 
@@ -88,9 +107,9 @@ def validate_form(strings=None, numbers=None, collections=None):
     Returns:
         tuple[bool, str]: A tuple containing:
             is_valid (bool): True if all validation tests have passed,
-            False otherwise.
+                False otherwise.
             error_message (str): Error message in case any validation
-            test has failed.
+                test has failed.
     """
     is_valid = True
     error_message = constants.EMPTY_STRING
@@ -100,30 +119,23 @@ def validate_form(strings=None, numbers=None, collections=None):
         for key, value in strings.iteritems():
             if not value:
                 counter += 1
-                error_message += (
-                    constants.TABBED_LINE + key
-                    if counter == 1
-                    else constants.NEW_TABBED_LINE + key
+                error_message = _format_error_message(
+                    counter, error_message, key
                 )
                 is_valid = False
+
+    merged_dict = {}
     if numbers:
-        for key, value in numbers.iteritems():
-            if value is None or value <= 0:
-                counter += 1
-                error_message += (
-                    constants.TABBED_LINE + key
-                    if counter == 1
-                    else constants.NEW_TABBED_LINE + key
-                )
-                is_valid = False
+        merged_dict.update(numbers)
     if collections:
-        for key, value in collections.iteritems():
-            if value is None or value <= 0:
+        merged_dict.update(collections)
+
+    if merged_dict:
+        for key, value in merged_dict.iteritems():
+            if value is None or int(value) <= 0:
                 counter += 1
-                error_message += (
-                    constants.TABBED_LINE + key
-                    if counter == 1
-                    else constants.NEW_TABBED_LINE + key
+                error_message = _format_error_message(
+                    counter, error_message, key
                 )
                 is_valid = False
 
