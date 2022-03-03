@@ -4,11 +4,6 @@ __all__ = ["swap_to", "swap_windows"]
 
 import system.nav
 
-# Constants.
-CURRENT_DIRECTORY = "."
-PARENT_DIRECTORY = ".."
-PATH_SEPARATOR = "/"
-
 
 def _get_full_path(from_path, to_path):
     """Return the full path of the window to swap to.
@@ -23,24 +18,27 @@ def _get_full_path(from_path, to_path):
     Returns:
         str: The full path of the window to swap to.
     """
-    _from = from_path.split(PATH_SEPARATOR)
-    _to = to_path.split(PATH_SEPARATOR)
+    current_directory = "."
+    parent_directory = ".."
+    path_separator = "/"
+    _from = from_path.split(path_separator)
+    _to = to_path.split(path_separator)
     path_parts = []
-    if _to[0] not in (PARENT_DIRECTORY, CURRENT_DIRECTORY):
+    if _to[0] not in (parent_directory, current_directory):
         path_parts = _to
-    elif _to[0] == PARENT_DIRECTORY:
+    elif _to[0] == parent_directory:
         path_parts = _from[:-2] + _to[1:]
-    elif _to[0] == CURRENT_DIRECTORY:
+    elif _to[0] == current_directory:
         path_parts = _from[:-1] + _to[1:]
 
     full_path = []
     for path_part in path_parts:
-        if path_part == PARENT_DIRECTORY and full_path:
+        if path_part == parent_directory and full_path:
             full_path = full_path[:-1]
-        elif path_part != CURRENT_DIRECTORY:
+        elif path_part != current_directory:
             full_path.append(path_part)
 
-    return PATH_SEPARATOR.join(full_path)
+    return path_separator.join(full_path)
 
 
 def swap_to(path, params=None):
