@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2022.3.1] - 2022-03-03
+
+### Refactor
+
+- reduce cognitive complexity ([d32fdc0](https://github.com/thecesrom/incendium/commit/d32fdc02a2bece73af47d38d06722f9f6811654c))
+- fix `perflint` `W8202` ([dc526fe](https://github.com/thecesrom/incendium/commit/dc526fec4a542a64994484a486bb76b4376ac970))
+
+### Styling
+
+- format `pyproject.toml` with `pyproject-fmt` ([c840623](https://github.com/thecesrom/incendium/commit/c84062394b65fad56f96e7bc48c4f445ff676899))
+
+### Build
+
+- remove `W503` from `ignore` ([5c7254a](https://github.com/thecesrom/incendium/commit/5c7254aba09cdb3d421cc9861ed8d89f3b0bad29))
+- add `sort-all@v1.2.0` ([c6dc885](https://github.com/thecesrom/incendium/commit/c6dc88527a5060045951408850bd7aae8cd60ae3))
+
 ## [2022.2.1] - 2022-02-10
 
 ### Bug Fixes
