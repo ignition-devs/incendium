@@ -65,7 +65,7 @@ class _NanoXML(object):
         Returns:
             str: The string representation of the XML document.
         """
-        self._output += "</{}>".format(self.root)
+        self._output += f"</{self.root}>"
         return self._output
 
 
@@ -82,7 +82,7 @@ def _format_value(obj, header=None):
     if obj is None:
         obj = "null"
     elif isinstance(obj, basestring):
-        obj = '"{}"'.format(obj)
+        obj = f'"{obj}"'
     elif isinstance(obj, Date):
         obj = '"{}"'.format(
             system.date.format(obj, "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
@@ -112,7 +112,7 @@ def _to_json(dataset, root, is_root=True):
     columns = dataset.getColumnCount()
     rows = dataset.getRowCount()
     data = system.dataset.toPyDataSet(dataset)
-    ret_str = ("{" if is_root else "") + '"{}":['.format(root)
+    ret_str = ("{" if is_root else "") + f'"{root}":['
     col_count = 0
 
     for row_count, row in enumerate(data, start=1):
@@ -122,9 +122,9 @@ def _to_json(dataset, root, is_root=True):
             val = _format_value(row[header], header)
             comma = "," if col_count < columns else ""
             if isinstance(row[header], BasicDataset):
-                ret_str += "{}{}".format(val, comma)
+                ret_str += f"{val}{comma}"
             else:
-                ret_str += '"{}":{}{}'.format(header, val, comma)
+                ret_str += f'"{header}":{val}{comma}'
         ret_str += "{}{}".format("}", "," if row_count < rows else "")
         col_count = 0
     ret_str += "]"
