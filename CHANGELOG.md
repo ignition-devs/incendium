@@ -2,12 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
-## [2022.3.2] - 2022-03-23
+## [2022.3.2] - 2022-03-24
 
 ### CI
 
 - add dependabot (#31) ([8dc36c4](https://github.com/thecesrom/incendium/commit/8dc36c45344de93dbaaf502c4b9139ceeaa1e372))
 - update `ci.yml` (#37) ([52317b1](https://github.com/thecesrom/incendium/commit/52317b10856baf13c8131514a21b258e1e64e5a1))
+
+### Documentation
+
+- change object type in  `get_users` docstring ([a1cee01](https://github.com/thecesrom/incendium/commit/a1cee016bc8571096ba8ca1cf377311571101e7e))
 
 ### Features
 
