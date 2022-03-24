@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2022.3.2] - 2022-03-23
+
+### CI
+
+- add dependabot (#31) ([8dc36c4](https://github.com/thecesrom/incendium/commit/8dc36c45344de93dbaaf502c4b9139ceeaa1e372))
+- update `ci.yml` (#37) ([52317b1](https://github.com/thecesrom/incendium/commit/52317b10856baf13c8131514a21b258e1e64e5a1))
+
+### Features
+
+- add `get_users` function (#36) ([4d50918](https://github.com/thecesrom/incendium/commit/4d5091894744e164931e62c2b7f937319cef1fef))
+
+### Refactor
+
+- apply multiple refactorings to `dataset` (#34) ([ff7f13b](https://github.com/thecesrom/incendium/commit/ff7f13b8a34449242fadf82b96b91ea28c8b4d67))
+- update `ci.yml` (#38) ([7daf6c3](https://github.com/thecesrom/incendium/commit/7daf6c337eb79ca16dc9827aa5850ccae84643cb))
+
+### Build
+
+- bump actions/checkout from 2 to 3 (#32) ([801fe11](https://github.com/thecesrom/incendium/commit/801fe116cea94212f541382dec2f81099f2b09f1))
+- bump actions/setup-python from 2 to 3 (#33) ([3af6cee](https://github.com/thecesrom/incendium/commit/3af6cee6b9fd10744e0bf532d06afd4016dff5e6))
+
 ## [2022.3.1] - 2022-03-03
 
 ### Refactor

@@ -201,9 +201,9 @@ def get_users(user_source="", filter_role=""):
         user_source (str): The name of the User Source. If not provided,
             the default User Source will be consulted. Optional.
         filter_role (str): The name of the role. If provided, a list of
-            IncendiumUser objects for users that are assigned to a
-            matching role will be retrieved, otherwise all users will be
-            retrieved as IncendiumUser objects. Optional.
+            PyUser objects for users that are assigned to a matching
+            role will be retrieved, otherwise all users will be
+            retrieved as PyUser objects. Optional.
 
     Returns:
         list[PyUser]: A list of PyUser objects.
