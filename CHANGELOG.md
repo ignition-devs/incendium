@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [2022.3.2] - 2022-03-24
 
+### Bug Fixes
+
+- run `ci` on all PRs (#40) ([15cf079](https://github.com/thecesrom/incendium/commit/15cf079b5a3c841d14e3698eb90b5e6a48b61175))
+
 ### CI
 
 - add dependabot (#31) ([8dc36c4](https://github.com/thecesrom/incendium/commit/8dc36c45344de93dbaaf502c4b9139ceeaa1e372))
