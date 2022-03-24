@@ -2,6 +2,7 @@ name: ci
 
 on:
   pull_request:
+    branches: [code]
   push:
     branches: [code]
 
