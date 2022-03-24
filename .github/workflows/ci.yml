@@ -1,10 +1,10 @@
 name: ci
 
 on:
+  pull_request:
   push:
     branches:
       - code
-  pull_request:
 
 env:
   PYTHON_VERSION: '3.10'
