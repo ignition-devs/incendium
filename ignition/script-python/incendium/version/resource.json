@@ -1,16 +1,16 @@
 {
   "scope": "A",
   "version": 1,
-  "restricted": false,
-  "overridable": true,
+  "restricted": true,
+  "overridable": false,
   "files": [
     "code.py"
   ],
   "attributes": {
     "lastModification": {
       "actor": "thecesrom",
-      "timestamp": "2022-03-24T18:27:11Z"
+      "timestamp": "2022-03-24T18:34:41Z"
     },
-    "lastModificationSignature": "34af7f35d8999244bac64337cd27131dd800fa2f25628df8adf4304f0ca5c961"
+    "lastModificationSignature": "6b233503b2d121600a9a2da10edeb3c8d3ac7f581098037d33da97a845074d22"
   }
 }
