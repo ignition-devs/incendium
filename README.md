@@ -47,7 +47,7 @@ Before you begin, ensure you have met the following requirements:
 
 ## Installation and usage
 
-To use Ignition, you may install it by doing any of the following.
+To use incendium, you may install it by doing any of the following.
 
 ### Installing with `pip`
 
