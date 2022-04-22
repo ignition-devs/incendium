@@ -166,8 +166,7 @@ def _execute_sp(
         out_params (list[OutParam]): A Dictionary containing OUTPUT
             parameters. Optional.
         get_out_params (bool): A flag indicating whether to return
-            OUTPUT parameters
-        after execution. Optional.
+            OUTPUT parameters after execution. Optional.
         get_result_set (bool): A flag indicating whether to return a
             dataset that is the resulting data of the stored procedure,
             if any. Optional.
