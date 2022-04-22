@@ -165,17 +165,19 @@ def _execute_sp(
             parameters. Optional.
         out_params (list[OutParam]): A Dictionary containing OUTPUT
             parameters. Optional.
-        get_out_params (bool): A flag indicating whether or not to
-            return OUTPUT parameters after execution. Optional.
-        get_result_set (bool): A flag indicating whether or not to
-            return a dataset that is the resulting data of the stored
-            procedure, if any. Optional.
-        get_ret_val (bool): A flag indicating whether or not to return
-            the return value of the stored procedure Call. Optional.
+        get_out_params (bool): A flag indicating whether to return
+            OUTPUT parameters
+        after execution. Optional.
+        get_result_set (bool): A flag indicating whether to return a
+            dataset that is the resulting data of the stored procedure,
+            if any. Optional.
+        get_ret_val (bool): A flag indicating whether to get the return
+            value of the stored procedure Call. Optional.
         return_type_code (int): The return value Type Code. Optional.
-        get_update_count (bool): A flag indicating whether or not to
-            return the number of rows modified by the stored
-            procedure, or -1 if not applicable. Optional.
+        return_type_code (int): The return value Type Code. Optional.
+        get_update_count (bool): A flag indicating whether to return the
+            number of rows modified by the stored procedure, or -1 if
+            not applicable. Optional.
 
     Returns:
         dict: Result dictionary.

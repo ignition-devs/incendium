@@ -37,7 +37,7 @@ def write(tag_path, value):
         value (object): The value to write.
 
     Returns:
-        int: 0 if the write failed immediately, 1 if it succeeded
+        int: 0 if the operation failed immediately, 1 if it succeeded
             immediately, and 2 if it is pending.
     """
     quality_codes = system.tag.writeBlocking([tag_path], [value])

@@ -41,8 +41,8 @@ def _send_email(subject, body, html, to, priority):
     Args:
         subject (str): The subject line for the email.
         body (str): The body text of the email.
-        html (bool): A flag indicating whether or not to send the email
-            as an HTML email. Will auto-detect if omitted.
+        html (bool): A flag indicating whether to send the email in HTML
+            format.
         to (list[str]): A list of email addresses to send to.
         priority (str): Priority for the message.
     """
