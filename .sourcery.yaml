@@ -3,6 +3,7 @@ ignore: []
 refactor:
   include: []
   skip:
+    - dict-assign-update-to-union
     - use-fstring-for-formatting
   rule_types:
     - refactoring
