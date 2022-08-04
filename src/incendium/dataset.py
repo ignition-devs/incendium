@@ -94,7 +94,7 @@ def _format_value(obj, header=None):
     return obj
 
 
-def _to_json(dataset, root, is_root=True):
+def _to_json(dataset, root=None, is_root=True):
     """Return a string JSON representation of the Dataset.
 
     Private function.
@@ -108,11 +108,13 @@ def _to_json(dataset, root, is_root=True):
     Returns:
         str: The string JSON representation of the dataset.
     """
-    headers = system.dataset.getColumnHeaders(dataset)
+    headers = dataset.getColumnNames()
     columns = dataset.getColumnCount()
     rows = dataset.getRowCount()
     data = system.dataset.toPyDataSet(dataset)
-    ret_str = ("{" if is_root else "") + '"{}":['.format(root)
+    ret_str = ("{" if is_root and root is not None else "") + (
+        '"{}":['.format(root) if root is not None else "["
+    )
     col_count = 0
 
     for row_count, row in enumerate(data, start=1):
@@ -128,12 +130,12 @@ def _to_json(dataset, root, is_root=True):
         ret_str += "{}{}".format("}", "," if row_count < rows else "")
         col_count = 0
     ret_str += "]"
-    ret_str += "}" if is_root else ""
+    ret_str += "}" if is_root and root is not None else ""
 
     return ret_str
 
 
-def to_json(dataset, root="json"):
+def to_json(dataset, root=None):
     """Return a string JSON representation of the Dataset.
 
     Args:
