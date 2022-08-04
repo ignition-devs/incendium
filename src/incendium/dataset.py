@@ -149,6 +149,28 @@ def to_json(dataset, root=None):
     return _to_json(dataset, root)
 
 
+def to_jsonobject(dataset):
+    """Convert a Dataset into a Python list of dictionaries.
+
+    Args:
+        dataset (Dataset): The input dataset.
+
+    Returns:
+        list[dict]: The Dataset as a Python object.
+    """
+    data = []
+    headers = dataset.getColumnNames()
+    row_count = dataset.getRowCount()
+
+    for i in range(row_count):
+        row_dict = {
+            header: dataset.getValueAt(i, header) for header in headers
+        }
+        data.append(row_dict)
+
+    return data
+
+
 def to_xml(dataset, root="root", element="row", indent="\t"):
     r"""Return a string XML representation of the Dataset.
 
