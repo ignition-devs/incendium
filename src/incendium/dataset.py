@@ -6,7 +6,7 @@ __all__ = ["to_json", "to_xml"]
 
 import system.dataset
 import system.date
-from com.inductiveautomation.ignition.common import BasicDataset
+from com.inductiveautomation.ignition.common import Dataset
 from java.util import Date
 
 
@@ -87,7 +87,7 @@ def _format_value(obj, header=None):
         obj = '"{}"'.format(
             system.date.format(obj, "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
         )
-    elif isinstance(obj, BasicDataset):
+    elif isinstance(obj, Dataset):
         obj = _to_json(obj, header, False)
     else:
         obj = "{!r}".format(obj)
@@ -121,7 +121,7 @@ def _to_json(dataset, root, is_root=True):
             col_count += 1
             val = _format_value(row[header], header)
             comma = "," if col_count < columns else ""
-            if isinstance(row[header], BasicDataset):
+            if isinstance(row[header], Dataset):
                 ret_str += "{}{}".format(val, comma)
             else:
                 ret_str += '"{}":{}{}'.format(header, val, comma)
@@ -137,7 +137,7 @@ def to_json(dataset, root="json"):
     """Return a string JSON representation of the Dataset.
 
     Args:
-        dataset (BasicDataset): The input dataset.
+        dataset (Dataset): The input dataset.
         root (str): The value of the root. If not provided, it defaults
             to "json". Optional.
 
