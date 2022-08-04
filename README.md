@@ -89,7 +89,7 @@ You may also download the code targeted to your desired version from the [releas
 To include `incendium` as a dependency in PyCharm, you will need to attach it to your project.
 
 1. Clone the repo or download from [releases](https://github.com/thecesrom/incendium/releases)
-2. With your project open where you want to include `ignition-api`, navigate to `File > Open` and select the `incendium` project folder
+2. With your project open where you want to include `incendium`, navigate to `File > Open` and select the `incendium` project folder
 3. Choose `Attach` when prompted
 4. Under the `incendium` project folder, right-click on the `src/` folder and choose `Mark Directory as > Sources Root`
 
