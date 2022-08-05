@@ -1,3 +1,9 @@
+## v2022.8.2 (2022-08-05)
+
+### Refactor
+
+- **dataset**: work with nested Datasets on to_jsonobject (#56)
+
 ## v2022.8.1 (2022-08-05)
 
 ### Refactor
