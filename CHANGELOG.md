@@ -1,3 +1,9 @@
+## v2022.8.1 (2022-08-05)
+
+### Refactor
+
+- **db**: remove unnecessary str cast
+
 ## v2022.8.0 (2022-08-05)
 
 ### Feat
