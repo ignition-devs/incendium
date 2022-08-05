@@ -30,4 +30,4 @@ jobs:
         mypy src
     - name: Analysing the code with pylint
       run: |
-        pylint src
+        pylint --disable=no-name-in-module --verbose src
