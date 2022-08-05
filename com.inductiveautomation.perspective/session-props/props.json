@@ -44,12 +44,17 @@
     "props.id": {
       "access": "SYSTEM",
       "persistent": false
+    },
+    "props.lastActivity": {
+      "access": "SYSTEM",
+      "persistent": false
     }
   },
   "props": {
+    "address": "127.0.0.1",
     "device": {},
     "geolocation": {},
-    "locale": "en-MX",
+    "locale": "en-US",
     "timeZoneId": "America/Tijuana"
   }
 }

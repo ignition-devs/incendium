@@ -144,8 +144,8 @@ def _execute_sp(
     get_out_params=False,
     get_result_set=False,
     get_ret_val=False,
-    return_type_code=None,
     get_update_count=False,
+    return_type_code=None,
 ):
     """Execute a stored procedure against the connection.
 
@@ -172,10 +172,10 @@ def _execute_sp(
             procedure, if any. Optional.
         get_ret_val (bool): A flag indicating whether or not to return
             the return value of the stored procedure Call. Optional.
-        return_type_code (int): The return value Type Code. Optional.
         get_update_count (bool): A flag indicating whether or not to
             return the number of rows modified by the stored
             procedure, or -1 if not applicable. Optional.
+        return_type_code (int): The return value Type Code. Optional.
 
     Returns:
         dict: Result dictionary.
@@ -188,14 +188,14 @@ def _execute_sp(
     )
 
     if in_params is not None:
-        for param in in_params:
+        for i_param in in_params:
             call.registerInParam(
-                param.name_or_index, param.type_code, param.value
+                i_param.name_or_index, i_param.type_code, i_param.value
             )
 
     if out_params is not None:
-        for param in out_params:
-            call.registerOutParam(param.name_or_index, param.type_code)
+        for o_param in out_params:
+            call.registerOutParam(o_param.name_or_index, o_param.type_code)
 
     if get_ret_val:
         call.registerReturnParam(return_type_code)
@@ -203,14 +203,14 @@ def _execute_sp(
     system.db.execSProcCall(call)
 
     _out_params = {}
-    if out_params is not None:
-        for param in out_params:
-            _out_params[param.name_or_index] = call.getOutParamValue(
-                param.name_or_index
+    if out_params is not None and get_out_params:
+        for o_param in out_params:
+            _out_params[o_param.name_or_index] = call.getOutParamValue(
+                o_param.name_or_index
             )
 
     return {
-        "output_params": _out_params if get_out_params else None,
+        "output_params": _out_params,
         "result_set": call.getResultSet() if get_result_set else None,
         "return_value": call.getReturnValue() if get_ret_val else None,
         "update_count": call.getUpdateCount() if get_update_count else None,
@@ -239,7 +239,9 @@ def check(stored_procedure, database="", params=None):
         stored_procedure, output=[output], database=database, params=params
     )
 
-    return output_params["flag"]
+    return (
+        output_params["flag"] if "flag" in output_params.iterkeys() else None
+    )
 
 
 def execute_non_query(
@@ -363,8 +365,8 @@ def get_return_value(
         database=database,
         transaction=transaction,
         in_params=params,
-        return_type_code=return_type_code,
         get_ret_val=True,
+        return_type_code=return_type_code,
     )
 
     return result["return_value"]

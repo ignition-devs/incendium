@@ -116,8 +116,8 @@ def validate_form(strings=None, numbers=None, collections=None):
     counter = 0
 
     if strings:
-        for key, value in strings.iteritems():
-            if not value:
+        for key, str_val in strings.iteritems():
+            if not str_val:
                 counter += 1
                 error_message = _format_error_message(
                     counter, error_message, key
@@ -131,8 +131,8 @@ def validate_form(strings=None, numbers=None, collections=None):
         merged_dict.update(collections)
 
     if merged_dict:
-        for key, value in merged_dict.iteritems():
-            if value is None or int(value) <= 0:
+        for key, num_val in merged_dict.iteritems():
+            if num_val is None or num_val <= 0:
                 counter += 1
                 error_message = _format_error_message(
                     counter, error_message, key

@@ -2,11 +2,11 @@
 
 from __future__ import unicode_literals
 
-__all__ = ["to_json", "to_xml"]
+__all__ = ["to_json", "to_jsonobject", "to_xml"]
 
 import system.dataset
 import system.date
-from com.inductiveautomation.ignition.common import BasicDataset
+from com.inductiveautomation.ignition.common import Dataset
 from java.util import Date
 
 
@@ -69,7 +69,7 @@ class _NanoXML(object):
         return self._output
 
 
-def _format_value(obj, header=None):
+def _format_value(obj, header=""):
     """Format the value to be properly represented in JSON.
 
     Args:
@@ -79,19 +79,20 @@ def _format_value(obj, header=None):
     Returns:
         str: The string representation of the value.
     """
+    _obj = ""
     if obj is None:
-        obj = "null"
+        _obj = "null"
     elif isinstance(obj, basestring):
-        obj = '"{}"'.format(obj)
+        _obj = '"{}"'.format(obj)
     elif isinstance(obj, Date):
-        obj = '"{}"'.format(
+        _obj = '"{}"'.format(
             system.date.format(obj, "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
         )
-    elif isinstance(obj, BasicDataset):
-        obj = _to_json(obj, header, False)
+    elif isinstance(obj, Dataset):
+        _obj = _to_json(obj, header, False)
     else:
-        obj = "{!r}".format(obj)
-    return obj
+        _obj = "{!r}".format(obj)
+    return _obj
 
 
 def _to_json(dataset, root, is_root=True):
@@ -100,7 +101,7 @@ def _to_json(dataset, root, is_root=True):
     Private function.
 
     Args:
-        dataset (BasicDataset): The input dataset.
+        dataset (Dataset): The input dataset.
         root (str): The value of the header.
         is_root (bool): True if we are at the root, False otherwise.
             Optional.
@@ -108,11 +109,13 @@ def _to_json(dataset, root, is_root=True):
     Returns:
         str: The string JSON representation of the dataset.
     """
-    headers = system.dataset.getColumnHeaders(dataset)
+    headers = dataset.getColumnNames()
     columns = dataset.getColumnCount()
     rows = dataset.getRowCount()
     data = system.dataset.toPyDataSet(dataset)
-    ret_str = ("{" if is_root else "") + '"{}":['.format(root)
+    ret_str = ("{" if is_root and root is not None else "") + (
+        '"{}":['.format(root) if root is not None else "["
+    )
     col_count = 0
 
     for row_count, row in enumerate(data, start=1):
@@ -121,25 +124,24 @@ def _to_json(dataset, root, is_root=True):
             col_count += 1
             val = _format_value(row[header], header)
             comma = "," if col_count < columns else ""
-            if isinstance(row[header], BasicDataset):
+            if isinstance(row[header], Dataset):
                 ret_str += "{}{}".format(val, comma)
             else:
                 ret_str += '"{}":{}{}'.format(header, val, comma)
         ret_str += "{}{}".format("}", "," if row_count < rows else "")
         col_count = 0
     ret_str += "]"
-    ret_str += "}" if is_root else ""
+    ret_str += "}" if is_root and root is not None else ""
 
     return ret_str
 
 
-def to_json(dataset, root="json"):
+def to_json(dataset, root=None):
     """Return a string JSON representation of the Dataset.
 
     Args:
-        dataset (BasicDataset): The input dataset.
-        root (str): The value of the root. If not provided, it defaults
-            to "json". Optional.
+        dataset (Dataset): The input dataset.
+        root (str): The value of the root. Optional.
 
     Returns:
         str: The string JSON representation of the dataset.
@@ -147,11 +149,33 @@ def to_json(dataset, root="json"):
     return _to_json(dataset, root)
 
 
+def to_jsonobject(dataset):
+    """Convert a Dataset into a Python list of dictionaries.
+
+    Args:
+        dataset (Dataset): The input dataset.
+
+    Returns:
+        list[dict]: The Dataset as a Python object.
+    """
+    data = []
+    headers = dataset.getColumnNames()
+    row_count = dataset.getRowCount()
+
+    for i in range(row_count):
+        row_dict = {
+            header: dataset.getValueAt(i, header) for header in headers
+        }
+        data.append(row_dict)
+
+    return data
+
+
 def to_xml(dataset, root="root", element="row", indent="\t"):
     r"""Return a string XML representation of the Dataset.
 
     Args:
-        dataset (BasicDataset): The input dataset.
+        dataset (Dataset): The input dataset.
         root (str): The value of the root. If not provided, it defaults
             to "root". Optional.
         element (str): The value of the row. If not provided, it
@@ -162,14 +186,14 @@ def to_xml(dataset, root="root", element="row", indent="\t"):
     Returns:
         str: The string XML representation of the dataset.
     """
-    headers = system.dataset.getColumnHeaders(dataset)
-    data = system.dataset.toPyDataSet(dataset)
+    headers = dataset.getColumnNames()
+    row_count = dataset.getRowCount()
     xml = _NanoXML(root, indent)
 
-    for row in data:
+    for i in range(row_count):
         xml.add_element(element)
         for header in headers:
-            xml.add_sub_element(header, row[header])
+            xml.add_sub_element(header, dataset.getValueAt(i, header))
         xml.close_element(element)
 
     return xml.to_string()
