@@ -2,12 +2,35 @@
 
 from __future__ import unicode_literals
 
-__all__ = ["confirm", "error", "info", "input", "warning"]
+__all__ = [
+    "CURSOR_CROSSHAIR",
+    "CURSOR_DEFAULT",
+    "CURSOR_E_RESIZE",
+    "CURSOR_HAND",
+    "CURSOR_MOVE",
+    "CURSOR_NE_RESIZE",
+    "CURSOR_NW_RESIZE",
+    "CURSOR_N_RESIZE",
+    "CURSOR_SE_RESIZE",
+    "CURSOR_SW_RESIZE",
+    "CURSOR_S_RESIZE",
+    "CURSOR_TEXT",
+    "CURSOR_WAIT",
+    "CURSOR_W_RESIZE",
+    "confirm",
+    "error",
+    "info",
+    "input",
+    "warning",
+]
+
+from typing import Optional
 
 import system.util
 from javax.swing import JLabel, JOptionPane, JPanel, JTextField
 
 from incendium import constants
+from incendium.types import String
 
 # Cursor codes.
 CURSOR_DEFAULT = 0
@@ -27,23 +50,22 @@ CURSOR_MOVE = 13
 
 
 def confirm(message, title="Confirm", show_cancel=False):
+    # type: (String, String, bool) -> Optional[bool]
     """Display a confirmation dialog box to the user.
 
     This will present the user with "Yes", "No" and "Cancel" options,
     and a custom message.
 
     Args:
-        message (str): The message to display. This will be translated
-            to the selected Locale.
-        title (str): A title for the message box. This will be
-            translated to the selected Locale. Optional.
-        show_cancel (bool): Show a cancel button in the dialog.
-            Optional.
+        message: The message to display. This will be translated to the
+            selected Locale.
+        title: A title for the message box. This will be translated to
+            the selected Locale. Optional.
+        show_cancel: Show a cancel button in the dialog. Optional.
 
     Returns:
-        bool: True if the user selected "Yes", False if the user
-            selected "No", None if the user selected "Cancel" or
-            closes the dialog.
+        True if the user selected "Yes", False if the user selected
+        "No", None if the user selected "Cancel" or closes the dialog.
     """
     options = [
         system.util.translate(constants.YES_TEXT),
@@ -72,15 +94,16 @@ def confirm(message, title="Confirm", show_cancel=False):
 
 
 def error(message, title="Error", detail=None):
+    # type: (String, String, Optional[String]) -> None
     """Display an error-style message box to the user.
 
     Args:
-        message (str): The message to display in an error box. This
-            will be translated to the selected Locale.
-        title (str): A title for the error box. This will be
-            translated to the selected Locale. Optional.
-        detail (str): Additional text to display. This will be
-            translated to the selected Locale. Optional.
+        message: The message to display in an error box. This will be
+            translated to the selected Locale.
+        title: A title for the error box. This will be translated to the
+            selected Locale. Optional.
+        detail: Additional text to display. This will be translated to
+            the selected Locale. Optional.
     """
     if detail is None:
         msg = system.util.translate(message)
@@ -94,15 +117,16 @@ def error(message, title="Error", detail=None):
 
 
 def info(message, title="Information", detail=None):
+    # type: (String, String, Optional[String]) -> None
     """Display an informational-style message popup box to the user.
 
     Args:
-        message (str): The message to display. This will be translated
-            to the selected Locale. Will accept html formatting.
-        title (str): A title for the message box. This will be
-            translated to the selected Locale. Optional.
-        detail (str): Additional text to display. This will be
-            translated to the selected Locale. Optional.
+        message: The message to display. This will be translated to the
+            selected Locale. Will accept html formatting.
+        title: A title for the message box. This will be translated to
+            the selected Locale. Optional.
+        detail: Additional text to display. This will be translated to
+            the selected Locale. Optional.
     """
     if detail is None:
         msg = system.util.translate(message)
@@ -119,6 +143,7 @@ def info(message, title="Information", detail=None):
 
 
 def input(message, title="Input"):
+    # type: (String, String) -> Optional[String]
     """Open up a popup input dialog box.
 
     This dialog box will show a prompt message, and allow the user to
@@ -128,13 +153,13 @@ def input(message, title="Input"):
     the value None.
 
     Args:
-        message (str): The message to display. This will be translated
-            to the selected Locale. Will accept html formatting.
-        title (str): A title for the input box. This will be translated
-            to the selected Locale. Optional.
+        message: The message to display. This will be translated to the
+            selected Locale. Will accept html formatting.
+        title: A title for the input box. This will be translated to the
+            selected Locale. Optional.
 
     Returns:
-        str: The string value that was entered in the input box.
+        The string value that was entered in the input box.
     """
     options = [
         system.util.translate(constants.OK_TEXT),
@@ -162,15 +187,16 @@ def input(message, title="Input"):
 
 
 def warning(message, title="Warning", detail=None):
+    # type: (String, String, Optional[String]) -> None
     """Display a message to the user in a warning style popup dialog.
 
     Args:
-        message (str): The message to display in a warning box. This
-            will be translated to the selected Locale.
-        title (str): A title for the warning box. This will be
-            translated to the selected Locale. Optional.
-        detail (str): Additional text to display. This will be
-            translated to the selected Locale. Optional.
+        message: The message to display in a warning box. This will be
+            translated to the selected Locale.
+        title: A title for the warning box. This will be translated to
+            the selected Locale. Optional.
+        detail: Additional text to display. This will be translated to
+            the selected Locale. Optional.
     """
     if detail is None:
         msg = system.util.translate(message)

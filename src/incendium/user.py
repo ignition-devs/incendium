@@ -12,21 +12,32 @@ __all__ = [
     "get_users",
 ]
 
+from typing import List, Optional
+
 import system.security
 import system.user
 from com.inductiveautomation.ignition.common.user import ContactInfo, PyUser
 
 from incendium.exceptions import ApplicationError
+from incendium.types import String
 
 
 class IncendiumUser(object):
     """Wrapper class for Ignition's User object."""
 
+    _roles = None  # type: List[String]
+    _locale = None  # type: String
+    _last_name = None  # type: String
+    _first_name = None  # type: String
+    _email = None  # type: Optional[String]
+    _contact_info = None  # type: List[ContactInfo]
+
     def __init__(self, user):
+        # type: (PyUser) -> None
         """User initializer.
 
         Args:
-            user (PyUser): Ignition's user object.
+            user: Ignition's user object.
         """
         self._contact_info = user.getContactInfo()
         self._email = None
@@ -37,19 +48,21 @@ class IncendiumUser(object):
 
     @property
     def contact_info(self):
+        # type: () -> List[ContactInfo]
         """Get User's ContactInfo.
 
         Returns:
-            list[ContactInfo]: A sequence of ContactInfo objects.
+            A sequence of ContactInfo objects.
         """
         return self._contact_info
 
     @property
     def email(self):
+        # type: () -> List[String]
         """Get User's email address(es).
 
         Returns:
-            list[str]: User's email address(es).
+            User's email address(es).
         """
         return [
             ci.value for ci in self._contact_info if ci.contactType == "email"
@@ -57,63 +70,69 @@ class IncendiumUser(object):
 
     @property
     def first_name(self):
+        # type: () -> String
         """Get User's first name.
 
         Returns:
-            str: User's first name.
+            User's first name.
         """
         return self._first_name
 
     @property
     def full_name(self):
+        # type: () -> String
         """Get User's full name.
 
         Returns:
-            str: User's full name.
+            User's full name.
         """
         return " ".join([self._first_name, self._last_name])
 
     @property
     def last_name(self):
+        # type: () -> String
         """Get User's last name.
 
         Returns:
-            str: User's last name.
+            User's last name.
         """
         return self._last_name
 
     @property
     def locale(self):
+        # type: () -> String
         """Get User's preferred language.
 
         Returns:
-            str: User's preferred language.
+            User's preferred language.
         """
         return self._locale
 
     @property
     def roles(self):
+        # type: () -> List[String]
         """Get User's Roles.
 
         Returns:
-            list[str]: A list of Roles for this User.
+            A list of Roles for this User.
         """
         return self._roles
 
 
 def get_emails(user_source="", filter_role=""):
+    # type: (String, String) -> List[String]
     """Get a list of email addresses from a User Source.
 
     Args:
-        user_source (str): The name of the User Source. If not provided,
-            the default User Source will be consulted. Optional.
-        filter_role (str): The name of the role. If provided, a list of
-            email addresses for users that are assigned to a matching
-            role will be retrieved, otherwise all email addresses will
-            be retrieved. Optional.
+        user_source: The name of the User Source. If not provided, the
+            default User Source will be consulted. Optional.
+        filter_role: The name of the role. If provided, a list of email
+            addresses for users that are assigned to a matching role
+            will be retrieved, otherwise all email addresses will be
+            retrieved. Optional.
 
     Returns:
-        list[str]: A list of email addresses.
+        A list of email addresses.
     """
     emails = set()
     users = [
@@ -126,15 +145,16 @@ def get_emails(user_source="", filter_role=""):
 
 
 def get_user(user_source="", failover=None):
+    # type: (String, Optional[String]) -> IncendiumUser
     """Look up the logged-in User in a User Source.
 
     Args:
-        user_source (str): The name of the User Source. If not provided,
-            the default User Source will be consulted. Optional.
-        failover (str): The name of the Failover Source. Optional.
+        user_source: The name of the User Source. If not provided, the
+            default User Source will be consulted. Optional.
+        failover: The name of the Failover Source. Optional.
 
     Returns:
-        IncendiumUser: An IncendiumUser object.
+        An IncendiumUser object.
 
     Raises:
         ApplicationError: If User is not found.
@@ -153,60 +173,64 @@ def get_user(user_source="", failover=None):
 
 
 def get_user_email_address(user_source="", failover=None):
+    # type: (String, Optional[String]) -> List[String]
     """Get the User's Email address(es).
 
     Args:
-        user_source (str): The name of the User Source. If not provided,
-            the default User Source will be consulted. Optional.
-        failover (str): The name of the Fallback profile. Optional.
+        user_source: The name of the User Source. If not provided, the
+            default User Source will be consulted. Optional.
+        failover: The name of the Fallback profile. Optional.
 
     Returns:
-        list[str]: The User's Email address(es).
+        The User's Email address(es).
     """
     return get_user(user_source, failover).email
 
 
 def get_user_first_name(user_source="", failover=None):
+    # type: (String, Optional[String]) -> String
     """Get the User's First Name.
 
     Args:
-        user_source (str): The name of the User Source. If not provided,
-            the default User Source will be consulted. Optional.
-        failover (str): The name of the Fallback profile. Optional.
+        user_source: The name of the User Source. If not provided, the
+            default User Source will be consulted. Optional.
+        failover: The name of the Fallback profile. Optional.
 
     Returns:
-        str: The User's First Name.
+        The User's First Name.
     """
     return get_user(user_source, failover).first_name
 
 
 def get_user_full_name(user_source="", failover=None):
+    # type: (String, Optional[String]) -> String
     """Get the User's Full Name.
 
     Args:
-        user_source (str): The name of the User Source. If not provided,
-            the default User Source will be consulted. Optional.
-        failover (str): The name of the Fallback profile. Optional.
+        user_source: The name of the User Source. If not provided, the
+            default User Source will be consulted. Optional.
+        failover: The name of the Fallback profile. Optional.
 
     Returns:
-        str: The User's Full Name.
+        The User's Full Name.
     """
     return get_user(user_source, failover).full_name
 
 
 def get_users(user_source="", filter_role=""):
+    # type: (String, String) -> List[PyUser]
     """Get a list of PyUser objects from a User Source filtered by role.
 
     Args:
-        user_source (str): The name of the User Source. If not provided,
-            the default User Source will be consulted. Optional.
-        filter_role (str): The name of the role. If provided, a list of
-            PyUser objects for users that are assigned to a matching
-            role will be retrieved, otherwise all users will be
-            retrieved as PyUser objects. Optional.
+        user_source: The name of the User Source. If not provided, the
+            default User Source will be consulted. Optional.
+        filter_role: The name of the role. If provided, a list of PyUser
+            objects for users that are assigned to a matching role will
+            be retrieved, otherwise all users will be retrieved as
+            PyUser objects. Optional.
 
     Returns:
-        list[PyUser]: A list of PyUser objects.
+        A list of PyUser objects.
     """
     users = system.user.getUsers(user_source)
     return (
