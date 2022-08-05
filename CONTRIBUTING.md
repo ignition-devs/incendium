@@ -63,6 +63,12 @@ The `footer` is optional. The [Commit Message Footer](#commit-message-footer) fo
 
 ```text
 <type>(<scope>): <summary>
+  │       │             │
+  │       │             └─⫸ Summary in present tense. Not capitalized. No period at the end.
+  │       │
+  │       └─⫸ Commit Scope: constants|dataset|date|db|exception|net|tag|types|user|util|vision
+  │
+  └─⫸ Commit Type: build|ci|docs|feat|fix|perf|refactor|test
 ```
 
 The `<type>` and `<summary>` fields are mandatory, the `(<scope>)` field is optional.
@@ -75,10 +81,10 @@ Must be one of the following:
 * **chore**: Other changes that don't modify src or test files (example scopes: `release`)
 * **ci**: Changes to our CI configuration files and scripts (example scope: `pip`)
 * **docs**: Documentation only changes
-* **feat**: A new feature (example scopes: `ia`, `java`, `javax`, `org`, `system`, `thecesrom`)
-* **fix**: A bug fix (example scopes: same as **feat**)
-* **perf**: A code change that improves performance (example scopes: same as **feat**)
-* **refactor**: A code change that neither fixes a bug nor adds a feature (example scopes: same as **feat**)
+* **feat**: A new feature
+* **fix**: A bug fix
+* **perf**: A code change that improves performance
+* **refactor**: A code change that neither fixes a bug nor adds a feature
 * **revert**: Reverts a previous commit
 * **style**: Changes that do not affect the meaning of the code (white-space, formatting, etc.)
 * **test**: Adding missing tests or correcting existing tests
@@ -89,13 +95,17 @@ The `scope` should be the name of the Python package affected.
 
 The following is the list of supported scopes:
 
-* **ia**: for changes to the `com.inductiveautomation` package
-* **java**: for changes to the `java` package
-* **javax**: for changes to the `javax` package
-* **org**: for changes to the `org` package
-* **pip**: for changes to Python Packaging files (`pyproject.toml`, `setup.cfg`, `setup.py`)
-* **system**: for changes to the `system` package
-* **thecesrom**: for changes to the `dev.thecesrom` package
+* constants
+* dataset
+* date|
+* db
+* exception
+* net
+* tag
+* types
+* user
+* util
+* vision
 
 There are currently a few exceptions to the "use package name" rule:
 
@@ -115,7 +125,7 @@ Use the summary field to provide a succinct description of the change:
 Example Conventional Commit message:
 
 ```text
-refactor(ia): improve Version comparison logic
+refactor(dataset): use Dataset instance functions
 ```
 
 ## Commit Message Footer
