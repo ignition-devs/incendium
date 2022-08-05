@@ -8,6 +8,9 @@ requires = [
 [tool.black]
 line-length = 79
 
+[tool.commitizen]
+name = "cz_conventional_commits"
+
 [tool.isort]
 extra_standard_library = ["typing"]
 line_length= 79
