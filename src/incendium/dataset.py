@@ -91,18 +91,18 @@ def _format_value(obj, header=""):
     """
     _obj = ""
     if obj is None:
-        _obj = "null"
+        return "null"
     elif isinstance(obj, basestring):
-        _obj = '"{}"'.format(obj)
+        return '"{}"'.format(obj)
     elif isinstance(obj, Date):
-        _obj = '"{}"'.format(
+        return '"{}"'.format(
             system.date.format(obj, "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
         )
+
     elif isinstance(obj, Dataset):
-        _obj = _to_json(obj, header, False)
+        return _to_json(obj, header, False)
     else:
-        _obj = "{!r}".format(obj)
-    return _obj
+        return "{!r}".format(obj)
 
 
 def _to_json(dataset, root=None, is_root=True):
