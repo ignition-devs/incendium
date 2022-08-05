@@ -1,5 +1,5 @@
 # coding=utf-8
-# Copyright (C) 2020-2021
+# Copyright (C) 2020-2022
 # Author: César Román
 # Contact: cesar@thecesrom.dev
 #
