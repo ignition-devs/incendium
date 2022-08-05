@@ -186,14 +186,14 @@ def to_xml(dataset, root="root", element="row", indent="\t"):
     Returns:
         str: The string XML representation of the dataset.
     """
-    headers = system.dataset.getColumnHeaders(dataset)
-    data = system.dataset.toPyDataSet(dataset)
+    headers = dataset.getColumnNames()
+    row_count = dataset.getRowCount()
     xml = _NanoXML(root, indent)
 
-    for row in data:
+    for i in range(row_count):
         xml.add_element(element)
         for header in headers:
-            xml.add_sub_element(header, row[header])
+            xml.add_sub_element(header, dataset.getValueAt(i, header))
         xml.close_element(element)
 
     return xml.to_string()
