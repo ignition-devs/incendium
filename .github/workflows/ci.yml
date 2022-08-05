@@ -30,4 +30,4 @@ jobs:
         mypy src
     - name: Analysing the code with pylint
       run: |
-        pylint --disable=no-name-in-module --verbose src
+        pylint $(git ls-files '*.py')
