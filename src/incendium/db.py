@@ -83,10 +83,10 @@ class DisposableConnection(object):
 
     @property
     def status(self):
-        # type: () -> str
+        # type: () -> String
         """Get connection status."""
         connection_info = system.db.getConnectionInfo(self.database)
-        return str(connection_info.getValueAt(0, "Status"))
+        return connection_info.getValueAt(0, "Status")
 
 
 class Param(object):
