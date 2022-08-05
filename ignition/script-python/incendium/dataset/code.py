@@ -69,6 +69,22 @@ class _NanoXML(object):
         return self._output
 
 
+def _format_object(obj):
+    """Format the value to be properly represented in JSON.
+
+    Args:
+        obj (object): The value to format.
+        header (str): Column name used for nested Datasets.
+
+    Returns:
+        str: The string representation of the value.
+    """
+    _obj = obj
+    if isinstance(obj, Dataset):
+        _obj = _to_jsonobject(obj)
+    return _obj
+
+
 def _format_value(obj, header=""):
     """Format the value to be properly represented in JSON.
 
@@ -136,6 +152,29 @@ def _to_json(dataset, root, is_root=True):
     return ret_str
 
 
+def _to_jsonobject(dataset):
+    """Convert a Dataset into a Python list of dictionaries.
+
+    Args:
+        dataset (Dataset): The input dataset.
+
+    Returns:
+        list[dict]: The Dataset as a Python object.
+    """
+    data = []
+    headers = dataset.getColumnNames()
+    row_count = dataset.getRowCount()
+
+    for i in range(row_count):
+        row_dict = {
+            header: _format_object(dataset.getValueAt(i, header))
+            for header in headers
+        }
+        data.append(row_dict)
+
+    return data
+
+
 def to_json(dataset, root=None):
     """Return a string JSON representation of the Dataset.
 
@@ -158,17 +197,7 @@ def to_jsonobject(dataset):
     Returns:
         list[dict]: The Dataset as a Python object.
     """
-    data = []
-    headers = dataset.getColumnNames()
-    row_count = dataset.getRowCount()
-
-    for i in range(row_count):
-        row_dict = {
-            header: dataset.getValueAt(i, header) for header in headers
-        }
-        data.append(row_dict)
-
-    return data
+    return _to_jsonobject(dataset)
 
 
 def to_xml(dataset, root="root", element="row", indent="\t"):
