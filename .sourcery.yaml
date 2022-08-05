@@ -4,6 +4,7 @@ refactor:
   include: []
   skip:
     - dict-assign-update-to-union
+    - lift-return-into-if
     - use-fstring-for-formatting
   rule_types:
     - refactoring

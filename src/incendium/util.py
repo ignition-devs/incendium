@@ -9,25 +9,28 @@ __all__ = [
 ]
 
 import traceback
+from typing import Dict, Optional, Tuple, Union
 
 import system.date
 import system.util
 from java.util import Date
 
 from incendium import constants
+from incendium.types import Number, String
 from incendium.user import IncendiumUser
 
 
 def _format_error_message(counter, error_message, key):
+    # type: (int, String, String) -> String
     """Format error message.
 
     Args:
-        counter (int): Number of detected errors.
-        error_message (str): Error message.
-        key (str): Dictionary key.
+        counter: Number of detected errors.
+        error_message: Error message.
+        key: Dictionary key.
 
     Returns:
-        str: Formatted error message.
+        Formatted error message.
     """
     error_message += (
         constants.TABBED_LINE + key
@@ -38,23 +41,25 @@ def _format_error_message(counter, error_message, key):
 
 
 def get_function_name():
+    # type: () -> String
     """Get the name of the function last called.
 
     Returns:
-        str: Function's name.
+        Function's name.
     """
     return traceback.extract_stack(None, 2)[0][2]
 
 
 def get_timer(date):
+    # type: (Union[Date, long]) -> String
     """Get a timer with the time elapsed from value until now.
 
     Args:
         date: A date or a date represented in milliseconds.
 
     Returns:
-         str: Time elapsed represented by a string in the following
-            format: "hh:mm:ss".
+         Time elapsed represented by a string in the following
+         format: "hh:mm:ss".
     """
     date_1 = date if isinstance(date, Date) else system.date.fromMillis(date)
     date_2 = system.date.now()
@@ -62,14 +67,15 @@ def get_timer(date):
 
 
 def get_timestamp(value):
+    # type: (int) -> String
     """Get timestamp in "hh:mm:ss" format.
 
     Args:
-        value (int): Time represented in seconds.
+        value: Time represented in seconds.
 
     Returns:
-        str: Time elapsed represented by a string in the following
-            format: "hh:mm:ss".
+        Time elapsed represented by a string in the following format:
+        "hh:mm:ss".
     """
     minutes, seconds = divmod(value, 60)
     hours, minutes = divmod(minutes, 60)
@@ -77,12 +83,13 @@ def get_timestamp(value):
 
 
 def set_locale(user):
+    # type: (IncendiumUser) -> None
     """Set the Locale to the user's default Language.
 
     If none is configured, the default will be English (US).
 
     Args:
-        user (IncendiumUser): The User.
+        user: IncendiumUser instance.
     """
     locale = (
         user.locale
@@ -93,31 +100,34 @@ def set_locale(user):
     system.util.setLocale(locale)
 
 
-def validate_form(strings=None, numbers=None, collections=None):
+def validate_form(
+    strings=None,  # type: Optional[Dict[String, String]]
+    numbers=None,  # type: Optional[Dict[String, Number]]
+    collections=None,  # type: Optional[Dict[String, Number]]
+):
+    # type: (...) -> Tuple[bool, String]
     """Perform a form validation.
 
     Args:
-        strings (dict): A dictionary containing all strings which must
-            not be empty. Optional.
-        numbers (dict): A dictionary containing all numbers which must
-            be greater than zero. Optional.
-        collections (dict): A dictionary containing all collections
-            which must at least contain an element. Optional.
+        strings: A dictionary containing all strings which must not be
+            empty. Optional.
+        numbers: A dictionary containing all numbers which must be
+            greater than zero. Optional.
+        collections: A dictionary containing all collections which must
+            at least contain an element. Optional.
 
     Returns:
-        tuple[bool, str]: A tuple containing:
-            is_valid (bool): True if all validation tests have passed,
-                False otherwise.
-            error_message (str): Error message in case any validation
-                test has failed.
+        A tuple (is_valid, error_message), where is_valid is True if all
+        validation tests have passed, False otherwise, and error_message
+        is the error message in case any validation test has failed.
     """
     is_valid = True
     error_message = constants.EMPTY_STRING
     counter = 0
 
     if strings:
-        for key, value in strings.iteritems():
-            if not value:
+        for key, str_val in strings.iteritems():
+            if not str_val:
                 counter += 1
                 error_message = _format_error_message(
                     counter, error_message, key
@@ -131,8 +141,8 @@ def validate_form(strings=None, numbers=None, collections=None):
         merged_dict.update(collections)
 
     if merged_dict:
-        for key, value in merged_dict.iteritems():
-            if value is None or int(value) <= 0:
+        for key, num_val in merged_dict.iteritems():
+            if num_val is None or num_val <= 0:
                 counter += 1
                 error_message = _format_error_message(
                     counter, error_message, key

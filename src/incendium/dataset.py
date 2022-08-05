@@ -2,21 +2,26 @@
 
 from __future__ import unicode_literals
 
-__all__ = ["to_json", "to_xml"]
+__all__ = ["to_json", "to_jsonobject", "to_xml"]
+
+from typing import Any, List, Optional
 
 import system.dataset
 import system.date
 from com.inductiveautomation.ignition.common import Dataset
 from java.util import Date
 
+from incendium.types import DictStringAny, String
+
 
 class _NanoXML(object):
     def __init__(self, root="root", indent="\t"):
+        # type: (String, String) -> None
         """Nano XML initializer.
 
         Args:
-            root (str): The value of the XML root element.
-            indent (str): Character(s) used for indentation.
+            root: The value of the XML root element.
+            indent: Character(s) used for indentation.
         """
         self.root = root
         self.indent = indent
@@ -26,21 +31,23 @@ class _NanoXML(object):
         )
 
     def add_element(self, name):
+        # type: (String) -> None
         """Add an element to the XML document.
 
         Args:
-            name (str): The name of the element.
+            name: The name of the element.
         """
         self._output += "{indent}<{name}>{new_line}".format(
             indent=self.indent, name=name, new_line=self._new_line
         )
 
     def add_sub_element(self, name, value):
+        # type: (String, String) -> None
         """Add a sub element to an element.
 
         Args:
-            name (str): The name of the sub element.
-            value (object): The value of the sub element.
+            name: The name of the sub element.
+            value: The value of the sub element.
         """
         self._output += "{indent}<{name}>{value}</{name}>{new_line}".format(
             indent=self.indent * 2,
@@ -50,63 +57,67 @@ class _NanoXML(object):
         )
 
     def close_element(self, name):
+        # type: (String) -> None
         """Close element.
 
         Args:
-            name (str): The name of the element.
+            name: The name of the element.
         """
         self._output += "{indent}</{name}>{new_line}".format(
             indent=self.indent, name=name, new_line=self._new_line
         )
 
     def to_string(self):
+        # type: () -> String
         """Return the string representation of the XML document.
 
         Returns:
-            str: The string representation of the XML document.
+            The string representation of the XML document.
         """
         self._output += "</{}>".format(self.root)
         return self._output
 
 
-def _format_value(obj, header=None):
+def _format_value(obj, header=""):
+    # type: (Any, String) -> String
     """Format the value to be properly represented in JSON.
 
     Args:
-        obj (object): The value to format.
-        header (str): Column name used for nested Datasets.
+        obj: The value to format.
+        header: Column name used for nested Datasets.
 
     Returns:
-        str: The string representation of the value.
+        The string representation of the value.
     """
+    _obj = ""
     if obj is None:
-        obj = "null"
+        _obj = "null"
     elif isinstance(obj, basestring):
-        obj = '"{}"'.format(obj)
+        _obj = '"{}"'.format(obj)
     elif isinstance(obj, Date):
-        obj = '"{}"'.format(
+        _obj = '"{}"'.format(
             system.date.format(obj, "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
         )
     elif isinstance(obj, Dataset):
-        obj = _to_json(obj, header, False)
+        _obj = _to_json(obj, header, False)
     else:
-        obj = "{!r}".format(obj)
-    return obj
+        _obj = "{!r}".format(obj)
+    return _obj
 
 
 def _to_json(dataset, root=None, is_root=True):
+    # type: (Dataset, Optional[String], bool) -> String
     """Return a string JSON representation of the Dataset.
 
     Private function.
 
     Args:
-        dataset (BasicDataset): The input dataset.
-        root (str): The value of the header.
-        is_root (bool): True if we are at the root, False otherwise.
-            Optional.
+        dataset: The input dataset.
+        root: The value of the header.
+        is_root: True if we are at the root, False otherwise. Optional.
 
     Returns:
-        str: The string JSON representation of the dataset.
+        The string JSON representation of the dataset.
     """
     headers = dataset.getColumnNames()
     columns = dataset.getColumnCount()
@@ -136,27 +147,28 @@ def _to_json(dataset, root=None, is_root=True):
 
 
 def to_json(dataset, root=None):
+    # type: (Dataset, Optional[String]) -> String
     """Return a string JSON representation of the Dataset.
 
     Args:
-        dataset (Dataset): The input dataset.
-        root (str): The value of the root. If not provided, it defaults
-            to "json". Optional.
+        dataset: The input dataset.
+        root: The value of the root. Optional.
 
     Returns:
-        str: The string JSON representation of the dataset.
+        The string JSON representation of the dataset.
     """
     return _to_json(dataset, root)
 
 
 def to_jsonobject(dataset):
+    # type: (Dataset) -> List[DictStringAny]
     """Convert a Dataset into a Python list of dictionaries.
 
     Args:
-        dataset (Dataset): The input dataset.
+        dataset: The input dataset.
 
     Returns:
-        list[dict]: The Dataset as a Python object.
+        The Dataset as a Python object.
     """
     data = []
     headers = dataset.getColumnNames()
@@ -172,19 +184,20 @@ def to_jsonobject(dataset):
 
 
 def to_xml(dataset, root="root", element="row", indent="\t"):
+    # type: (Dataset, String, String, String) -> String
     r"""Return a string XML representation of the Dataset.
 
     Args:
-        dataset (BasicDataset): The input dataset.
-        root (str): The value of the root. If not provided, it defaults
-            to "root". Optional.
-        element (str): The value of the row. If not provided, it
-            defaults to "row". Optional.
-        indent (str): Current indentation. If not provided, it defaults
-            to "\t". Optional.
+        dataset: The input dataset.
+        root: The value of the root. If not provided, it defaults to
+            "root". Optional.
+        element: The value of the row. If not provided, it defaults to
+            "row". Optional.
+        indent: Current indentation. If not provided, it defaults to
+            "\t". Optional.
 
     Returns:
-        str: The string XML representation of the dataset.
+        The string XML representation of the dataset.
     """
     headers = dataset.getColumnNames()
     row_count = dataset.getRowCount()
