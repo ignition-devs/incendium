@@ -7,7 +7,7 @@ repos:
     hooks:
       - id: sort-all
   - repo: https://github.com/psf/black
-    rev: 22.3.0
+    rev: 22.6.0
     hooks:
       - id: black
   - repo: https://github.com/PyCQA/isort
@@ -15,7 +15,7 @@ repos:
     hooks:
       - id: isort
   - repo: https://github.com/PyCQA/flake8
-    rev: 4.0.1
+    rev: 5.0.4
     hooks:
       - id: flake8
   - repo: https://github.com/PyCQA/pydocstyle
@@ -32,6 +32,6 @@ repos:
         language: system
         types: [python]
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v2.29.2
+    rev: v2.32.2
     hooks:
       - id: commitizen
