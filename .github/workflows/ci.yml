@@ -23,11 +23,11 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        python -m pip install ignition-api-stubs
-        python -m pip install pylint
-    - name: Analysing the code with mypy
-      run: |
-        mypy src
     - name: Analysing the code with pylint
       run: |
-        pylint --disable=no-name-in-module --verbose src
+        python -m pip install pylint
+        pylint src
+    - name: Analysing the code with mypy
+      run: |
+        python -m pip install ignition-api-stubs
+        mypy src
