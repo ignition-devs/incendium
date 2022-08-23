@@ -11,7 +11,7 @@ import system.date
 from com.inductiveautomation.ignition.common import Dataset
 from java.util import Date
 
-from incendium.types import DictStringAny, String
+from incendium.helper.types import DictStringAny, String
 
 
 class _NanoXML(object):

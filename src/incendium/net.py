@@ -13,7 +13,7 @@ from typing import List
 import system.net
 
 from incendium import constants
-from incendium.types import String
+from incendium.helper.types import String
 
 HTML_ESCAPE_TABLE = {
     "&": "&amp;",

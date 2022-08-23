@@ -16,7 +16,7 @@ import system.util
 from java.util import Date
 
 from incendium import constants
-from incendium.types import Number, String
+from incendium.helper.types import Number, String
 from incendium.user import IncendiumUser
 
 

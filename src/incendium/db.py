@@ -19,7 +19,7 @@ import system.db
 from com.inductiveautomation.ignition.common import BasicDataset
 from java.lang import Thread
 
-from incendium.types import DictIntStrAny, SProcResult, String
+from incendium.helper.types import DictIntStrAny, SProcResult, String
 
 
 class DisposableConnection(object):

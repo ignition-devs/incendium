@@ -8,7 +8,7 @@ from typing import List, Optional
 
 import system.nav
 
-from incendium.types import DictStringAny, String
+from incendium.helper.types import DictStringAny, String
 
 
 def _get_full_path(from_path, to_path):

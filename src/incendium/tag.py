@@ -9,7 +9,7 @@ from com.inductiveautomation.ignition.common.model.values import (
     BasicQualifiedValue,
 )
 
-from incendium.types import String
+from incendium.helper.types import String
 
 
 def read(tag_path):
