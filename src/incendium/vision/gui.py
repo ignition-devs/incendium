@@ -30,7 +30,7 @@ import system.util
 from javax.swing import JLabel, JOptionPane, JPanel, JTextField
 
 from incendium import constants
-from incendium.types import String
+from incendium.helper.types import String
 
 # Cursor codes.
 CURSOR_DEFAULT = 0

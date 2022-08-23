@@ -9,7 +9,7 @@ from typing import Optional
 from java.lang import Exception as JavaException
 from java.lang import Throwable
 
-from incendium.types import String
+from incendium.helper.types import String
 
 
 class ApplicationError(Exception):
