@@ -15,6 +15,9 @@ from incendium.helper.types import DictStringAny, String
 
 
 class _NanoXML(object):
+    indent = None  # type: String
+    root = None  # type: String
+
     def __init__(self, root="root", indent="\t"):
         # type: (String, String) -> None
         """Nano XML initializer.

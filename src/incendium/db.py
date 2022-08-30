@@ -19,7 +19,7 @@ import system.db
 from com.inductiveautomation.ignition.common import BasicDataset
 from java.lang import Thread
 
-from incendium.helper.types import DictIntStrAny, SProcResult, String
+from incendium.helper.types import DictIntStringAny, SProcResult, String
 
 
 class DisposableConnection(object):
@@ -29,6 +29,9 @@ class DisposableConnection(object):
     and disables it once the operation is completed to release
     resources.
     """
+
+    database = None  # type: String
+    retries = None  # type: int
 
     def __init__(self, database, retries=3):
         # type: (String, int) -> None
@@ -94,7 +97,7 @@ class Param(object):
 
     def __init__(
         self,
-        name_or_index,  # type: Union[int, str]
+        name_or_index,  # type: Union[int, String]
         type_code,  # type: int
         value=None,  # type: Optional[Any]
     ):
@@ -112,7 +115,7 @@ class Param(object):
 
     @property
     def name_or_index(self):
-        # type: () -> Union[int, str]
+        # type: () -> Union[int, String]
         """Get value of name_or_index."""
         return self._name_or_index
 
@@ -133,7 +136,7 @@ class InParam(Param):
     """Class used for declaring INPUT parameters."""
 
     def __init__(self, name_or_index, type_code, value):
-        # type: (Union[int, str], int, Any) -> None
+        # type: (Union[int, String], int, Any) -> None
         """Create an instance of InParam.
 
         Args:
@@ -151,7 +154,7 @@ class OutParam(Param):
     """Class used for declaring OUTPUT parameters."""
 
     def __init__(self, name_or_index, type_code):
-        # type: (Union[int, str], int) -> None
+        # type: (Union[int, String], int) -> None
         """Create an instance of OutParam.
 
         Args:
@@ -241,7 +244,7 @@ def _execute_sp(
         "output_params": _out_params,
         "result_set": call.getResultSet() if get_result_set else None,
         "return_value": call.getReturnValue() if get_ret_val else None,
-        "update_count": call.getUpdateCount() if get_update_count else None,
+        "update_count": call.getUpdateCount() if get_update_count else -1,
     }
 
 
@@ -342,7 +345,7 @@ def get_output_params(
     transaction=None,  # type: Optional[String]
     params=None,  # type: Optional[List[InParam]]
 ):
-    # type: (...) -> DictIntStrAny
+    # type: (...) -> DictIntStringAny
     """Get the Output parameters from the Stored Procedure.
 
     Args:
