@@ -6,10 +6,9 @@ __all__ = ["ApplicationError", "TagError"]
 
 from typing import Optional
 
-from java.lang import Exception as JavaException
 from java.lang import Throwable
 
-from incendium.helper.types import String
+from incendium.helper.types import InnerException, String
 
 
 class ApplicationError(Exception):
@@ -18,7 +17,7 @@ class ApplicationError(Exception):
     def __init__(
         self,
         message,  # type: String
-        inner_exception=None,  # type: Optional[JavaException]
+        inner_exception=None,  # type: InnerException
         cause=None,  # type: Optional[Throwable]
     ):
         # type: (...) -> None
