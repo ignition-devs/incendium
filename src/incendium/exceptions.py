@@ -14,6 +14,10 @@ from incendium.helper.types import InnerException, String
 class ApplicationError(Exception):
     """Application Error class."""
 
+    cause = None  # type: Optional[Throwable]
+    inner_exception = None  # type: InnerException
+    message = None  # type: String
+
     def __init__(
         self,
         message,  # type: String
@@ -49,6 +53,8 @@ class ApplicationError(Exception):
 
 class TagError(Exception):
     """Tag Error class."""
+
+    message = None  # type: String
 
     def __init__(self, message):
         # type: (String) -> None
