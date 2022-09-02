@@ -10,10 +10,12 @@ __all__ = [
     "get_data",
     "get_output_params",
     "get_return_value",
+    "o_execute_non_query",
+    "o_get_data",
 ]
 
 from types import TracebackType
-from typing import Any, List, Optional, Type, Union
+from typing import Any, List, Optional, Tuple, Type, Union
 
 import system.db
 from com.inductiveautomation.ignition.common import BasicDataset
@@ -93,7 +95,7 @@ class DisposableConnection(object):
 
 
 class Param(object):
-    """Base class used for defining [In|Out]put parameters."""
+    """Base class used for defining [IN|OUT]PUT parameters."""
 
     def __init__(
         self,
@@ -280,7 +282,7 @@ def execute_non_query(
     transaction=None,  # type: Optional[String]
     params=None,  # type: Optional[List[InParam]]
 ):
-    # type: (...) -> Optional[int]
+    # type: (...) -> int
     """Execute a stored procedure against the connection.
 
     Used for UPDATE, INSERT, and DELETE statements.
@@ -292,7 +294,7 @@ def execute_non_query(
             connection will be used. Optional.
         transaction: A transaction identifier. If omitted, the call will
             be executed in its own transaction. Optional.
-        params: A Dictionary containing all parameters. Optional.
+        params: A Dictionary containing all INPUT parameters. Optional.
 
     Returns:
         The number of rows modified by the stored procedure, or -1 if
@@ -322,7 +324,7 @@ def get_data(
         database: The name of the database connection to execute
             against. If omitted or "", the project's default database
             connection will be used. Optional.
-        params: A Dictionary containing all parameters. Optional.
+        params: A Dictionary containing all INPUT parameters. Optional.
 
     Returns:
         A Dataset that is the resulting data of the stored procedure
@@ -350,13 +352,13 @@ def get_output_params(
 
     Args:
         stored_procedure: The name of the stored procedure to execute.
-        output: A Dictionary containing all output parameters.
+        output: A Dictionary containing all OUTPUT parameters.
         database: The name of the database connection to execute
             against. If omitted or "", the project's default database
             connection will be used. Optional.
         transaction: A transaction identifier. If omitted, the call will
             be executed in its own transaction. Optional.
-        params: A Dictionary containing all parameters. Optional.
+        params: A Dictionary containing all INPUT parameters. Optional.
 
     Returns:
         Result's output_params.
@@ -391,7 +393,7 @@ def get_return_value(
             connection will be used. Optional.
         transaction: A transaction identifier. If omitted, the call will
             be executed in its own transaction. Optional.
-        params: A Dictionary containing all parameters. Optional.
+        params: A Dictionary containing all INPUT parameters. Optional.
 
     Returns:
         The return value.
@@ -406,3 +408,78 @@ def get_return_value(
     )
 
     return result["return_value"]
+
+
+def o_execute_non_query(
+    stored_procedure,  # type: String
+    out_params,  # type: List[OutParam]
+    database="",  # type: String
+    transaction=None,  # type: Optional[String]
+    in_params=None,  # type: Optional[List[InParam]]
+):
+    # type: (...) -> Tuple[int, DictIntStringAny]
+    """Execute a stored procedure against the connection.
+
+    Used for UPDATE, INSERT, and DELETE statements which return OUTPUT
+    parameters.
+
+    Args:
+        stored_procedure: The name of the stored procedure to execute.
+        out_params: A Dictionary containing all OUTPUT parameters.
+        database: The name of the database connection to execute
+            against. If omitted or "", the project's default database
+            connection will be used. Optional.
+        transaction: A transaction identifier. If omitted, the call will
+            be executed in its own transaction. Optional.
+        in_params: A Dictionary containing all INPUT parameters.
+            Optional.
+
+    Returns:
+        A tuple containing the number of rows modified by the stored
+        procedure, or -1 if not applicable, and the OUTPUT parameters.
+    """
+    result = _execute_sp(
+        stored_procedure,
+        database=database,
+        transaction=transaction,
+        in_params=in_params,
+        out_params=out_params,
+        get_out_params=True,
+        get_update_count=True,
+    )
+
+    return result["update_count"], result["output_params"]
+
+
+def o_get_data(
+    stored_procedure,  # type: String
+    out_params,  # type: List[OutParam]
+    database="",  # type: String
+    in_params=None,  # type: Optional[List[InParam]]
+):
+    # type: (...) -> Tuple[Optional[BasicDataset], DictIntStringAny]
+    """Get data by executing a stored procedure and OUTPUT parameters.
+
+    Args:
+        stored_procedure: The name of the stored procedure to execute.
+        out_params: A Dictionary containing all OUTPUT parameters.
+        database: The name of the database connection to execute
+            against. If omitted or "", the project's default database
+            connection will be used. Optional.
+        in_params: A Dictionary containing all INPUT parameters.
+            Optional.
+
+    Returns:
+        A tuple containing a Dataset that is the resulting data of the
+        stored procedure call, if any, and the OUTPUT parameters.
+    """
+    result = _execute_sp(
+        stored_procedure,
+        database=database,
+        in_params=in_params,
+        out_params=out_params,
+        get_out_params=True,
+        get_result_set=True,
+    )
+
+    return result["result_set"], result["output_params"]
