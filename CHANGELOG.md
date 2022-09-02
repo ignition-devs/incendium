@@ -1,3 +1,20 @@
+## v2022.9.0 (2022-09-02)
+
+### Feat
+
+- **db**: add repr and str functions to Param (#70)
+- **date**: add functions to get first and last day of the month (#69)
+- **db**: add functions to get OUTPUT parameters (#68)
+
+### Fix
+
+- **db**: accept unicode type for [In|Out]Param (#67)
+- **exceptions**: fix inner_exception warning (#66)
+
+### Refactor
+
+- **exceptions**: improve repr and str functions (#71)
+
 ## v2022.8.2.post1 (2022-08-23)
 
 ### Fix

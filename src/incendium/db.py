@@ -276,7 +276,7 @@ def check(stored_procedure, database="", params=None):
         database: The name of the database connection to execute
             against. If omitted or "", the project's default database
             connection will be used. Optional.
-        params: A Dictionary containing all parameters. Optional.
+        params: A Dictionary containing all INPUT parameters. Optional.
 
     Returns:
         The flag.
@@ -485,7 +485,7 @@ def o_get_data(
             Optional.
 
     Returns:
-        A tuple containing a Dataset that is the resulting data of the
+        tuple: A tuple containing a Dataset that is the resulting data of the
         stored procedure call, if any, and the OUTPUT parameters.
     """
     result = _execute_sp(
