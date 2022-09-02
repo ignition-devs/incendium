@@ -485,7 +485,7 @@ def o_get_data(
             Optional.
 
     Returns:
-        tuple: A tuple containing a Dataset that is the resulting data of the
+        A tuple containing a Dataset that is the resulting data of the
         stored procedure call, if any, and the OUTPUT parameters.
     """
     result = _execute_sp(
