@@ -1,7 +1,7 @@
 {
   "scope": "A",
   "version": 1,
-  "restricted": true,
+  "restricted": false,
   "overridable": false,
   "files": [
     "code.py"
@@ -9,9 +9,9 @@
   "attributes": {
     "lastModification": {
       "actor": "thecesrom",
-      "timestamp": "2022-08-05T19:56:24Z"
+      "timestamp": "2022-09-02T21:32:14Z"
     },
-    "lastModificationSignature": "4001db2c42f29bfeb58bec732474761933f813a05252ac2ee36f6a2c4dbd65e5",
+    "lastModificationSignature": "d202b155c4e8a5935c4f78eb416c0246efa05b6813a00405d0a3bc579a4d98f9",
     "hintScope": 2
   }
 }

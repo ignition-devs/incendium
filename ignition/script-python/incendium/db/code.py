@@ -10,6 +10,8 @@ __all__ = [
     "get_data",
     "get_output_params",
     "get_return_value",
+    "o_execute_non_query",
+    "o_get_data",
 ]
 
 import system.db
@@ -71,7 +73,7 @@ class DisposableConnection(object):
 
 
 class Param(object):
-    """Base class used for defining [In|Out]put parameters."""
+    """Base class used for defining [IN|OUT]PUT parameters."""
 
     def __init__(self, name_or_index=None, type_code=None, value=None):
         """Param object initializer.
@@ -84,6 +86,21 @@ class Param(object):
         self._name_or_index = name_or_index
         self._type_code = type_code
         self._value = value
+
+    def __repr__(self):
+        """Compute the "official" string representation."""
+        return "{}(name_or_index={!r}, type_code={!r}, value={!r})".format(
+            self.__class__.__name__,
+            self.name_or_index,
+            self.type_code,
+            self.value,
+        )
+
+    def __str__(self):
+        """Compute the "informal" string representation."""
+        return "{!r}, {!r}, {!r}".format(
+            self.name_or_index, self.type_code, self.value
+        )
 
     @property
     def name_or_index(self):
@@ -213,7 +230,7 @@ def _execute_sp(
         "output_params": _out_params,
         "result_set": call.getResultSet() if get_result_set else None,
         "return_value": call.getReturnValue() if get_ret_val else None,
-        "update_count": call.getUpdateCount() if get_update_count else None,
+        "update_count": call.getUpdateCount() if get_update_count else -1,
     }
 
 
@@ -228,8 +245,8 @@ def check(stored_procedure, database="", params=None):
         database (str): The name of the database connection to execute
             against. If omitted or "", the project's default database
             connection will be used. Optional.
-        params (list[InParam]): A Dictionary containing all parameters.
-            Optional.
+        params (list[InParam]): A Dictionary containing all INPUT
+            parameters. Optional.
 
     Returns:
         bool: The flag.
@@ -259,8 +276,8 @@ def execute_non_query(
             connection will be used. Optional.
         transaction (str): A transaction identifier. If omitted, the
             call will be executed in its own transaction. Optional.
-        params (list[InParam]): A Dictionary containing all parameters.
-            Optional.
+        params (list[InParam]): A Dictionary containing all INPUT
+            parameters. Optional.
 
     Returns:
         int: The number of rows modified by the stored procedure, or
@@ -318,8 +335,8 @@ def get_output_params(
             connection will be used. Optional.
         transaction (str): A transaction identifier. If omitted, the
             call will be executed in its own transaction. Optional.
-        params (list[InParam]): A Dictionary containing all parameters.
-            Optional.
+        params (list[InParam]): A Dictionary containing all INPUT
+            parameters. Optional.
 
     Returns:
         dict: Result's output_params.
@@ -370,3 +387,73 @@ def get_return_value(
     )
 
     return result["return_value"]
+
+
+def o_execute_non_query(
+    stored_procedure, out_params, database="", transaction=None, in_params=None
+):
+    """Execute a stored procedure against the connection.
+
+    Used for UPDATE, INSERT, and DELETE statements which return OUTPUT
+    parameters.
+
+    Args:
+        stored_procedure (str): The name of the stored procedure to
+            execute.
+        out_params (list[OutParam]): A Dictionary containing all OUTPUT
+            parameters.
+        database (str): The name of the database connection to execute
+            against. If omitted or "", the project's default database
+            connection will be used. Optional.
+        transaction (str): A transaction identifier. If omitted, the
+            call will be executed in its own transaction. Optional.
+        in_params (list[InParam]): A Dictionary containing all INPUT
+            parameters. Optional.
+
+    Returns:
+        tuple: A tuple containing the number of rows modified by the
+            stored procedure, or -1 if not applicable, and the OUTPUT
+            parameters.
+    """
+    result = _execute_sp(
+        stored_procedure,
+        database=database,
+        transaction=transaction,
+        in_params=in_params,
+        out_params=out_params,
+        get_out_params=True,
+        get_update_count=True,
+    )
+
+    return result["update_count"], result["output_params"]
+
+
+def o_get_data(stored_procedure, out_params, database="", in_params=None):
+    """Get data by executing a stored procedure and OUTPUT parameters.
+
+    Args:
+        stored_procedure (str): The name of the stored procedure to
+            execute.
+        out_params (list[OutParam]): A Dictionary containing all OUTPUT
+            parameters.
+        database (str): The name of the database connection to execute
+            against. If omitted or "", the project's default database
+            connection will be used. Optional.
+        in_params (list[InParam]): A Dictionary containing all INPUT
+            parameters. Optional.
+
+    Returns:
+        tuple: A tuple containing a Dataset that is the resulting data
+            of the stored procedure call, if any, and the OUTPUT
+            parameters.
+    """
+    result = _execute_sp(
+        stored_procedure,
+        database=database,
+        in_params=in_params,
+        out_params=out_params,
+        get_out_params=True,
+        get_result_set=True,
+    )
+
+    return result["result_set"], result["output_params"]
