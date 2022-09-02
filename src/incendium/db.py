@@ -115,6 +115,21 @@ class Param(object):
         self._type_code = type_code
         self._value = value
 
+    def __repr__(self):
+        """Compute the "official" string representation."""
+        return "{}(name_or_index={!r}, type_code={}, value={})".format(
+            self.__class__.__name__,
+            self.name_or_index,
+            self.type_code,
+            self.value,
+        )
+
+    def __str__(self):
+        """Compute the "informal" string representation."""
+        return "{!r}, {}, {}".format(
+            self.name_or_index, self.type_code, self.value
+        )
+
     @property
     def name_or_index(self):
         # type: () -> Union[int, String]
