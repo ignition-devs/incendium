@@ -39,16 +39,18 @@ class ApplicationError(Exception):
 
     def __repr__(self):
         """Compute the "official" string representation."""
-        return "{}({!r}, {!r}, {!r})".format(
+        return "{}(message={!r}, inner_exception={!r}, cause={!r})".format(
             self.__class__.__name__,
-            repr(self.message),
-            self.inner_exception.__repr__(),
-            repr(self.cause),
+            self.message,
+            self.inner_exception,
+            self.cause,
         )
 
     def __str__(self):
         """Compute the "informal" string representation."""
-        return repr(self.message)
+        return "{!r}, {!r}, {!r}".format(
+            self.message, self.inner_exception, self.cause
+        )
 
 
 class TagError(Exception):
@@ -68,7 +70,7 @@ class TagError(Exception):
 
     def __repr__(self):
         """Compute the "official" string representation."""
-        return "{}({!r})".format(self.__class__.__name__, repr(self.message))
+        return "{}(message={!r})".format(self.__class__.__name__, self.message)
 
     def __str__(self):
         """Compute the "informal" string representation."""
