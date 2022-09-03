@@ -309,7 +309,8 @@ def execute_non_query(
             connection will be used. Optional.
         transaction: A transaction identifier. If omitted, the call will
             be executed in its own transaction. Optional.
-        params: A Dictionary containing all INPUT parameters. Optional.
+        params: A list containing all INPUT parameters as InParam
+            objects. Optional.
 
     Returns:
         The number of rows modified by the stored procedure, or -1 if
@@ -339,7 +340,8 @@ def get_data(
         database: The name of the database connection to execute
             against. If omitted or "", the project's default database
             connection will be used. Optional.
-        params: A Dictionary containing all INPUT parameters. Optional.
+        params: A list containing all INPUT parameters as InParam
+            objects. Optional.
 
     Returns:
         A Dataset that is the resulting data of the stored procedure
@@ -367,16 +369,21 @@ def get_output_params(
 
     Args:
         stored_procedure: The name of the stored procedure to execute.
-        output: A Dictionary containing all OUTPUT parameters.
+        output: A list containing all OUTPUT parameters as OutParam
+            objects.
         database: The name of the database connection to execute
             against. If omitted or "", the project's default database
             connection will be used. Optional.
         transaction: A transaction identifier. If omitted, the call will
             be executed in its own transaction. Optional.
-        params: A Dictionary containing all INPUT parameters. Optional.
+        params: A list containing all INPUT parameters as InParam
+            objects. Optional.
+        get_update_count: A flag indicating whether to return the number
+            of rows modified by the stored procedure, or -1 if not
+            applicable. Defaults to False. Optional.
 
     Returns:
-        Result's output_params.
+        A Python dictionary of OUTPUT paramaters.
     """
     result = _execute_sp(
         stored_procedure,
@@ -408,7 +415,8 @@ def get_return_value(
             connection will be used. Optional.
         transaction: A transaction identifier. If omitted, the call will
             be executed in its own transaction. Optional.
-        params: A Dictionary containing all INPUT parameters. Optional.
+        params: A list containing all INPUT parameters as InParam
+            objects. Optional.
 
     Returns:
         The return value.
