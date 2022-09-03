@@ -378,9 +378,6 @@ def get_output_params(
             be executed in its own transaction. Optional.
         params: A list containing all INPUT parameters as InParam
             objects. Optional.
-        get_update_count: A flag indicating whether to return the number
-            of rows modified by the stored procedure, or -1 if not
-            applicable. Defaults to False. Optional.
 
     Returns:
         A Python dictionary of OUTPUT paramaters.
