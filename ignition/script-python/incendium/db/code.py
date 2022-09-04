@@ -432,13 +432,13 @@ def o_get_data(stored_procedure, out_params, database="", in_params=None):
     Args:
         stored_procedure (str): The name of the stored procedure to
             execute.
-        out_params (list[OutParam]): A Dictionary containing all OUTPUT
-            parameters.
+        out_params (list[OutParam]): A list containing all OUTPUT
+            parameters as OutParam objects.
         database (str): The name of the database connection to execute
             against. If omitted or "", the project's default database
             connection will be used. Optional.
-        in_params (list[InParam]): A Dictionary containing all INPUT
-            parameters. Optional.
+        in_params (list[InParam]): A list containing all INPUT
+            parameters as InParam objects. Optional.
 
     Returns:
         tuple: A tuple containing a Dataset that is the resulting data
