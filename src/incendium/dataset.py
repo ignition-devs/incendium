@@ -114,9 +114,7 @@ def _format_value(obj, header=""):
     elif isinstance(obj, basestring):
         _obj = '"{}"'.format(obj)
     elif isinstance(obj, Date):
-        _obj = '"{}"'.format(
-            system.date.format(obj, "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
-        )
+        _obj = '"{}"'.format(system.date.format(obj, "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"))
     elif isinstance(obj, Dataset):
         _obj = _to_json(obj, header, False)
     else:
@@ -181,8 +179,7 @@ def _to_jsonobject(dataset):
 
     for i in range(row_count):
         row_dict = {
-            header: _format_object(dataset.getValueAt(i, header))
-            for header in headers
+            header: _format_object(dataset.getValueAt(i, header)) for header in headers
         }
         data.append(row_dict)
 

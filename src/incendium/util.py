@@ -33,9 +33,7 @@ def _format_error_message(counter, error_message, key):
         Formatted error message.
     """
     error_message += (
-        constants.TABBED_LINE + key
-        if counter == 1
-        else constants.NEW_TABBED_LINE + key
+        constants.TABBED_LINE + key if counter == 1 else constants.NEW_TABBED_LINE + key
     )
     return error_message
 
@@ -92,9 +90,7 @@ def set_locale(user):
         user: IncendiumUser instance.
     """
     locale = (
-        user.locale
-        if user is not None and user.locale
-        else constants.DEFAULT_LANGUAGE
+        user.locale if user is not None and user.locale else constants.DEFAULT_LANGUAGE
     )
 
     system.util.setLocale(locale)
@@ -129,9 +125,7 @@ def validate_form(
         for key, str_val in strings.iteritems():
             if not str_val:
                 counter += 1
-                error_message = _format_error_message(
-                    counter, error_message, key
-                )
+                error_message = _format_error_message(counter, error_message, key)
                 is_valid = False
 
     merged_dict = {}
@@ -144,9 +138,7 @@ def validate_form(
         for key, num_val in merged_dict.iteritems():
             if num_val is None or num_val <= 0:
                 counter += 1
-                error_message = _format_error_message(
-                    counter, error_message, key
-                )
+                error_message = _format_error_message(counter, error_message, key)
                 is_valid = False
 
     return is_valid, error_message

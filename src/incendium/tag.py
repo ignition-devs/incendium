@@ -1,13 +1,11 @@
 """Tag module."""
 
-__all__ = ("read", "write")
+__all__ = ["read", "write"]
 
 from typing import Any
 
 import system.tag
-from com.inductiveautomation.ignition.common.model.values import (
-    BasicQualifiedValue,
-)
+from com.inductiveautomation.ignition.common.model.values import BasicQualifiedValue
 
 from incendium.helper.types import String
 
