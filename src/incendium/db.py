@@ -253,7 +253,7 @@ def _execute_sp(
 
     return {
         "output_params": _out_params,
-        "result_set": call.getResultSet() if get_result_set else None,
+        "result_set": call.getResultSet() if get_result_set else BasicDataset(),
         "return_value": call.getReturnValue() if get_ret_val else None,
         "update_count": call.getUpdateCount() if get_update_count else -1,
     }
@@ -324,7 +324,7 @@ def get_data(
     database="",  # type: String
     params=None,  # type: Optional[List[InParam]]
 ):
-    # type: (...) -> Optional[BasicDataset]
+    # type: (...) -> BasicDataset
     """Get data by executing a stored procedure.
 
     Args:
@@ -337,7 +337,7 @@ def get_data(
 
     Returns:
         A Dataset that is the resulting data of the stored procedure
-        call, if any.
+        call.
     """
     result = _execute_sp(
         stored_procedure,
@@ -372,7 +372,7 @@ def get_output_params(
             objects. Optional.
 
     Returns:
-        A Python dictionary of OUTPUT paramaters.
+        A Python dictionary of OUTPUT parameters.
     """
     result = _execute_sp(
         stored_procedure,
@@ -470,7 +470,7 @@ def o_get_data(
     database="",  # type: String
     in_params=None,  # type: Optional[List[InParam]]
 ):
-    # type: (...) -> Tuple[Optional[BasicDataset], DictIntStringAny]
+    # type: (...) -> Tuple[BasicDataset, DictIntStringAny]
     """Get data by executing a stored procedure and OUTPUT parameters.
 
     Args:
@@ -485,7 +485,7 @@ def o_get_data(
 
     Returns:
         A tuple containing a Dataset that is the resulting data of the
-        stored procedure call, if any, and the OUTPUT parameters.
+        stored procedure call, and the OUTPUT parameters.
     """
     result = _execute_sp(
         stored_procedure,

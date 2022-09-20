@@ -13,7 +13,7 @@ SProcResult = TypedDict(
     "SProcResult",
     {
         "output_params": DictIntStringAny,
-        "result_set": Optional[BasicDataset],
+        "result_set": BasicDataset,
         "return_value": Optional[int],
         "update_count": int,
     },
