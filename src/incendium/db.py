@@ -160,9 +160,7 @@ class InParam(Param):
             type_code: Type code constant from `system.db`.
             value: Value of type type_code.
         """
-        super(InParam, self).__init__(
-            name_or_index=name_or_index, type_code=type_code, value=value
-        )
+        super(InParam, self).__init__(name_or_index, type_code, value)
 
 
 class OutParam(Param):
@@ -177,7 +175,7 @@ class OutParam(Param):
                 (str).
             type_code: Type code constant from `system.db`.
         """
-        super(OutParam, self).__init__(name_or_index=name_or_index, type_code=type_code)
+        super(OutParam, self).__init__(name_or_index, type_code)
 
 
 def _execute_sp(
