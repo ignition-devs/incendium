@@ -51,9 +51,7 @@ class IncendiumUser(object):
         Returns:
             list[str]: User's email address(es).
         """
-        return [
-            ci.value for ci in self._contact_info if ci.contactType == "email"
-        ]
+        return [ci.value for ci in self._contact_info if ci.contactType == "email"]
 
     @property
     def first_name(self):
@@ -116,9 +114,7 @@ def get_emails(user_source="", filter_role=""):
         list[str]: A list of email addresses.
     """
     emails = set()
-    users = [
-        IncendiumUser(user) for user in get_users(user_source, filter_role)
-    ]
+    users = [IncendiumUser(user) for user in get_users(user_source, filter_role)]
     for user in users:
         for email in user.email:
             emails.add(email)

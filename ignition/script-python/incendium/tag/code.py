@@ -3,9 +3,7 @@
 __all__ = ["read", "write"]
 
 import system.tag
-from com.inductiveautomation.ignition.common.model.values import (
-    BasicQualifiedValue,
-)
+from com.inductiveautomation.ignition.common.model.values import BasicQualifiedValue
 
 
 def read(tag_path):

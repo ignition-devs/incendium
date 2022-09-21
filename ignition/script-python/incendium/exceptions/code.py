@@ -32,9 +32,7 @@ class ApplicationError(Exception):
 
     def __str__(self):
         """Compute the "informal" string representation."""
-        return "{!r}, {!r}, {!r}".format(
-            self.message, self.inner_exception, self.cause
-        )
+        return "{!r}, {!r}, {!r}".format(self.message, self.inner_exception, self.cause)
 
 
 class TagError(Exception):
