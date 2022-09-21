@@ -96,9 +96,7 @@ class Param(object):
 
     def __str__(self):
         """Compute the "informal" string representation."""
-        return "{!r}, {!r}, {!r}".format(
-            self.name_or_index, self.type_code, self.value
-        )
+        return "{!r}, {!r}, {!r}".format(self.name_or_index, self.type_code, self.value)
 
     @property
     def name_or_index(self):
@@ -144,9 +142,7 @@ class OutParam(Param):
                 name (str).
             type_code (int): Type code constant from `system.db`.
         """
-        super(OutParam, self).__init__(
-            name_or_index=name_or_index, type_code=type_code
-        )
+        super(OutParam, self).__init__(name_or_index=name_or_index, type_code=type_code)
 
 
 def _execute_sp(
@@ -254,14 +250,10 @@ def check(stored_procedure, database="", params=None):
         stored_procedure, output=[output], database=database, params=params
     )
 
-    return (
-        output_params["flag"] if "flag" in output_params.iterkeys() else None
-    )
+    return output_params["flag"] if "flag" in output_params.iterkeys() else None
 
 
-def execute_non_query(
-    stored_procedure, database="", transaction=None, params=None
-):
+def execute_non_query(stored_procedure, database="", transaction=None, params=None):
     """Execute a stored procedure against the connection.
 
     Used for UPDATE, INSERT, and DELETE statements.

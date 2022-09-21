@@ -43,9 +43,7 @@ FORM_ERROR = "Please provide information in the following fields:"
 INFO_WINDOW_TITLE = "Information"
 NEW_LINE = "\n"
 NEW_TABBED_LINE = "\n    - "
-PROCEED_WITH_ROW_DELETION = (
-    "Are you sure you would like to delete the selected row?"
-)
+PROCEED_WITH_ROW_DELETION = "Are you sure you would like to delete the selected row?"
 PROCEED_WITH_ROWS_DELETION = "Are you sure you would like to delete all rows?"
 PROCEED_WITH_SAVING_CHANGES = "Are you sure you would like to proceed?"
 PROCEED_WITHOUT_SAVING_CHANGES = (
@@ -54,7 +52,5 @@ PROCEED_WITHOUT_SAVING_CHANGES = (
 SUCCESS_WINDOW_TITLE = "Success"
 TABBED_LINE = "    - "
 UNEXPECTED_ERROR = "An unexpected error occurred in {}.\n{}"
-UNEXPECTED_ERROR_CAUSED_BY = (
-    "An unexpected error occurred in {}.\n{}\nCaused by: {}"
-)
+UNEXPECTED_ERROR_CAUSED_BY = "An unexpected error occurred in {}.\n{}\nCaused by: {}"
 WARNING_WINDOW_TITLE = "Warning"
