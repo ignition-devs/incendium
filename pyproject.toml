@@ -2,6 +2,7 @@
 name = "cz_conventional_commits"
 
 [tool.isort]
+known_first_party = ["incendium"]
 profile = "black"
 py_version = 27
 
