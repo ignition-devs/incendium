@@ -67,7 +67,7 @@ class DisposableConnection(object):
     def status(self):
         """Get connection status."""
         connection_info = system.db.getConnectionInfo(self.database)
-        return connection_info.getValueAt(0, "Status")
+        return str(connection_info.getValueAt(0, "Status"))
 
 
 class Param(object):
@@ -222,7 +222,7 @@ def _execute_sp(
 
     return {
         "output_params": _out_params,
-        "result_set": call.getResultSet() if get_result_set else None,
+        "result_set": call.getResultSet() if get_result_set else BasicDataset(),
         "return_value": call.getReturnValue() if get_ret_val else None,
         "update_count": call.getUpdateCount() if get_update_count else -1,
     }
@@ -298,7 +298,7 @@ def get_data(stored_procedure, database="", params=None):
 
     Returns:
         BasicDataset: A Dataset that is the resulting data of the stored
-            procedure call, if any.
+            procedure call.
     """
     result = _execute_sp(
         stored_procedure,
@@ -434,8 +434,8 @@ def o_get_data(stored_procedure, out_params, database="", in_params=None):
 
     Returns:
         tuple: A tuple containing a Dataset that is the resulting data
-            of the stored procedure call, if any, and the OUTPUT
-            parameters as a Python dictionary.
+            of the stored procedure call, and the OUTPUT parameters as a
+            Python dictionary.
     """
     result = _execute_sp(
         stored_procedure,
