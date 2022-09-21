@@ -119,7 +119,7 @@ def validate_form(strings=None, numbers=None, collections=None):
 
     merged_dict = {}
     if numbers:
-        merged_dict.update(numbers)
+        merged_dict |= numbers
     if collections:
         merged_dict.update(collections)
 

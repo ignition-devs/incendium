@@ -157,7 +157,7 @@ def input(message, title="Input"):
     ]
 
     panel = JPanel()
-    label = JLabel("{}: ".format(system.util.translate(message)))
+    label = JLabel(f"{system.util.translate(message)}: ")
     panel.add(label)
     text_field = JTextField(25)
     panel.add(text_field)
