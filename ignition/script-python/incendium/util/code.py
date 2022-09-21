@@ -12,10 +12,9 @@ import traceback
 
 import system.date
 import system.util
-from java.util import Date
-
 from incendium import constants
 from incendium.user import IncendiumUser
+from java.util import Date
 
 
 def _format_error_message(counter, error_message, key):

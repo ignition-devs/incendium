@@ -25,9 +25,8 @@ __all__ = [
 ]
 
 import system.util
-from javax.swing import JLabel, JOptionPane, JPanel, JTextField
-
 from incendium import constants
+from javax.swing import JLabel, JOptionPane, JPanel, JTextField
 
 # Cursor codes.
 CURSOR_DEFAULT = 0

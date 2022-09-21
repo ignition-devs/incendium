@@ -9,7 +9,6 @@ __all__ = [
 ]
 
 import system.net
-
 from incendium import constants
 
 HTML_ESCAPE_TABLE = {
