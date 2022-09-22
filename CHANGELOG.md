@@ -1,3 +1,10 @@
+## v2022.9.2 (2022-09-21)
+
+### Refactor
+
+- **db**: cast return value to str (#78)
+- **db**: return BasicDataset on get_data and o_get_data (#77)
+
 ## v2022.9.1 (2022-09-03)
 
 ### Fix
