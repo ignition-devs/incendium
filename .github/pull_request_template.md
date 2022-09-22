@@ -2,7 +2,7 @@
 
 Please check if your PR fulfills the following requirements:
 
-- [ ] The commit message follows our [commit message format](https://github.com/ignition-api/.github/blob/main/CONTRIBUTING.md#commit-message-format).
+- [ ] The commit message follows our [commit message format](/thecesrom/incendium/.github/blob/HEAD/CONTRIBUTING.md#commit-message-format).
 
 ## PR Type
 
