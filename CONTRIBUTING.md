@@ -1,14 +1,14 @@
-# Contributing to ignition-api
+# Contributing to incendium
 
 We follow a simple model to make contributing as straightforward as possible. These guidelines allow us to streamline the development process and achieve greater transparency.
 
 ## Code of Conduct
 
-Help us keep **incendium** open and inclusive. Please read and follow our [Code of Conduct](https://github.com/ignition-api/.github/blob/main/CODE_OF_CONDUCT.md).
+Help us keep **incendium** open and inclusive. Please read and follow our [Code of Conduct](https://github.com/incendium/blob/code/CODE_OF_CONDUCT.md).
 
 ## Got a question?
 
-Please join us on or [Discussions](https://github.com/ignition-api/discussions/discussions).
+Please join us on or [Discussions](https://github.com/incendium/discussions/discussions).
 
 ## Found a bug?
 
