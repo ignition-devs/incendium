@@ -6,28 +6,26 @@ on:
     branches:
       - code
 
-env:
-  PYTHON_VERSION: '3.10'
-
 jobs:
-  build:
-
+  test:
+    name: test ${{ matrix.python-version }}
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        python-version: ["2.7", "3.10"]
     steps:
     - uses: actions/checkout@v3
-    - name: Set up Python ${{ env.PYTHON_VERSION }}
+    - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v4
       with:
-        python-version: ${{ env.PYTHON_VERSION }}
+        python-version: ${{ matrix.python-version }}
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-    - name: Analysing the code with pylint
+        python -m pip install tox-gh
+    - name: Setup test suite
       run: |
-        python -m pip install pylint
-        pylint src
-    - name: Analysing the code with mypy
+        python -m tox r -vv --notest
+    - name: Run tests
       run: |
-        python -m pip install ignition-api-stubs
-        mypy src
+        python -m tox r -vv
