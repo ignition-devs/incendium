@@ -1,0 +1,2 @@
+ignition-api; python_version=='2.7'
+ignition-api-stubs; python_version>='3.6'
