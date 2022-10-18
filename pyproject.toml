@@ -8,13 +8,5 @@ requires = [
 [tool.commitizen]
 name = "cz_conventional_commits"
 
-[tool.isort]
-extra_standard_library = ["typing"]
-profile = "black"
-py_version = 27
-
 [tool.mypy]
 python_version = 2.7
-
-[tool.pydocstyle]
-convention = "google"
