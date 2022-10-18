@@ -87,8 +87,6 @@ disable=consider-using-f-string,
         no-member,
         redefined-builtin,
         super-with-arguments,
-        unsubscriptable-object,
-        unused-import,
         useless-object-inheritance,
 
 # Enable the message, report, category or checker with the given id(s). You can
