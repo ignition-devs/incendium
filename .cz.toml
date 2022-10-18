@@ -1,0 +1,3 @@
+[tool]
+[tool.commitizen]
+name = "cz_conventional_commits"

@@ -81,9 +81,7 @@ confidence=
 disable=consider-using-f-string,
         no-member,
         redefined-builtin,
-        redundant-u-string-prefix,
         super-with-arguments,
-        unsubscriptable-object,
         unused-import,
         useless-object-inheritance,
         useless-super-delegation
