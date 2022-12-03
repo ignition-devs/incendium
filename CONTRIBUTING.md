@@ -14,6 +14,39 @@ Please join us on or [Discussions](https://github.com/incendium/discussions/disc
 
 If you find a bug or if something is missing in the source code, you can help us by submitting an issue, or even better, you can [submit a Pull Request](#pull-requests) with a fix.
 
+## Getting ready to contribute
+
+For **incendium** we rely on Python 2.7.18 for development, and Python 3.10 to run tests and style checks with `pre-commit` and `tox`.
+
+### Setting up your local environment
+
+1. Install Python 2.7.18 and the latest 3.10 release
+1. Install the required packages for development you may run the following command:
+
+    ```sh
+    python2 -m pip install --requirement requirements.txt
+    ```
+
+1. Install Python 3 tools
+
+    1. [`pre-commit`](https://pre-commit.com/)
+
+        ```sh
+        python3 -m pip install pre-commit
+        ```
+
+        1. Install the git hook scripts
+
+            ```sh
+            pre-commit install
+            ```
+
+    1. [`tox`](https://tox.wiki/)
+
+        ```sh
+        python3 -m pip install tox
+        ```
+
 ## Pull Requests
 
 We use the [GitHub flow](https://guides.github.com/introduction/flow/) as main versioning workflow.
