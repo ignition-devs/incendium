@@ -32,12 +32,12 @@ class ApplicationError(Exception):
             inner_exception: The inner Exception. Optional.
             cause: The cause of the Exception. Optional.
         """
+        super(ApplicationError, self).__init__()
         self.message = message
         self.inner_exception = inner_exception
         self.cause = cause
-        super(ApplicationError, self).__init__(message)
 
-    def __repr__(self):
+    def __repr__(self):  # type: ignore[no-untyped-def]
         """Compute the "official" string representation."""
         return "{}(message={!r}, inner_exception={!r}, cause={!r})".format(
             self.__class__.__name__,
@@ -46,7 +46,7 @@ class ApplicationError(Exception):
             self.cause,
         )
 
-    def __str__(self):
+    def __str__(self):  # type: ignore[no-untyped-def]
         """Compute the "informal" string representation."""
         return "{!r}, {!r}, {!r}".format(self.message, self.inner_exception, self.cause)
 
@@ -63,13 +63,13 @@ class TagError(Exception):
         Args:
             message: The error message.
         """
+        super(TagError, self).__init__()
         self.message = message
-        super(TagError, self).__init__(message)
 
-    def __repr__(self):
+    def __repr__(self):  # type: ignore[no-untyped-def]
         """Compute the "official" string representation."""
         return "{}(message={!r})".format(self.__class__.__name__, self.message)
 
-    def __str__(self):
+    def __str__(self):  # type: ignore[no-untyped-def]
         """Compute the "informal" string representation."""
         return repr(self.message)

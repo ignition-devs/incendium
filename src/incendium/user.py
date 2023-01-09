@@ -39,6 +39,7 @@ class IncendiumUser(object):
         Args:
             user: Ignition's user object.
         """
+        super(IncendiumUser, self).__init__()
         self._contact_info = user.getContactInfo()
         self._email = None
         self._first_name = user.get(user.FirstName)

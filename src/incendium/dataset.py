@@ -26,6 +26,7 @@ class _NanoXML(object):
             root: The value of the XML root element.
             indent: Character(s) used for indentation.
         """
+        super(_NanoXML, self).__init__()
         self.root = root
         self.indent = indent
         self._new_line = "\n"
