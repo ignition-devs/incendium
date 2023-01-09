@@ -1,27 +1,37 @@
-ignore: []
+version: '1'
 
-refactor:
-  include: []
-  skip:
-    - dict-assign-update-to-union
-    - lift-return-into-if
-    - use-fstring-for-formatting
+ignore:
+- .git
+- .env
+- .tox
+- .venv
+- env
+- venv
+
+rule_settings:
+  enable:
+  - default
+  disable:
+  - dict-assign-update-to-union
+  - lift-return-into-if
+  - use-fstring-for-formatting
   rule_types:
-    - refactoring
-    - suggestion
-    - comment
+  - refactoring
+  - suggestion
+  - comment
   python_version: '3.10'
 
 metrics:
   quality_threshold: 25.0
 
+github:
+  labels: []
+  ignore_labels:
+  - sourcery-ignore
+  request_review: author
+  sourcery_branch: sourcery/{base_branch}
+
 clone_detection:
   min_lines: 3
   min_duplicates: 2
   identical_clones_only: false
-
-github:
-  labels: []
-  ignore_labels: [sourcery-ignore]
-  request_review: author
-  sourcery_branch: sourcery/{base_branch}

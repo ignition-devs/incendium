@@ -45,6 +45,7 @@ class DisposableConnection(object):
             retries: The number of additional times to retry
                 enabling the connection. Optional.
         """
+        super(DisposableConnection, self).__init__()
         self.database = database
         self.retries = retries
 
@@ -111,11 +112,12 @@ class Param(object):
             type_code: Type code constant.
             value: Value of type type_code.
         """
+        super(Param, self).__init__()
         self._name_or_index = name_or_index
         self._type_code = type_code
         self._value = value
 
-    def __repr__(self):
+    def __repr__(self):  # type: ignore[no-untyped-def]
         """Compute the "official" string representation."""
         return "{}(name_or_index={!r}, type_code={}, value={})".format(
             self.__class__.__name__,
@@ -124,7 +126,7 @@ class Param(object):
             self.value,
         )
 
-    def __str__(self):
+    def __str__(self):  # type: ignore[no-untyped-def]
         """Compute the "informal" string representation."""
         return "{!r}, {}, {}".format(self.name_or_index, self.type_code, self.value)
 
