@@ -26,17 +26,9 @@
 
 For more information, please refer to the [Wiki](https://github.com/thecesrom/incendium/wiki).
 
-## Branches
+## `incendium` Project
 
-This repository consists of the following branches:
-
-### [code](https://github.com/thecesrom/incendium/tree/code)
-
-This branch will contain the source code for incendium's scripting functions.
-
-### [project](https://github.com/thecesrom/incendium/tree/project)
-
-This branch will contain the project folder structure as stored under `$IGNITION_DIR/data/projects`, and gives you the ability to get the latest code by cloning at the `projects` folder.
+We have moved the `project` branch to its own repo, [`incendium-project`](https://github.com/thecesrom/incendium-project)
 
 ## Prerequisites
 
