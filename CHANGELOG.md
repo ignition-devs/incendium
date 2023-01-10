@@ -1,3 +1,10 @@
+## v2023.1.0 (2023-01-09)
+
+### Refactor
+
+- add call to super in base classes (#111)
+- **ci**: run on ubuntu-20.04 (#98)
+
 ## v2022.9.2 (2022-09-21)
 
 ### Refactor

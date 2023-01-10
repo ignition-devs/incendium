@@ -61,7 +61,7 @@ This will install it as package to your Python installation, which will allow yo
 
 ```bash
 $ python2
-Python 2.7.18 (default, Nov  9 2020, 16:23:15) 
+Python 2.7.18 (default, Nov  9 2020, 16:23:15)
 [GCC Apple LLVM 12.0.0 (clang-1200.0.32.21)] on darwin
 Type "help", "copyright", "credits" or "license" for more information.
 >>> from __future__ import print_function
@@ -93,7 +93,7 @@ To include `incendium` as a dependency in PyCharm, you will need to attach it to
 3. Choose `Attach` when prompted
 4. Under the `incendium` project folder, right-click on the `src/` folder and choose `Mark Directory as > Sources Root`
 
-#### Installing incendium as a Project on your Gateway
+#### Installing `incendium` as a Project on your Gateway
 
 To install incendium on your Gateway follow these steps:
 
@@ -107,19 +107,9 @@ To install incendium on your Gateway follow these steps:
 
 Alternatively you could follow the instructions for cloning the `project` branch directly into `$IGNITION_DIR/data/projects` found [here](https://github.com/thecesrom/incendium/tree/project#cloning-this-branch).
 
-## Contributing to incendium
+## Contributing to `incendium`
 
-To contribute to incendium, follow these steps:
-
-1. Fork this repository
-2. Create a local copy on your machine
-3. Create a branch
-4. Make sure to run `pre-commit install` to install required pre-commit hooks
-5. Make your changes and commit them
-6. Push to the `code` branch
-7. Create the pull request
-
-Alternatively see the GitHub documentation on [creating a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
+See [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ## Discussions
 
@@ -133,8 +123,8 @@ Up-to-date list of contributors can be found [here](https://github.com/thecesrom
 
 ## License
 
-See the [LICENSE](https://github.com/thecesrom/incendium/blob/HEAD/LICENSE).
+See [LICENSE](./LICENSE).
 
 ## Code of conduct
 
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
+See [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md).
