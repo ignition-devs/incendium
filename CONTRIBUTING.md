@@ -16,11 +16,11 @@ If you find a bug or if something is missing in the source code, you can help us
 
 ## Getting ready to contribute
 
-For **incendium** we rely on Python 2.7.18 for development, and Python 3.10 to run tests and style checks with `pre-commit` and `tox`.
+For **incendium** we rely on Python 2.7.18 for development, and Python 3.11 to run tests and style checks with `pre-commit` and `tox`.
 
 ### Setting up your local environment
 
-1. Install Python 2.7.18 and the latest 3.10 release
+1. Install Python 2.7.18 and the latest 3.11 release
 1. Install the required packages for development you may run the following command:
 
     ```sh
