@@ -1,25 +1,25 @@
-version: '1'
+version: "1"
 
 ignore:
-- .git
-- .env
-- .tox
-- .venv
-- env
-- venv
+  - .git
+  - .env
+  - .tox
+  - .venv
+  - env
+  - venv
 
 rule_settings:
   enable:
-  - default
+    - default
   disable:
-  - dict-assign-update-to-union
-  - lift-return-into-if
-  - use-fstring-for-formatting
+    - dict-assign-update-to-union
+    - lift-return-into-if
+    - use-fstring-for-formatting
   rule_types:
-  - refactoring
-  - suggestion
-  - comment
-  python_version: '3.10'
+    - refactoring
+    - suggestion
+    - comment
+  python_version: "3.10"
 
 metrics:
   quality_threshold: 25.0
@@ -27,7 +27,7 @@ metrics:
 github:
   labels: []
   ignore_labels:
-  - sourcery-ignore
+    - sourcery-ignore
   request_review: author
   sourcery_branch: sourcery/{base_branch}
 
