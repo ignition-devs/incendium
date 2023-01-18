@@ -2,21 +2,33 @@ name: PyPI Upload
 
 on:
   release:
-    types: [published]
+    types:
+      - published
 
 env:
-  PYTHON_VERSION: 2.7
+  PYTHON_VERSION: "2.7"
 
 jobs:
   upload:
     runs-on: ubuntu-20.04
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
       - name: Set up Python ${{ env.PYTHON_VERSION }}
         uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Cache Python
+        id: cache-python
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.pythonLocation }}
+          key: py${{ env.PYTHON_VERSION }}-${{ hashFiles('setup.cfg') }}
+          restore-keys: |
+            py${{ env.PYTHON_VERSION }}-
 
       - name: Install dependencies
         run: |
