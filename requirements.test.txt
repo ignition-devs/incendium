@@ -1,3 +1,0 @@
-ignition-api-stubs
-pre-commit
-tox
