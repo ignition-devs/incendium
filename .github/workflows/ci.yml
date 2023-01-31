@@ -29,8 +29,6 @@ jobs:
         with:
           path: ${{ env.pythonLocation }}
           key: py${{ env.PYTHON_VERSION }}-${{ hashFiles('tox.ini', 'requirements/ci.txt')  }}
-          restore-keys: |
-            py${{ env.PYTHON_VERSION }}-
 
       - name: Install dependencies
         run: |
@@ -42,8 +40,6 @@ jobs:
         with:
           path: ~/.cache/pre-commit
           key: ${{ runner.os }}-pre-commit-${{ hashFiles('.pre-commit-config.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pre-commit-
 
       - name: Cache tox
         id: cache-tox
@@ -51,8 +47,6 @@ jobs:
         with:
           path: .tox
           key: ${{ runner.os }}-tox-${{ hashFiles('tox.ini') }}
-          restore-keys: |
-            ${{ runner.os }}-tox-
 
       - name: Run tests
         run: |

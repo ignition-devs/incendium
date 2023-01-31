@@ -27,8 +27,6 @@ jobs:
         with:
           path: ${{ env.pythonLocation }}
           key: py${{ env.PYTHON_VERSION }}-${{ hashFiles('setup.cfg', '**/version.py') }}
-          restore-keys: |
-            py${{ env.PYTHON_VERSION }}-
 
       - name: Install dependencies
         run: |
