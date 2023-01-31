@@ -50,7 +50,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: .tox
-          key: ${{ runner.os }}-tox-${{ hashFiles('.pre-commit-config.yaml', '.pylintrc', 'tox.ini') }}
+          key: ${{ runner.os }}-tox-${{ hashFiles('tox.ini') }}
           restore-keys: |
             ${{ runner.os }}-tox-
 
