@@ -26,6 +26,11 @@ repos:
         entry: pylint
         language: system
         types: [python]
+  - repo: https://github.com/python-jsonschema/check-jsonschema.git
+    rev: 0.21.0
+    hooks:
+      - id: check-github-workflows
+        name: check github workflows
   - repo: https://github.com/commitizen-tools/commitizen
     rev: v2.41.0
     hooks:
