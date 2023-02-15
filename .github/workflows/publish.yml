@@ -7,8 +7,9 @@ on:
 
 jobs:
   main:
-    uses: thecesrom/workflows/.github/workflows/pypi-upload.yml@v0.0.4
+    uses: thecesrom/workflows/.github/workflows/pypi-upload.yml@v1.0.0
     with:
       image: ubuntu-20.04
       python-version: "2.7"
+    secrets:
       pypi-token: ${{ secrets.PYPI_API_TOKEN }}
