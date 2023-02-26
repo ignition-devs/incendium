@@ -21,7 +21,7 @@ import system.db
 from com.inductiveautomation.ignition.common import BasicDataset
 from java.lang import Thread
 
-from incendium.helper.types import DictIntStringAny, SProcResult, String
+from incendium.helper.types import AnyStr, DictIntStringAny, SProcResult
 
 
 class DisposableConnection(object):
@@ -32,11 +32,11 @@ class DisposableConnection(object):
     resources.
     """
 
-    database = None  # type: String
+    database = None  # type: AnyStr
     retries = None  # type: int
 
     def __init__(self, database, retries=3):
-        # type: (String, int) -> None
+        # type: (AnyStr, int) -> None
         """Disposable Connection initializer.
 
         Args:
@@ -89,7 +89,7 @@ class DisposableConnection(object):
 
     @property
     def status(self):
-        # type: () -> String
+        # type: () -> AnyStr
         """Get connection status."""
         connection_info = system.db.getConnectionInfo(self.database)
         return str(connection_info.getValueAt(0, "Status"))
@@ -100,7 +100,7 @@ class Param(object):
 
     def __init__(
         self,
-        name_or_index,  # type: Union[int, String]
+        name_or_index,  # type: Union[int, AnyStr]
         type_code,  # type: int
         value=None,  # type: Optional[Any]
     ):
@@ -132,7 +132,7 @@ class Param(object):
 
     @property
     def name_or_index(self):
-        # type: () -> Union[int, String]
+        # type: () -> Union[int, AnyStr]
         """Get value of name_or_index."""
         return self._name_or_index
 
@@ -153,7 +153,7 @@ class InParam(Param):
     """Class used for declaring INPUT parameters."""
 
     def __init__(self, name_or_index, type_code, value):
-        # type: (Union[int, String], int, Any) -> None
+        # type: (Union[int, AnyStr], int, Any) -> None
         """Create an instance of InParam.
 
         Args:
@@ -169,7 +169,7 @@ class OutParam(Param):
     """Class used for declaring OUTPUT parameters."""
 
     def __init__(self, name_or_index, type_code):
-        # type: (Union[int, String], int) -> None
+        # type: (Union[int, AnyStr], int) -> None
         """Create an instance of OutParam.
 
         Args:
@@ -181,9 +181,9 @@ class OutParam(Param):
 
 
 def _execute_sp(
-    stored_procedure,  # type: String
-    database="",  # type: String
-    transaction=None,  # type: Optional[String]
+    stored_procedure,  # type: AnyStr
+    database="",  # type: AnyStr
+    transaction=None,  # type: Optional[AnyStr]
     skip_audit=False,  # type: bool
     in_params=None,  # type: Optional[List[InParam]]
     out_params=None,  # type: Optional[List[OutParam]]
@@ -262,7 +262,7 @@ def _execute_sp(
 
 
 def check(stored_procedure, database="", params=None):
-    # type: (String, String, Optional[List[InParam]]) -> Optional[bool]
+    # type: (AnyStr, AnyStr, Optional[List[InParam]]) -> Optional[bool]
     """Execute a stored procedure against the connection.
 
     This will return a flag set to TRUE or FALSE.
@@ -286,9 +286,9 @@ def check(stored_procedure, database="", params=None):
 
 
 def execute_non_query(
-    stored_procedure,  # type: String
-    database="",  # type: String
-    transaction=None,  # type: Optional[String]
+    stored_procedure,  # type: AnyStr
+    database="",  # type: AnyStr
+    transaction=None,  # type: Optional[AnyStr]
     params=None,  # type: Optional[List[InParam]]
 ):
     # type: (...) -> int
@@ -322,8 +322,8 @@ def execute_non_query(
 
 
 def get_data(
-    stored_procedure,  # type: String
-    database="",  # type: String
+    stored_procedure,  # type: AnyStr
+    database="",  # type: AnyStr
     params=None,  # type: Optional[List[InParam]]
 ):
     # type: (...) -> BasicDataset
@@ -352,10 +352,10 @@ def get_data(
 
 
 def get_output_params(
-    stored_procedure,  # type: String
+    stored_procedure,  # type: AnyStr
     output,  # type: List[OutParam]
-    database="",  # type: String
-    transaction=None,  # type: Optional[String]
+    database="",  # type: AnyStr
+    transaction=None,  # type: Optional[AnyStr]
     params=None,  # type: Optional[List[InParam]]
 ):
     # type: (...) -> DictIntStringAny
@@ -389,10 +389,10 @@ def get_output_params(
 
 
 def get_return_value(
-    stored_procedure,  # type: String
+    stored_procedure,  # type: AnyStr
     return_type_code,  # type: int
-    database="",  # type: String
-    transaction=None,  # type: Optional[String]
+    database="",  # type: AnyStr
+    transaction=None,  # type: Optional[AnyStr]
     params=None,  # type: Optional[List[InParam]]
 ):
     # type: (...) -> Optional[int]
@@ -425,10 +425,10 @@ def get_return_value(
 
 
 def o_execute_non_query(
-    stored_procedure,  # type: String
+    stored_procedure,  # type: AnyStr
     out_params,  # type: List[OutParam]
-    database="",  # type: String
-    transaction=None,  # type: Optional[String]
+    database="",  # type: AnyStr
+    transaction=None,  # type: Optional[AnyStr]
     in_params=None,  # type: Optional[List[InParam]]
 ):
     # type: (...) -> Tuple[int, DictIntStringAny]
@@ -467,9 +467,9 @@ def o_execute_non_query(
 
 
 def o_get_data(
-    stored_procedure,  # type: String
+    stored_procedure,  # type: AnyStr
     out_params,  # type: List[OutParam]
-    database="",  # type: String
+    database="",  # type: AnyStr
     in_params=None,  # type: Optional[List[InParam]]
 ):
     # type: (...) -> Tuple[BasicDataset, DictIntStringAny]

@@ -7,9 +7,6 @@ on:
 
 jobs:
   main:
-    uses: coatl-dev/workflows/.github/workflows/pypi-upload.yml@v1.2.0
-    with:
-      image: ubuntu-20.04
-      python-version: "2.7"
+    uses: coatl-dev/workflows/.github/workflows/pypi-upload.yml@v2.1.0
     secrets:
       pypi-token: ${{ secrets.PYPI_API_TOKEN }}

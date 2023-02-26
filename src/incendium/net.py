@@ -13,7 +13,7 @@ from typing import List
 import system.net
 
 from incendium import constants
-from incendium.helper.types import String
+from incendium.helper.types import AnyStr
 
 HTML_ESCAPE_TABLE = {
     "&": "&amp;",
@@ -27,7 +27,7 @@ HTML_ESCAPE_TABLE = {
 
 
 def _html_escape(text):
-    # type: (String) -> String
+    # type: (AnyStr) -> AnyStr
     """Escape an HTML file removing traces of offending characters.
 
     Args:
@@ -40,7 +40,7 @@ def _html_escape(text):
 
 
 def _send_email(subject, body, html, to, priority):
-    # type: (String, String, bool, List[String], String) -> None
+    # type: (AnyStr, AnyStr, bool, List[AnyStr], AnyStr) -> None
     """Send an email through the given SMTP server.
 
     Args:
@@ -63,7 +63,7 @@ def _send_email(subject, body, html, to, priority):
 
 
 def report_error(subject, message, details, to):
-    # type: (String, String, String, List[String]) -> None
+    # type: (AnyStr, AnyStr, AnyStr, List[AnyStr]) -> None
     """Send an Error Report email message.
 
     Args:
@@ -77,7 +77,7 @@ def report_error(subject, message, details, to):
 
 
 def send_high_priority_email(subject, body, to):
-    # type: (String, String, List[String]) -> None
+    # type: (AnyStr, AnyStr, List[AnyStr]) -> None
     """Send a High Priority email.
 
     Args:
@@ -89,7 +89,7 @@ def send_high_priority_email(subject, body, to):
 
 
 def send_html_email(subject, body, to, priority="3"):
-    # type: (String, String, List[String], String) -> None
+    # type: (AnyStr, AnyStr, List[AnyStr], AnyStr) -> None
     """Send an email in HTML format.
 
     Args:
@@ -104,7 +104,7 @@ def send_html_email(subject, body, to, priority="3"):
 
 
 def send_plain_text_email(subject, body, to, priority="3"):
-    # type: (String, String, List[String], String) -> None
+    # type: (AnyStr, AnyStr, List[AnyStr], AnyStr) -> None
     """Send an email in plain text format.
 
     Args:

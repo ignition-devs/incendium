@@ -8,11 +8,11 @@ from typing import List, Optional
 
 import system.nav
 
-from incendium.helper.types import DictStringAny, String
+from incendium.helper.types import AnyStr, DictStringAny
 
 
 def _get_full_path(from_path, to_path):
-    # type: (String, String) -> String
+    # type: (AnyStr, AnyStr) -> AnyStr
     """Return the full path of the window to swap to.
 
     The path will be relative to the path of the window to swap from.
@@ -38,7 +38,7 @@ def _get_full_path(from_path, to_path):
     elif _to[0] == current_directory:
         path_parts = _from[:-1] + _to[1:]
 
-    full_path = []  # type: List[String]
+    full_path = []  # type: List[AnyStr]
     for path_part in path_parts:
         if path_part == parent_directory and full_path:
             full_path = full_path[:-1]
@@ -49,7 +49,7 @@ def _get_full_path(from_path, to_path):
 
 
 def swap_to(path, params=None):
-    # type: (String, Optional[DictStringAny]) -> None
+    # type: (AnyStr, Optional[DictStringAny]) -> None
     """Perform a window swap.
 
     This will swap from the current main screen window to the window
@@ -66,7 +66,7 @@ def swap_to(path, params=None):
 
 
 def swap_windows(from_path, to_path, params=None):
-    # type: (String, String, Optional[DictStringAny]) -> None
+    # type: (AnyStr, AnyStr, Optional[DictStringAny]) -> None
     """Perform a window swap.
 
     Args:
