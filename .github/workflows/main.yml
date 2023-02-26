@@ -8,7 +8,7 @@ on:
       - main
 
 jobs:
-  test:
+  tox:
     uses: coatl-dev/workflows/.github/workflows/tox.yml@v2.1.0
     with:
       pre-commit: true
