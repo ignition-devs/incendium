@@ -17,6 +17,8 @@ __all__ = [
     "CURSOR_TEXT",
     "CURSOR_WAIT",
     "CURSOR_W_RESIZE",
+    "authentication",
+    "authorization",
     "confirm",
     "error",
     "info",
@@ -26,11 +28,13 @@ __all__ = [
 
 from typing import Optional
 
+import system.security
 import system.util
-from javax.swing import JLabel, JOptionPane, JPanel, JTextField
+from java.awt import GridLayout
+from javax.swing import JLabel, JOptionPane, JPanel, JPasswordField, JTextField
 
 from incendium import constants
-from incendium.helper.types import String
+from incendium.helper.types import AnyStr
 
 # Cursor codes.
 CURSOR_DEFAULT = 0
@@ -49,8 +53,134 @@ CURSOR_HAND = 12
 CURSOR_MOVE = 13
 
 
+def authentication(auth_profile="", title="Authentication"):
+    # type: (AnyStr, AnyStr) -> bool
+    """Open up a popup input dialog box.
+
+    This dialog box will show a prompt message, and allow the user to
+    type in their username and password. When the user is done, they can
+    press "OK" or "Cancel". If "OK" is pressed, this function will
+    attempt to validate the User credentials against the Authentication
+    Profile. If "Cancel" is pressed, this function will return
+    ``False``.
+
+    Args:
+        auth_profile: The name of the authentication profile to run
+            against. Leaving this out will use the project's default
+            profile. Optional.
+        title: A title for the input box. This will be translated to the
+            selected Locale. Optional.
+
+    Returns:
+        ``True`` if the user was validated, ``False`` otherwise.
+    """
+    options = [
+        system.util.translate(constants.OK_TEXT),
+        system.util.translate(constants.CANCEL_TEXT),
+    ]
+
+    panel = JPanel()
+
+    labels = JPanel(GridLayout(0, 1, 2, 2))
+    labels.add(JLabel("{}: ".format(system.util.translate("Username"))))
+    labels.add(JLabel("{}: ".format(system.util.translate("Password"))))
+    panel.add(labels)
+
+    fields = JPanel(GridLayout(0, 1, 2, 2))
+    username_field = JTextField(25)
+    fields.add(username_field)
+    password_field = JPasswordField(25)
+    fields.add(password_field)
+    panel.add(fields)
+
+    choice = JOptionPane.showOptionDialog(
+        None,
+        panel,
+        system.util.translate(title),
+        JOptionPane.OK_CANCEL_OPTION,
+        JOptionPane.PLAIN_MESSAGE,
+        None,
+        options,
+        options[0],
+    )
+
+    valid = system.security.validateUser(
+        username=username_field.getText(),
+        password="".join(password_field.getPassword()),
+        authProfile=auth_profile,
+    )
+
+    return choice == JOptionPane.OK_OPTION and valid
+
+
+def authorization(role, auth_profile="", title="Athorization"):
+    # type: (AnyStr, AnyStr, AnyStr) -> bool
+    """Open up a popup input dialog box.
+
+    This dialog box will show a prompt message, and allow the user to
+    type in their username and password. When the user is done, they can
+    press "OK" or "Cancel". If "OK" is pressed, this function will
+    attempt to validate the User credentials against the Authentication
+    Profile and verify if the User belongs to the ``role``. If "Cancel"
+    is pressed, this function will return ``False``.
+
+    Args:
+        role: Required role.
+        auth_profile: The name of the authentication profile to run
+            against. Leaving this out will use the project's default
+            profile. Optional.
+        title: A title for the input box. This will be translated to the
+            selected Locale. Optional.
+
+    Returns:
+        ``True`` if the user was validated, ``False`` otherwise.
+    """
+    has_role = False
+
+    options = [
+        system.util.translate(constants.OK_TEXT),
+        system.util.translate(constants.CANCEL_TEXT),
+    ]
+
+    panel = JPanel()
+
+    labels = JPanel(GridLayout(0, 1, 2, 2))
+    labels.add(JLabel("{}: ".format(system.util.translate("Username"))))
+    labels.add(JLabel("{}: ".format(system.util.translate("Password"))))
+    panel.add(labels)
+
+    fields = JPanel(GridLayout(0, 1, 2, 2))
+    username_field = JTextField(25)
+    fields.add(username_field)
+    password_field = JPasswordField(25)
+    fields.add(password_field)
+    panel.add(fields)
+
+    choice = JOptionPane.showOptionDialog(
+        None,
+        panel,
+        system.util.translate(title),
+        JOptionPane.OK_CANCEL_OPTION,
+        JOptionPane.PLAIN_MESSAGE,
+        None,
+        options,
+        options[0],
+    )
+
+    if choice == JOptionPane.OK_OPTION:
+        user_roles = system.security.getUserRoles(
+            username=username_field.getText(),
+            password="".join(password_field.getPassword()),
+            authProfile=auth_profile,
+        )
+        if user_roles is not None:
+            has_role = role in user_roles
+
+    return has_role
+
+
 def confirm(message, title="Confirm", show_cancel=False):
-    # type: (String, String, bool) -> Optional[bool]
+    # type: (AnyStr, AnyStr, bool) -> Optional[bool]
     """Display a confirmation dialog box to the user.
 
     This will present the user with "Yes", "No" and "Cancel" options,
@@ -94,7 +224,7 @@ def confirm(message, title="Confirm", show_cancel=False):
 
 
 def error(message, title="Error", detail=None):
-    # type: (String, String, Optional[String]) -> None
+    # type: (AnyStr, AnyStr, Optional[AnyStr]) -> None
     """Display an error-style message box to the user.
 
     Args:
@@ -115,7 +245,7 @@ def error(message, title="Error", detail=None):
 
 
 def info(message, title="Information", detail=None):
-    # type: (String, String, Optional[String]) -> None
+    # type: (AnyStr, AnyStr, Optional[AnyStr]) -> None
     """Display an informational-style message popup box to the user.
 
     Args:
@@ -139,7 +269,7 @@ def info(message, title="Information", detail=None):
 
 
 def input(message, title="Input"):
-    # type: (String, String) -> Optional[String]
+    # type: (AnyStr, AnyStr) -> Optional[AnyStr]
     """Open up a popup input dialog box.
 
     This dialog box will show a prompt message, and allow the user to
@@ -183,7 +313,7 @@ def input(message, title="Input"):
 
 
 def warning(message, title="Warning", detail=None):
-    # type: (String, String, Optional[String]) -> None
+    # type: (AnyStr, AnyStr, Optional[AnyStr]) -> None
     """Display a message to the user in a warning style popup dialog.
 
     Args:

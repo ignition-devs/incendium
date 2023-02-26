@@ -19,17 +19,17 @@ import system.user
 from com.inductiveautomation.ignition.common.user import ContactInfo, PyUser
 
 from incendium.exceptions import ApplicationError
-from incendium.helper.types import String
+from incendium.helper.types import AnyStr
 
 
 class IncendiumUser(object):
     """Wrapper class for Ignition's User object."""
 
-    _roles = None  # type: List[String]
-    _locale = None  # type: String
-    _last_name = None  # type: String
-    _first_name = None  # type: String
-    _email = None  # type: Optional[String]
+    _roles = None  # type: List[AnyStr]
+    _locale = None  # type: AnyStr
+    _last_name = None  # type: AnyStr
+    _first_name = None  # type: AnyStr
+    _email = None  # type: Optional[AnyStr]
     _contact_info = None  # type: List[ContactInfo]
 
     def __init__(self, user):
@@ -59,7 +59,7 @@ class IncendiumUser(object):
 
     @property
     def email(self):
-        # type: () -> List[String]
+        # type: () -> List[AnyStr]
         """Get User's email address(es).
 
         Returns:
@@ -69,7 +69,7 @@ class IncendiumUser(object):
 
     @property
     def first_name(self):
-        # type: () -> String
+        # type: () -> AnyStr
         """Get User's first name.
 
         Returns:
@@ -79,7 +79,7 @@ class IncendiumUser(object):
 
     @property
     def full_name(self):
-        # type: () -> String
+        # type: () -> AnyStr
         """Get User's full name.
 
         Returns:
@@ -89,7 +89,7 @@ class IncendiumUser(object):
 
     @property
     def last_name(self):
-        # type: () -> String
+        # type: () -> AnyStr
         """Get User's last name.
 
         Returns:
@@ -99,7 +99,7 @@ class IncendiumUser(object):
 
     @property
     def locale(self):
-        # type: () -> String
+        # type: () -> AnyStr
         """Get User's preferred language.
 
         Returns:
@@ -109,7 +109,7 @@ class IncendiumUser(object):
 
     @property
     def roles(self):
-        # type: () -> List[String]
+        # type: () -> List[AnyStr]
         """Get User's Roles.
 
         Returns:
@@ -119,7 +119,7 @@ class IncendiumUser(object):
 
 
 def get_emails(user_source="", filter_role=""):
-    # type: (String, String) -> List[String]
+    # type: (AnyStr, AnyStr) -> List[AnyStr]
     """Get a list of email addresses from a User Source.
 
     Args:
@@ -142,7 +142,7 @@ def get_emails(user_source="", filter_role=""):
 
 
 def get_user(user_source="", failover=None):
-    # type: (String, Optional[String]) -> IncendiumUser
+    # type: (AnyStr, Optional[AnyStr]) -> IncendiumUser
     """Look up the logged-in User in a User Source.
 
     Args:
@@ -170,7 +170,7 @@ def get_user(user_source="", failover=None):
 
 
 def get_user_email_address(user_source="", failover=None):
-    # type: (String, Optional[String]) -> List[String]
+    # type: (AnyStr, Optional[AnyStr]) -> List[AnyStr]
     """Get the User's Email address(es).
 
     Args:
@@ -185,7 +185,7 @@ def get_user_email_address(user_source="", failover=None):
 
 
 def get_user_first_name(user_source="", failover=None):
-    # type: (String, Optional[String]) -> String
+    # type: (AnyStr, Optional[AnyStr]) -> AnyStr
     """Get the User's First Name.
 
     Args:
@@ -200,7 +200,7 @@ def get_user_first_name(user_source="", failover=None):
 
 
 def get_user_full_name(user_source="", failover=None):
-    # type: (String, Optional[String]) -> String
+    # type: (AnyStr, Optional[AnyStr]) -> AnyStr
     """Get the User's Full Name.
 
     Args:
@@ -215,7 +215,7 @@ def get_user_full_name(user_source="", failover=None):
 
 
 def get_users(user_source="", filter_role=""):
-    # type: (String, String) -> List[PyUser]
+    # type: (AnyStr, AnyStr) -> List[PyUser]
     """Get a list of PyUser objects from a User Source filtered by role.
 
     Args:

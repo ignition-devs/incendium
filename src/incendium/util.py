@@ -16,12 +16,12 @@ import system.util
 from java.util import Date
 
 from incendium import constants
-from incendium.helper.types import Number, String
+from incendium.helper.types import AnyStr, Number
 from incendium.user import IncendiumUser
 
 
 def _format_error_message(counter, error_message, key):
-    # type: (int, String, String) -> String
+    # type: (int, AnyStr, AnyStr) -> AnyStr
     """Format error message.
 
     Args:
@@ -39,7 +39,7 @@ def _format_error_message(counter, error_message, key):
 
 
 def get_function_name():
-    # type: () -> String
+    # type: () -> AnyStr
     """Get the name of the function last called.
 
     Returns:
@@ -49,7 +49,7 @@ def get_function_name():
 
 
 def get_timer(date):
-    # type: (Union[Date, long]) -> String
+    # type: (Union[Date, long]) -> AnyStr
     """Get a timer with the time elapsed from value until now.
 
     Args:
@@ -65,7 +65,7 @@ def get_timer(date):
 
 
 def get_timestamp(value):
-    # type: (int) -> String
+    # type: (int) -> AnyStr
     """Get timestamp in "hh:mm:ss" format.
 
     Args:
@@ -97,11 +97,11 @@ def set_locale(user):
 
 
 def validate_form(
-    strings=None,  # type: Optional[Dict[String, String]]
-    numbers=None,  # type: Optional[Dict[String, Number]]
-    collections=None,  # type: Optional[Dict[String, Number]]
+    strings=None,  # type: Optional[Dict[AnyStr, AnyStr]]
+    numbers=None,  # type: Optional[Dict[AnyStr, Number]]
+    collections=None,  # type: Optional[Dict[AnyStr, Number]]
 ):
-    # type: (...) -> Tuple[bool, String]
+    # type: (...) -> Tuple[bool, AnyStr]
     """Perform a form validation.
 
     Args:

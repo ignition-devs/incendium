@@ -8,7 +8,7 @@ from typing import Optional
 
 from java.lang import Throwable
 
-from incendium.helper.types import InnerException, String
+from incendium.helper.types import AnyStr, InnerException
 
 
 class ApplicationError(Exception):
@@ -16,11 +16,11 @@ class ApplicationError(Exception):
 
     cause = None  # type: Optional[Throwable]
     inner_exception = None  # type: InnerException
-    message = None  # type: String
+    message = None  # type: AnyStr
 
     def __init__(
         self,
-        message,  # type: String
+        message,  # type: AnyStr
         inner_exception=None,  # type: InnerException
         cause=None,  # type: Optional[Throwable]
     ):
@@ -54,10 +54,10 @@ class ApplicationError(Exception):
 class TagError(Exception):
     """Tag Error class."""
 
-    message = None  # type: String
+    message = None  # type: AnyStr
 
     def __init__(self, message):
-        # type: (String) -> None
+        # type: (AnyStr) -> None
         """Tag Error initializer.
 
         Args:

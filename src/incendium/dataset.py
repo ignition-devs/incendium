@@ -11,15 +11,15 @@ import system.date
 from com.inductiveautomation.ignition.common import Dataset
 from java.util import Date
 
-from incendium.helper.types import DictStringAny, String
+from incendium.helper.types import AnyStr, DictStringAny
 
 
 class _NanoXML(object):
-    indent = None  # type: String
-    root = None  # type: String
+    indent = None  # type: AnyStr
+    root = None  # type: AnyStr
 
     def __init__(self, root="root", indent="\t"):
-        # type: (String, String) -> None
+        # type: (AnyStr, AnyStr) -> None
         """Nano XML initializer.
 
         Args:
@@ -35,7 +35,7 @@ class _NanoXML(object):
         )
 
     def add_element(self, name):
-        # type: (String) -> None
+        # type: (AnyStr) -> None
         """Add an element to the XML document.
 
         Args:
@@ -46,7 +46,7 @@ class _NanoXML(object):
         )
 
     def add_sub_element(self, name, value):
-        # type: (String, String) -> None
+        # type: (AnyStr, AnyStr) -> None
         """Add a sub element to an element.
 
         Args:
@@ -61,7 +61,7 @@ class _NanoXML(object):
         )
 
     def close_element(self, name):
-        # type: (String) -> None
+        # type: (AnyStr) -> None
         """Close element.
 
         Args:
@@ -72,7 +72,7 @@ class _NanoXML(object):
         )
 
     def to_string(self):
-        # type: () -> String
+        # type: () -> AnyStr
         """Return the string representation of the XML document.
 
         Returns:
@@ -99,7 +99,7 @@ def _format_object(obj):
 
 
 def _format_value(obj, header=""):
-    # type: (Any, String) -> String
+    # type: (Any, AnyStr) -> AnyStr
     """Format the value to be properly represented in JSON.
 
     Args:
@@ -124,7 +124,7 @@ def _format_value(obj, header=""):
 
 
 def _to_json(dataset, root=None, is_root=True):
-    # type: (Dataset, Optional[String], bool) -> String
+    # type: (Dataset, Optional[AnyStr], bool) -> AnyStr
     """Return a string JSON representation of the Dataset.
 
     Private function.
@@ -188,7 +188,7 @@ def _to_jsonobject(dataset):
 
 
 def to_json(dataset, root=None):
-    # type: (Dataset, Optional[String]) -> String
+    # type: (Dataset, Optional[AnyStr]) -> AnyStr
     """Return a string JSON representation of the Dataset.
 
     Args:
@@ -215,7 +215,7 @@ def to_jsonobject(dataset):
 
 
 def to_xml(dataset, root="root", element="row", indent="\t"):
-    # type: (Dataset, String, String, String) -> String
+    # type: (Dataset, AnyStr, AnyStr, AnyStr) -> AnyStr
     r"""Return a string XML representation of the Dataset.
 
     Args:

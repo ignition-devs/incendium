@@ -7,11 +7,11 @@ from typing import Any
 import system.tag
 from com.inductiveautomation.ignition.common.model.values import BasicQualifiedValue
 
-from incendium.helper.types import String
+from incendium.helper.types import AnyStr
 
 
 def read(tag_path):
-    # type: (String) -> BasicQualifiedValue
+    # type: (AnyStr) -> BasicQualifiedValue
     """Read the value of the Tags at the given paths.
 
     Note that this function will block until the read operation is
@@ -30,7 +30,7 @@ def read(tag_path):
 
 
 def write(tag_path, value):
-    # type: (String, Any) -> int
+    # type: (AnyStr, Any) -> int
     """Write a value to a tag.
 
     Note that this function will block until the write operation is
