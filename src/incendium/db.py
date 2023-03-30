@@ -49,6 +49,13 @@ class DisposableConnection(object):
         self.database = database
         self.retries = retries
 
+    @property
+    def status(self):
+        # type: () -> AnyStr
+        """Get connection status."""
+        connection_info = system.db.getConnectionInfo(self.database)
+        return str(connection_info.getValueAt(0, "Status"))
+
     def __enter__(self):
         # type: () -> DisposableConnection
         """Enter the runtime context related to this object.
@@ -87,13 +94,6 @@ class DisposableConnection(object):
         """Exit the runtime context related to this object."""
         system.db.setDatasourceEnabled(self.database, False)
 
-    @property
-    def status(self):
-        # type: () -> AnyStr
-        """Get connection status."""
-        connection_info = system.db.getConnectionInfo(self.database)
-        return str(connection_info.getValueAt(0, "Status"))
-
 
 class Param(object):
     """Base class used for defining [IN|OUT]PUT parameters."""
@@ -117,19 +117,6 @@ class Param(object):
         self._type_code = type_code
         self._value = value
 
-    def __repr__(self):  # type: ignore[no-untyped-def]
-        """Compute the "official" string representation."""
-        return "{}(name_or_index={!r}, type_code={}, value={})".format(
-            self.__class__.__name__,
-            self.name_or_index,
-            self.type_code,
-            self.value,
-        )
-
-    def __str__(self):  # type: ignore[no-untyped-def]
-        """Compute the "informal" string representation."""
-        return "{!r}, {}, {}".format(self.name_or_index, self.type_code, self.value)
-
     @property
     def name_or_index(self):
         # type: () -> Union[int, AnyStr]
@@ -147,6 +134,19 @@ class Param(object):
         # type: () -> Optional[Any]
         """Get value of value."""
         return self._value
+
+    def __repr__(self):  # type: ignore[no-untyped-def]
+        """Compute the "official" string representation."""
+        return "{}(name_or_index={!r}, type_code={}, value={})".format(
+            self.__class__.__name__,
+            self.name_or_index,
+            self.type_code,
+            self.value,
+        )
+
+    def __str__(self):  # type: ignore[no-untyped-def]
+        """Compute the "informal" string representation."""
+        return "{!r}, {}, {}".format(self.name_or_index, self.type_code, self.value)
 
 
 class InParam(Param):
@@ -261,6 +261,43 @@ def _execute_sp(
     }
 
 
+def get_output_params(
+    stored_procedure,  # type: AnyStr
+    output,  # type: List[OutParam]
+    database="",  # type: AnyStr
+    transaction=None,  # type: Optional[AnyStr]
+    params=None,  # type: Optional[List[InParam]]
+):
+    # type: (...) -> DictIntStringAny
+    """Get the Output parameters from the Stored Procedure.
+
+    Args:
+        stored_procedure: The name of the stored procedure to execute.
+        output: A list containing all OUTPUT parameters as OutParam
+            objects.
+        database: The name of the database connection to execute
+            against. If omitted or "", the project's default database
+            connection will be used. Optional.
+        transaction: A transaction identifier. If omitted, the call will
+            be executed in its own transaction. Optional.
+        params: A list containing all INPUT parameters as InParam
+            objects. Optional.
+
+    Returns:
+        A Python dictionary of OUTPUT parameters.
+    """
+    result = _execute_sp(
+        stored_procedure,
+        database=database,
+        transaction=transaction,
+        in_params=params,
+        out_params=output,
+        get_out_params=True,
+    )
+
+    return result["output_params"]
+
+
 def check(stored_procedure, database="", params=None):
     # type: (AnyStr, AnyStr, Optional[List[InParam]]) -> Optional[bool]
     """Execute a stored procedure against the connection.
@@ -349,43 +386,6 @@ def get_data(
     )
 
     return result["result_set"]
-
-
-def get_output_params(
-    stored_procedure,  # type: AnyStr
-    output,  # type: List[OutParam]
-    database="",  # type: AnyStr
-    transaction=None,  # type: Optional[AnyStr]
-    params=None,  # type: Optional[List[InParam]]
-):
-    # type: (...) -> DictIntStringAny
-    """Get the Output parameters from the Stored Procedure.
-
-    Args:
-        stored_procedure: The name of the stored procedure to execute.
-        output: A list containing all OUTPUT parameters as OutParam
-            objects.
-        database: The name of the database connection to execute
-            against. If omitted or "", the project's default database
-            connection will be used. Optional.
-        transaction: A transaction identifier. If omitted, the call will
-            be executed in its own transaction. Optional.
-        params: A list containing all INPUT parameters as InParam
-            objects. Optional.
-
-    Returns:
-        A Python dictionary of OUTPUT parameters.
-    """
-    result = _execute_sp(
-        stored_procedure,
-        database=database,
-        transaction=transaction,
-        in_params=params,
-        out_params=output,
-        get_out_params=True,
-    )
-
-    return result["output_params"]
 
 
 def get_return_value(

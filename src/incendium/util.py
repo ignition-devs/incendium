@@ -48,22 +48,6 @@ def get_function_name():
     return traceback.extract_stack(None, 2)[0][2]
 
 
-def get_timer(date):
-    # type: (Union[Date, long]) -> AnyStr
-    """Get a timer with the time elapsed from value until now.
-
-    Args:
-        date: A date or a date represented in milliseconds.
-
-    Returns:
-         Time elapsed represented by a string in the following
-         format: "hh:mm:ss".
-    """
-    date_1 = date if isinstance(date, Date) else system.date.fromMillis(date)
-    date_2 = system.date.now()
-    return get_timestamp(system.date.secondsBetween(date_1, date_2))
-
-
 def get_timestamp(value):
     # type: (int) -> AnyStr
     """Get timestamp in "hh:mm:ss" format.
@@ -78,6 +62,22 @@ def get_timestamp(value):
     minutes, seconds = divmod(value, 60)
     hours, minutes = divmod(minutes, 60)
     return "{:02d}:{:02d}:{:02d}".format(hours, minutes, seconds)
+
+
+def get_timer(date):
+    # type: (Union[Date, long]) -> AnyStr
+    """Get a timer with the time elapsed from value until now.
+
+    Args:
+        date: A date or a date represented in milliseconds.
+
+    Returns:
+         Time elapsed represented by a string in the following
+         format: "hh:mm:ss".
+    """
+    date_1 = date if isinstance(date, Date) else system.date.fromMillis(date)
+    date_2 = system.date.now()
+    return get_timestamp(system.date.secondsBetween(date_1, date_2))
 
 
 def set_locale(user):

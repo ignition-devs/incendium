@@ -3,8 +3,12 @@ repos:
     rev: v1.2.0
     hooks:
       - id: sort-all
+  - repo: https://github.com/bwhmather/ssort
+    rev: v0.11.6
+    hooks:
+      - id: ssort
   - repo: https://github.com/psf/black
-    rev: 23.1.0
+    rev: 23.3.0
     hooks:
       - id: black
   - repo: https://github.com/PyCQA/isort
@@ -26,12 +30,7 @@ repos:
         entry: pylint
         language: system
         types: [python]
-  - repo: https://github.com/python-jsonschema/check-jsonschema.git
-    rev: 0.21.0
-    hooks:
-      - id: check-github-workflows
-        name: check github workflows
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v2.42.0
+    rev: v2.42.1
     hooks:
       - id: commitizen
