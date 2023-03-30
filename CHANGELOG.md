@@ -1,3 +1,13 @@
+## v2023.3.0 (2023-03-30)
+
+### Feat
+
+- **dataset**: add from_list_of_dicts (#140)
+
+### Refactor
+
+- **helper**: move SProcResult from helper.types to db module (#141)
+
 ## v2023.2.0 (2023-02-25)
 
 ### Feat
