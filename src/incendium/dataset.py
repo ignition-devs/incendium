@@ -2,9 +2,9 @@
 
 from __future__ import unicode_literals
 
-__all__ = ["to_json", "to_jsonobject", "to_xml"]
+__all__ = ["from_list_of_dicts", "to_json", "to_jsonobject", "to_xml"]
 
-from typing import Any, List, Optional
+from typing import Any, List, Optional, Set
 
 import system.dataset
 import system.date
@@ -185,6 +185,30 @@ def _to_jsonobject(dataset):
         data.append(row_dict)
 
     return data
+
+
+def from_list_of_dicts(list_of_dicts):
+    # type: (List[DictStringAny]) -> Dataset
+    """Safely convert a list of Python dictionaries into a Dataset.
+
+    Args:
+        list_of_dicts: The list of dictionaries.
+
+    Returns:
+        A Dataset representation of the list of dictionaries.
+    """
+    keys_set = set()  # type: Set[AnyStr]
+    headers = list(keys_set.union(*(d.keys() for d in list_of_dicts)))
+    data = []
+    for dict_ in list_of_dicts:
+        row = []
+        for header in headers:
+            if header in dict_.keys():
+                row.append(dict_[header])
+            else:
+                row.append(None)
+        data.append(row)
+    return system.dataset.toDataSet(headers, data)
 
 
 def to_json(dataset, root=None):
