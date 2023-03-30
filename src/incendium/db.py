@@ -15,13 +15,23 @@ __all__ = [
 ]
 
 from types import TracebackType
-from typing import Any, List, Optional, Tuple, Type, Union
+from typing import Any, List, Optional, Tuple, Type, TypedDict, Union
 
 import system.db
 from com.inductiveautomation.ignition.common import BasicDataset
 from java.lang import Thread
 
-from incendium.helper.types import AnyStr, DictIntStringAny, SProcResult
+from incendium.helper.types import AnyStr, DictIntStringAny
+
+_SProcResult = TypedDict(
+    "_SProcResult",
+    {
+        "output_params": DictIntStringAny,
+        "result_set": BasicDataset,
+        "return_value": Optional[int],
+        "update_count": int,
+    },
+)
 
 
 class DisposableConnection(object):
@@ -193,7 +203,7 @@ def _execute_sp(
     get_update_count=False,  # type: bool
     return_type_code=system.db.INTEGER,  # type: int
 ):
-    # type: (...) -> SProcResult
+    # type: (...) -> _SProcResult
     """Execute a stored procedure against the connection.
 
     Args:
