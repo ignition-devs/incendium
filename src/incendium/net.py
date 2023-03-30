@@ -62,18 +62,19 @@ def _send_email(subject, body, html, to, priority):
     )
 
 
-def report_error(subject, message, details, to):
-    # type: (AnyStr, AnyStr, AnyStr, List[AnyStr]) -> None
-    """Send an Error Report email message.
+def send_html_email(subject, body, to, priority="3"):
+    # type: (AnyStr, AnyStr, List[AnyStr], AnyStr) -> None
+    """Send an email in HTML format.
 
     Args:
         subject: The subject line for the email.
-        message: The error message.
-        details: The error details.
-        to: A list of emails addresses to send to.
+        body: The body text of the email in HTML format.
+        to: A list of email addresses to send to.
+        priority: Priority of the message, from "1" to "5", with "1"
+            being highest priority. Defaults to "3" (normal) priority.
+            Optional.
     """
-    body = constants.ERROR_REPORT.format(message, _html_escape(details))
-    send_high_priority_email(subject, body, to)
+    _send_email(subject, body, True, to, priority)
 
 
 def send_high_priority_email(subject, body, to):
@@ -88,19 +89,18 @@ def send_high_priority_email(subject, body, to):
     send_html_email(subject, body, to, "1")
 
 
-def send_html_email(subject, body, to, priority="3"):
-    # type: (AnyStr, AnyStr, List[AnyStr], AnyStr) -> None
-    """Send an email in HTML format.
+def report_error(subject, message, details, to):
+    # type: (AnyStr, AnyStr, AnyStr, List[AnyStr]) -> None
+    """Send an Error Report email message.
 
     Args:
         subject: The subject line for the email.
-        body: The body text of the email in HTML format.
-        to: A list of email addresses to send to.
-        priority: Priority of the message, from "1" to "5", with "1"
-            being highest priority. Defaults to "3" (normal) priority.
-            Optional.
+        message: The error message.
+        details: The error details.
+        to: A list of emails addresses to send to.
     """
-    _send_email(subject, body, True, to, priority)
+    body = constants.ERROR_REPORT.format(message, _html_escape(details))
+    send_high_priority_email(subject, body, to)
 
 
 def send_plain_text_email(subject, body, to, priority="3"):

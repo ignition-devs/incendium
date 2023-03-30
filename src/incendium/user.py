@@ -118,6 +118,29 @@ class IncendiumUser(object):
         return self._roles
 
 
+def get_users(user_source="", filter_role=""):
+    # type: (AnyStr, AnyStr) -> List[PyUser]
+    """Get a list of PyUser objects from a User Source filtered by role.
+
+    Args:
+        user_source: The name of the User Source. If not provided, the
+            default User Source will be consulted. Optional.
+        filter_role: The name of the role. If provided, a list of PyUser
+            objects for users that are assigned to a matching role will
+            be retrieved, otherwise all users will be retrieved as
+            PyUser objects. Optional.
+
+    Returns:
+        A list of PyUser objects.
+    """
+    users = system.user.getUsers(user_source)
+    return (
+        [user for user in users if filter_role in user.getRoles()]
+        if filter_role
+        else users
+    )
+
+
 def get_emails(user_source="", filter_role=""):
     # type: (AnyStr, AnyStr) -> List[AnyStr]
     """Get a list of email addresses from a User Source.
@@ -212,26 +235,3 @@ def get_user_full_name(user_source="", failover=None):
         The User's Full Name.
     """
     return get_user(user_source, failover).full_name
-
-
-def get_users(user_source="", filter_role=""):
-    # type: (AnyStr, AnyStr) -> List[PyUser]
-    """Get a list of PyUser objects from a User Source filtered by role.
-
-    Args:
-        user_source: The name of the User Source. If not provided, the
-            default User Source will be consulted. Optional.
-        filter_role: The name of the role. If provided, a list of PyUser
-            objects for users that are assigned to a matching role will
-            be retrieved, otherwise all users will be retrieved as
-            PyUser objects. Optional.
-
-    Returns:
-        A list of PyUser objects.
-    """
-    users = system.user.getUsers(user_source)
-    return (
-        [user for user in users if filter_role in user.getRoles()]
-        if filter_role
-        else users
-    )
