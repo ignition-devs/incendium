@@ -1,3 +1,9 @@
+## v2023.4.0 (2023-04-18)
+
+### Feat
+
+- **db**: handle concurrent DisposableConnection connections (#142)
+
 ## v2023.3.0 (2023-03-30)
 
 ### Feat
