@@ -18,6 +18,7 @@ from types import TracebackType
 from typing import Any, List, Optional, Tuple, Type, TypedDict, Union
 
 import system.db
+import system.util
 from com.inductiveautomation.ignition.common import BasicDataset
 from java.lang import Thread
 
@@ -42,9 +43,6 @@ class DisposableConnection(object):
     resources.
     """
 
-    database = None  # type: AnyStr
-    retries = None  # type: int
-
     def __init__(self, database, retries=3):
         # type: (AnyStr, int) -> None
         """Disposable Connection initializer.
@@ -56,14 +54,21 @@ class DisposableConnection(object):
                 enabling the connection. Optional.
         """
         super(DisposableConnection, self).__init__()
-        self.database = database
-        self.retries = retries
+        self._database = database
+        self._retries = retries
+        self._global_conn = "incendium_db_{}".format(database)
+
+    @property
+    def database(self):
+        # type: () -> AnyStr
+        """Get the name of the disposable connection."""
+        return self._database
 
     @property
     def status(self):
         # type: () -> AnyStr
         """Get connection status."""
-        connection_info = system.db.getConnectionInfo(self.database)
+        connection_info = system.db.getConnectionInfo(self._database)
         return str(connection_info.getValueAt(0, "Status"))
 
     def __enter__(self):
@@ -74,22 +79,25 @@ class DisposableConnection(object):
             IOError: If the connection's status reports as Faulted, or
                 ir cannot be enabled.
         """
-        system.db.setDatasourceEnabled(self.database, True)
+        system.db.setDatasourceEnabled(self._database, True)
 
-        for _ in range(self.retries):
+        for _ in range(self._retries):
             Thread.sleep(1000)
             if self.status == "Valid":
+                if self._global_conn not in system.util.globals:
+                    system.util.globals[self._global_conn] = 0
+                system.util.globals[self._global_conn] += 1
                 break
             if self.status == "Faulted":
                 raise IOError(
                     "The database connection {!r} is {}.".format(
-                        self.database, self.status
+                        self._database, self.status
                     )
                 )
         else:
             raise IOError(
                 "The database connection {!r} could not be enabled.".format(
-                    self.database
+                    self._database
                 )
             )
         return self
@@ -102,7 +110,9 @@ class DisposableConnection(object):
     ):
         # type: (...) -> None
         """Exit the runtime context related to this object."""
-        system.db.setDatasourceEnabled(self.database, False)
+        system.util.globals[self._global_conn] -= 1
+        if system.util.globals[self._global_conn] == 0:
+            system.db.setDatasourceEnabled(self._database, False)
 
 
 class Param(object):
