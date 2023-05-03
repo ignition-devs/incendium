@@ -5,7 +5,7 @@ on:
         description: The type of machine to run the job on.
         required: false
         type: string
-        default: ubuntu-20.04
+        default: ubuntu-latest
       pre-commit:
         required: false
         type: boolean
