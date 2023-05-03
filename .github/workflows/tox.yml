@@ -23,7 +23,7 @@ jobs:
         id: setup-python
         with:
           python-version: |
-            "2.7"
+            2.7
             "3.10"
 
       - name: Cache Python
