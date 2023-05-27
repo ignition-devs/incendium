@@ -16,6 +16,9 @@ jobs:
         shell: bash
 
     steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
       - name: List pyenv versions
         run: |
           pyenv versions
