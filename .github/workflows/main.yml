@@ -11,6 +11,10 @@ jobs:
   tox:
     runs-on: ubuntu-latest
     container: coatldev/six:3.10.11a0
+    defaults:
+      run:
+        shell: bash
+
     steps:
       - name: List pyenv versions
         run: |
