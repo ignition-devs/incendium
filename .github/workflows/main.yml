@@ -29,4 +29,4 @@ jobs:
 
       - name: Run tests
         run: |
-          tox
+          python -m tox
