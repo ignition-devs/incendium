@@ -10,7 +10,7 @@ on:
 jobs:
   tox:
     runs-on: ubuntu-latest
-    container: coatldev/six:3.10.11a2
+    container: coatldev/six:3.10.11a3
     defaults:
       run:
         shell: bash
@@ -25,15 +25,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          python -m pip install \
-            --no-cache-dir \
-            --upgrade \
-            pip
-          python -m pip install \
-            --no-cache-dir \
-            --user \
-            tox
+          pipx install tox
 
       - name: Run tests
         run: |
-          python -m tox
+          tox
