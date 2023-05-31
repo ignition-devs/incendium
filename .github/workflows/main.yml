@@ -41,5 +41,6 @@ jobs:
           tox
 
       - name: pre-commit.log
+        if: always()
         run: |
           cat /github/home/.cache/pre-commit/pre-commit.log
