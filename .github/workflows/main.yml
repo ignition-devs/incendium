@@ -26,6 +26,10 @@ jobs:
           python -m pip install --no-cache-dir tox
           pyenv rehash
 
+      - name: Environment
+        run: |
+          printenv
+
       - name: pre pre-commit tests
         run: |
           which -a git
