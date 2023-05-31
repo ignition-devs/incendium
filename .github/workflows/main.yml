@@ -11,7 +11,7 @@ jobs:
   tox:
     runs-on: ubuntu-latest
     container:
-      image: coatldev/six:gh-3.10.11a3
+      image: coatldev/six:3.10.11a7
     defaults:
       run:
         shell: bash
