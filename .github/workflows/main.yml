@@ -11,7 +11,7 @@ jobs:
   tox:
     runs-on: ubuntu-latest
     container:
-      image: coatldev/six:gh-3.10.11a2
+      image: coatldev/six:gh-3.10.11a3
     defaults:
       run:
         shell: bash
@@ -19,8 +19,6 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
-        with:
-          path: /home/runner
 
       - name: Install dependencies
         run: |
