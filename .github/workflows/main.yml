@@ -39,3 +39,7 @@ jobs:
       - name: Run tests
         run: |
           tox
+
+      - name: pre-commit.log
+        run: |
+          cat /github/home/.cache/pre-commit/pre-commit.log
