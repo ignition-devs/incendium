@@ -17,9 +17,9 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: whoami
+      - name: Who owns it
         run: |
-          whoami
+          ls -l /github/home
 
       - name: Install dependencies
         run: |
