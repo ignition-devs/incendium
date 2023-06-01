@@ -17,19 +17,20 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Who owns it
-        run: |
-          ls -l /github/home
-
       - name: Install dependencies
         run: |
           python -m pip install tox
 
+      - name: set TOX
+        run: echo "TOX=$(tox --version | sha256sum | cut -d' ' -f1)" >> $GITHUB_ENV
+
+      - name: Cache tox
+        id: cache-tox
+        uses: actions/cache@v3
+        with:
+          path: .tox
+          key: tox-${{ env.PY }}-${{ hashFiles('tox.ini') }}
+
       - name: Run tests
         run: |
           tox
-
-      - name: Test build
-        run: |
-          python2 -m pip install build twine
-          python2 -m build
