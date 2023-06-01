@@ -22,7 +22,8 @@ jobs:
           python -m pip install tox
 
       - name: set TOX
-        run: echo "TOX=$(tox --version | sha256sum | cut -d' ' -f1)" >> $GITHUB_ENV
+        run: |
+          echo "TOX=$(tox --version | sha256sum | cut -d' ' -f1)" >> $GITHUB_ENV
 
       - name: Cache tox
         id: cache-tox
