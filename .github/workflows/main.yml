@@ -9,6 +9,6 @@ on:
 
 jobs:
   tox:
-    uses: .github/workflows/tox-docker.yml
+    uses: ./.github/workflows/tox-docker.yml
     with:
       pre-commit: true
