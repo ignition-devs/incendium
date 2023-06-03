@@ -9,6 +9,6 @@ on:
 
 jobs:
   tox:
-    uses: coatl-dev/workflows/.github/workflows/tox.yml@v4.0.1
+    uses: .github/workflows/tox-docker.yml
     with:
       pre-commit: true
