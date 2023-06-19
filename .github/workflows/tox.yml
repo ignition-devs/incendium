@@ -25,8 +25,7 @@ jobs:
       - name: Install scoop
         shell: pwsh
         run: |
-          Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-          Invoke-RestMethod get.scoop.sh | Invoke-Expression
+          Invoke-Expression "& {$(Invoke-RestMethod get.scoop.sh)} -RunAsAdmin"
 
       - name: Install tools
         run: |
