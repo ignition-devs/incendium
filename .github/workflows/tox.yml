@@ -6,6 +6,11 @@ on:
         required: false
         type: string
         default: windows-latest
+      python-version:
+        description: Version of Python to use.
+        required: false
+        type: string
+        default: "3.10"
       timeout:
         description: >-
           The maximum number of minutes to let a job run before GitHub
@@ -22,13 +27,18 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
+      - name: Set up Python ${{ inputs.python-version }}
+        uses: actions/setup-python@v4
+        id: setup-python
+        with:
+          python-version: ${{ inputs.python-version }}
+
       - name: Install scoop tools
         shell: pwsh
         run: |
           Invoke-Expression "& {$(Invoke-RestMethod get.scoop.sh)} -RunAsAdmin"
           scoop bucket add versions
           scoop install python27
-          scoop install python310
           Write-Output ('Path=' + $env:Path + ';' + $env:UserProfile + '\scoop\shims') >> $env:GITHUB_ENV
 
       - name: Install dependencies
