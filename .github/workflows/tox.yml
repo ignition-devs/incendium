@@ -22,16 +22,14 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Install scoop
+      - name: Install scoop tools
         shell: pwsh
         run: |
           Invoke-Expression "& {$(Invoke-RestMethod get.scoop.sh)} -RunAsAdmin"
-
-      - name: Install tools
-        run: |
-          scoop bucket add extras
+          scoop bucket add versions
           scoop install python27
           scoop install python310
+          Write-Output ('Path=' + $env:Path + ';' + $env:UserProfile + '\scoop\shims') >> $env:GITHUB_ENV
 
       - name: Install dependencies
         run: |
