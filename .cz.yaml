@@ -6,3 +6,4 @@ commitizen:
   version: 2023.4.0
   version_files:
   - setup.cfg:version
+  version_scheme: pep440
