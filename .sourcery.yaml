@@ -12,14 +12,12 @@ rule_settings:
   enable:
     - default
   disable:
-    - dict-assign-update-to-union
     - lift-return-into-if
-    - use-fstring-for-formatting
   rule_types:
     - refactoring
     - suggestion
     - comment
-  python_version: "3.10"
+  python_version: "3.3"
 
 metrics:
   quality_threshold: 25.0
