@@ -1,0 +1,19 @@
+name: pre-commit-autoupdate
+
+on:
+  schedule:
+    # Monday at 10:00 PST
+    - cron: '0 18 * * 1'
+
+jobs:
+  pre-commit-autoupdate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Update pre-commit hooks
+        uses: coatl-dev/action-pre-commit-autoupdate@v0
+        with:
+          gh-token: ${{ secrets.COATL_BOT_GH_TOKEN }}
+          skip-repos: 'flake8'
