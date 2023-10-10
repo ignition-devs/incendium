@@ -17,10 +17,5 @@ jobs:
         uses: coatl-dev/action-pre-commit-autoupdate@v0
         with:
           gh-token: ${{ secrets.COATL_BOT_GH_TOKEN }}
-          git-user-name: 'coatl-bot'
-          git-user-email: '146358438+coatl-bot@users.noreply.github.com'
-          gpg-sign: 'yes'
-          gpg-sign-private-key: ${{ secrets.COATL_BOT_GPG_PRIVATE_KEY }}
-          gpg-sign-signing-key-id: ${{ secrets.COATL_BOT_GPG_KEY_ID }}
           skip-hooks: 'pylint'
           skip-repos: 'flake8'
