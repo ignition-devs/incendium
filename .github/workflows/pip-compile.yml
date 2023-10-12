@@ -1,0 +1,46 @@
+name: pip-compile
+
+on:
+  schedule:
+    # Day 28 at 12:00 PST
+    - cron: '0 20 28 * *'
+  workflow_dispatch:
+
+jobs:
+  pip-compile:
+    runs-on: ubuntu-latest
+    env:
+      REQUIREMENTS_PATH: 'requirements.txt'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: coatl-dev-pip-compile
+        uses: coatl-dev/actions/pip-compile@v0
+        with:
+          path: "${{ env.REQUIREMENTS_PATH }}"
+
+      - name: Detect changes
+        id: git-diff
+        uses: coatl-dev/actions/simple-git-diff@v0
+        with:
+          path: "${{ env.REQUIREMENTS_PATH }}"
+
+      - name: Import GPG key
+        if: ${{ success() && steps.git-diff.outputs.diff == 'true' }}
+        id: gpg-import
+        uses: coatl-dev/actions/gpg-import@v0
+        with:
+          passphrase: ${{ secrets.COATL_BOT_GPG_PASSPHRASE }}
+          private-key: ${{ secrets.COATL_BOT_GPG_PRIVATE_KEY }}
+
+      - name: Create Pull Request if changes were detected
+        if: ${{ success() && steps.git-diff.outputs.diff == 'true' }}
+        env:
+          GH_TOKEN: ${{ secrets.COATL_BOT_GH_TOKEN }}
+        run: |
+          git checkout -B pip-compile-autoupdate
+          git add requirements/
+          git commit -m "pip(deps): pip-compile autoupdate"
+          git push --force --set-upstream origin pip-compile-autoupdate
+          gh pr create --fill
