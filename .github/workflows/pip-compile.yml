@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: coatl-dev-pip-compile
-        uses: coatl-dev/actions/pip-compile@v0
+        uses: coatl-dev/actions/pip-compile/2.7@v0
         with:
           path: "${{ env.REQUIREMENTS_PATH }}"
 
