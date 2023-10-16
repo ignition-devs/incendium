@@ -18,13 +18,13 @@ jobs:
       - name: coatl-dev-pip-compile
         uses: coatl-dev/actions/pip-compile-2.7@coatl
         with:
-          path: "${{ env.REQUIREMENTS_PATH }}"
+          path: ${{ env.REQUIREMENTS_PATH }}
 
       - name: Detect changes
         id: git-diff
         uses: coatl-dev/actions/simple-git-diff@coatl
         with:
-          path: "${{ env.REQUIREMENTS_PATH }}"
+          path: ${{ env.REQUIREMENTS_PATH }}
 
       - name: Import GPG key
         if: ${{ success() && steps.git-diff.outputs.diff == 'true' }}
@@ -38,7 +38,7 @@ jobs:
         if: ${{ success() && steps.git-diff.outputs.diff == 'true' }}
         run: |
           git checkout -B pip-compile-autoupdate
-          git add requirements
+          git add ${{ env.REQUIREMENTS_PATH }}
           git commit -m "pip(deps): pip-compile autoupdate"
           git push --force --set-upstream origin pip-compile-autoupdate
 
