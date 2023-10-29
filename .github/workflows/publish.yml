@@ -26,12 +26,8 @@ jobs:
       - pre-commit
       - pylint
       - tox
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: python2-pypi-upload
-        uses: coatl-dev/action-pypi-upload@v1
-        with:
-          password: ${{ secrets.PYPI_API_TOKEN }}
+    uses: coatl-dev/workflows/.github/workflows/pypi-upload.yml@coatl
+    with:
+      python-version: '2.7'
+    secrets:
+      password: ${{ secrets.PYPI_API_TOKEN }}
