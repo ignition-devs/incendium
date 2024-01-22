@@ -4,7 +4,7 @@ repos:
     hooks:
       - id: sort-all
   - repo: https://github.com/bwhmather/ssort
-    rev: 0.12.1
+    rev: 0.12.2
     hooks:
       - id: ssort
   - repo: https://github.com/psf/black
