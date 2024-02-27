@@ -89,11 +89,11 @@ To install incendium on your Gateway follow these steps:
     1. If you're replacing a previous version, make sure to check Allow Overwrite
 1. Click on **Import**
 
-Alternatively you could follow the instructions for cloning the `project` branch directly into `$IGNITION_DIR/data/projects` found [here](https://github.com/ignition-incendium/incendium/tree/project#cloning-this-branch).
+Alternatively you could follow the instructions for cloning the `project` repo directly into `$IGNITION_DIR/data/projects` found [here](https://github.com/ignition-incendium/project?tab=readme-ov-file#cloning-this-repo).
 
 ## Contributing to `incendium`
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md).
+See [CONTRIBUTING.md](https://github.com/ignition-incendium/.github/blob/main/CONTRIBUTING.md#contributing-to-incendium).
 
 ## Discussions
 
@@ -111,4 +111,4 @@ See [LICENSE](./LICENSE).
 
 ## Code of conduct
 
-See [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md).
+See [CODE_OF_CONDUCT.md](https://github.com/ignition-incendium/.github/blob/main/CODE_OF_CONDUCT.md).
