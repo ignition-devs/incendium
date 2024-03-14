@@ -10,6 +10,7 @@ jobs:
     uses: coatl-dev/workflows/.github/workflows/pip-compile-upgrade.yml@v3
     with:
       path: requirements.txt
+      python-version: '2.7'
     secrets:
       gh-token: ${{ secrets.COATL_BOT_GH_TOKEN }}
       gpg-sign-passphrase: ${{ secrets.COATL_BOT_GPG_PASSPHRASE }}
