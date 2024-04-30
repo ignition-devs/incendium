@@ -6,5 +6,5 @@ version_scheme = "pep440"
 version = "2023.4.0"
 update_changelog_on_bump = true
 version_files = [
-    "setup.cfg:version"
+    "src/incendium/__version__.py:version"
 ]

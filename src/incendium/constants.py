@@ -54,3 +54,9 @@ TABBED_LINE = "    - "
 UNEXPECTED_ERROR = "An unexpected error occurred in {}.\n{}"
 UNEXPECTED_ERROR_CAUSED_BY = "An unexpected error occurred in {}.\n{}\nCaused by: {}"
 WARNING_WINDOW_TITLE = "Warning"
+
+# Exceptions
+GATEWAY_EXCEPTION = (
+    "com.inductiveautomation.ignition.client.gateway_interface.GatewayException: "
+)
+MSSQL_SERVER_EXCEPTION = "com.microsoft.sqlserver.jdbc.SQLServerException: "
