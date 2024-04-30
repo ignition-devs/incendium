@@ -1,5 +1,5 @@
 #!/usr/bin/env jython
-
+# pylint: skip-file
 """incendium."""
 
 from codecs import open
