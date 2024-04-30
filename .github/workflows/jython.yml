@@ -25,6 +25,9 @@ jobs:
 
       - run: |
           echo $PATH
+          echo $JYTHON_HOME
+          ls -alF "$JYTHON_HOME"
+          ls -alF "$JYTHON_HOME/bin"
 
       - name: Test installation on Jython
         run: |
