@@ -1,0 +1,28 @@
+on:
+  workflow_call:
+
+jobs:
+  jython:
+    runs-on: ubuntu-22.04
+    env:
+      JYTHON_VERSION: '2.7.3'
+      JYTHON_CACHE_DIR: '~/.cache/jython'
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Jython
+        uses: coatl-dev/actions/setup-jython@v3
+        id: setup-jython
+        with:
+          jython-version: ${{ env.JYTHON_VERSION }}
+
+      - name: Cache Jython
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.JYTHON_CACHE_DIR }}
+          key: jy-${{ env.JYTHON_VERSION }}-${{ runner.name }}-${{ hashFiles('setup.py') }}
+
+      - name: Test installation on Jython
+        run: |
+          make install JYTHON_CACHE_DIR=${{ env.JYTHON_CACHE_DIR }}

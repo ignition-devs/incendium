@@ -1,4 +1,4 @@
-"""GUI module."""
+"""Vision GUI module."""
 
 from __future__ import unicode_literals
 
@@ -53,8 +53,13 @@ CURSOR_HAND = 12
 CURSOR_MOVE = 13
 
 
-def authentication(auth_profile="", title="Authentication"):
-    # type: (AnyStr, AnyStr) -> bool
+def authentication(
+    auth_profile="",  # type: AnyStr
+    title="Authentication",  # type: AnyStr
+    username_label_text="Username",  # type: AnyStr
+    password_label_text="Password",  # type: AnyStr
+):
+    # type: (...) -> bool
     """Open up a popup input dialog box.
 
     This dialog box will show a prompt message, and allow the user to
@@ -70,6 +75,10 @@ def authentication(auth_profile="", title="Authentication"):
             profile. Optional.
         title: A title for the input box. This will be translated to the
             selected Locale. Optional.
+        username_label_text: The text to display for the username label.
+            This will be translated to the selected Locale. Optional.
+        password_label_text: The text to display for the password label.
+            This will be translated to the selected Locale. Optional.
 
     Returns:
         ``True`` if the user was validated, ``False`` otherwise.
@@ -82,8 +91,8 @@ def authentication(auth_profile="", title="Authentication"):
     panel = JPanel()
 
     labels = JPanel(GridLayout(0, 1, 2, 2))
-    labels.add(JLabel("{}: ".format(system.util.translate("Username"))))
-    labels.add(JLabel("{}: ".format(system.util.translate("Password"))))
+    labels.add(JLabel("{}: ".format(system.util.translate(username_label_text))))
+    labels.add(JLabel("{}: ".format(system.util.translate(password_label_text))))
     panel.add(labels)
 
     fields = JPanel(GridLayout(0, 1, 2, 2))
@@ -113,8 +122,14 @@ def authentication(auth_profile="", title="Authentication"):
     return choice == JOptionPane.OK_OPTION and valid
 
 
-def authorization(role, auth_profile="", title="Athorization"):
-    # type: (AnyStr, AnyStr, AnyStr) -> bool
+def authorization(
+    role,  # type: AnyStr
+    auth_profile="",  # type: AnyStr
+    title="Authorization",  # type: AnyStr
+    username_label_text="Username",  # type: AnyStr
+    password_label_text="Password",  # type: AnyStr
+):
+    # type: (...) -> bool
     """Open up a popup input dialog box.
 
     This dialog box will show a prompt message, and allow the user to
@@ -131,22 +146,26 @@ def authorization(role, auth_profile="", title="Athorization"):
             profile. Optional.
         title: A title for the input box. This will be translated to the
             selected Locale. Optional.
+        username_label_text: The text to display for the username label.
+            This will be translated to the selected Locale. Optional.
+        password_label_text: The text to display for the password label.
+            This will be translated to the selected Locale. Optional.
 
     Returns:
         ``True`` if the user was validated, ``False`` otherwise.
     """
-    has_role = False
-
     options = [
         system.util.translate(constants.OK_TEXT),
         system.util.translate(constants.CANCEL_TEXT),
     ]
 
+    has_role = False
+
     panel = JPanel()
 
     labels = JPanel(GridLayout(0, 1, 2, 2))
-    labels.add(JLabel("{}: ".format(system.util.translate("Username"))))
-    labels.add(JLabel("{}: ".format(system.util.translate("Password"))))
+    labels.add(JLabel("{}: ".format(system.util.translate(username_label_text))))
+    labels.add(JLabel("{}: ".format(system.util.translate(password_label_text))))
     panel.add(labels)
 
     fields = JPanel(GridLayout(0, 1, 2, 2))
@@ -235,10 +254,12 @@ def error(message, title="Error", detail=None):
         detail: Additional text to display. This will be translated to
             the selected Locale. Optional.
     """
-    if detail is None:
-        msg = system.util.translate(message)
-    else:
-        msg = "\n".join([system.util.translate(message), system.util.translate(detail)])
+    msg = (
+        system.util.translate(message)
+        if detail is None
+        else "\n".join([system.util.translate(message), system.util.translate(detail)])
+    )
+
     JOptionPane.showMessageDialog(
         None, msg, system.util.translate(title), JOptionPane.ERROR_MESSAGE
     )
@@ -256,10 +277,12 @@ def info(message, title="Information", detail=None):
         detail: Additional text to display. This will be translated to
             the selected Locale. Optional.
     """
-    if detail is None:
-        msg = system.util.translate(message)
-    else:
-        msg = "\n".join([system.util.translate(message), system.util.translate(detail)])
+    msg = (
+        system.util.translate(message)
+        if detail is None
+        else "\n".join([system.util.translate(message), system.util.translate(detail)])
+    )
+
     JOptionPane.showMessageDialog(
         None,
         msg,
@@ -293,7 +316,7 @@ def input(message, title="Input"):
     ]
 
     panel = JPanel()
-    label = JLabel("{}: ".format(system.util.translate(message)))
+    label = JLabel("{}: ".format(message))
     panel.add(label)
     text_field = JTextField(25)
     panel.add(text_field)
@@ -324,10 +347,12 @@ def warning(message, title="Warning", detail=None):
         detail: Additional text to display. This will be translated to
             the selected Locale. Optional.
     """
-    if detail is None:
-        msg = system.util.translate(message)
-    else:
-        msg = "\n".join([system.util.translate(message), system.util.translate(detail)])
+    msg = (
+        system.util.translate(message)
+        if detail is None
+        else "\n".join([system.util.translate(message), system.util.translate(detail)])
+    )
+
     JOptionPane.showMessageDialog(
         None, msg, system.util.translate(title), JOptionPane.WARNING_MESSAGE
     )

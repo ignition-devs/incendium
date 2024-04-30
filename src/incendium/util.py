@@ -1,3 +1,4 @@
+# pylint: disable=implicit-str-concat
 """Utility module."""
 
 __all__ = [
@@ -8,34 +9,14 @@ __all__ = [
     "validate_form",
 ]
 
-import traceback
+import warnings
 from typing import Dict, Optional, Tuple, Union
 
-import system.date
-import system.util
 from java.util import Date
 
-from incendium import constants
+from incendium import exceptions, gui, l10n, time
 from incendium.helper.types import AnyStr, Number
 from incendium.user import IncendiumUser
-
-
-def _format_error_message(counter, error_message, key):
-    # type: (int, AnyStr, AnyStr) -> AnyStr
-    """Format error message.
-
-    Args:
-        counter: Number of detected errors.
-        error_message: Error message.
-        key: Dictionary key.
-
-    Returns:
-        Formatted error message.
-    """
-    error_message += (
-        constants.TABBED_LINE + key if counter == 1 else constants.NEW_TABBED_LINE + key
-    )
-    return error_message
 
 
 def get_function_name():
@@ -45,23 +26,12 @@ def get_function_name():
     Returns:
         Function's name.
     """
-    return traceback.extract_stack(None, 2)[0][2]
-
-
-def get_timestamp(value):
-    # type: (int) -> AnyStr
-    """Get timestamp in "hh:mm:ss" format.
-
-    Args:
-        value: Time represented in seconds.
-
-    Returns:
-        Time elapsed represented by a string in the following format:
-        "hh:mm:ss".
-    """
-    minutes, seconds = divmod(value, 60)
-    hours, minutes = divmod(minutes, 60)
-    return "{:02d}:{:02d}:{:02d}".format(hours, minutes, seconds)
+    warnings.warn(
+        "get_function_name is deprecated and will be removed in a future release. "
+        "Use incendium.exceptions.get_function_name instead.",
+        DeprecationWarning,
+    )
+    return exceptions.get_function_name()
 
 
 def get_timer(date):
@@ -75,9 +45,31 @@ def get_timer(date):
          Time elapsed represented by a string in the following
          format: "hh:mm:ss".
     """
-    date_1 = date if isinstance(date, Date) else system.date.fromMillis(date)
-    date_2 = system.date.now()
-    return get_timestamp(system.date.secondsBetween(date_1, date_2))
+    warnings.warn(
+        "get_timer is deprecated and will be removed in a future release. "
+        "Use incendium.time.get_timer instead.",
+        DeprecationWarning,
+    )
+    return time.get_timer(date)
+
+
+def get_timestamp(value):
+    # type: (int) -> AnyStr
+    """Get timestamp in "hh:mm:ss" format.
+
+    Args:
+        value: Time represented in seconds.
+
+    Returns:
+        Time elapsed represented by a string in the following format:
+        "hh:mm:ss".
+    """
+    warnings.warn(
+        "get_timestamp is deprecated and will be removed in a future release. "
+        "Use incendium.time.get_timestamp instead.",
+        DeprecationWarning,
+    )
+    return time.get_timestamp(value)
 
 
 def set_locale(user):
@@ -89,11 +81,12 @@ def set_locale(user):
     Args:
         user: IncendiumUser instance.
     """
-    locale = (
-        user.locale if user is not None and user.locale else constants.DEFAULT_LANGUAGE
+    warnings.warn(
+        "set_locale is deprecated and will be removed in a future release. "
+        "Use incendium.l10n.set_locale instead.",
+        DeprecationWarning,
     )
-
-    system.util.setLocale(locale)
+    l10n.set_locale(user)
 
 
 def validate_form(
@@ -117,28 +110,9 @@ def validate_form(
         validation tests have passed, False otherwise, and error_message
         is the error message in case any validation test has failed.
     """
-    is_valid = True
-    error_message = constants.EMPTY_STRING
-    counter = 0
-
-    if strings:
-        for key, str_val in strings.iteritems():
-            if not str_val:
-                counter += 1
-                error_message = _format_error_message(counter, error_message, key)
-                is_valid = False
-
-    merged_dict = {}
-    if numbers:
-        merged_dict.update(numbers)
-    if collections:
-        merged_dict.update(collections)
-
-    if merged_dict:
-        for key, num_val in merged_dict.iteritems():
-            if num_val is None or num_val <= 0:
-                counter += 1
-                error_message = _format_error_message(counter, error_message, key)
-                is_valid = False
-
-    return is_valid, error_message
+    warnings.warn(
+        "validate_form is deprecated and will be removed in a future release. "
+        "Use incendium.gui.validate_form instead.",
+        DeprecationWarning,
+    )
+    return gui.validate_form(strings, numbers, collections)
