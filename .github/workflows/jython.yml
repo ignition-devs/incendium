@@ -21,13 +21,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ${{ env.JYTHON_CACHE_DIR }}
-          key: jy-${{ steps.setup-jython.outputs.jython-path }}-${{ runner.os }}-${{ hashFiles('setup.py') }}
-
-      - run: |
-          echo $PATH
-          echo $JYTHON_HOME
-          ls -alF "$JYTHON_HOME"
-          ls -alF "$JYTHON_HOME/bin"
+          key: jy-${{ env.JYTHON_VERSION }}-${{ runner.name }}-${{ hashFiles('setup.py') }}
 
       - name: Test installation on Jython
         run: |
