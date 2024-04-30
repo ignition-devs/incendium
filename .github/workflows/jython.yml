@@ -2,7 +2,7 @@ on:
   workflow_call:
 
 jobs:
-  pylint:
+  jython:
     runs-on: ubuntu-22.04
     env:
       JYTHON_VERSION: '2.7.3'
@@ -22,6 +22,9 @@ jobs:
         with:
           path: ${{ env.JYTHON_CACHE_DIR }}
           key: jy-${{ steps.setup-jython.outputs.jython-path }}-${{ runner.os }}-${{ hashFiles('setup.py') }}
+
+      - run: |
+          echo $PATH
 
       - name: Test installation on Jython
         run: |
