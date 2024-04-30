@@ -28,11 +28,10 @@ clean: ## Uninstall all Jython packages.
 ##@ Initialize
 
 check: ## Check if Jython is installed.
-	@echo "Cheking if Jython is installed…"
-	@if ! command -v jython &> /dev/null; then \
-		echo "Jython is not installed. Please install Jython before proceeding."; \
-		exit 1; \
-	fi
+ifeq (, $(shell which jython))
+ $(error "No jython in $(PATH). Please install Jython before proceeding.")
+ endif
+	@echo "Jython was found in PATH."
 
 init: ## Run check and create required directories for other targets.
 	@echo "Initializing…"
