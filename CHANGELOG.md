@@ -1,3 +1,9 @@
+## v2024.5.0 (2024-05-01)
+
+### Refactor
+
+- **util**: move functions out of util (#199)
+
 ## v2023.4.0 (2023-04-18)
 
 ### Feat
