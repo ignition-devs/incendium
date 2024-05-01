@@ -1,4 +1,5 @@
-JYTHON_CACHE_DIR := ~/.cache/jython
+JYTHON := $(shell which jython)
+JYTHON_CACHE_DIR := $$HOME/.cache/jython
 
 .DEFAULT_GOAL := help
 
@@ -21,17 +22,18 @@ help: ## Display this help message.
 
 ##@ Cleanup
 
-clean: ## Uninstall all Jython packages.
+clean: check ## Uninstall all Jython packages.
 	@ echo "Uninstalling all Jython packages…"
 	jython -m pip freeze | xargs jython -m pip uninstall -y
 
 ##@ Initialize
 
 check: ## Check if Jython is installed.
-ifeq (, $(shell which jython))
- $(error "No jython in $(PATH). Please install Jython before proceeding.")
-endif
-	@echo "Jython was found in PATH."
+	@if test ! -x "$(JYTHON)"; then \
+		echo "ERROR: Jython was not found. Please install it first, or add it to PATH."; \
+		false; \
+	fi
+	@$(JYTHON) --version
 
 init: ## Run check and create required directories for other targets.
 	@echo "Initializing…"
