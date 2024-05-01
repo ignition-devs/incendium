@@ -30,7 +30,7 @@ clean: ## Uninstall all Jython packages.
 check: ## Check if Jython is installed.
 ifeq (, $(shell which jython))
  $(error "No jython in $(PATH). Please install Jython before proceeding.")
- endif
+endif
 	@echo "Jython was found in PATH."
 
 init: ## Run check and create required directories for other targets.
