@@ -1,3 +1,5 @@
+name: jython
+
 on:
   workflow_call:
   workflow_dispatch:
