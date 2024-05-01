@@ -5,7 +5,6 @@ jobs:
   jython:
     runs-on: ubuntu-22.04
     env:
-      JYTHON_VERSION: '2.7.3'
       JYTHON_CACHE_DIR: '~/.cache/jython'
     steps:
       - name: Checkout repo
@@ -14,14 +13,12 @@ jobs:
       - name: Set up Jython
         uses: coatl-dev/actions/setup-jython@v3
         id: setup-jython
-        with:
-          jython-version: ${{ env.JYTHON_VERSION }}
 
       - name: Cache Jython
         uses: actions/cache@v4
         with:
           path: ${{ env.JYTHON_CACHE_DIR }}
-          key: jy-${{ env.JYTHON_VERSION }}-${{ runner.name }}-${{ hashFiles('setup.py') }}
+          key: jy-${{ steps.setup-jython.outputs.jython-version }}-${{ runner.os }}-${{ steps.setup-jython.outputs.java-distribution }}-${{ steps.setup-jython.outputs.java-version }}-${{ hashFiles('setup.py') }}
 
       - name: Test installation on Jython
         run: |
