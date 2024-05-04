@@ -8,31 +8,21 @@ on:
 jobs:
   pip-compile-upgrade:
     runs-on: ubuntu-latest
-    env:
-      PYTHON2_VERSION: '2.7'
-      PYTHON3_VERSION: '3.12'
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-
-      - name: pip-compile-requirements
-        uses: coatl-dev/actions/pip-compile@v3
-        with:
-          path: requirements.txt
-          python-version: ${{ env.PYTHON2_VERSION }}
 
       - name: pip-compile-dev-requirements
         uses: coatl-dev/actions/pip-compile@v3
         with:
           path: requirements/dev.txt
-          python-version: ${{ env.PYTHON2_VERSION }}
+          python-version: '2.7'
 
       - name: pip-compile-build-requirements
         uses: coatl-dev/actions/pip-compile@v3
         with:
           path: requirements/build.txt
-          python-version: ${{ env.PYTHON3_VERSION }}
+          python-version: '3.12'
 
       - name: Detect changes
         id: git-diff
