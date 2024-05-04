@@ -5,9 +5,9 @@ on:
     branches:
       - main
     paths:
+      - requirements/dev.txt
       - 'src/**'
       - Makefile
-      - requirements.txt
       - setup.py
       - tox.ini
 
