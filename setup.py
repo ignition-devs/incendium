@@ -7,25 +7,26 @@ from os import path
 
 from setuptools import find_packages, setup
 
-here = path.abspath(path.dirname(__file__))
+HERE = path.abspath(path.dirname(__file__))
 
-about = {}
-with open(path.join(here, "src", "incendium", "__version__.py"), "r") as f:
-    exec(f.read(), about)
+ABOUT = {}
+with open(path.join(HERE, "src", "incendium", "__about__.py"), "r") as f:
+    exec(f.read(), ABOUT)
 
+LONG_DESCRIPTION = ""
 with open("README.md", "r", "utf-8") as f:
-    readme = f.read()
+    LONG_DESCRIPTION = f.read()
 
 setup(
-    name=about["__title__"],
-    version=about["__version__"],
-    description=about["__description__"],
-    long_description=readme,
+    name=ABOUT["__title__"],
+    version=ABOUT["__version__"],
+    description=ABOUT["__description__"],
+    long_description=LONG_DESCRIPTION,
     long_description_content_type="text/markdown",
-    url=about["__url__"],
-    author=about["__author__"],
-    author_email=about["__author_email__"],
-    license=about["__license__"],
+    url=ABOUT["__url__"],
+    author=ABOUT["__author__"],
+    author_email=ABOUT["__author_email__"],
+    license=ABOUT["__license__"],
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
