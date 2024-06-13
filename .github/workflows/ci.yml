@@ -16,3 +16,7 @@ jobs:
   pylint:
     needs: pre-commit
     uses: coatl-dev/workflows/.github/workflows/pylint.yml@v3
+
+  tox:
+    needs: pylint
+    uses: coatl-dev/workflows/.github/workflows/tox-docker.yml@v3
