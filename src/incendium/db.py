@@ -48,10 +48,9 @@ class DisposableConnection(object):
         """Disposable Connection initializer.
 
         Args:
-            database: The name of the database connection in
-                Ignition.
-            retries: The number of additional times to retry
-                enabling the connection. Optional.
+            database: The name of the database connection in Ignition.
+            retries: The number of additional times to retry enabling
+                the connection. Optional.
         """
         super(DisposableConnection, self).__init__()
         self._database = database
@@ -177,8 +176,8 @@ class InParam(Param):
         """Create an instance of InParam.
 
         Args:
-            name_or_index: Index (int starting at 1, not 0), or
-                name (str).
+            name_or_index: Index (int starting at 1, not 0), or name
+                (str).
             type_code: Type code constant from `system.db`.
             value: Value of type type_code.
         """
