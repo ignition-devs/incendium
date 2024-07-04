@@ -2,7 +2,7 @@ name: pip-compile-upgrade
 
 on:
   schedule:
-    - cron: '0 20 14/28 * *'
+    - cron: '0 20 14,28 * *'
   workflow_dispatch:
 
 jobs:
