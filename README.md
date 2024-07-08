@@ -1,10 +1,10 @@
 # incendium
 
 <!--- Badges --->
-[![ci](https://github.com/ignition-incendium/incendium/actions/workflows/ci.yml/badge.svg)](https://github.com/ignition-incendium/incendium/actions/workflows/ci.yml)
+[![ci](https://github.com/ignition-devs/incendium/actions/workflows/ci.yml/badge.svg)](https://github.com/ignition-devs/incendium/actions/workflows/ci.yml)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Downloads](https://pepy.tech/badge/incendium)](https://pepy.tech/project/incendium)
-[![Join us on GitHub discussions](https://img.shields.io/badge/github-discussions-informational)](https://github.com/ignition-incendium/incendium/discussions)
+[![Join us on GitHub discussions](https://img.shields.io/badge/github-discussions-informational)](https://github.com/ignition-devs/incendium/discussions)
 
 :package: Package that extends and wraps some functions from Ignition's
 Scripting API.
@@ -102,7 +102,7 @@ incendium is a package that extends and wraps some functions from
 Ignition Scripting API.
 
 For more information, please refer to the Wiki.
-https://github.com/ignition-incendium/incendium/wiki
+https://github.com/ignition-devs/incendium/wiki
 ```
 
 #### As a Python package
@@ -140,16 +140,16 @@ See [LICENSE].
 See [CODE_OF_CONDUCT.md].
 
 <!-- Links -->
-[CODE_OF_CONDUCT.md]: https://github.com/ignition-incendium/.github/blob/main/CODE_OF_CONDUCT.md
-[CONTRIBUTING.md]: https://github.com/ignition-incendium/.github/blob/main/CONTRIBUTING.md#contributing-to-incendium
-[contributors]: https://github.com/ignition-incendium/incendium/graphs/contributors
-[Discussions]: https://github.com/ignition-incendium/incendium/discussions
+[CODE_OF_CONDUCT.md]: https://github.com/ignition-devs/.github/blob/main/CODE_OF_CONDUCT.md
+[CONTRIBUTING.md]: ./CONTRIBUTING.md#contributing-to-incendium
+[contributors]: https://github.com/ignition-devs/incendium/graphs/contributors
+[Discussions]: https://github.com/ignition-devs/incendium/discussions
 [Ignition 8.1 System Functions]: https://docs.inductiveautomation.com/docs/8.1/appendix/scripting-functions
 [Java 17]: https://www.azul.com/downloads/?version=java-17-lts&package=jre#zulu
 [Jython 2.7.3]: https://repo1.maven.org/maven2/org/python/jython-installer/2.7.3/jython-installer-2.7.3.jar
 [LICENSE]: ./LICENSE
 [Python 2.7.18]: https://www.python.org/downloads/release/python-2718/
 [Python in Ignition]: https://support.inductiveautomation.com/hc/en-us/articles/360056397252-Python-In-Ignition
-[releases]: https://github.com/ignition-incendium/incendium/releases
+[releases]: https://github.com/ignition-devs/incendium/releases
 [these instructions]: #as-a-jython-package
-[Wiki]: https://github.com/ignition-incendium/incendium/wiki
+[Wiki]: https://github.com/ignition-devs/incendium/wiki
