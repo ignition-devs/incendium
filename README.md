@@ -2,12 +2,10 @@
 
 <!--- Badges --->
 [![ci](https://github.com/ignition-devs/incendium/actions/workflows/ci.yml/badge.svg)](https://github.com/ignition-devs/incendium/actions/workflows/ci.yml)
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Downloads](https://pepy.tech/badge/incendium)](https://pepy.tech/project/incendium)
 [![Join us on GitHub discussions](https://img.shields.io/badge/github-discussions-informational)](https://github.com/ignition-devs/incendium/discussions)
 
-:package: Package that extends and wraps some functions from Ignition's
-Scripting API.
+Package that extends and wraps some functions from Ignition's Scripting API.
 
 For more information, please refer to the [Wiki].
 
@@ -16,54 +14,46 @@ For more information, please refer to the [Wiki].
 Before you begin, ensure you have met the following requirements:
 
 - You are familiar with [Ignition 8.1 System Functions]
+- You have installed [Python 2.7.18]
+- You have installed [Java 17] and [Jython 2.7.3]
 
 ## Installation and usage
 
 ### Installing as a dependency for your scripting projects
 
-To use `incendium` in your scripting projects, you may install it by doing any
-of the following.
+To use `incendium`, you may install it with `pip`. It requires
+[Python 2.7.18] or [Jython 2.7.3].
 
-> [!TIP]
-> To install `incendium` as a Jython package for your Gateway, follow
-> [these instructions]
-
-The preferred method is to install it by running `pip` on a virtual environment
-using [Python 2.7.18].
-
-```bash
+```sh
 python2 -m pip install incendium
+```
+
+Or
+
+```sh
+jython -m pip install incendium
 ```
 
 This will install it as package to your Python installation, which will allow
 you to call `incendium`'s Scripting functions from Python's REPL, and get code
 completion using an IDE (PyCharm or Visual Studio Code).
 
-```bash
-$ python2
-Python 2.7.18 (default, Nov  9 2020, 16:23:15)
-[GCC Apple LLVM 12.0.0 (clang-1200.0.32.21)] on darwin
-Type "help", "copyright", "credits" or "license" for more information.
->>> from __future__ import print_function
->>> import incendium.vision.gui
->>> print(incendium.vision.gui.__doc__)
-GUI module.
->>> incendium.vision.gui.warning("This one is a warning")
-This one is a warning es_MX False
-Warning es_MX False
-None This one is a warning Warning 2 None
-```
-
 And to uninstall:
 
-```bash
+```sh
 python2 -m pip uninstall incendium
+```
+
+Or
+
+```sh
+jython -m pip uninstall incendium
 ```
 
 ### Using as a dependency in PyCharm
 
-To include `incendium` as a dependency in PyCharm, you will need to attach it to
-your project.
+To include `incendium` as a dependency in PyCharm, you will need to attach
+it to your project.
 
 1. Clone the repo or download from [releases]
 2. With your project open where you want to include `incendium`, navigate to
@@ -74,11 +64,13 @@ your project.
 
 ### Installing `incendium` on your Gateway
 
+> [!TIP]
+> You may use the [Python in Ignition] guide as reference.
+
 #### As a Jython package
 
-Starting with version 2024.4.0, this package can be installed using Jython. You
-may use the [Python in Ignition] guide as reference. But here are the basic
-steps:
+To install `incendium` as a Jython package on your Gateway, follow
+these steps:
 
 1. Install [Java 17]
 2. Install [Jython 2.7.3]
@@ -88,27 +80,9 @@ steps:
   `$IGNITION_DIR/user-lib/pylib/site-packages`
 5. Done
 
-```sh
-$ jython
-Jython 2.7.3 (tags/v2.7.3:5f29801fe, Sep 10 2022, 18:52:49)
-[OpenJDK 64-Bit Server VM (Azul Systems, Inc.)] on java17.0.11
-Type "help", "copyright", "credits" or "license" for more information.
->>> from __future__ import print_function
->>> import incendium
->>> print(incendium.__doc__)
-incendium.
-
-incendium is a package that extends and wraps some functions from
-Ignition Scripting API.
-
-For more information, please refer to the Wiki.
-https://github.com/ignition-devs/incendium/wiki
-```
-
 #### As a Python package
 
-To install `incendium` as a Python package on your Gateway, simply follow these
-steps:
+To install `incendium` as a Python package on your Gateway, follow these steps:
 
 1. Install [Python 2.7.18]
 2. Run `python -m pip install incendium`
@@ -151,5 +125,4 @@ See [CODE_OF_CONDUCT.md].
 [Python 2.7.18]: https://www.python.org/downloads/release/python-2718/
 [Python in Ignition]: https://support.inductiveautomation.com/hc/en-us/articles/360056397252-Python-In-Ignition
 [releases]: https://github.com/ignition-devs/incendium/releases
-[these instructions]: #as-a-jython-package
 [Wiki]: https://github.com/ignition-devs/incendium/wiki
