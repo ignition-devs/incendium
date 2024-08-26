@@ -18,4 +18,4 @@ jobs:
 
   tox:
     needs: jython
-    uses: coatl-dev/workflows/.github/workflows/tox-docker.yml@v4
+    uses: coatl-dev/workflows/.github/workflows/tox-docker.yml@v5
