@@ -51,9 +51,9 @@ setup(
         "typing;platform_python_implementation == 'Jython'",
     ],
     project_urls={
-        "Documentation": "https://github.com/ignition-incendium/incendium/wiki",
+        "Documentation": "https://github.com/ignition-devs/incendium/wiki",
         "Funding": "https://github.com/sponsors/cesarcoatl",
-        "Source": "https://github.com/ignition-incendium/incendium",
-        "Tracker": "https://github.com/ignition-incendium/incendium/issues",
+        "Source": "https://github.com/ignition-devs/incendium",
+        "Tracker": "https://github.com/ignition-devs/incendium/issues",
     },
 )

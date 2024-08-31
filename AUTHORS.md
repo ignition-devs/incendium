@@ -1,6 +1,6 @@
 # Authors
 
-Created and maintained by [César Román](mailto:cesar@thecesrom.dev).
+Created and maintained by [César Román](mailto:cesar@coatl.dev).
 
 Contributions by:
 
