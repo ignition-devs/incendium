@@ -6,7 +6,7 @@ on:
 
 jobs:
   jython:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     env:
       JYTHON_CACHE_DIR: '~/.cache/jython'
     steps:
