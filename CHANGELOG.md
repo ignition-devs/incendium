@@ -1,3 +1,9 @@
+## v2024.10.0 (2024-10-28)
+
+### Refactor
+
+- remove util module (#221)
+
 ## v2024.5.0 (2024-05-01)
 
 ### Refactor
