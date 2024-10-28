@@ -154,7 +154,6 @@ The following is the list of supported scopes:
 * time
 * types (found under `incendium.helper.types`)
 * user
-* util
 * vision
 
 There are currently a few exceptions to the "use package name" rule:
