@@ -77,6 +77,9 @@ class DisposableConnection(object):
         Raises:
             IOError: If the connection's status reports as Faulted, or
                 ir cannot be enabled.
+
+        Returns:
+            DisposableConnection: The current instance.
         """
         system.db.setDatasourceEnabled(self._database, True)
 
