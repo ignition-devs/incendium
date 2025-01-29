@@ -42,4 +42,5 @@ repos:
         name: pylint
         entry: pylint
         language: system
+        files: ^src/
         types: [python]
