@@ -5,8 +5,8 @@ on:
     branches:
       - main
     paths:
-      - '.github/workflows/pr-build.yml'
-      - 'src/**'
+      - .github/workflows/pr-build.yml
+      - src/**
       - Makefile
       - requirements.txt
       - setup.py
