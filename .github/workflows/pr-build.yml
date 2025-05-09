@@ -5,6 +5,7 @@ on:
     branches:
       - main
     paths:
+      - .github/workflows/jython.yml
       - .github/workflows/pr-build.yml
       - src/**
       - Makefile
