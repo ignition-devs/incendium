@@ -7,13 +7,13 @@ on:
 
 jobs:
   pre-commit:
-    uses: coatl-dev/workflows/.github/workflows/pre-commit.yml@v4
+    uses: coatl-dev/workflows/.github/workflows/pre-commit.yml@v5
     with:
       skip-hooks: 'pylint'
 
   pylint:
     needs: pre-commit
-    uses: coatl-dev/workflows/.github/workflows/pylint.yml@v4
+    uses: coatl-dev/workflows/.github/workflows/pylint.yml@v5
     with:
       path: src
 
@@ -23,11 +23,11 @@ jobs:
 
   tox:
     needs: jython
-    uses: coatl-dev/workflows/.github/workflows/tox-docker.yml@v4
+    uses: coatl-dev/workflows/.github/workflows/tox-docker.yml@v5
 
   pypi-publish:
     needs: tox
-    uses: coatl-dev/workflows/.github/workflows/pypi-upload.yml@v4
+    uses: coatl-dev/workflows/.github/workflows/pypi-upload.yml@v5
     with:
       python-version: '2.7'
     secrets:
