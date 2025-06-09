@@ -1,22 +1,22 @@
-## v2024.10.0 (2024-10-28)
+## 2024.10.0 (2024-10-28)
 
 ### Refactor
 
 - remove util module (#221)
 
-## v2024.5.0 (2024-05-01)
+## 2024.5.0 (2024-05-01)
 
 ### Refactor
 
 - **util**: move functions out of util (#199)
 
-## v2023.4.0 (2023-04-18)
+## 2023.4.0 (2023-04-18)
 
 ### Feat
 
 - **db**: handle concurrent DisposableConnection connections (#142)
 
-## v2023.3.0 (2023-03-30)
+## 2023.3.0 (2023-03-30)
 
 ### Feat
 
@@ -26,7 +26,7 @@
 
 - **helper**: move SProcResult from helper.types to db module (#141)
 
-## v2023.2.0 (2023-02-25)
+## 2023.2.0 (2023-02-25)
 
 ### Feat
 
@@ -36,29 +36,29 @@
 
 - **ci**: remove matrix strategy (#116)
 
-## v2023.1.0 (2023-01-09)
+## 2023.1.0 (2023-01-09)
 
 ### Refactor
 
 - add call to super in base classes (#111)
 - **ci**: run on ubuntu-20.04 (#98)
 
-## v2022.9.2 (2022-09-21)
+## 2022.9.2 (2022-09-21)
 
 ### Refactor
 
 - **db**: cast return value to str (#78)
 - **db**: return BasicDataset on get_data and o_get_data (#77)
 
-## v2022.9.1 (2022-09-03)
+## 2022.9.1 (2022-09-03)
 
 ### Fix
 
 - **db**: fix o_get_data docstring (#72)
 
-## v2022.9.0.post1 (2022-09-03)
+## 2022.9.0.post1 (2022-09-03)
 
-## v2022.9.0 (2022-09-02)
+## 2022.9.0 (2022-09-02)
 
 ### Feat
 
@@ -75,25 +75,25 @@
 
 - **exceptions**: improve repr and str functions (#71)
 
-## v2022.8.2.post1 (2022-08-23)
+## 2022.8.2.post1 (2022-08-23)
 
 ### Fix
 
 - **db**: refactor types module (#61)
 
-## v2022.8.2 (2022-08-05)
+## 2022.8.2 (2022-08-05)
 
 ### Refactor
 
 - **dataset**: work with nested Datasets on to_jsonobject (#56)
 
-## v2022.8.1 (2022-08-05)
+## 2022.8.1 (2022-08-05)
 
 ### Refactor
 
 - **db**: remove unnecessary str cast
 
-## v2022.8.0 (2022-08-05)
+## 2022.8.0 (2022-08-05)
 
 ### Feat
 
@@ -106,7 +106,7 @@
 - **dataset**: remove default value for `root` (#49)
 - **dataset**: use Dataset to check instance
 
-## v2022.3.2 (2022-03-24)
+## 2022.3.2 (2022-03-24)
 
 ### Feat
 
@@ -121,26 +121,26 @@
 - **ci**: update `ci.yml` (#38)
 - apply multiple refactorings to `dataset` (#34)
 
-## v2022.3.1 (2022-03-03)
+## 2022.3.1 (2022-03-03)
 
 ### Refactor
 
 - fix `perflint` `W8202`
 - reduce cognitive complexity
 
-## v2022.2.1 (2022-02-09)
+## 2022.2.1 (2022-02-09)
 
 ### Fix
 
 - add `get_timestamp` to `__all__`
 
-## v2022.2.0 (2022-02-09)
+## 2022.2.0 (2022-02-09)
 
 ### Feat
 
 - add `get_timestamp` function
 
-## v2.0.2 (2022-01-25)
+## 2.0.2 (2022-01-25)
 
 ### BREAKING CHANGE
 
@@ -150,13 +150,13 @@
 
 - fix SonarLint and Sourcery issues
 
-## v2.0.1 (2021-12-17)
+## 2.0.1 (2021-12-17)
 
 ### Fix
 
 - **db**: check instance of `out_params`
 
-## v2.0.0 (2021-10-20)
+## 2.0.0 (2021-10-20)
 
 ### BREAKING CHANGE
 
@@ -167,19 +167,19 @@
 
 - add InParam, OutParam and Param to db
 
-## v1.1.2 (2021-10-18)
+## 1.1.2 (2021-10-18)
 
 ### Fix
 
 - update icendium.vision.gui constants
 
-## v1.1.1 (2021-10-18)
+## 1.1.1 (2021-10-18)
 
 ### Fix
 
 - bring back gui.CURSOR* constants
 
-## v1.1.0 (2021-10-15)
+## 1.1.0 (2021-10-15)
 
 ### BREAKING CHANGE
 
@@ -198,19 +198,19 @@ Jython is no longer recommended.
 - import unicode_literals
 - remove copyright from modules
 
-## v1.0.7.post2 (2021-09-13)
+## 1.0.7.post2 (2021-09-13)
 
-## v1.0.7.post1 (2021-09-13)
+## 1.0.7.post1 (2021-09-13)
 
 ### Fix
 
 - **setup**: include `__cycle__` in package `version`
 
-## v1.0.7 (2021-09-11)
+## 1.0.7 (2021-09-11)
 
 ### Feat
 
-- **release**: v1.0.7
+- **release**: 1.0.7
 
 ### Fix
 
@@ -220,7 +220,7 @@ Jython is no longer recommended.
 
 - add pylint
 
-## v1.0.6 (2021-08-04)
+## 1.0.6 (2021-08-04)
 
 ### BREAKING CHANGE
 
@@ -236,7 +236,7 @@ used in some `system.db` functions.
 
 - conform to snake_case naming style
 
-## v1.0.5 (2021-06-22)
+## 1.0.5 (2021-06-22)
 
 ### Feat
 
@@ -252,7 +252,7 @@ used in some `system.db` functions.
 
 - modify imports
 
-## v1.0.4 (2021-02-24)
+## 1.0.4 (2021-02-24)
 
 ### Feat
 
@@ -263,6 +263,6 @@ used in some `system.db` functions.
 
 - :zap: simplify sequence comparison
 
-## v1.0.3 (2020-11-12)
+## 1.0.3 (2020-11-12)
 
-## v1.0.2 (2020-10-17)
+## 1.0.2 (2020-10-17)
