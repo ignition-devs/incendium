@@ -1,3 +1,9 @@
+## 2025.6.0 (2025-06-09)
+
+### Refactor
+
+- **db**: add transaction argument (#245)
+
 ## 2024.10.0 (2024-10-28)
 
 ### Refactor
