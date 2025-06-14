@@ -9,9 +9,9 @@ enum34==1.1.10 \
     --hash=sha256:c3858660960c984d6ab0ebad691265180da2b43f07e061c0f8dca9ef3cffd328 \
     --hash=sha256:cce6a7477ed816bd2542d03d53db9f0db935dd013b70f336a95c73979289f248
     # via ignition-api
-ignition-api==8.1.48.post1 \
-    --hash=sha256:07f01ed078a68a00931386b7b232e56f7405c0aca22d98d6bfe889176a3882c0 \
-    --hash=sha256:08267282cec24fad5979e94bee1a02cf85a28b9c7386d3a0f5f28e79716eec77
+ignition-api==8.1.48.post2 \
+    --hash=sha256:7146a19c37a6b268383cc4eeb6d391609e5b68a35b95b7ec2921437d5ec1e42e \
+    --hash=sha256:acf8a6bd0d14c3da1ca6c686651c4c48df759258facb0a1274092014bd3480bf
     # via -r requirements.in
 typing==3.10.0.0 \
     --hash=sha256:12fbdfbe7d6cca1a42e485229afcb0b0c8259258cfb919b8a5e2a5c953742f89 \
