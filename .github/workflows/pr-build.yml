@@ -8,12 +8,12 @@ on:
       - .github/workflows/jython.yml
       - .github/workflows/pr-build.yml
       - '**/requirements.txt'
+      - '**/tox.ini'
       - pkg/src/**
       - pkg/Makefile
       - pkg/setup.py
       - stubs/stubs/**
       - stubs/pyproject.toml
-      - tox.ini
   workflow_call:
 
 jobs:
@@ -24,10 +24,11 @@ jobs:
     needs: jython
     uses: coatl-dev/workflows/.github/workflows/tox-docker.yml@v5
     with:
-      extra-args: 'run -m py27'
+      working-directory: pkg
 
   tox-gh:
     needs: tox-docker
     uses: coatl-dev/workflows/.github/workflows/tox-gh.yml@v5
     with:
       python-versions: '["3.9", "3.10", "3.11", "3.12"]'
+      working-directory: stubs
