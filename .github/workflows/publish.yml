@@ -6,29 +6,24 @@ on:
       - published
 
 jobs:
-  pre-commit:
-    uses: coatl-dev/workflows/.github/workflows/pre-commit.yml@v5
-    with:
-      skip-hooks: 'pylint'
+  ci:
+    uses: ./.github/workflows/ci.yml
 
-  pylint:
-    needs: pre-commit
-    uses: coatl-dev/workflows/.github/workflows/pylint.yml@v5
-    with:
-      path: src
+  build:
+    uses: ./.github/workflows/pr-build.yml
 
-  jython:
-    needs: pylint
-    uses: ./.github/workflows/jython.yml
-
-  tox:
-    needs: jython
-    uses: coatl-dev/workflows/.github/workflows/tox-docker.yml@v5
-
-  pypi-publish:
-    needs: tox
+  publish-pkg:
+    needs: build
     uses: coatl-dev/workflows/.github/workflows/pypi-upload.yml@v5
     with:
       python-version: '2.7'
     secrets:
       password: ${{ secrets.PYPI_API_TOKEN_INCENDIUM_PKG }}
+
+  publish-stubs:
+    needs: build
+    uses: coatl-dev/workflows/.github/workflows/pypi-upload.yml@v5
+    with:
+      python-version: '3.12'
+    secrets:
+      password: ${{ secrets.PYPI_API_TOKEN_INCENDIUM_STUBS }}
