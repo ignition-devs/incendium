@@ -18,6 +18,7 @@ jobs:
     uses: coatl-dev/workflows/.github/workflows/pypi-upload.yml@v5
     with:
       python-version: '2.7'
+      working-directory: pkg
     secrets:
       password: ${{ secrets.PYPI_API_TOKEN_INCENDIUM_PKG }}
 
@@ -26,5 +27,6 @@ jobs:
     uses: coatl-dev/workflows/.github/workflows/pypi-upload.yml@v5
     with:
       python-version: '3.12'
+      working-directory: stubs
     secrets:
       password: ${{ secrets.PYPI_API_TOKEN_INCENDIUM_STUBS }}
