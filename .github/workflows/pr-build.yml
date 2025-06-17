@@ -7,10 +7,12 @@ on:
     paths:
       - .github/workflows/jython.yml
       - .github/workflows/pr-build.yml
-      - src/**
-      - Makefile
-      - requirements.txt
-      - setup.py
+      - '**/requirements.txt'
+      - pkg/src/**
+      - pkg/Makefile
+      - pkg/setup.py
+      - stubs/stubs/**
+      - stubs/pyproject.toml
       - tox.ini
   workflow_call:
 
