@@ -1,4 +1,4 @@
-# incendium: Python 2 package and Python3 stubs
+# incendium: Python 2 package and Python 3 stubs
 
 [![ci](https://github.com/ignition-devs/incendium/actions/workflows/ci.yml/badge.svg)](https://github.com/ignition-devs/incendium/actions/workflows/ci.yml)
 [![Join us on GitHub discussions](https://img.shields.io/badge/github-discussions-informational)](https://github.com/ignition-devs/incendium/discussions)
