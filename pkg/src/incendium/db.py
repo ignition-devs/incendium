@@ -205,7 +205,7 @@ class OutParam(Param):
 def _execute_sp(
     stored_procedure,  # type: AnyStr
     database="",  # type: AnyStr
-    transaction=None,  # type: Optional[AnyStr]
+    transaction_id=None,  # type: Optional[AnyStr]
     skip_audit=False,  # type: bool
     in_params=None,  # type: Optional[List[InParam]]
     out_params=None,  # type: Optional[List[OutParam]]
@@ -223,8 +223,8 @@ def _execute_sp(
         database: The name of the database connection to execute
             against. If omitted or "", the project's default database
             connection will be used. Optional.
-        transaction: A transaction identifier. If omitted, the call will
-            be executed in its own transaction. Optional.
+        transaction_id: A transaction identifier. If omitted, the call
+            will be executed in its own transaction. Optional.
         skip_audit: A flag which, if set to True, will cause the
             procedure call to skip the audit system. Useful for some
             queries that have fields which won't fit into the audit log.
@@ -249,7 +249,7 @@ def _execute_sp(
     call = system.db.createSProcCall(
         procedureName=stored_procedure,
         database=database,
-        tx=transaction,
+        tx=transaction_id,
         skipAudit=skip_audit,
     )
 
@@ -286,7 +286,7 @@ def _execute_sp(
 def check(
     stored_procedure,  # type: AnyStr
     database="",  # type: AnyStr
-    transaction=None,  # type: Optional[AnyStr]
+    transaction_id=None,  # type: Optional[AnyStr]
     params=None,  # type: Optional[List[InParam]]
 ):
     # type: (...) -> Optional[bool]
@@ -299,8 +299,8 @@ def check(
         database: The name of the database connection to execute
             against. If omitted or "", the project's default database
             connection will be used. Optional.
-        transaction: A transaction identifier. If omitted, the call will
-            be executed in its own transaction. Optional.
+        transaction_id: A transaction identifier. If omitted, the call
+            will be executed in its own transaction. Optional.
         params: A Dictionary containing all INPUT parameters. Optional.
 
     Returns:
@@ -309,7 +309,7 @@ def check(
     result = _execute_sp(
         stored_procedure,
         database=database,
-        transaction=transaction,
+        transaction_id=transaction_id,
         in_params=params,
         out_params=[OutParam("flag", system.db.BIT)],
         get_out_params=True,
@@ -325,7 +325,7 @@ def check(
 def execute_non_query(
     stored_procedure,  # type: AnyStr
     database="",  # type: AnyStr
-    transaction=None,  # type: Optional[AnyStr]
+    transaction_id=None,  # type: Optional[AnyStr]
     params=None,  # type: Optional[List[InParam]]
 ):
     # type: (...) -> int
@@ -338,8 +338,8 @@ def execute_non_query(
         database: The name of the database connection to execute
             against. If omitted or "", the project's default database
             connection will be used. Optional.
-        transaction: A transaction identifier. If omitted, the call will
-            be executed in its own transaction. Optional.
+        transaction_id: A transaction identifier. If omitted, the call
+            will be executed in its own transaction. Optional.
         params: A list containing all INPUT parameters as InParam
             objects. Optional.
 
@@ -350,7 +350,7 @@ def execute_non_query(
     result = _execute_sp(
         stored_procedure,
         database=database,
-        transaction=transaction,
+        transaction_id=transaction_id,
         in_params=params,
         get_update_count=True,
     )
@@ -361,7 +361,7 @@ def execute_non_query(
 def get_data(
     stored_procedure,  # type: AnyStr
     database="",  # type: AnyStr
-    transaction=None,  # type: Optional[AnyStr]
+    transaction_id=None,  # type: Optional[AnyStr]
     params=None,  # type: Optional[List[InParam]]
 ):
     # type: (...) -> BasicDataset
@@ -372,8 +372,8 @@ def get_data(
         database: The name of the database connection to execute
             against. If omitted or "", the project's default database
             connection will be used. Optional.
-        transaction: A transaction identifier. If omitted, the call will
-            be executed in its own transaction. Optional.
+        transaction_id: A transaction identifier. If omitted, the call
+            will be executed in its own transaction. Optional.
         params: A list containing all INPUT parameters as InParam
             objects. Optional.
 
@@ -384,7 +384,7 @@ def get_data(
     result = _execute_sp(
         stored_procedure,
         database=database,
-        transaction=transaction,
+        transaction_id=transaction_id,
         in_params=params,
         get_result_set=True,
     )
@@ -396,7 +396,7 @@ def get_output_params(
     stored_procedure,  # type: AnyStr
     output,  # type: List[OutParam]
     database="",  # type: AnyStr
-    transaction=None,  # type: Optional[AnyStr]
+    transaction_id=None,  # type: Optional[AnyStr]
     params=None,  # type: Optional[List[InParam]]
 ):
     # type: (...) -> DictIntStringAny
@@ -409,8 +409,8 @@ def get_output_params(
         database: The name of the database connection to execute
             against. If omitted or "", the project's default database
             connection will be used. Optional.
-        transaction: A transaction identifier. If omitted, the call will
-            be executed in its own transaction. Optional.
+        transaction_id: A transaction identifier. If omitted, the call
+            will be executed in its own transaction. Optional.
         params: A list containing all INPUT parameters as InParam
             objects. Optional.
 
@@ -420,7 +420,7 @@ def get_output_params(
     result = _execute_sp(
         stored_procedure,
         database=database,
-        transaction=transaction,
+        transaction_id=transaction_id,
         in_params=params,
         out_params=output,
         get_out_params=True,
@@ -433,7 +433,7 @@ def get_return_value(
     stored_procedure,  # type: AnyStr
     return_type_code,  # type: int
     database="",  # type: AnyStr
-    transaction=None,  # type: Optional[AnyStr]
+    transaction_id=None,  # type: Optional[AnyStr]
     params=None,  # type: Optional[List[InParam]]
 ):
     # type: (...) -> Optional[int]
@@ -445,8 +445,8 @@ def get_return_value(
         database: The name of the database connection to execute
             against. If omitted or "", the project's default database
             connection will be used. Optional.
-        transaction: A transaction identifier. If omitted, the call will
-            be executed in its own transaction. Optional.
+        transaction_id: A transaction identifier. If omitted, the call
+            will be executed in its own transaction. Optional.
         params: A list containing all INPUT parameters as InParam
             objects. Optional.
 
@@ -456,7 +456,7 @@ def get_return_value(
     result = _execute_sp(
         stored_procedure,
         database=database,
-        transaction=transaction,
+        transaction_id=transaction_id,
         in_params=params,
         get_ret_val=True,
         return_type_code=return_type_code,
@@ -469,7 +469,7 @@ def o_execute_non_query(
     stored_procedure,  # type: AnyStr
     out_params,  # type: List[OutParam]
     database="",  # type: AnyStr
-    transaction=None,  # type: Optional[AnyStr]
+    transaction_id=None,  # type: Optional[AnyStr]
     in_params=None,  # type: Optional[List[InParam]]
 ):
     # type: (...) -> Tuple[int, DictIntStringAny]
@@ -485,8 +485,8 @@ def o_execute_non_query(
         database: The name of the database connection to execute
             against. If omitted or "", the project's default database
             connection will be used. Optional.
-        transaction: A transaction identifier. If omitted, the call will
-            be executed in its own transaction. Optional.
+        transaction_id: A transaction identifier. If omitted, the call
+            will be executed in its own transaction. Optional.
         in_params: A list containing all INPUT parameters as InParam
             objects. Optional.
 
@@ -497,7 +497,7 @@ def o_execute_non_query(
     result = _execute_sp(
         stored_procedure,
         database=database,
-        transaction=transaction,
+        transaction_id=transaction_id,
         in_params=in_params,
         out_params=out_params,
         get_out_params=True,
@@ -511,7 +511,7 @@ def o_get_data(
     stored_procedure,  # type: AnyStr
     out_params,  # type: List[OutParam]
     database="",  # type: AnyStr
-    transaction=None,  # type: Optional[AnyStr]
+    transaction_id=None,  # type: Optional[AnyStr]
     in_params=None,  # type: Optional[List[InParam]]
 ):
     # type: (...) -> Tuple[BasicDataset, DictIntStringAny]
@@ -524,8 +524,8 @@ def o_get_data(
         database: The name of the database connection to execute
             against. If omitted or "", the project's default database
             connection will be used. Optional.
-        transaction: A transaction identifier. If omitted, the call will
-            be executed in its own transaction. Optional.
+        transaction_id: A transaction identifier. If omitted, the call
+            will be executed in its own transaction. Optional.
         in_params: A list containing all INPUT parameters as InParam
             objects. Optional.
 
@@ -536,7 +536,7 @@ def o_get_data(
     result = _execute_sp(
         stored_procedure,
         database=database,
-        transaction=transaction,
+        transaction_id=transaction_id,
         in_params=in_params,
         out_params=out_params,
         get_out_params=True,
