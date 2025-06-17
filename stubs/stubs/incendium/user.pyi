@@ -1,7 +1,6 @@
 from typing import List, Optional
 
 from com.inductiveautomation.ignition.common.user import ContactInfo, PyUser
-
 from incendium.helper.types import AnyStr
 
 class IncendiumUser:

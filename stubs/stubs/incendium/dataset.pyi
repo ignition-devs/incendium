@@ -1,7 +1,6 @@
 from typing import List, Optional
 
 from com.inductiveautomation.ignition.common import Dataset
-
 from incendium.helper.types import AnyStr, DictStringAny
 
 class _NanoXML:

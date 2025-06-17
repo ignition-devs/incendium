@@ -24,7 +24,16 @@ repos:
     rev: 6.0.1
     hooks:
       - id: isort
+        name: isort-pkg
+        files: ^pkg/src/
         args: [--settings-file=pkg/.isort.cfg]
+  - repo: https://github.com/PyCQA/isort
+    rev: 6.0.1
+    hooks:
+      - id: isort
+        name: isort-stubs
+        files: ^stubs/stubs/
+        args: [--settings-file=stubs/.isort.cfg]
   - repo: https://github.com/PyCQA/docformatter
     rev: v1.7.7
     hooks:

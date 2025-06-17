@@ -1,8 +1,7 @@
 from typing import Optional
 
-from java.lang import Throwable
-
 from incendium.helper.types import AnyStr, InnerException
+from java.lang import Throwable
 
 class Error(Exception):
     message: AnyStr
