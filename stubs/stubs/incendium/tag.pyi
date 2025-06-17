@@ -1,7 +1,6 @@
 from typing import Any
 
 from com.inductiveautomation.ignition.common.model.values import BasicQualifiedValue
-
 from incendium.helper.types import AnyStr
 
 def read(tag_path: AnyStr) -> BasicQualifiedValue: ...

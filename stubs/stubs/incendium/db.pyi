@@ -2,7 +2,6 @@ from types import TracebackType
 from typing import Any, List, Optional, Tuple, Type, Union
 
 from com.inductiveautomation.ignition.common import BasicDataset
-
 from incendium.helper.types import AnyStr, DictIntStringAny
 
 class DisposableConnection:
@@ -40,22 +39,6 @@ class InParam(Param):
 
 class OutParam(Param):
     def __init__(self, name_or_index: Union[int, AnyStr], type_code: int) -> None: ...
-
-class TransactionManager:
-    tx_id: AnyStr
-    def __init__(
-        self,
-        database: AnyStr = ...,
-        isolation_level: Optional[int] = ...,
-        timeout: Optional[int] = ...,
-    ) -> None: ...
-    def __enter__(self) -> AnyStr: ...
-    def __exit__(
-        self,
-        exc_type: Optional[Type[BaseException]],
-        exc_val: Optional[BaseException],
-        exc_tb: Optional[TracebackType],
-    ) -> None: ...
 
 def check(
     stored_procedure: AnyStr,
