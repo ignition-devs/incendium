@@ -1,3 +1,14 @@
+## 2025.6.1 (2025-06-17)
+
+### BREAKING CHANGE
+
+- transaction argument has been renamed transaction_id
+
+### Refactor
+
+- **db**: rename transaction to transaction_id
+- **db**: rename transaction argument to transaction_id (#255)
+
 ## 2025.6.0 (2025-06-09)
 
 ### Refactor
