@@ -24,5 +24,6 @@ jobs:
           key: jy-${{ steps.setup-jython.outputs.jython-version }}-${{ runner.os }}-${{ steps.setup-jython.outputs.java-distribution }}-${{ steps.setup-jython.outputs.java-version }}-${{ hashFiles('setup.py') }}
 
       - name: Test installation on Jython
+        working-directory: pkg
         run: |
           make install JYTHON_CACHE_DIR=${{ env.JYTHON_CACHE_DIR }}
