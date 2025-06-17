@@ -21,13 +21,11 @@ jobs:
     uses: ./.github/workflows/jython.yml
 
   tox-docker:
-    needs: jython
     uses: coatl-dev/workflows/.github/workflows/tox-docker.yml@v5
     with:
       working-directory: pkg
 
   tox-gh:
-    needs: tox-docker
     uses: coatl-dev/workflows/.github/workflows/tox-gh.yml@v5
     with:
       python-versions: '["3.9", "3.10", "3.11", "3.12"]'
