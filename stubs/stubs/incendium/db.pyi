@@ -43,46 +43,46 @@ class OutParam(Param):
 def check(
     stored_procedure: AnyStr,
     database: AnyStr = ...,
-    transaction: Optional[AnyStr] = ...,
+    transaction_id: Optional[AnyStr] = ...,
     params: Optional[List[InParam]] = ...,
 ) -> Optional[bool]: ...
 def execute_non_query(
     stored_procedure: AnyStr,
     database: AnyStr = ...,
-    transaction: Optional[AnyStr] = ...,
+    transaction_id: Optional[AnyStr] = ...,
     params: Optional[List[InParam]] = ...,
 ) -> int: ...
 def get_data(
     stored_procedure: AnyStr,
     database: AnyStr = ...,
-    transaction: Optional[AnyStr] = ...,
+    transaction_id: Optional[AnyStr] = ...,
     params: Optional[List[InParam]] = ...,
 ) -> BasicDataset: ...
 def get_output_params(
     stored_procedure: AnyStr,
     output: List[OutParam],
     database: AnyStr = ...,
-    transaction: Optional[AnyStr] = ...,
+    transaction_id: Optional[AnyStr] = ...,
     params: Optional[List[InParam]] = ...,
 ) -> DictIntStringAny: ...
 def get_return_value(
     stored_procedure: AnyStr,
     return_type_code: int,
     database: AnyStr = ...,
-    transaction: Optional[AnyStr] = ...,
+    transaction_id: Optional[AnyStr] = ...,
     params: Optional[List[InParam]] = ...,
 ) -> Optional[int]: ...
 def o_execute_non_query(
     stored_procedure: AnyStr,
     out_params: List[OutParam],
     database: AnyStr = ...,
-    transaction: Optional[AnyStr] = ...,
+    transaction_id: Optional[AnyStr] = ...,
     in_params: Optional[List[InParam]] = ...,
 ) -> Tuple[int, DictIntStringAny]: ...
 def o_get_data(
     stored_procedure: AnyStr,
     out_params: List[OutParam],
     database: AnyStr = ...,
-    transaction: Optional[AnyStr] = ...,
+    transaction_id: Optional[AnyStr] = ...,
     in_params: Optional[List[InParam]] = ...,
 ) -> Tuple[BasicDataset, DictIntStringAny]: ...
