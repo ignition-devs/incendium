@@ -18,4 +18,5 @@ jobs:
     needs: pre-commit
     uses: coatl-dev/workflows/.github/workflows/pylint.yml@v5
     with:
-      path: pkg/src
+      path: src
+      working-directory: pkg
