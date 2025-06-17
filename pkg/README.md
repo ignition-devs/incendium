@@ -1,10 +1,9 @@
 # incendium
 
 <!--- Badges --->
-[![ci](https://github.com/ignition-devs/incendium/actions/workflows/ci.yml/badge.svg)](https://github.com/ignition-devs/incendium/actions/workflows/ci.yml)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/incendium)](https://pypi.org/project/incendium/)
 [![PyPI - Version](https://img.shields.io/pypi/v/incendium)](https://pypi.org/project/incendium/)
-[![PyPI Downloads](https://static.pepy.tech/badge/incendium)](https://pepy.tech/projects/incendium)
-[![Join us on GitHub discussions](https://img.shields.io/badge/github-discussions-informational)](https://github.com/ignition-devs/incendium/discussions)
+[![PyPI - Downloads](https://static.pepy.tech/badge/incendium)](https://pepy.tech/projects/incendium)
 
 Package that extends and wraps some functions from Ignition's Scripting API.
 
@@ -19,6 +18,35 @@ Before you begin, ensure you have met the following requirements:
 - You have installed [Java 17] and [Jython 2.7.3]
 
 ## Installation and usage
+
+### Installing `incendium` on your Gateway
+
+> [!TIP]
+> You may use the [Python in Ignition] guide as reference.
+
+#### As a Jython package
+
+To install `incendium` as a Jython package on your Gateway, follow
+these steps:
+
+1. Install [Java 17]
+2. Install [Jython 2.7.3]
+3. Run `jython -m pip install incendium`
+4. Copy the `incendium` directory and `typing.py` from
+  `$JYTHON_HOME/Lib/site-packages` to
+  `$IGNITION_DIR/user-lib/pylib/site-packages`
+5. Done
+
+#### As a Python package
+
+To install `incendium` as a Python package on your Gateway, follow these steps:
+
+1. Install [Python 2.7.18]
+2. Run `python -m pip install incendium`
+3. Copy the `incendium` directory and `typing.py` from
+  `$PYTHON2_HOME/Lib/site-packages` to
+  `$IGNITION_DIR/user-lib/pylib/site-packages`
+4. Done
 
 ### Installing as a dependency for your scripting projects
 
@@ -63,35 +91,6 @@ it to your project.
 4. Under the `incendium` project folder, right-click on the `src/` folder and
   choose `Mark Directory as > Sources Root`
 
-### Installing `incendium` on your Gateway
-
-> [!TIP]
-> You may use the [Python in Ignition] guide as reference.
-
-#### As a Jython package
-
-To install `incendium` as a Jython package on your Gateway, follow
-these steps:
-
-1. Install [Java 17]
-2. Install [Jython 2.7.3]
-3. Run `jython -m pip install incendium`
-4. Copy the `incendium` directory and `typing.py` from
-  `$JYTHON_HOME/Lib/site-packages` to
-  `$IGNITION_DIR/user-lib/pylib/site-packages`
-5. Done
-
-#### As a Python package
-
-To install `incendium` as a Python package on your Gateway, follow these steps:
-
-1. Install [Python 2.7.18]
-2. Run `python -m pip install incendium`
-3. Copy the `incendium` directory and `typing.py` from
-  `$PYTHON2_HOME/Lib/site-packages` to
-  `$IGNITION_DIR/user-lib/pylib/site-packages`
-4. Done
-
 ## Contributing to `incendium`
 
 See [CONTRIBUTING.md].
@@ -122,7 +121,7 @@ See [CODE_OF_CONDUCT.md].
 [Ignition 8.1 System Functions]: https://docs.inductiveautomation.com/docs/8.1/appendix/scripting-functions
 [Java 17]: https://www.azul.com/downloads/?version=java-17-lts&package=jre#zulu
 [Jython 2.7.3]: https://repo1.maven.org/maven2/org/python/jython-installer/2.7.3/jython-installer-2.7.3.jar
-[LICENSE]: ./LICENSE
+[LICENSE]: ../LICENSE
 [Python 2.7.18]: https://www.python.org/downloads/release/python-2718/
 [Python in Ignition]: https://support.inductiveautomation.com/hc/en-us/articles/360056397252-Python-In-Ignition
 [releases]: https://github.com/ignition-devs/incendium/releases
