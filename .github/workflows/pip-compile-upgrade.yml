@@ -12,21 +12,21 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Upgrade pkg requirements
-        id: pip-compile-upgrade-pkg
+      - name: Upgrade incendium requirements
+        id: pip-compile-upgrade-incendium
         uses: coatl-dev/actions/pip-compile-upgrade@v4
         with:
           path: requirements.txt
           python-version: '2.7'
-          working-directory: pkg
+          working-directory: incendium
 
-      - name: Upgrade stubs requirements
-        id: pip-compile-upgrade-stubs
+      - name: Upgrade incendium-stubs requirements
+        id: pip-compile-upgrade-incendium-stubs
         uses: coatl-dev/actions/uv-pip-compile-upgrade@v4
         with:
           path: requirements.txt
           python-version: '3.12'
-          working-directory: stubs
+          working-directory: incendium-stubs
 
       - name: Detect changes
         id: git-diff

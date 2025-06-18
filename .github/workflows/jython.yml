@@ -16,6 +16,8 @@ jobs:
       - name: Set up Jython
         uses: coatl-dev/actions/setup-jython@v4
         id: setup-jython
+        with:
+          java-distribution: temurin
 
       - name: Cache Jython
         uses: actions/cache@v4
@@ -24,6 +26,6 @@ jobs:
           key: jy-${{ steps.setup-jython.outputs.jython-version }}-${{ runner.os }}-${{ steps.setup-jython.outputs.java-distribution }}-${{ steps.setup-jython.outputs.java-version }}-${{ hashFiles('setup.py') }}
 
       - name: Test installation on Jython
-        working-directory: pkg
+        working-directory: incendium
         run: |
           make install JYTHON_CACHE_DIR=${{ env.JYTHON_CACHE_DIR }}
