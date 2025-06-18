@@ -1,6 +1,6 @@
 FROM quay.io/ignition-devs/devcontainer-base:jython
 
-COPY pkg/requirements.txt /tmp/requirements.txt
+COPY incendium/requirements.txt /tmp/requirements.txt
 
 # pip caching disabled by base image
 # hadolint ignore=DL3042

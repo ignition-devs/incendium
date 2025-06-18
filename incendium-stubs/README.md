@@ -56,8 +56,8 @@ See [CODE_OF_CONDUCT.md].
 [CODE_OF_CONDUCT.md]: https://github.com/ignition-devs/.github/blob/main/CODE_OF_CONDUCT.md
 [CONTRIBUTING.md]: ../CONTRIBUTING.md#contributing-to-incendium
 [contributors]: https://github.com/ignition-devs/incendium/graphs/contributors
-[Discussions]: https://github.com/ignition-devs/discussions/discussions
+[Discussions]: https://github.com/orgs/ignition-devs/discussions
 [LICENSE]: ../LICENSE
-[`incendium`]: https://github.com/ignition-devs/incendium/tree/main/pkg
+[`incendium`]: https://github.com/ignition-devs/incendium/tree/main/incendium
 [`stubgen`]: https://coatl-mypy.readthedocs.io/en/v0.971/stubgen.html
 [stubs]: https://www.python.org/dev/peps/pep-484/

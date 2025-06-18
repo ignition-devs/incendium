@@ -6,6 +6,6 @@ version_scheme = "pep440"
 version = "2025.6.1"
 update_changelog_on_bump = true
 version_files = [
-  "pkg/src/incendium/__about__.py:__version__",
-  "stubs/pyproject.toml:version"
+  "incendium/src/incendium/__about__.py:__version__",
+  "incendium-stubs/pyproject.toml:version"
 ]
