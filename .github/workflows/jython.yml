@@ -6,7 +6,7 @@ on:
 
 jobs:
   jython:
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-2vcpu-ubuntu-2404
     env:
       JYTHON_CACHE_DIR: '~/.cache/jython'
     steps:
