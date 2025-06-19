@@ -1,3 +1,8 @@
+ci:
+  autoupdate_commit_msg: 'build(deps): pre-commit autoupdate'
+  skip:
+    - pylint
+
 repos:
   - repo: https://github.com/aio-libs/sort-all
     rev: v1.3.0
@@ -40,7 +45,7 @@ repos:
       - id: docformatter
         args: [--in-place, --close-quotes-on-newline, --wrap-summaries=72]
         files: ^incendium/src/
-  - repo: https://github.com/PyCQA/flake8
+  - repo: https://github.com/coatl-dev/flake8
     rev: 5.0.4
     hooks:
       - id: flake8
@@ -51,7 +56,7 @@ repos:
     rev: 7.2.0
     hooks:
       - id: flake8
-        name: flake8-stubs
+        name: flake8-incendium-stubs
         types: [file]
         files: \.(pyi)$
         additional_dependencies: [flake8-pyi]
@@ -68,15 +73,6 @@ repos:
       - id: pydoclint-flake8
         files: ^incendium/src/
         args: [--config=incendium/.pydoclint]
-  - repo: local
-    hooks:
-      - id: pylint
-        name: pylint
-        entry: pylint
-        language: system
-        files: ^incendium/src/
-        types: [python]
-        args: [--rcfile=incendium/.pylintrc]
   - repo: https://github.com/coatl-dev/hadolint-coatl
     rev: 2.12.1b0
     hooks:
@@ -87,3 +83,12 @@ repos:
       - id: commitizen
       - id: commitizen-branch
         stages: [pre-push]
+  - repo: local
+    hooks:
+      - id: pylint
+        name: pylint
+        entry: pylint
+        language: system
+        files: ^incendium/src/
+        types: [python]
+        args: [--rcfile=incendium/.pylintrc]
