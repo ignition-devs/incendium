@@ -115,7 +115,7 @@ See [CODE_OF_CONDUCT.md].
 
 <!-- Links -->
 [CODE_OF_CONDUCT.md]: https://github.com/ignition-devs/.github/blob/main/CODE_OF_CONDUCT.md
-[CONTRIBUTING.md]: ./CONTRIBUTING.md#contributing-to-incendium
+[CONTRIBUTING.md]: ../CONTRIBUTING.md#contributing-to-incendium
 [contributors]: https://github.com/ignition-devs/incendium/graphs/contributors
 [Discussions]: https://github.com/orgs/ignition-devs/discussions
 [Ignition 8.1 System Functions]: https://docs.inductiveautomation.com/docs/8.1/appendix/scripting-functions
