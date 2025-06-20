@@ -21,17 +21,21 @@ fix.
 
 ## Getting ready to contribute
 
-For **incendium** we rely on Python 2.7.18 for development, and Python 3.9+ to
-run tests and style checks with `pre-commit` and `tox`.
+> [!TIP]
+> You may use our devcontainer.
+
+For **incendium** we rely on Python 2.7.18 for development, Python 3.12 for
+typechecking and the latest stable release to run tests and style checks with
+[`pre-commit`], [`pylint`] and [`tox`]. Additionally, we use [`commitizen`] to
+help us maintain consistent and meaningful commit messages.
 
 ### Setting up your local environment
 
-1. Install Python 2.7.18 and the 3.9+
-1. Install the required packages for development you may run the following
-   command:
+1. Once you've installed Python, install the required packages for development
+  you may run the following command:
 
     ```sh
-    python2 -m pip install --requirement requirements.txt
+    python2 -m pip install --requirement ignition-api/requirements.txt
     ```
 
 1. Install Python 3 tools
@@ -45,7 +49,7 @@ run tests and style checks with `pre-commit` and `tox`.
         1. Install the git hook scripts
 
             ```sh
-            pre-commit install
+            pre-commit install --hook-type  pre-commit --hook-type commit-msg --hook-type pre-push
             ```
 
     1. [`tox`]
@@ -240,9 +244,11 @@ Refs: 2a50de4
 [Coding Style]: #coding-style
 [Commit Message Footer]: #commit-message-footer
 [Commit Message Format]: #commit-message-format
+[`commitizen`]: https://commitizen-tools.github.io/commitizen/
 [Conventional Commits specification]: https://conventionalcommits.org/
 [Discussions]: https://github.com/orgs/ignition-devs/discussions
 [GitHub flow]: https://guides.github.com/introduction/flow/
 [`pre-commit`]: https://pre-commit.com/
+[`pylint`]: https://pylint.readthedocs.io/en/latest/
 [submit a Pull Request]: #pull-requests
 [`tox`]: https://tox.wiki/
