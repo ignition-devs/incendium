@@ -241,7 +241,7 @@ Refs: 2a50de4
 [Commit Message Footer]: #commit-message-footer
 [Commit Message Format]: #commit-message-format
 [Conventional Commits specification]: https://conventionalcommits.org/
-[Discussions]: https://github.com/ignition-devs/incendium/discussions
+[Discussions]: https://github.com/orgs/ignition-devs/discussions
 [GitHub flow]: https://guides.github.com/introduction/flow/
 [`pre-commit`]: https://pre-commit.com/
 [submit a Pull Request]: #pull-requests
