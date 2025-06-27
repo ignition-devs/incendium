@@ -17,13 +17,13 @@ jobs:
         uses: coatl-dev/actions/setup-jython@v4
         id: setup-jython
         with:
-          java-distribution: temurin
+          jython-version: '2.7.3'
 
       - name: Cache Jython
         uses: actions/cache@v4
         with:
           path: ${{ env.JYTHON_CACHE_DIR }}
-          key: jy-${{ steps.setup-jython.outputs.jython-version }}-${{ runner.os }}-${{ steps.setup-jython.outputs.java-distribution }}-${{ steps.setup-jython.outputs.java-version }}-${{ hashFiles('setup.py') }}
+          key: jy-${{ steps.setup-jython.outputs.jython-version }}-${{ runner.os }}-${{ steps.setup-jython.outputs.java-distribution }}-${{ steps.setup-jython.outputs.java-version }}-${{ hashFiles('/incendium/setup.py') }}
 
       - name: Test installation on Jython
         working-directory: incendium
