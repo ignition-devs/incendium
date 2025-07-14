@@ -35,7 +35,7 @@ help us maintain consistent and meaningful commit messages.
   you may run the following command:
 
     ```sh
-    python2 -m pip install --requirement ignition-api/requirements.txt
+    python2 -m pip install --requirement incendium/requirements.txt
     ```
 
 1. Install Python 3 tools

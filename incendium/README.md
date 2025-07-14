@@ -115,13 +115,13 @@ See [CODE_OF_CONDUCT.md].
 
 <!-- Links -->
 [CODE_OF_CONDUCT.md]: https://github.com/ignition-devs/.github/blob/main/CODE_OF_CONDUCT.md
-[CONTRIBUTING.md]: ../CONTRIBUTING.md#contributing-to-incendium
+[CONTRIBUTING.md]: https://github.com/ignition-devs/incendium/blob/main/CONTRIBUTING.md
 [contributors]: https://github.com/ignition-devs/incendium/graphs/contributors
 [Discussions]: https://github.com/orgs/ignition-devs/discussions
 [Ignition 8.1 System Functions]: https://docs.inductiveautomation.com/docs/8.1/appendix/scripting-functions
 [Java 17]: https://www.azul.com/downloads/?version=java-17-lts&package=jre#zulu
 [Jython 2.7.3]: https://repo1.maven.org/maven2/org/python/jython-installer/2.7.3/jython-installer-2.7.3.jar
-[LICENSE]: ../LICENSE
+[LICENSE]: https://github.com/ignition-devs/incendium/blob/main/LICENSE
 [Python 2.7.18]: https://www.python.org/downloads/release/python-2718/
 [Python in Ignition]: https://support.inductiveautomation.com/hc/en-us/articles/360056397252-Python-In-Ignition
 [releases]: https://github.com/ignition-devs/incendium/releases
