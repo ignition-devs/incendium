@@ -31,26 +31,26 @@ repos:
       - id: isort
         name: isort-incendium
         files: ^incendium/src/
-        args: [--settings-file=incendium/.isort.cfg]
+        args: [--settings-file=incendium/tox.ini]
   - repo: https://github.com/PyCQA/isort
     rev: 6.0.1
     hooks:
       - id: isort
         name: isort-stubs
         files: ^incendium-stubs/stubs/
-        args: [--settings-file=incendium-stubs/.isort.cfg]
+        args: [--settings-file=incendium-stubs/tox.ini]
   - repo: https://github.com/PyCQA/docformatter
     rev: v1.7.7
     hooks:
       - id: docformatter
-        args: [--in-place, --close-quotes-on-newline, --wrap-summaries=72]
+        args: [--config, incendium/tox.ini]
         files: ^incendium/src/
   - repo: https://github.com/coatl-dev/flake8
     rev: 5.0.4
     hooks:
       - id: flake8
         name: flake8-incendium
-        args: [--config=incendium/.flake8]
+        args: [--config=incendium/tox.ini]
         files: ^incendium/src/
   - repo: https://github.com/PyCQA/flake8
     rev: 7.3.0
@@ -60,19 +60,19 @@ repos:
         types: [file]
         files: \.(pyi)$
         additional_dependencies: [flake8-pyi]
-        args: [--config=incendium-stubs/.flake8]
+        args: [--config=incendium-stubs/tox.ini]
   - repo: https://github.com/PyCQA/pydocstyle
     rev: 6.3.0
     hooks:
       - id: pydocstyle
         files: ^incendium/src/
-        args: [--config=incendium/.pydocstyle]
+        args: [--config=incendium/tox.ini]
   - repo: https://github.com/jsh9/pydoclint
     rev: 0.6.7
     hooks:
       - id: pydoclint-flake8
         files: ^incendium/src/
-        args: [--config=incendium/.pydoclint]
+        args: [--config=incendium/tox.ini, --extend-ignore=F401]
   - repo: https://github.com/coatl-dev/hadolint-coatl
     rev: 2.12.1b0
     hooks:

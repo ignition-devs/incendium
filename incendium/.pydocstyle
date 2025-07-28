@@ -1,3 +1,0 @@
-[pydocstyle]
-add_select = D400, D401
-convention = google
