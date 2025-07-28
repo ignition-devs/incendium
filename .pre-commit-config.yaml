@@ -40,7 +40,7 @@ repos:
         files: ^incendium-stubs/stubs/
         args: [--settings-file=incendium-stubs/tox.ini]
   - repo: https://github.com/PyCQA/docformatter
-    rev: v1.7.7
+    rev: v1.7.8-rc1
     hooks:
       - id: docformatter
         args: [--config, incendium/tox.ini]
