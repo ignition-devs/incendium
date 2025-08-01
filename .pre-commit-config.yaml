@@ -20,11 +20,10 @@ repos:
     hooks:
       - id: black
   - repo: https://github.com/hakancelikdev/unimport
-    rev: 1.2.1
+    rev: 1.3.0
     hooks:
       - id: unimport
         files: ^incendium/src/
-        language_version: python3.12
   - repo: https://github.com/PyCQA/isort
     rev: 6.0.1
     hooks:
@@ -73,10 +72,6 @@ repos:
       - id: pydoclint-flake8
         files: ^incendium/src/
         args: [--config=incendium/tox.ini, --extend-ignore=F401]
-  - repo: https://github.com/coatl-dev/hadolint-coatl
-    rev: 2.12.1b0
-    hooks:
-      - id: hadolint
   - repo: https://github.com/commitizen-tools/commitizen
     rev: v4.8.3
     hooks:
