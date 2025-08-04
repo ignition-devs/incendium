@@ -20,7 +20,7 @@ repos:
     hooks:
       - id: black
   - repo: https://github.com/hakancelikdev/unimport
-    rev: 1.3.0
+    rev: 1.2.1
     hooks:
       - id: unimport
         files: ^incendium/src/
@@ -39,7 +39,7 @@ repos:
         files: ^incendium-stubs/stubs/
         args: [--settings-file=incendium-stubs/tox.ini]
   - repo: https://github.com/PyCQA/docformatter
-    rev: v1.7.7
+    rev: v1.7.8-rc1
     hooks:
       - id: docformatter
         args: [--config, incendium/tox.ini]
