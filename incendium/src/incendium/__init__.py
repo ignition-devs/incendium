@@ -6,3 +6,4 @@ Ignition Scripting API.
 For more information, please refer to the Wiki.
 https://github.com/ignition-devs/incendium/wiki
 """
+
