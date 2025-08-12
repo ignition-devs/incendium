@@ -11,7 +11,7 @@ jobs:
       JYTHON_CACHE_DIR: '~/.cache/jython'
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Jython
         uses: coatl-dev/actions/setup-jython@v5
