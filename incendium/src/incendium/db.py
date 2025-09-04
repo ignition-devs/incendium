@@ -4,6 +4,7 @@ __all__ = [
     "DisposableConnection",
     "InParam",
     "OutParam",
+    "TransactionManager",
     "check",
     "execute_non_query",
     "get_data",
@@ -200,6 +201,54 @@ class OutParam(_Param):
             type_code: Type code constant from `system.db`.
         """
         super(OutParam, self).__init__(name_or_index, type_code)
+
+
+class TransactionManager(object):
+    """Database transaction context manager."""
+
+    def __init__(self, database="", isolation_level=None, timeout=None):
+        # type: (Optional[str], Optional[int], Optional[int]) -> None
+        """Transaction Manager initializer.
+
+        Args:
+            database: The name of the database connection to use. If not
+                specified, the project's default database is used.
+                Optional.
+            isolation_level: The isolation level for the transaction. If
+                not specified, the default isolation level is used.
+                Optional.
+            timeout: The timeout for the transaction in seconds. If not
+                specified, the default timeout is used. Optional.
+        """
+        self._database = database
+        self._isolation_level = isolation_level
+        self._timeout = timeout
+        self.transaction_id = ""  # type: AnyStr
+
+    def __enter__(self):
+        # type: () -> TransactionManager
+        """Enter the runtime context related to this object."""
+        self.transaction_id = system.db.beginTransaction(
+            database=self._database,
+            isolationLevel=self._isolation_level,
+            timeout=self._timeout,
+        )
+        return self
+
+    def __exit__(
+        self,
+        exc_type,  # type: Optional[Type[BaseException]]
+        exc_val,  # type: Optional[BaseException]
+        exc_tb,  # type: Optional[TracebackType]
+    ):
+        # type: (...) -> None
+        """Exit the runtime context related to this object."""
+        if exc_type is None:
+            system.db.commitTransaction(self.transaction_id)
+        else:
+            system.db.rollbackTransaction(self.transaction_id)
+
+        system.db.closeTransaction(self.transaction_id)
 
 
 def _execute_sp(

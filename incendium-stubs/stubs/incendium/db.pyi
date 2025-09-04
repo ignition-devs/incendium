@@ -4,6 +4,20 @@ from typing import Any, List, Optional, Tuple, Type, Union
 from com.inductiveautomation.ignition.common import BasicDataset
 from incendium.helper.types import AnyStr, DictIntStringAny
 
+class _Param:
+    def __init__(
+        self,
+        name_or_index: Union[int, AnyStr],
+        type_code: int,
+        value: Optional[Any] = ...,
+    ) -> None: ...
+    @property
+    def name_or_index(self) -> Union[int, AnyStr]: ...
+    @property
+    def type_code(self) -> int: ...
+    @property
+    def value(self) -> Optional[Any]: ...
+
 class DisposableConnection:
     def __init__(self, database: AnyStr, retries: int = ...) -> None: ...
     @property
@@ -18,27 +32,29 @@ class DisposableConnection:
         exc_tb: Optional[TracebackType],
     ) -> None: ...
 
-class Param:
-    def __init__(
-        self,
-        name_or_index: Union[int, AnyStr],
-        type_code: int,
-        value: Optional[Any] = ...,
-    ) -> None: ...
-    @property
-    def name_or_index(self) -> Union[int, AnyStr]: ...
-    @property
-    def type_code(self) -> int: ...
-    @property
-    def value(self) -> Optional[Any]: ...
-
-class InParam(Param):
+class InParam(_Param):
     def __init__(
         self, name_or_index: Union[int, AnyStr], type_code: int, value: Any
     ) -> None: ...
 
-class OutParam(Param):
+class OutParam(_Param):
     def __init__(self, name_or_index: Union[int, AnyStr], type_code: int) -> None: ...
+
+class TransactionManager:
+    transaction_id: str
+    def __init__(
+        self,
+        database: Optional[str] = ...,
+        isolation_level: Optional[int] = ...,
+        timeout: Optional[int] = ...,
+    ) -> None: ...
+    def __enter__(self) -> TransactionManager: ...
+    def __exit__(
+        self,
+        exc_type: Optional[Type[BaseException]],
+        exc_val: Optional[BaseException],
+        exc_tb: Optional[TracebackType],
+    ) -> None: ...
 
 def check(
     stored_procedure: AnyStr,
