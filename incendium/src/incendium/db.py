@@ -4,7 +4,6 @@ __all__ = [
     "DisposableConnection",
     "InParam",
     "OutParam",
-    "Param",
     "check",
     "execute_non_query",
     "get_data",
@@ -23,6 +22,61 @@ from com.inductiveautomation.ignition.common import BasicDataset
 from java.lang import Thread
 
 from incendium.helper.types import AnyStr, DictIntStringAny
+
+
+class _Param(object):
+    """Base class used for defining [IN|OUT]PUT parameters."""
+
+    def __init__(
+        self,
+        name_or_index,  # type: Union[int, AnyStr]
+        type_code,  # type: int
+        value=None,  # type: Optional[Any]
+    ):
+        # type: (...) -> None
+        """Param object initializer.
+
+        Args:
+            name_or_index: Parameter name or index.
+            type_code: Type code constant.
+            value: Value of type type_code.
+        """
+        super(_Param, self).__init__()
+        self._name_or_index = name_or_index
+        self._type_code = type_code
+        self._value = value
+
+    @property
+    def name_or_index(self):
+        # type: () -> Union[int, AnyStr]
+        """Get value of name_or_index."""
+        return self._name_or_index
+
+    @property
+    def type_code(self):
+        # type: () -> int
+        """Get value of type_code."""
+        return self._type_code
+
+    @property
+    def value(self):
+        # type: () -> Optional[Any]
+        """Get value of value."""
+        return self._value
+
+    def __repr__(self):  # type: ignore[no-untyped-def]
+        """Compute the "official" string representation."""
+        return "{}(name_or_index={!r}, type_code={}, value={})".format(
+            self.__class__.__name__,
+            self.name_or_index,
+            self.type_code,
+            self.value,
+        )
+
+    def __str__(self):  # type: ignore[no-untyped-def]
+        """Compute the "informal" string representation."""
+        return "{!r}, {}, {}".format(self.name_or_index, self.type_code, self.value)
+
 
 _SProcResult = TypedDict(
     "_SProcResult",
@@ -117,61 +171,7 @@ class DisposableConnection(object):
             system.db.setDatasourceEnabled(self._database, False)
 
 
-class Param(object):
-    """Base class used for defining [IN|OUT]PUT parameters."""
-
-    def __init__(
-        self,
-        name_or_index,  # type: Union[int, AnyStr]
-        type_code,  # type: int
-        value=None,  # type: Optional[Any]
-    ):
-        # type: (...) -> None
-        """Param object initializer.
-
-        Args:
-            name_or_index: Parameter name or index.
-            type_code: Type code constant.
-            value: Value of type type_code.
-        """
-        super(Param, self).__init__()
-        self._name_or_index = name_or_index
-        self._type_code = type_code
-        self._value = value
-
-    @property
-    def name_or_index(self):
-        # type: () -> Union[int, AnyStr]
-        """Get value of name_or_index."""
-        return self._name_or_index
-
-    @property
-    def type_code(self):
-        # type: () -> int
-        """Get value of type_code."""
-        return self._type_code
-
-    @property
-    def value(self):
-        # type: () -> Optional[Any]
-        """Get value of value."""
-        return self._value
-
-    def __repr__(self):  # type: ignore[no-untyped-def]
-        """Compute the "official" string representation."""
-        return "{}(name_or_index={!r}, type_code={}, value={})".format(
-            self.__class__.__name__,
-            self.name_or_index,
-            self.type_code,
-            self.value,
-        )
-
-    def __str__(self):  # type: ignore[no-untyped-def]
-        """Compute the "informal" string representation."""
-        return "{!r}, {}, {}".format(self.name_or_index, self.type_code, self.value)
-
-
-class InParam(Param):
+class InParam(_Param):
     """Class used for declaring INPUT parameters."""
 
     def __init__(self, name_or_index, type_code, value):
@@ -187,7 +187,7 @@ class InParam(Param):
         super(InParam, self).__init__(name_or_index, type_code, value)
 
 
-class OutParam(Param):
+class OutParam(_Param):
     """Class used for declaring OUTPUT parameters."""
 
     def __init__(self, name_or_index, type_code):
