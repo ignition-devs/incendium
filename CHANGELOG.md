@@ -1,3 +1,17 @@
+## 2025.9.0 (2025-09-04)
+
+### BREAKING CHANGE
+
+- The Param class has been renamed to _Param and is now private.
+
+### Feat
+
+- **db**: add TransactionManager context manager (#273)
+
+### Refactor
+
+- **db**: make Param class private (#272)
+
 ## 2025.6.1 (2025-06-17)
 
 ### BREAKING CHANGE
