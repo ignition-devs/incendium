@@ -1,3 +1,9 @@
+## 2025.9.1 (2025-09-06)
+
+### Refactor
+
+- **db**: remove _Param class (#274)
+
 ## 2025.9.0 (2025-09-04)
 
 ### BREAKING CHANGE
