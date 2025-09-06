@@ -4,20 +4,6 @@ from typing import Any, List, Optional, Tuple, Type, Union
 from com.inductiveautomation.ignition.common import BasicDataset
 from incendium.helper.types import AnyStr, DictIntStringAny
 
-class _Param:
-    def __init__(
-        self,
-        name_or_index: Union[int, AnyStr],
-        type_code: int,
-        value: Optional[Any] = ...,
-    ) -> None: ...
-    @property
-    def name_or_index(self) -> Union[int, AnyStr]: ...
-    @property
-    def type_code(self) -> int: ...
-    @property
-    def value(self) -> Optional[Any]: ...
-
 class DisposableConnection:
     def __init__(self, database: AnyStr, retries: int = ...) -> None: ...
     @property
@@ -32,13 +18,23 @@ class DisposableConnection:
         exc_tb: Optional[TracebackType],
     ) -> None: ...
 
-class InParam(_Param):
+class InParam:
     def __init__(
         self, name_or_index: Union[int, AnyStr], type_code: int, value: Any
     ) -> None: ...
+    @property
+    def name_or_index(self) -> Union[int, AnyStr]: ...
+    @property
+    def type_code(self) -> int: ...
+    @property
+    def value(self) -> Optional[Any]: ...
 
-class OutParam(_Param):
+class OutParam:
     def __init__(self, name_or_index: Union[int, AnyStr], type_code: int) -> None: ...
+    @property
+    def name_or_index(self) -> Union[int, AnyStr]: ...
+    @property
+    def type_code(self) -> int: ...
 
 class TransactionManager:
     transaction_id: str
