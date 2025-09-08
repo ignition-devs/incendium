@@ -70,7 +70,7 @@ repos:
         files: ^incendium/src/
         args: [--config=incendium/tox.ini]
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v4.8.3
+    rev: v4.8.4
     hooks:
       - id: commitizen
       - id: commitizen-branch
