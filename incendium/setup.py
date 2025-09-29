@@ -47,7 +47,7 @@ setup(
     packages=find_packages(where="src"),
     python_requires=">=2.7, <3",
     install_requires=[
-        "ignition-api>=8.1.0;platform_python_implementation != 'Jython'",
+        "ignition-api<8.3,>=8.1;platform_python_implementation != 'Jython'",
         "typing;platform_python_implementation == 'Jython'",
     ],
     project_urls={
