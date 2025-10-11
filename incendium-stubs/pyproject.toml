@@ -36,7 +36,7 @@ classifiers = [
   "Typing :: Typed",
 ]
 dependencies = [
-  "ignition-api-stubs<8.3,>=8.1",
+  "ignition-api-stubs>=8.3",
 ]
 urls.Funding = "https://github.com/sponsors/cesarcoatl"
 urls.Source = "https://github.com/ignition-devs/incendium"

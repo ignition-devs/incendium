@@ -6,7 +6,7 @@ __all__ = ["swap_to", "swap_windows"]
 
 from typing import List, Optional
 
-import system.nav
+import system.vision
 
 from incendium.helper.types import AnyStr, DictStringAny
 
@@ -63,7 +63,7 @@ def swap_windows(from_path, to_path, params=None):
     """
     _to_path = _get_full_path(from_path, to_path)
     if _to_path != from_path:
-        system.nav.swapWindow(from_path, _to_path, params)
+        system.vision.swapWindow(from_path, _to_path, params)
 
 
 def swap_to(path, params=None):
@@ -80,4 +80,4 @@ def swap_to(path, params=None):
             the target window's root container. The values for each key
             will be used to set those properties. Optional.
     """
-    swap_windows(system.nav.getCurrentWindow(), path, params)
+    swap_windows(system.vision.getCurrentWindow(), path, params)

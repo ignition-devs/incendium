@@ -140,13 +140,12 @@ def _to_json(dataset, root=None, is_root=True):
     headers = dataset.getColumnNames()
     columns = dataset.getColumnCount()
     rows = dataset.getRowCount()
-    data = system.dataset.toPyDataSet(dataset)
     ret_str = ("{" if is_root and root is not None else "") + (
         '"{}":['.format(root) if root is not None else "["
     )
     col_count = 0
 
-    for row_count, row in enumerate(data, start=1):
+    for row_count, row in enumerate(dataset, start=1):
         ret_str += "{"
         for header in headers:
             col_count += 1
