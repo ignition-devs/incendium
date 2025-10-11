@@ -13,7 +13,7 @@ For more information, please refer to the [Wiki].
 
 Before you begin, ensure you have met the following requirements:
 
-- You are familiar with [Ignition 8.1 System Functions]
+- You are familiar with [Ignition 8.3 System Functions]
 - You have installed [Python 2.7.18]
 - You have installed [Java 17] and [Jython 2.7.3]
 
@@ -118,7 +118,7 @@ See [CODE_OF_CONDUCT.md].
 [CONTRIBUTING.md]: https://github.com/ignition-devs/incendium/blob/main/CONTRIBUTING.md
 [contributors]: https://github.com/ignition-devs/incendium/graphs/contributors
 [Discussions]: https://github.com/orgs/ignition-devs/discussions
-[Ignition 8.1 System Functions]: https://docs.inductiveautomation.com/docs/8.1/appendix/scripting-functions
+[Ignition 8.3 System Functions]: https://docs.inductiveautomation.com/docs/8.3/appendix/scripting-functions
 [Java 17]: https://www.azul.com/downloads/?version=java-17-lts&package=jre#zulu
 [Jython 2.7.3]: https://repo1.maven.org/maven2/org/python/jython-installer/2.7.3/jython-installer-2.7.3.jar
 [LICENSE]: https://github.com/ignition-devs/incendium/blob/main/LICENSE

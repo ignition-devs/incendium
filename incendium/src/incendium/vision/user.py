@@ -10,14 +10,16 @@ __all__ = [
     "get_user_first_name",
     "get_user_full_name",
     "get_users",
+    "set_locale",
 ]
 
 from typing import List, Optional
 
-import system.security
 import system.user
+import system.vision
 from com.inductiveautomation.ignition.common.user import ContactInfo, PyUser
 
+from incendium import constants
 from incendium.exceptions import ApplicationError
 from incendium.helper.types import AnyStr
 
@@ -25,12 +27,13 @@ from incendium.helper.types import AnyStr
 class IncendiumUser(object):
     """Wrapper class for Ignition's User object."""
 
-    _roles = None  # type: List[AnyStr]
-    _locale = None  # type: AnyStr
-    _last_name = None  # type: AnyStr
-    _first_name = None  # type: AnyStr
-    _email = None  # type: Optional[AnyStr]
     _contact_info = None  # type: List[ContactInfo]
+    _email = None  # type: Optional[AnyStr]
+    _first_name = None  # type: AnyStr
+    _last_name = None  # type: AnyStr
+    _locale = None  # type: AnyStr
+    _roles = None  # type: List[AnyStr]
+    _username = None  # type: AnyStr
 
     def __init__(self, user):
         # type: (PyUser) -> None
@@ -42,10 +45,11 @@ class IncendiumUser(object):
         super(IncendiumUser, self).__init__()
         self._contact_info = user.getContactInfo()
         self._email = None
-        self._first_name = user.get(user.FirstName)
-        self._last_name = user.get(user.LastName)
+        self._first_name = user.getOrDefault(user.FirstName)
+        self._last_name = user.getOrDefault(user.LastName)
         self._locale = user.getOrDefault(user.Language)
         self._roles = user.getRoles()
+        self._username = user.get(user.Username)
 
     @property
     def contact_info(self):
@@ -117,6 +121,16 @@ class IncendiumUser(object):
         """
         return self._roles
 
+    @property
+    def username(self):
+        # type: () -> AnyStr
+        """Get User's username.
+
+        Returns:
+            User's username.
+        """
+        return self._username
+
 
 def get_users(user_source="", filter_role=""):
     # type: (AnyStr, AnyStr) -> List[PyUser]
@@ -179,7 +193,7 @@ def get_user(user_source="", failover=None):
     Raises:
         ApplicationError: If User is not found.
     """
-    username = system.security.getUsername()
+    username = system.vision.getUsername()
 
     user = system.user.getUser(user_source, username)
 
@@ -235,3 +249,19 @@ def get_user_full_name(user_source="", failover=None):
         The User's Full Name.
     """
     return get_user(user_source, failover).full_name
+
+
+def set_locale(user):
+    # type: (IncendiumUser) -> None
+    """Set the Locale to the user's default Language.
+
+    If none is configured, the default will be English (US).
+
+    Args:
+        user: IncendiumUser instance.
+    """
+    locale = (
+        user.locale if user is not None and user.locale else constants.DEFAULT_LANGUAGE
+    )
+
+    system.vision.setLocale(locale)

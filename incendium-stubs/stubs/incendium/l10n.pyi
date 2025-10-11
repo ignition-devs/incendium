@@ -1,3 +1,0 @@
-from incendium.user import IncendiumUser
-
-def set_locale(user: IncendiumUser) -> None: ...
