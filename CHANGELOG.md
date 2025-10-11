@@ -1,3 +1,13 @@
+## 2025.10.0 (2025-10-10)
+
+### BREAKING CHANGE
+
+- drop support for Ignition 8.1
+
+### Feat
+
+- ignition 8.3 (#283)
+
 ## 2025.9.2 (2025-09-29)
 
 ## 2025.9.1 (2025-09-06)
