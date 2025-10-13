@@ -24,7 +24,7 @@ from java.lang import Thread
 
 from incendium.helper.types import AnyStr, DictIntStringAny
 
-_SProcResult = TypedDict(
+_SProcResult = TypedDict(  # pylint: disable=invalid-name
     "_SProcResult",
     {
         "output_params": DictIntStringAny,
