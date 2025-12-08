@@ -40,7 +40,7 @@ class TransactionManager:
     transaction_id: str
     def __init__(
         self,
-        database: Optional[str] = ...,
+        database: Union[str, unicode] = ...,
         isolation_level: Optional[int] = ...,
         timeout: Optional[int] = ...,
     ) -> None: ...
