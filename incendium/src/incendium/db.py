@@ -209,8 +209,13 @@ class OutParam(object):
 class TransactionManager(object):
     """Database transaction context manager."""
 
-    def __init__(self, database="", isolation_level=None, timeout=None):
-        # type: (Optional[str], Optional[int], Optional[int]) -> None
+    def __init__(
+        self,
+        database="",  # type: Union[str, unicode]
+        isolation_level=None,  # type: Optional[int]
+        timeout=None,  # type: Optional[int]
+    ):
+        # type: (...) -> None
         """Transaction Manager initializer.
 
         Args:
