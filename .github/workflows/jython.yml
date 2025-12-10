@@ -23,9 +23,8 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ${{ env.JYTHON_CACHE_DIR }}
-          key: jy-${{ steps.setup-jython.outputs.jython-version }}-${{ runner.os }}-${{ steps.setup-jython.outputs.java-distribution }}-${{ steps.setup-jython.outputs.java-version }}-${{ hashFiles('incendium/setup.py') }}
+          key: jy-${{ steps.setup-jython.outputs.jython-version }}-${{ runner.os }}-${{ steps.setup-jython.outputs.java-distribution }}-${{ steps.setup-jython.outputs.java-version }}-${{ hashFiles('setup.py') }}
 
       - name: Test installation on Jython
-        working-directory: incendium
         run: |
           make install JYTHON_CACHE_DIR=${{ env.JYTHON_CACHE_DIR }}

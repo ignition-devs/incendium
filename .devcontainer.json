@@ -13,5 +13,5 @@
     }
   },
   "onCreateCommand": "pre-commit install --hook-type pre-commit --hook-type commit-msg --hook-type pre-push",
-  "postCreateCommand": "python2 -m pip install --requirement incendium/requirements.txt"
+  "postCreateCommand": "python2 -m pip install --requirement requirements.txt"
 }

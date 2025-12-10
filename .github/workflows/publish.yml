@@ -16,8 +16,6 @@ jobs:
   publish-incendium:
     needs: pr-build
     uses: coatl-dev/workflows/.github/workflows/pypi-upload.yml@v6
-    with:
-      working-directory: incendium
     secrets:
       password: ${{ secrets.PYPI_API_TOKEN_INCENDIUM_PKG }}
 
@@ -26,6 +24,6 @@ jobs:
     uses: coatl-dev/workflows/.github/workflows/pypi-upload.yml@v6
     with:
       python-version: '3.12'
-      working-directory: incendium-stubs
+      working-directory: stubs
     secrets:
       password: ${{ secrets.PYPI_API_TOKEN_INCENDIUM_STUBS }}
