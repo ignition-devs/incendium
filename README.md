@@ -63,7 +63,7 @@ Or
 jython -m pip install incendium
 ```
 
-This will install it as package to your Python installation, which will allow
+This will install it as a package in your Python installation, which will allow
 you to call `incendium`'s Scripting functions from Python's REPL, and get code
 completion using an IDE (PyCharm or Visual Studio Code).
 
