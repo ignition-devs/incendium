@@ -4,6 +4,9 @@
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/incendium)](https://pypi.org/project/incendium/)
 [![PyPI - Version](https://img.shields.io/pypi/v/incendium)](https://pypi.org/project/incendium/)
 [![PyPI - Downloads](https://static.pepy.tech/badge/incendium)](https://pepy.tech/projects/incendium)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/ignition-devs/incendium/main.svg)](https://results.pre-commit.ci/latest/github/ignition-devs/incendium/main)
+[![ci](https://github.com/ignition-devs/incendium/actions/workflows/ci.yml/badge.svg)](https://github.com/ignition-devs/incendium/actions/workflows/ci.yml)
+[![Join us on GitHub discussions](https://img.shields.io/badge/github-discussions-informational)](https://github.com/orgs/ignition-devs/discussions)
 
 Package that extends and wraps some functions from Ignition's Scripting API.
 
