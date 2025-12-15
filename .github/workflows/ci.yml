@@ -23,7 +23,7 @@ jobs:
           jython-version: '2.7.3'
 
       - name: Cache Jython
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ${{ env.JYTHON_CACHE_DIR }}
           key: jy-${{ steps.setup-jython.outputs.jython-version }}-${{ runner.os }}-${{ steps.setup-jython.outputs.java-distribution }}-${{ steps.setup-jython.outputs.java-version }}-${{ hashFiles('setup.py') }}
