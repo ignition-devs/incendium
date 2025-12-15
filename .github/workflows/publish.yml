@@ -6,21 +6,12 @@ on:
       - published
 
 jobs:
-  ci:
-    uses: ./.github/workflows/ci.yml
-
-  pr-build:
-    needs: ci
-    uses: ./.github/workflows/pr-build.yml
-
   publish-incendium:
-    needs: pr-build
     uses: coatl-dev/workflows/.github/workflows/pypi-upload.yml@v6
     secrets:
       password: ${{ secrets.PYPI_API_TOKEN_INCENDIUM_PKG }}
 
   publish-incendium-stubs:
-    needs: pr-build
     uses: coatl-dev/workflows/.github/workflows/pypi-upload.yml@v6
     with:
       python-version: '3.12'
