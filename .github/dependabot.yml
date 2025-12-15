@@ -8,4 +8,4 @@ updates:
     labels: ["dependencies"]
     commit-message:
       include: scope
-      prefix: "ci(deps)"
+      prefix: "ci"
