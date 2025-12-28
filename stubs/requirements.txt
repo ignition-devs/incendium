@@ -2,7 +2,7 @@
 #    uv pip compile --config-file uv.toml pyproject.toml
 ignition-api-stubs==8.3.2.post1
     # via incendium-stubs (pyproject.toml)
-java-api-stubs==17.25.0b6
+java-api-stubs==17.25.0
     # via ignition-api-stubs
 types-enum34==1.1.8
     # via ignition-api-stubs
