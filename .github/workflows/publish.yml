@@ -6,12 +6,17 @@ on:
       - published
 
 jobs:
-  publish-incendium:
+  tox:
+    uses: ./.github/workflows/tox.yml
+
+  publish-package:
+    needs: tox
     uses: coatl-dev/workflows/.github/workflows/pypi-upload.yml@v6
     secrets:
       password: ${{ secrets.PYPI_API_TOKEN_INCENDIUM_PKG }}
 
-  publish-incendium-stubs:
+  publish-stubs:
+    needs: tox
     uses: coatl-dev/workflows/.github/workflows/pypi-upload.yml@v6
     with:
       python-version: '3.12'
