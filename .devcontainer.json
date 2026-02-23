@@ -19,7 +19,7 @@
     }
   },
   "postCreateCommand": {
-    "pre-commit": "pre-commit install --install-hooks",
+    "pre-commit": "pre-commit install --hook-type pre-commit --hook-type commit-msg --hook-type pre-push",
     "dev-requirements": "python2 -m pip install --requirement requirements.txt"
   }
 }
