@@ -8,7 +8,7 @@ copyright_year: 2018-2026
 github_org: ignition-devs
 github_repo: incendium
 main_branch: main
-project_description: Package that extends and wraps Ignition Scripting API
+project_description: Package that extends and wraps the Ignition Scripting API
 project_development_status: 5 - Production/Stable
 project_license: MIT
 project_name: incendium

@@ -1,6 +1,6 @@
 #!/usr/bin/env jython
 # pylint: skip-file
-"""Package that extends and wraps Ignition Scripting API"""
+"""Package that extends and wraps the Ignition Scripting API"""
 
 from codecs import open
 from os import path

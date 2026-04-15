@@ -1,4 +1,4 @@
 """incendium.
 
-Package that extends and wraps Ignition Scripting API
+Package that extends and wraps the Ignition Scripting API
 """

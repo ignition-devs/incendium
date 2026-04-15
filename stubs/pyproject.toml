@@ -7,7 +7,7 @@ requires = [
 [project]
 name = "incendium-stubs"
 version = "0.0.1"
-description = "Package that extends and wraps Ignition Scripting API"
+description = "Package that extends and wraps the Ignition Scripting API"
 readme = "README.md"
 keywords = [ "incendium" ]
 license = "MIT"

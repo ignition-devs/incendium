@@ -5,14 +5,14 @@
 [![PyPI - Version](https://img.shields.io/pypi/v/incendium-stubs)](https://pypi.org/project/incendium-stubs/)
 [![PyPI - Downloads](https://pepy.tech/badge/incendium-stubs)](https://pepy.tech/project/incendium-stubs)
 
-Package that extends and wraps Ignition Scripting API
+Package that extends and wraps the Ignition Scripting API
 
 This package contains a collection of [stubs] generated using `mypy`'s
 [`stubgen`] tool.
 
 ## Installation and usage
 
-To use incendium, you may install it with `pip`. It requires Python
+To use incendium-stubs, you may install it with `pip`. It requires Python
 3.9 - 3.12.
 
 ```sh
