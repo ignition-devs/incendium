@@ -1,10 +1,9 @@
 #!/usr/bin/env jython
 # pylint: skip-file
-"""incendium."""
+"""Package that extends and wraps Ignition Scripting API"""
 
 from codecs import open
 from os import path
-
 from setuptools import find_packages, setup
 
 HERE = path.abspath(path.dirname(__file__))
@@ -42,7 +41,7 @@ setup(
         "Programming Language :: Python :: Implementation :: Jython",
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
-    keywords="coatl-dev, hmi, ignition, inductive automation, scada",
+    keywords="incendium",
     package_dir={"": "src"},
     packages=find_packages(where="src"),
     python_requires=">=2.7, <3",

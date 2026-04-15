@@ -8,7 +8,7 @@
 [![ci](https://github.com/ignition-devs/incendium/actions/workflows/ci.yml/badge.svg)](https://github.com/ignition-devs/incendium/actions/workflows/ci.yml)
 [![Join us on GitHub discussions](https://img.shields.io/badge/github-discussions-informational)](https://github.com/orgs/ignition-devs/discussions)
 
-Package that extends and wraps some functions from Ignition's Scripting API.
+Package that extends and wraps Ignition Scripting API.
 
 For more information, please refer to the [Wiki].
 

@@ -9,16 +9,20 @@ end_of_line = lf
 trim_trailing_whitespace = true
 
 [Makefile]
-indent_size = 4
 indent_style = tab
 insert_final_newline = false
 
-[*.{json,md,toml,yaml,yml}]
+[*.{json}]
+indent_size = 2
+indent_style = space
+insert_final_newline = false
+
+[*.{md,toml,yaml,yml}]
 indent_size = 2
 indent_style = space
 insert_final_newline = true
 
-[*.{ini,py,pyi}]
+[*.{ini,py}]
 indent_size = 4
 indent_style = space
 insert_final_newline = true

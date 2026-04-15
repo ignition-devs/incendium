@@ -1,21 +1,58 @@
 name: ci
 
 on:
+  workflow_dispatch:
   pull_request:
   push:
     branches:
       - main
 
 jobs:
-  pylint:
-    uses: coatl-dev/workflows/.github/workflows/pylint.yml@v6
+  pre-commit:
+    uses: coatl-dev/workflows/.github/workflows/pre-commit.yml@v6
     with:
-      path: src
+      skip-hooks: 'pylint'
+
+  pylint:
+    needs: pre-commit
+    uses: coatl-dev/workflows/.github/workflows/pylint.yml@v6
 
   jython:
-    uses: ./.github/workflows/jython.yml
     if: ${{ github.event_name == 'pull_request' }}
+    runs-on: ubuntu-latest
+    env:
+      JYTHON_CACHE_DIR: $HOME/.cache/jython
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v6
 
-  tox:
-    uses: ./.github/workflows/tox.yml
+      - name: Set up Jython
+        uses: coatl-dev/actions/setup-jython@v5
+        id: setup-jython
+        with:
+          jython-version: '2.7.3'
+
+      - name: Cache Jython
+        uses: actions/cache@v5
+        with:
+          path: ${{ env.JYTHON_CACHE_DIR }}
+          key: jy-${{ steps.setup-jython.outputs.jython-version }}-${{ runner.os }}-${{ steps.setup-jython.outputs.java-distribution }}-${{ steps.setup-jython.outputs.java-version }}-${{ hashFiles('setup.py') }}
+
+      - name: Test installation on Jython
+        run: |
+          make install JYTHON_CACHE_DIR=${{ env.JYTHON_CACHE_DIR }}
+
+  tox-package:
     if: ${{ github.event_name == 'pull_request' }}
+    uses: coatl-dev/workflows/.github/workflows/tox-docker.yml@v6
+
+  tox-stubs:
+    if: ${{ github.event_name == 'pull_request' }}
+    uses: coatl-dev/workflows/.github/workflows/tox.yml@v6
+    with:
+      python-versions: |
+        3.9
+        3.10
+        3.11
+        3.12
+      working-directory: stubs

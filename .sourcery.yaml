@@ -1,12 +1,12 @@
-version: "1"
-
 ignore:
-  - .git
-  - .env
-  - .tox
-  - .venv
-  - env
-  - venv
+    - .git
+    - venv
+    - .venv
+    - env
+    - .env
+    - .tox
+    - node_modules
+    - vendor
 
 rule_settings:
   enable:
@@ -17,7 +17,9 @@ rule_settings:
     - refactoring
     - suggestion
     - comment
-  python_version: "3.3"
+  python_version: '3.3'
+
+rules: []
 
 metrics:
   quality_threshold: 25.0
@@ -33,3 +35,6 @@ clone_detection:
   min_lines: 3
   min_duplicates: 2
   identical_clones_only: false
+
+proxy:
+  no_ssl_verify: false

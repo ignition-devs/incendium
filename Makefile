@@ -5,7 +5,7 @@ JYTHON_CACHE_DIR := $$HOME/.cache/jython
 
 ##@ Help
 
-.PHONY: help clean check init install cleaninstall forceinstall nocacheinstall nodepsinstall
+.PHONY: help clean check init install install-clean install-force install-nocache install-nodeps
 
 help: ## Display this help message.
 	@awk \
@@ -44,18 +44,18 @@ install: check init ## Install this package using Jython with caching enabled.
 	@echo "Installing package…"
 	jython -m pip install --cache-dir="$(JYTHON_CACHE_DIR)" .
 
-cleaninstall: check init clean ## Perform clean installation using Jython with caching enabled.
+install-clean: check init clean ## Perform clean installation using Jython with caching enabled.
 	@echo "Running clean install…"
 	jython -m pip install --cache-dir="$(JYTHON_CACHE_DIR)" .
 
-forceinstall: check init ## Reinstall all packages using Jython even if they are already up-to-date.
+install-force: check init ## Reinstall all packages using Jython even if they are already up-to-date.
 	@echo "Reinstalling all packages…"
 	jython -m pip install --force-reinstall --cache-dir="$(JYTHON_CACHE_DIR)" .
 
-nocacheinstall: check ## Install this package using Jython with caching disabled.
+install-nocache: check ## Install this package using Jython with caching disabled.
 	@echo "Installing packages (no cache)…"
 	jython -m pip install --no-cache-dir .
 
-nodepsinstall: check ## Install this package without dependencies.
+install-nodeps: check ## Install this package without dependencies.
 	@echo "Installing package without dependencies…"
 	jython -m pip install --no-deps .
