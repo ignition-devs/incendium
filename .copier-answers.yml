@@ -1,0 +1,20 @@
+# Changes here will be overwritten by Copier
+_commit: 0.4.12
+_src_path: gh:ignition-devs/copier-templates
+author_email: cesar@coatl.dev
+author_fullname: César Román
+copyright_holder: coatl.dev
+copyright_year: 2018-2026
+github_org: ignition-devs
+github_repo: incendium
+main_branch: main
+project_description: Package that extends and wraps the Ignition Scripting API
+project_development_status: 5 - Production/Stable
+project_license: MIT
+project_name: incendium
+project_type: jython
+registry_url: https://upload.pypi.org/legacy/
+registry_username: __token__
+upload_registry: true
+use_sourcery: true
+

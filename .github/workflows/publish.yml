@@ -6,20 +6,36 @@ on:
       - published
 
 jobs:
-  tox:
-    uses: ./.github/workflows/tox.yml
+  tox-package:
+    uses: coatl-dev/workflows/.github/workflows/tox-docker.yml@v6
 
-  publish-package:
-    needs: tox
+  tox-stubs:
+    uses: coatl-dev/workflows/.github/workflows/tox.yml@v6
+    with:
+      python-versions: |
+        3.9
+        3.10
+        3.11
+        3.12
+      working-directory: stubs
+
+  pypi-publish-package:
+    needs: [tox-package]
     uses: coatl-dev/workflows/.github/workflows/pypi-upload.yml@v6
+    with:
+      python-version: '2.7'
+      url: 'https://upload.pypi.org/legacy/'
+      username: '__token__'
     secrets:
       password: ${{ secrets.PYPI_API_TOKEN_INCENDIUM_PKG }}
 
-  publish-stubs:
-    needs: tox
+  pypi-publish-stubs:
+    needs: [tox-stubs]
     uses: coatl-dev/workflows/.github/workflows/pypi-upload.yml@v6
     with:
       python-version: '3.12'
-      working-directory: stubs
+      url: 'https://upload.pypi.org/legacy/'
+      username: '__token__'
+      working-directory: 'stubs'
     secrets:
       password: ${{ secrets.PYPI_API_TOKEN_INCENDIUM_STUBS }}

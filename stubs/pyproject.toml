@@ -6,15 +6,10 @@ requires = [
 
 [project]
 name = "incendium-stubs"
-version = "2025.12.0"
-description = "incendium stubs package"
+version = "0.0.1"
+description = "Package that extends and wraps the Ignition Scripting API"
 readme = "README.md"
-keywords = [
-  "hmi",
-  "ignition",
-  "inductive automation",
-  "scada",
-]
+keywords = [ "incendium" ]
 license = "MIT"
 authors = [ { name = "César Román", email = "cesar@coatl.dev" } ]
 requires-python = ">=3.9,<3.13"
@@ -36,15 +31,13 @@ classifiers = [
   "Typing :: Typed",
 ]
 dependencies = [
-  "ignition-api-stubs>=8.3",
+  "ignition-api-stubs",
 ]
-urls.Funding = "https://github.com/sponsors/cesarcoatl"
+urls.Homepage = "https://github.com/ignition-devs/incendium"
 urls.Source = "https://github.com/ignition-devs/incendium"
 urls.Tracker = "https://github.com/ignition-devs/incendium/issues"
 
 [tool.setuptools]
 include-package-data = true
 package-dir = { "" = "stubs" }
-
-[tool.setuptools.package-data]
-"*" = [ "*.pyi", "py.typed" ]
+package-data."*" = [ "*.pyi", "py.typed" ]

@@ -1,9 +1,3 @@
-ci:
-  autoupdate_commit_msg: 'build(deps): pre-commit autoupdate'
-  autofix_commit_msg: 'style: apply auto fixes with pre-commit'
-  skip:
-    - pylint
-
 repos:
   - repo: https://github.com/aio-libs/sort-all
     rev: v1.3.0
@@ -24,18 +18,15 @@ repos:
     rev: 1.3.1
     hooks:
       - id: unimport
-        language_version: python3.12
         files: ^src/
+        language_version: python3.12
   - repo: https://github.com/PyCQA/isort
     rev: 8.0.1
     hooks:
       - id: isort
-        name: isort-incendium
+        name: isort-package
         files: ^src/
         args: [--settings-file=tox.ini]
-  - repo: https://github.com/PyCQA/isort
-    rev: 8.0.1
-    hooks:
       - id: isort
         name: isort-stubs
         files: ^stubs/stubs/
@@ -44,23 +35,23 @@ repos:
     rev: v1.7.7
     hooks:
       - id: docformatter
-        language_version: python3.12
         args: [--config, tox.ini]
         files: ^src/
+        language_version: python3.12
   - repo: https://github.com/coatl-dev/flake8
     rev: 5.0.4
     hooks:
       - id: flake8
-        name: flake8-incendium
-        language_version: python3.12
+        name: flake8-package
         args: [--config=tox.ini]
         files: ^src/
         additional_dependencies: [pydoclint]
+        language_version: python3.12
   - repo: https://github.com/PyCQA/flake8
     rev: 7.3.0
     hooks:
       - id: flake8
-        name: flake8-incendium-stubs
+        name: flake8-stubs
         types: [file]
         files: \.(pyi)$
         additional_dependencies: [flake8-pyi]
@@ -72,7 +63,7 @@ repos:
         files: ^src/
         args: [--config=tox.ini]
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v4.13.10
+    rev: v4.13.9
     hooks:
       - id: commitizen
       - id: commitizen-branch
