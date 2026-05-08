@@ -21,7 +21,7 @@ repos:
         files: ^src/
         language_version: python3.12
   - repo: https://github.com/PyCQA/isort
-    rev: 8.0.1
+    rev: 9.0.0a3
     hooks:
       - id: isort
         name: isort-package
