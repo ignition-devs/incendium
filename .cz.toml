@@ -6,6 +6,7 @@ version_scheme = "pep440"
 version = "2025.12.0"
 update_changelog_on_bump = true
 version_files = [
+  ".copier-answers.yml:project_version",
   "src/incendium/__about__.py:__version__",
   "stubs/pyproject.toml:version"
 ]

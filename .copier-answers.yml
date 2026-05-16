@@ -1,5 +1,5 @@
 # Changes here will be overwritten by Copier
-_commit: 0.4.19
+_commit: 0.4.21
 _src_path: gh:ignition-devs/copier-templates
 author_email: cesar@coatl.dev
 author_fullname: César Román
@@ -13,6 +13,7 @@ project_development_status: 5 - Production/Stable
 project_license: MIT
 project_name: incendium
 project_type: jython
+project_version: 0.0.1
 registry_url: https://upload.pypi.org/legacy/
 registry_username: __token__
 upload_registry: true
