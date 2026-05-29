@@ -13,7 +13,7 @@ project_development_status: 5 - Production/Stable
 project_license: MIT
 project_name: incendium
 project_type: jython
-project_version: 0.0.1
+project_version: 2026.5.0
 registry_url: https://upload.pypi.org/legacy/
 registry_username: __token__
 upload_registry: true

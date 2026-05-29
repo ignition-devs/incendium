@@ -1,3 +1,13 @@
+## 2026.5.0 (2026-05-29)
+
+### Refactor
+
+- **exceptions**: update JavaError's inner_exception type (#320)
+
+### Perf
+
+- **devcontainer**: improve disk performance (#300)
+
 ## 2025.12.0 (2025-12-08)
 
 ## 2025.10.0 (2025-10-10)
