@@ -9,12 +9,12 @@ class Error(Exception):
 
 class JavaError(Exception):
     cause: Optional[Throwable]
-    inner_exception: InnerException
+    inner_exception: Optional[InnerException]
     message: AnyStr
     def __init__(
         self,
         message: AnyStr,
-        inner_exception: InnerException = ...,
+        inner_exception: Optional[InnerException] = ...,
         cause: Optional[Throwable] = ...,
         remove_substring: Optional[AnyStr] = ...,
     ) -> None: ...
@@ -25,7 +25,7 @@ class GatewayError(JavaError):
     def __init__(
         self,
         message: AnyStr,
-        inner_exception: InnerException = ...,
+        inner_exception: Optional[InnerException] = ...,
         cause: Optional[Throwable] = ...,
     ) -> None: ...
 
@@ -33,7 +33,7 @@ class MSSQLError(JavaError):
     def __init__(
         self,
         message: AnyStr,
-        inner_exception: InnerException = ...,
+        inner_exception: Optional[InnerException] = ...,
         cause: Optional[Throwable] = ...,
     ) -> None: ...
 

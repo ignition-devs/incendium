@@ -49,13 +49,13 @@ class JavaError(Exception):
     """Java Error class."""
 
     cause = None  # type: Optional[Throwable]
-    inner_exception = None  # type: InnerException
+    inner_exception = None  # type: Optional[InnerException]
     message = None  # type: AnyStr
 
     def __init__(
         self,
         message,  # type: AnyStr
-        inner_exception=None,  # type: InnerException
+        inner_exception=None,  # type: Optional[InnerException]
         cause=None,  # type: Optional[Throwable]
         remove_substring=None,  # type: Optional[AnyStr]
     ):
@@ -105,7 +105,7 @@ class GatewayError(JavaError):
     def __init__(
         self,
         message,  # type: AnyStr
-        inner_exception=None,  # type: InnerException
+        inner_exception=None,  # type: Optional[InnerException]
         cause=None,  # type: Optional[Throwable]
     ):
         # type: (...) -> None
@@ -127,7 +127,7 @@ class MSSQLError(JavaError):
     def __init__(
         self,
         message,  # type: AnyStr
-        inner_exception=None,  # type: InnerException
+        inner_exception=None,  # type: Optional[InnerException]
         cause=None,  # type: Optional[Throwable]
     ):
         # type: (...) -> None
