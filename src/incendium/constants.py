@@ -2,6 +2,40 @@
 
 from __future__ import unicode_literals
 
+__all__ = [
+    "CANCEL_TEXT",
+    "CANNOT_DELETE_ELEMENT",
+    "CANNOT_EDIT_ELEMENT",
+    "CONFIRM",
+    "DEFAULT_LANGUAGE",
+    "EDIT_ERROR",
+    "EDIT_SUCCESS",
+    "EDIT_SUCCESS_WITH_ERRORS",
+    "EMPTY_STRING",
+    "ERROR_REPORT",
+    "ERROR_WINDOW_TITLE",
+    "FORM_ERROR",
+    "GATEWAY_EXCEPTION",
+    "INFO_WINDOW_TITLE",
+    "MSSQL_SERVER_EXCEPTION",
+    "NEW_LINE",
+    "NEW_TABBED_LINE",
+    "NO_TEXT",
+    "OK_TEXT",
+    "PROCEED_WITHOUT_SAVING_CHANGES",
+    "PROCEED_WITH_ROWS_DELETION",
+    "PROCEED_WITH_ROW_DELETION",
+    "PROCEED_WITH_SAVING_CHANGES",
+    "SENDER",
+    "SMTP",
+    "SUCCESS_WINDOW_TITLE",
+    "TABBED_LINE",
+    "UNEXPECTED_ERROR",
+    "UNEXPECTED_ERROR_CAUSED_BY",
+    "WARNING_WINDOW_TITLE",
+    "YES_TEXT",
+]
+
 # Email settings.
 SMTP = "mail.mycompany.com:25"
 SENDER = "no-reply@mycompany.com"

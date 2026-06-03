@@ -3,12 +3,14 @@
 from __future__ import unicode_literals
 
 __all__ = [
+    "HTML_ESCAPE_TABLE",
+    "report_error",
     "send_high_priority_email",
     "send_html_email",
     "send_plain_text_email",
 ]
 
-from typing import List
+from typing import Dict, List
 
 import system.net
 
@@ -23,7 +25,7 @@ HTML_ESCAPE_TABLE = {
     "<": "&lt;",
     "\n": "<br />",
     "\t": "&nbsp;" * 4,
-}
+}  # type: Dict[AnyStr, AnyStr]
 
 
 def _html_escape(text):
