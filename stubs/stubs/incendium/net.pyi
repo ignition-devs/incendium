@@ -1,12 +1,17 @@
-from typing import List
+from typing import Dict, List
 
 from incendium.helper.types import AnyStr
+
+HTML_ESCAPE_TABLE: Dict[AnyStr, AnyStr]
 
 def send_html_email(
     subject: AnyStr, body: AnyStr, to: List[AnyStr], priority: AnyStr = ...
 ) -> None: ...
 def send_high_priority_email(
     subject: AnyStr, body: AnyStr, to: List[AnyStr]
+) -> None: ...
+def report_error(
+    subject: AnyStr, message: AnyStr, details: AnyStr, to: List[AnyStr]
 ) -> None: ...
 def send_plain_text_email(
     subject: AnyStr, body: AnyStr, to: List[AnyStr], priority: AnyStr = ...
