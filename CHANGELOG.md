@@ -1,3 +1,9 @@
+## 2026.6.0 (2026-06-03)
+
+### Refactor
+
+- **net**: add report_error to stubs (#323)
+
 ## 2026.5.0 (2026-05-29)
 
 ### Refactor
