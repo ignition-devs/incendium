@@ -60,12 +60,6 @@ repos:
       - id: pydocstyle
         files: ^src/
         args: [--config=tox.ini]
-  - repo: https://github.com/commitizen-tools/commitizen
-    rev: v4.16.3
-    hooks:
-      - id: commitizen
-      - id: commitizen-branch
-        stages: [pre-push]
   - repo: local
     hooks:
       - id: pylint
@@ -74,3 +68,9 @@ repos:
         language: system
         files: ^src/
         types: [python]
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: v4.16.3
+    hooks:
+      - id: commitizen
+      - id: commitizen-branch
+        stages: [pre-push]
