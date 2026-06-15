@@ -8,11 +8,11 @@ on:
 jobs:
   tox-package:
     if: ${{ github.event_name == 'pull_request' }}
-    uses: coatl-dev/workflows/.github/workflows/tox-docker.yml@8d3c0aba2a053986bce9382063facccf1fd98247 # v7.0.0
+    uses: coatl-dev/workflows/.github/workflows/tox-docker.yml@395018a3c81c2a88aac15fd87a373280c70675c0 # v7.0.1
 
   tox-stubs:
     if: ${{ github.event_name == 'pull_request' }}
-    uses: coatl-dev/workflows/.github/workflows/tox.yml@8d3c0aba2a053986bce9382063facccf1fd98247 # v7.0.0
+    uses: coatl-dev/workflows/.github/workflows/tox.yml@395018a3c81c2a88aac15fd87a373280c70675c0 # v7.0.1
     with:
       python-versions: |
         3.9
@@ -23,7 +23,7 @@ jobs:
 
   pypi-publish-package:
     needs: [tox-package]
-    uses: coatl-dev/workflows/.github/workflows/pypi-upload.yml@8d3c0aba2a053986bce9382063facccf1fd98247 # v7.0.0
+    uses: coatl-dev/workflows/.github/workflows/pypi-upload.yml@395018a3c81c2a88aac15fd87a373280c70675c0 # v7.0.1
     with:
       python-version: '2.7'
       url: 'https://upload.pypi.org/legacy/'
@@ -33,7 +33,7 @@ jobs:
 
   pypi-publish-stubs:
     needs: [tox-stubs]
-    uses: coatl-dev/workflows/.github/workflows/pypi-upload.yml@8d3c0aba2a053986bce9382063facccf1fd98247 # v7.0.0
+    uses: coatl-dev/workflows/.github/workflows/pypi-upload.yml@395018a3c81c2a88aac15fd87a373280c70675c0 # v7.0.1
     with:
       python-version: '3.12'
       url: 'https://upload.pypi.org/legacy/'
