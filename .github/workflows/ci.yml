@@ -27,7 +27,7 @@ jobs:
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
 
       - name: Set up Jython
-        uses: coatl-dev/actions/setup-jython@826b5cb5dce2da7cffd0f9cf9b64ba0bd3a616d6 # v7.0.1
+        uses: coatl-dev/actions/setup-jython@b831c4755d6da6ce8e78bb39f7e30d3f3fb9183c # v7.0.2
         id: setup-jython
         with:
           jython-version: '2.7.3'
