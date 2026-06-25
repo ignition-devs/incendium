@@ -14,13 +14,13 @@ jobs:
 
       - name: Upgrade package requirements
         id: pip-compile-upgrade-package
-        uses: coatl-dev/actions/pip-compile-upgrade@826b5cb5dce2da7cffd0f9cf9b64ba0bd3a616d6 # v7.0.1
+        uses: coatl-dev/actions/pip-compile-upgrade@b831c4755d6da6ce8e78bb39f7e30d3f3fb9183c # v7.0.2
         with:
           path: requirements.txt
 
       - name: Upgrade stubs requirements
         id: pip-compile-upgrade-stubs
-        uses: coatl-dev/actions/uv-pip-compile-upgrade@826b5cb5dce2da7cffd0f9cf9b64ba0bd3a616d6 # v7.0.1
+        uses: coatl-dev/actions/uv-pip-compile-upgrade@b831c4755d6da6ce8e78bb39f7e30d3f3fb9183c # v7.0.2
         with:
           path: requirements.txt
           python-version: '3.12'
@@ -28,14 +28,14 @@ jobs:
 
       - name: Detect changes
         id: git-diff
-        uses: coatl-dev/actions/simple-git-diff@826b5cb5dce2da7cffd0f9cf9b64ba0bd3a616d6 # v7.0.1
+        uses: coatl-dev/actions/simple-git-diff@b831c4755d6da6ce8e78bb39f7e30d3f3fb9183c # v7.0.2
         with:
           path: ${{ github.workspace }}
 
       - name: Import GPG key
         if: ${{ steps.git-diff.outputs.diff == 'true' }}
         id: gpg-import
-        uses: coatl-dev/actions/gpg-import@826b5cb5dce2da7cffd0f9cf9b64ba0bd3a616d6 # v7.0.1
+        uses: coatl-dev/actions/gpg-import@b831c4755d6da6ce8e78bb39f7e30d3f3fb9183c # v7.0.2
         with:
           passphrase: ${{ secrets.COATL_BOT_GPG_PASSPHRASE }}
           private-key: ${{ secrets.COATL_BOT_GPG_PRIVATE_KEY }}
@@ -60,6 +60,6 @@ jobs:
 
       - name: Create pull request
         if: ${{ steps.git-diff.outputs.diff == 'true' }}
-        uses: coatl-dev/actions/pr-create@826b5cb5dce2da7cffd0f9cf9b64ba0bd3a616d6 # v7.0.1
+        uses: coatl-dev/actions/pr-create@b831c4755d6da6ce8e78bb39f7e30d3f3fb9183c # v7.0.2
         with:
           gh-token: ${{ secrets.COATL_BOT_GH_TOKEN }}
