@@ -28,7 +28,7 @@ jobs:
 
       - name: Detect changes
         id: git-diff
-        uses: coatl-dev/actions/simple-git-diff@b831c4755d6da6ce8e78bb39f7e30d3f3fb9183c # v7.0.2
+        uses: coatl-dev/actions/simple-git-diff@a81a1c9a37205e630d28c561dfc3b605b6e031dd # v7.0.5
         with:
           path: ${{ github.workspace }}
 
