@@ -18,7 +18,7 @@ Before you begin, ensure you have met the following requirements:
 
 - You are familiar with [Ignition 8.3 System Functions]
 - You have installed [Python 2.7.18]
-- You have installed [Java 17] and [Jython 2.7.3]
+- You have installed [Java 17] and [Jython 2.7.4]
 
 ## Installation and usage
 
@@ -33,7 +33,7 @@ To install `incendium` as a Jython package on your Gateway, follow
 these steps:
 
 1. Install [Java 17]
-2. Install [Jython 2.7.3]
+2. Install [Jython 2.7.4]
 3. Run `jython -m pip install incendium`
 4. Copy the `incendium` directory and `typing.py` from
   `$JYTHON_HOME/Lib/site-packages` to
@@ -54,7 +54,7 @@ To install `incendium` as a Python package on your Gateway, follow these steps:
 ### Installing as a dependency for your scripting projects
 
 To use `incendium`, you may install it with `pip`. It requires
-[Python 2.7.18] or [Jython 2.7.3].
+[Python 2.7.18] or [Jython 2.7.4].
 
 ```sh
 python2 -m pip install incendium
@@ -123,7 +123,7 @@ See [CODE_OF_CONDUCT.md].
 [Discussions]: https://github.com/orgs/ignition-devs/discussions
 [Ignition 8.3 System Functions]: https://docs.inductiveautomation.com/docs/8.3/appendix/scripting-functions
 [Java 17]: https://www.azul.com/downloads/?version=java-17-lts&package=jre#zulu
-[Jython 2.7.3]: https://repo1.maven.org/maven2/org/python/jython-installer/2.7.3/jython-installer-2.7.3.jar
+[Jython 2.7.4]: https://repo1.maven.org/maven2/org/python/jython-installer/2.7.4/jython-installer-2.7.4.jar
 [LICENSE]: https://github.com/ignition-devs/incendium/blob/main/LICENSE
 [Python 2.7.18]: https://www.python.org/downloads/release/python-2718/
 [Python in Ignition]: https://support.inductiveautomation.com/hc/en-us/articles/360056397252-Python-In-Ignition
