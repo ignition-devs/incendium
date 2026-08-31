@@ -9,13 +9,13 @@ on:
 
 jobs:
   pre-commit:
-    uses: coatl-dev/workflows/.github/workflows/pre-commit.yml@f041f435b9aceead0ef21604b634fd8ef3389c2f # v7.0.3
+    uses: coatl-dev/workflows/.github/workflows/pre-commit.yml@0d24a98543a7e17f432503425e6ef836972864bb # v7.0.28
     with:
       skip-hooks: 'pylint'
 
   pylint:
     needs: pre-commit
-    uses: coatl-dev/workflows/.github/workflows/pylint.yml@f041f435b9aceead0ef21604b634fd8ef3389c2f # v7.0.3
+    uses: coatl-dev/workflows/.github/workflows/pylint.yml@0d24a98543a7e17f432503425e6ef836972864bb # v7.0.28
 
   jython:
     if: ${{ github.event_name == 'pull_request' }}
@@ -24,16 +24,16 @@ jobs:
       JYTHON_CACHE_DIR: $HOME/.cache/jython
     steps:
       - name: Checkout repo
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Set up Jython
-        uses: coatl-dev/actions/setup-jython@b831c4755d6da6ce8e78bb39f7e30d3f3fb9183c # v7.0.2
+        uses: coatl-dev/actions/setup-jython@45ee24a8c8397a346538acefea6221e30076fa66 # v7.0.14
         id: setup-jython
         with:
           jython-version: '2.7.3'
 
       - name: Cache Jython
-        uses: actions/cache@2c8a9bd7457de244a408f35966fab2fb45fda9c8 # v6.0.0
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: ${{ env.JYTHON_CACHE_DIR }}
           key: jy-${{ steps.setup-jython.outputs.jython-version }}-${{ runner.os }}-${{ steps.setup-jython.outputs.java-distribution }}-${{ steps.setup-jython.outputs.java-version }}-${{ hashFiles('setup.py') }}
@@ -44,11 +44,11 @@ jobs:
 
   tox-package:
     if: ${{ github.event_name == 'pull_request' }}
-    uses: coatl-dev/workflows/.github/workflows/tox-docker.yml@f041f435b9aceead0ef21604b634fd8ef3389c2f # v7.0.3
+    uses: coatl-dev/workflows/.github/workflows/tox-docker.yml@0d24a98543a7e17f432503425e6ef836972864bb # v7.0.28
 
   tox-stubs:
     if: ${{ github.event_name == 'pull_request' }}
-    uses: coatl-dev/workflows/.github/workflows/tox.yml@f041f435b9aceead0ef21604b634fd8ef3389c2f # v7.0.3
+    uses: coatl-dev/workflows/.github/workflows/tox.yml@0d24a98543a7e17f432503425e6ef836972864bb # v7.0.28
     with:
       python-versions: |
         3.9
