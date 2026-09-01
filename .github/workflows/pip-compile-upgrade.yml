@@ -14,7 +14,7 @@ jobs:
 
       - name: Upgrade package requirements
         id: pip-compile-upgrade-package
-        uses: coatl-dev/actions/pip-compile-upgrade@eaeed3dde61077bd254f6c8b9b523b0a6b182e19 # v7.0.11
+        uses: coatl-dev/actions/pip-compile-upgrade@45ee24a8c8397a346538acefea6221e30076fa66 # v7.0.14
         with:
           path: requirements.txt
 
