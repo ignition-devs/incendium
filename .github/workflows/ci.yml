@@ -9,13 +9,15 @@ on:
 
 jobs:
   pre-commit:
-    uses: coatl-dev/workflows/.github/workflows/pre-commit.yml@0d24a98543a7e17f432503425e6ef836972864bb # v7.0.28
+    uses: coatl-dev/workflows/.github/workflows/pre-commit.yml@14c26346d404da7cc780a7952deae705fff56e10 # v7.0.31
     with:
       skip-hooks: 'pylint'
 
   pylint:
     needs: pre-commit
-    uses: coatl-dev/workflows/.github/workflows/pylint.yml@0d24a98543a7e17f432503425e6ef836972864bb # v7.0.28
+    uses: coatl-dev/workflows/.github/workflows/pylint.yml@14c26346d404da7cc780a7952deae705fff56e10 # v7.0.31
+    with:
+      path: 'src'
 
   jython:
     if: ${{ github.event_name == 'pull_request' }}
@@ -27,7 +29,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Set up Jython
-        uses: coatl-dev/actions/setup-jython@45ee24a8c8397a346538acefea6221e30076fa66 # v7.0.14
+        uses: coatl-dev/actions/setup-jython@283f0790110a211f3255faeda31417d81823fd02 # v7.1.1
         id: setup-jython
         with:
           jython-version: '2.7.3'
@@ -44,11 +46,11 @@ jobs:
 
   tox-package:
     if: ${{ github.event_name == 'pull_request' }}
-    uses: coatl-dev/workflows/.github/workflows/tox-docker.yml@0d24a98543a7e17f432503425e6ef836972864bb # v7.0.28
+    uses: coatl-dev/workflows/.github/workflows/tox-docker.yml@14c26346d404da7cc780a7952deae705fff56e10 # v7.0.31
 
   tox-stubs:
     if: ${{ github.event_name == 'pull_request' }}
-    uses: coatl-dev/workflows/.github/workflows/tox.yml@0d24a98543a7e17f432503425e6ef836972864bb # v7.0.28
+    uses: coatl-dev/workflows/.github/workflows/tox.yml@14c26346d404da7cc780a7952deae705fff56e10 # v7.0.31
     with:
       python-versions: |
         3.9
