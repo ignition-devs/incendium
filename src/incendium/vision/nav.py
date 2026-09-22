@@ -1,4 +1,9 @@
-"""Navigation module."""
+"""Vision window navigation helpers.
+
+This module provides `swap_to` and `swap_windows` to navigate between
+Vision windows, resolving relative paths so windows can be swapped from
+any point in the window tree.
+"""
 
 from __future__ import unicode_literals
 

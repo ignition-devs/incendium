@@ -1,4 +1,13 @@
-"""Database module."""
+"""Stored procedure helpers for Ignition databases.
+
+This module wraps the `system.db` stored procedure functions behind a
+small, uniform API for checking flags, running non-query statements,
+fetching result sets, OUTPUT parameters, and return values. It also
+provides the `InParam` and `OutParam` parameter descriptors, the
+`DisposableConnection` context manager for enabling and disabling a
+connection, and the `TransactionManager` for wrapping work in a database
+transaction.
+"""
 
 __all__ = [
     "DisposableConnection",

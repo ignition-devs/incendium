@@ -1,4 +1,10 @@
-"""Vision GUI module."""
+"""Vision dialogs and popups.
+
+This module wraps `JOptionPane`-based dialogs with simple helpers for
+authentication, authorization, and the standard confirm, error, info,
+warning, and text-input popups, along with the cursor code constants
+used to set pointer styles on components.
+"""
 
 from __future__ import unicode_literals
 

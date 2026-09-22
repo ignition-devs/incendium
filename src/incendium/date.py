@@ -1,4 +1,8 @@
-"""Date module."""
+"""Date helpers built on Ignition's `system.date` functions.
+
+This module provides convenience functions for comparing two dates and
+for resolving the first and last day of the month around a given date.
+"""
 
 __all__ = ["compare", "get_first_day_of_month", "get_last_day_of_month"]
 

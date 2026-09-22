@@ -1,4 +1,10 @@
-"""Tag module."""
+"""Helpers for reading from and writing to Tags.
+
+This module wraps Ignition's blocking Tag functions
+(``system.tag.readBlocking`` and ``system.tag.writeBlocking``) behind a
+simpler interface for reading the value of a Tag and writing a value to
+a Tag.
+"""
 
 __all__ = ["read", "write"]
 

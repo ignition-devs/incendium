@@ -1,4 +1,11 @@
-"""Constants module."""
+"""Constants used across the incendium package.
+
+This module centralizes the strings, messages, templates, and settings
+shared by the other modules so they can be tuned in a single place. It
+includes dialog and window titles, button text, confirmation and error
+messages, the SMTP server and sender used by `incendium.net`, and the
+Java exception prefixes stripped by `incendium.exceptions`.
+"""
 
 from __future__ import unicode_literals
 
