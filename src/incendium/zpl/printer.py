@@ -135,7 +135,7 @@ class TCPPrinter(Printer):
     host = None  # type: Optional[AnyStr]
     port = None  # type: int
 
-    def __init__(self, host=None, port=9100):
+    def __init__(self, host="127.0.0.1", port=9100):
         # type: (Optional[AnyStr], int) -> None
         """Create a TCP printer.
 

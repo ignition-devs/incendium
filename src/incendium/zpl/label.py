@@ -64,7 +64,7 @@ class Label(object):
 
     def _add(self, command):
         # type: (AnyStr) -> None
-        """Append a command, flushing any pending print field data."""
+        """Append a command."""
         self._commands.append(command)
 
     def dump_zpl(self):
@@ -473,7 +473,7 @@ class Label(object):
                         char_width * self.dpmm,
                     )
                 )
-            elif re.match(r"[REBA]?:[A-Z0-9_]+\.(FNT|TTF|TTE)", font):
+            elif re.match(r"^[REBA]?:[A-Z0-9_]+\.(FNT|TTF|TTE)$", font):
                 self._add(
                     "^A@{},{},{},{}".format(
                         orientation,
