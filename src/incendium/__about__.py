@@ -1,5 +1,10 @@
 # coding=utf-8
-"""Package information."""
+"""Package metadata for incendium.
+
+This module holds the package-level metadata (title, description,
+version, author, license, etc.) referenced by the packaging and build
+configuration.
+"""
 
 __title__ = "incendium"
 __description__ = "Package that extends and wraps the Ignition Scripting API"

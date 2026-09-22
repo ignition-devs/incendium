@@ -1,4 +1,11 @@
-"""Exceptions module."""
+"""Custom exception classes for the incendium package.
+
+This module defines the `Error` base class and the `JavaError` subclass
+used to wrap Java exceptions, along with the specialized
+`ApplicationError`, `GatewayError`, `MSSQLError`, and `TagError`
+classes, and the `get_function_name` helper used to build error
+messages.
+"""
 
 from __future__ import unicode_literals
 

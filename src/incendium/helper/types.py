@@ -1,4 +1,9 @@
-"""Types module."""
+"""Type aliases used throughout the incendium package.
+
+This module centralizes the commonly reused type aliases - `AnyStr`,
+`DictIntStringAny`, `DictStringAny`, `InnerException`, and `Number` -
+so that the rest of the package can reference them consistently.
+"""
 
 from typing import Any, Dict, Optional, Union
 

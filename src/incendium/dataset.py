@@ -1,4 +1,11 @@
-"""Dataset module."""
+"""Dataset conversion and serialization helpers.
+
+This module provides the main conversion routines `to_json` and
+`to_xml`, which turn Ignition Datasets into their JSON or XML string
+equivalents, plus `to_jsonobject` and `from_list_of_dicts`, which
+translate Datasets to and from native Python structures. It also
+includes the internal `_NanoXML` builder used to produce the XML output.
+"""
 
 from __future__ import unicode_literals
 

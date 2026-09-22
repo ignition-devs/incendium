@@ -1,0 +1,26 @@
+from typing import Optional
+
+from incendium.helper.types import AnyStr
+
+class Printer:
+    def send_job(self, zpl2: AnyStr) -> None: ...
+
+class FilePrinter(Printer):
+    port: AnyStr
+    def __init__(self, port: AnyStr) -> None: ...
+    def send_job(self, zpl2: AnyStr) -> None: ...
+
+class ParallelPrinter(FilePrinter):
+    def __init__(self, port: AnyStr = ...) -> None: ...
+
+class SerialPrinter(FilePrinter):
+    def __init__(self, port: AnyStr = ...) -> None: ...
+
+class USBPrinter(FilePrinter):
+    def __init__(self, port: AnyStr = ...) -> None: ...
+
+class TCPPrinter(Printer):
+    host: Optional[AnyStr]
+    port: int
+    def __init__(self, host: Optional[AnyStr] = ..., port: int = ...) -> None: ...
+    def send_job(self, zpl2: AnyStr) -> None: ...

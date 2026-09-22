@@ -1,4 +1,10 @@
-"""Net module."""
+"""Email helpers built on Ignition's `system.net` functions.
+
+This module provides convenience functions for sending plain text, HTML,
+and high-priority email messages, plus a helper for generating error
+report emails, and the `HTML_ESCAPE_TABLE` used to sanitize HTML
+content.
+"""
 
 from __future__ import unicode_literals
 

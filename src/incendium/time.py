@@ -1,4 +1,9 @@
-"""Time module."""
+"""Time and timestamp helpers.
+
+This module provides functions for converting a duration in seconds into
+a "hh:mm:ss" timestamp string and for measuring the time elapsed since a
+given date.
+"""
 
 __all__ = ["get_timer", "get_timestamp"]
 

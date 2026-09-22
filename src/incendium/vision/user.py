@@ -1,4 +1,10 @@
-"""User module."""
+"""Vision user helpers.
+
+This module provides the `IncendiumUser` wrapper around Ignition's user
+object, along with functions to look up the logged-in user and lists of
+users and email addresses from a user source, and a helper to set the
+session locale to the user's preferred language.
+"""
 
 from __future__ import unicode_literals
 

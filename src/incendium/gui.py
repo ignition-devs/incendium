@@ -1,4 +1,9 @@
-"""GUI Module."""
+"""Form validation helpers for user interfaces.
+
+This module provides `validate_form`, which checks string, numeric, and
+collection fields and reports the failed fields in a human-readable
+error message suitable for display in a dialog.
+"""
 
 __all__ = ["validate_form"]
 
