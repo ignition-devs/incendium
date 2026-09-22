@@ -162,7 +162,7 @@ class TestTCPPrinter(unittest.TestCase):
 
     def test_constructor_defaults(self):
         printer = self.TCPPrinter()
-        self.assertIsNone(printer.host)
+        self.assertEqual(printer.host, "127.0.0.1")
         self.assertEqual(printer.port, 9100)
 
     def test_constructor_with_host_and_port(self):
