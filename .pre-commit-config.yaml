@@ -20,7 +20,7 @@ repos:
       - id: unimport
         files: ^src/
   - repo: https://github.com/PyCQA/isort
-    rev: 9.0.1
+    rev: 9.0.2
     hooks:
       - id: isort
         name: isort-package
@@ -46,7 +46,7 @@ repos:
         args: [--config=tox.ini]
         additional_dependencies: [pydoclint]
   - repo: https://github.com/PyCQA/flake8
-    rev: 7.3.0
+    rev: 7.4.1
     hooks:
       - id: flake8
         name: flake8-stubs
@@ -69,7 +69,7 @@ repos:
         files: ^src/
         types: [python]
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v4.18.0
+    rev: v4.19.0
     hooks:
       - id: commitizen
       - id: commitizen-branch
