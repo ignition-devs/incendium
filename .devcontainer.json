@@ -16,7 +16,15 @@
         "ms-python.vscode-pylance"
       ],
       "settings": {
-        "python.defaultInterpreterPath": "/opt/python/2.7/bin/python"
+        "python.defaultInterpreterPath": "/opt/python/2.7/bin/python",
+        "files.watcherExclude": {
+          "**/.tox/**": true,
+          "**/.mypy_cache/**": true
+        },
+        "python.analysis.exclude": [
+          ".tox",
+          "stubs/.tox"
+        ]
       }
     }
   },
