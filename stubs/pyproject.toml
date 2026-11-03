@@ -38,6 +38,6 @@ urls.Source = "https://github.com/ignition-devs/incendium"
 urls.Tracker = "https://github.com/ignition-devs/incendium/issues"
 
 [tool.setuptools]
-include-package-data = true
 package-dir = { "" = "stubs" }
+include-package-data = true
 package-data."*" = [ "*.pyi", "py.typed" ]
